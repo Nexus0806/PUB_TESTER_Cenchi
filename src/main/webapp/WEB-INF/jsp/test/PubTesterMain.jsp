@@ -77,48 +77,49 @@ $('#header ul.gnb > li').mouseleave(function(){
 });
 
 
-</script>    <div id="wrap">
+</script>    
+	<div id="wrap">
 		<div class="banner_wrap">
 			<ul class="banner">
 				<li>
 					<a href="#none">
 						<div class="img_wrap">
-							<img src="./_img/pc/main/bn_no_img.png" alt="" / style="background: url(./_img/pc/main/bn01.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/bn01.png)no-repeat 50% 50% / cover;">
 						</div><!-- img_wrap -->
 					</a>
 				</li>
 				<li>
 					<a href="#none">
 						<div class="img_wrap">
-							<img src="./_img/pc/main/bn_no_img.png" alt="" / style="background: url(./_img/pc/main/bn02.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/bn02.png)no-repeat 50% 50% / cover;">
 						</div><!-- img_wrap -->
 					</a>
 				</li>
 				<li>
 					<a href="#none">
 						<div class="img_wrap">
-							<img src="./_img/pc/main/bn_no_img.png" alt="" / style="background: url(./_img/pc/main/bn03.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/bn03.png)no-repeat 50% 50% / cover;">
 						</div><!-- img_wrap -->
 					</a>
 				</li>
 				<li>
 					<a href="#none">
 						<div class="img_wrap">
-							<img src="./_img/pc/main/bn_no_img.png" alt="" / style="background: url(./_img/pc/main/bn01.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/bn01.png)no-repeat 50% 50% / cover;">
 						</div><!-- img_wrap -->
 					</a>
 				</li>
 				<li>
 					<a href="#none">
 						<div class="img_wrap">
-							<img src="./_img/pc/main/bn_no_img.png" alt="" / style="background: url(./_img/pc/main/bn02.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/bn02.png)no-repeat 50% 50% / cover;">
 						</div><!-- img_wrap -->
 					</a>
 				</li>
 				<li>
 					<a href="#none">
 						<div class="img_wrap">
-							<img src="./_img/pc/main/bn_no_img.png" alt="" / style="background: url(./_img/pc/main/bn03.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/bn03.png)no-repeat 50% 50% / cover;">
 						</div><!-- img_wrap -->
 					</a>
 				</li>
@@ -132,7 +133,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_blog">배송</p>
 						<div class="prd_txt">
@@ -151,7 +152,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_inst">방문</p>
 						<div class="prd_txt">
@@ -170,7 +171,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_yout">배송</p>
 						<div class="prd_txt">
@@ -189,7 +190,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_inst">배송</p>
 						<div class="prd_txt">
@@ -208,7 +209,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_yout">배송</p>
 						<div class="prd_txt">
@@ -227,7 +228,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_blog">배송</p>
 						<div class="prd_txt">
@@ -246,7 +247,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_inst">방문</p>
 						<div class="prd_txt">
@@ -272,7 +273,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_inst">방문</p>
 						<div class="prd_txt">
@@ -291,7 +292,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_inst">방문</p>
 						<div class="prd_txt">
@@ -310,7 +311,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_yout">배송</p>
 						<div class="prd_txt">
@@ -329,7 +330,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_yout">배송</p>
 						<div class="prd_txt">
@@ -348,7 +349,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_inst">배송</p>
 						<div class="prd_txt">
@@ -367,7 +368,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_blog">배송</p>
 						<div class="prd_txt">
@@ -386,7 +387,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 				<li>
 					<a href="#none">
 						<div class="prd_img">
-							<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
 						</div><!-- prd_img -->
 						<p class="sns_txt sns_blog">배송</p>
 						<div class="prd_txt">
@@ -413,7 +414,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_yout">배송</p>
 							<div class="prd_txt">
@@ -432,7 +433,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -451,7 +452,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -470,7 +471,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img12.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img12.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -489,7 +490,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">배송</p>
 							<div class="prd_txt">
@@ -508,7 +509,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_yout">배송</p>
 							<div class="prd_txt">
@@ -527,7 +528,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -546,7 +547,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">방문</p>
 							<div class="prd_txt">
@@ -565,7 +566,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">방문</p>
 							<div class="prd_txt">
@@ -584,7 +585,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img11.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img11.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_yout">배송</p>
 							<div class="prd_txt">
@@ -603,7 +604,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -622,7 +623,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">배송</p>
 							<div class="prd_txt">
@@ -650,7 +651,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_yout">배송</p>
 							<div class="prd_txt">
@@ -669,7 +670,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -688,7 +689,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -707,7 +708,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img12.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img12.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -726,7 +727,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">배송</p>
 							<div class="prd_txt">
@@ -745,7 +746,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_yout">배송</p>
 							<div class="prd_txt">
@@ -764,7 +765,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -783,7 +784,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">방문</p>
 							<div class="prd_txt">
@@ -802,7 +803,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">방문</p>
 							<div class="prd_txt">
@@ -821,7 +822,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img11.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img11.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_yout">배송</p>
 							<div class="prd_txt">
@@ -840,7 +841,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -859,7 +860,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">배송</p>
 							<div class="prd_txt">
@@ -892,7 +893,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">배송</p>
 							<div class="prd_txt">
@@ -911,7 +912,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -930,7 +931,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img11.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img11.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_yout">배송</p>
 							<div class="prd_txt">
@@ -949,7 +950,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -968,7 +969,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_yout">배송</p>
 							<div class="prd_txt">
@@ -987,7 +988,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -1006,7 +1007,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img12.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img12.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -1025,7 +1026,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">방문</p>
 							<div class="prd_txt">
@@ -1044,7 +1045,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_yout">배송</p>
 							<div class="prd_txt">
@@ -1063,7 +1064,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -1082,7 +1083,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">방문</p>
 							<div class="prd_txt">
@@ -1101,7 +1102,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">배송</p>
 							<div class="prd_txt">
@@ -1125,7 +1126,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">배송</p>
 							<div class="prd_txt">
@@ -1144,7 +1145,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -1163,7 +1164,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img11.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img11.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_yout">배송</p>
 							<div class="prd_txt">
@@ -1182,7 +1183,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -1201,7 +1202,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_yout">배송</p>
 							<div class="prd_txt">
@@ -1220,7 +1221,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -1239,7 +1240,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img12.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img12.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -1258,7 +1259,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">방문</p>
 							<div class="prd_txt">
@@ -1277,7 +1278,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_yout">배송</p>
 							<div class="prd_txt">
@@ -1296,7 +1297,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_blog">배송</p>
 							<div class="prd_txt">
@@ -1315,7 +1316,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">방문</p>
 							<div class="prd_txt">
@@ -1334,7 +1335,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="./_img/pc/main/no_img.png" alt="" / style="background: url(./_img/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">배송</p>
 							<div class="prd_txt">
@@ -1361,7 +1362,7 @@ $('#header ul.gnb > li').mouseleave(function(){
 
 		<div class="bt_banner section sec06">
 			<div class="bt_bn">
-				<p class="web"><img src="./_img/pc/main/ft_bn.png" alt="" /></p>
+				<p class="web"><img src="${pageContext.request.contextPath}/images/pc/main/ft_bn.png" alt="" /></p>
 				<p class="tablet"><img src="./_img/ta/main/ft_bn_ta.png" alt="" /></p>
 				<p class="mobile"><img src="./_img/mo/main/ft_bn_mo.png" alt="" /></p>
 			</div><!-- bt_bn -->
@@ -1370,56 +1371,9 @@ $('#header ul.gnb > li').mouseleave(function(){
 
 	<div class="content"></div> <!-- 좌우 여백 없는 content-->
 	<div class="s_content"></div> <!-- 좌우 여백 있는 content-->
-   <footer>
-	<div id="footer">
-		<h1>
-			<a href="#none" class="ft_logo"></a>
-		</h1>
-		
-		<div class="ft_info">
-			<div class="ft_left">
-				<div class="ft_txt">
-					<p>대표이사 : 이형기</p><em></em><p>hklee@withsystem.com</p><i></i>
-					<p>서울 금천구 가산디지털1로 225 에이스 가산 포휴(지식산업센터) 10층 1005-1008호</p><i></i>
-					<p>TEL : 02-3211-5011</p><em></em><p>FAX : 02-733-7766</p>
-				</div><!-- ft_txt -->
-				<p class="copy">Copyright 2020 by withsystem. All rights reserved.</p>
-			</div><!-- ft_left -->
-			
-			<div class="ft_right">
-				<ul class="privacy">
-					<li>
-						<a href="#none">고객센터</a>
-					</li>
-					<li>
-						<a href="#none">이용약관</a>
-					</li>
-					<li>
-						<a href="#none" class="point">개인정보처리방침</a>
-					</li>
-					<li>
-						<a href="#none">운영정책</a>
-					</li>
-				</ul><!-- privacy -->
-				
-				<ul class="ft_btn">
-					<li>
-						<a href="#none"><img src="./_img/pc/comn/ft_sns_fb.svg" alt="" /></a>
-					</li>
-					<li>
-						<a href="#none"><img src="./_img/pc/comn/ft_sns_blog.svg" alt="" /></a>
-					</li>
-					<li>
-						<a href="#none" class="btn01">Brochure Download</a>
-					</li>
-					<li>
-						<a href="#none" class="btn01">PMS</a>
-					</li>
-				</ul><!-- ft_btn -->				
-			</div><!-- ft_right -->
-		</div><!-- ft_info -->		
-	</div> <!-- footer -->
-</footer></body>
+	
+	<jsp:include page="/WEB-INF/jsp/_inc/footer.jsp" />
+</body>
 
 <script type="text/javascript">
 

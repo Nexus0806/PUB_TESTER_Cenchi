@@ -16,7 +16,7 @@ body {margin-top:80px;}
 header {width: 100%; height: 80px; border-bottom: 1px solid #eee; background:#fff; position: fixed; top:0; left: 0; z-index: 1000;}
 #header {width: 100%; max-width:1665px; height: 100%; margin: 0 auto; display: flex; flex-wrap:wrap; gap:40px; align-items:center;}
 #header h1 {}
-#header h1 a.logo {display: block; width: 130px; height: 36px; background: url(../_img/pc/comn/logo.svg)no-repeat center;}
+#header h1 a.logo {display: block; width: 130px; height: 36px; background: url(../images/pc/comn/logo.svg)no-repeat center;}
 #header ul.gnb {display: flex; align-items:center; gap:30px; height:100%;}
 #header ul.gnb li {position:relative;}
 #header ul.gnb li a {font: 500 16px / 26px "Pretendard", "Noto Sans KR", sans-serif; color: #111;}
@@ -32,7 +32,7 @@ header {width: 100%; height: 80px; border-bottom: 1px solid #eee; background:#ff
 #header .h_right .s_wrap input[type="search"] {width: calc(100% - 28px); padding-right: 10px; background: none; border: none; font: 300 15px / 15px "Pretendard", "Noto Sans KR", sans-serif; color:#111;}
 #header .h_right .s_wrap input[type="search"]::placeholder {font: 300 15px / 15px "Pretendard", "Noto Sans KR", sans-serif; color: #888;}
 #header .h_right .s_wrap input[type="search"]::-webkit-search-cancel-button {display: none;}
-#header .h_right .s_wrap .s_btn {display: block; font-size: 0; width: 18px; height: 18px; border: none; background: url(../_img/pc/comn/search_ico.svg)no-repeat center;}
+#header .h_right .s_wrap .s_btn {display: block; font-size: 0; width: 18px; height: 18px; border: none; background: url(../images/pc/comn/search_ico.svg)no-repeat center;}
 #header .h_right .login_wrap {}
 #header .h_right .login_wrap a {font: 700 16px / 26px "Pretendard", "Noto Sans KR", sans-serif; color: var(--co01);}
 
@@ -62,12 +62,12 @@ header {width: 100%; height: 80px; border-bottom: 1px solid #eee; background:#ff
 .chat_pop .pop_box .chat_box p.gt_q {background: #e8f6fc; color:#111;}
 .chat_pop .pop_box .chat_ip {width: 100%; border-radius: 50px; padding: 10px 15px; background: #e8f6fc; border: none; display: flex; flex-wrap:wrap; align-items:center; justify-content:space-between;}
 .chat_pop .pop_box .chat_ip input[type="text"] {width: calc(100% - 30px); border:none; background: transparent; font: 400 14px / 24px "Pretendard", "Noto Sans KR", sans-serif; color:#555;}
-.chat_pop .pop_box .chat_ip .send {cursor: pointer; font-size: 0; border: none; width: 20px; height: 20px; background: url(../_img/pc/comn/chat_send_ico.svg)no-repeat center;}
+.chat_pop .pop_box .chat_ip .send {cursor: pointer; font-size: 0; border: none; width: 20px; height: 20px; background: url(../images/pc/comn/chat_send_ico.svg)no-repeat center;}
 
 footer {border-top: 1px solid #eee; z-index: 5000;}
 #footer {width: 100%; max-width:1665px; height:100%; margin: 0 auto; padding: 50px 0;}
 #footer h1 {}
-#footer h1 a.ft_logo {display: block; width: 130px; height: 36px; background: url(../_img/pc/comn/ft_logo.svg)no-repeat center;}
+#footer h1 a.ft_logo {display: block; width: 130px; height: 36px; background: url(../images/pc/comn/ft_logo.svg)no-repeat center;}
 #footer .ft_info {margin-top: 25px; display: flex; flex-wrap:wrap; justify-content:space-between;}
 #footer .ft_left {}
 #footer .ft_left .ft_txt {}
@@ -156,9 +156,9 @@ body {margin-top:70px;}
 #tm_header {position: fixed; top:0; padding: 0 20px; width:100%; height: 70px; background: #fff; border-bottom: 1px solid #ddd; z-index: 200;}
 #tm_header .tm_h_wrap {display: flex; flex-wrap: wrap; justify-content:space-between; align-items:center; height: 70px;}
 #tm_header .tm_h_wrap h1 {}
-#tm_header .tm_h_wrap h1 a.logo {display: block; width: 120px; height: 38px; background: url(../_img/pc/comn/logo.svg)no-repeat center / contain;}
+#tm_header .tm_h_wrap h1 a.logo {display: block; width: 120px; height: 38px; background: url(../images/pc/comn/logo.svg)no-repeat center / contain;}
 #tm_header .tm_h_wrap .tm_right .s_wrap {}
-#tm_header .tm_h_wrap .tm_right .s_wrap a {display: block; font-size: 0; width: 22px; height: 22px; border: none; background: url(../_img/pc/comn/search_ico.svg)no-repeat center / 22px;}
+#tm_header .tm_h_wrap .tm_right .s_wrap a {display: block; font-size: 0; width: 22px; height: 22px; border: none; background: url(../images/pc/comn/search_ico.svg)no-repeat center / 22px;}
 #tm_header .tm_h_wrap .tm_right .ham {}
 #tm_header .tm_h_wrap .tm_right {display: flex; flex-wrap:wrap; gap: 25px; align-items:center;}
 #tm_header .tm_h_wrap .tm_right .ham a.navi_btn {display: block; font-size: 0; width: 22px; height: 18px; border: none; background: url(../_img/ta/comn/ham.svg)no-repeat center / contain;}
@@ -169,7 +169,7 @@ body {margin-top:70px;}
 #tm_header.on .navi {}
 #tm_header .navi .lnb {position: fixed; top: 0; left: auto; right:0; bottom:0; width:100%; height:100%; z-index: 200; background: #fff;}
 #tm_header .navi .lnb .nv_h {display: flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content: space-between; padding: 0 20px; height: 70px;}
-#tm_header .navi .lnb .nv_h a.logo {display: block; width: 120px; height: 38px; background: url(../_img/pc/comn/logo.svg)no-repeat center / contain;}
+#tm_header .navi .lnb .nv_h a.logo {display: block; width: 120px; height: 38px; background: url(../images/pc/comn/logo.svg)no-repeat center / contain;}
 #tm_header .navi .lnb .login_wrap {}
 #tm_header .navi .lnb .login_wrap a {background: linear-gradient(to right, #169DDE, #1482B7); padding: 20px; display: block; font: 700 16px / 26px "Pretendard", "Noto Sans KR", sans-serif; color: #fff;}
 #tm_header .navi .lnb .login_wrap a p {display: inline-block; font: 300 16px / 26px "Pretendard", "Noto Sans KR", sans-serif;}
@@ -228,11 +228,11 @@ body {margin-top:70px;}
 .chat_pop .pop_box .chat_box p.gt_q {background: #e8f6fc; color:#111;}
 .chat_pop .pop_box .chat_ip {width: 100%; border-radius: 50px; padding: 10px 15px; background: #e8f6fc; border: none; display: flex; flex-wrap:wrap; align-items:center; justify-content:space-between;}
 .chat_pop .pop_box .chat_ip input[type="text"] {width: calc(100% - 30px); border:none; background: transparent; font: 400 14px / 24px "Pretendard", "Noto Sans KR", sans-serif; color:#555;}
-.chat_pop .pop_box .chat_ip .send {cursor: pointer; font-size: 0; border: none; width: 20px; height: 20px; background: url(../_img/pc/comn/chat_send_ico.svg)no-repeat center;}
+.chat_pop .pop_box .chat_ip .send {cursor: pointer; font-size: 0; border: none; width: 20px; height: 20px; background: url(../images/pc/comn/chat_send_ico.svg)no-repeat center;}
 
 #footer {width: 100%; margin: 0 auto; padding: 30px 20px; border-top: 1px solid #eee; margin-bottom: 80px;}
 #footer h1 {}
-#footer h1 a.ft_logo {display: block; width: 120px; height: 38px; background: url(../_img/pc/comn/ft_logo.svg)no-repeat center / contain;}
+#footer h1 a.ft_logo {display: block; width: 120px; height: 38px; background: url(../images/pc/comn/ft_logo.svg)no-repeat center / contain;}
 #footer .ft_info {margin-top: 15px; display: flex; flex-wrap:wrap; justify-content:space-between; gap:25px;}
 #footer .ft_left {width:100%;}
 #footer .ft_left .ft_txt {}
@@ -270,9 +270,9 @@ body {margin-top:60px;}
 #tm_header {position: fixed; top:0; padding: 0 20px; width:100%; height: 60px; background: #fff; border-bottom: 1px solid #ddd; z-index: 200;}
 #tm_header .tm_h_wrap {display: flex; flex-wrap: wrap; justify-content:space-between; align-items:center; height: 60px;}
 #tm_header .tm_h_wrap h1 {}
-#tm_header .tm_h_wrap h1 a.logo {display: block; width: 100px; height: 28px; background: url(../_img/pc/comn/logo.svg)no-repeat center / contain;}
+#tm_header .tm_h_wrap h1 a.logo {display: block; width: 100px; height: 28px; background: url(../images/pc/comn/logo.svg)no-repeat center / contain;}
 #tm_header .tm_h_wrap .tm_right .s_wrap {}
-#tm_header .tm_h_wrap .tm_right .s_wrap a {display: block; font-size: 0; width: 22px; height: 22px; border: none; background: url(../_img/pc/comn/search_ico.svg)no-repeat center / contain;}
+#tm_header .tm_h_wrap .tm_right .s_wrap a {display: block; font-size: 0; width: 22px; height: 22px; border: none; background: url(../images/pc/comn/search_ico.svg)no-repeat center / contain;}
 #tm_header .tm_h_wrap .tm_right .ham {}
 #tm_header .tm_h_wrap .tm_right {display: flex; flex-wrap:wrap; gap: 20px; align-items:center;}
 #tm_header .tm_h_wrap .tm_right .ham a.navi_btn {display: block; font-size: 0; width: 22px; height: 18px; border: none; background: url(../_img/ta/comn/ham.svg)no-repeat center / contain;}
@@ -287,7 +287,7 @@ body {margin-top:60px;}
 #tm_header .navi .lnb .login_wrap a {background: linear-gradient(to right, #169DDE, #1482B7); padding: 15px 20px; display: block; font: 700 15px / 25px "Pretendard", "Noto Sans KR", sans-serif; color: #fff;}
 #tm_header .navi .lnb .login_wrap a p {display: inline-block; font: 300 15px / 25px "Pretendard", "Noto Sans KR", sans-serif;}
 #tm_header .navi .lnb .nv_h {display: flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content: space-between; padding: 0 20px; height: 60px;}
-#tm_header .navi .lnb .nv_h a.logo {display: block; width: 100px; height: 28px; background: url(../_img/pc/comn/logo.svg)no-repeat center / contain;}
+#tm_header .navi .lnb .nv_h a.logo {display: block; width: 100px; height: 28px; background: url(../images/pc/comn/logo.svg)no-repeat center / contain;}
 #tm_header .navi .lnb .nv_h .nv_btn {}
 #tm_header .navi .lnb .nv_h .nv_btn a.close {display: block; font-size: 0; width: 18px; height: 18px; border: none; background: url(../_img/ta/comn/h_close.svg)no-repeat center / contain;}
 #tm_header .navi .lnb .dep01 {border-top:1px solid #ddd;}
@@ -319,7 +319,7 @@ body {margin-top:60px;}
 .tm_sch_wrap .tm_sch input.tm_sh {width: calc(100% - 28px); padding-right: 10px; background: none; border: none; font: 300 13px / 13px "Pretendard", "Noto Sans KR", sans-serif; color:#111;}
 .tm_sch_wrap .tm_sch input.tm_sh::placeholder {font: 300 13px / 13px "Pretendard", "Noto Sans KR", sans-serif; color: #888;}
 .tm_sch_wrap .tm_sch input[type="search"]::-webkit-search-cancel-button {display: none;}
-.tm_sch_wrap .tm_sch .tm_s_btn {display: block; font-size: 0; width: 16px; height: 16px; border: none; background: url(../_img/pc/comn/search_ico.svg)no-repeat center / contain;}
+.tm_sch_wrap .tm_sch .tm_s_btn {display: block; font-size: 0; width: 16px; height: 16px; border: none; background: url(../images/pc/comn/search_ico.svg)no-repeat center / contain;}
 
 .chat_bot {}
 .chat_bot a {position:fixed; bottom:100px; right:20px; z-index: 100;}
@@ -343,11 +343,11 @@ body {margin-top:60px;}
 .chat_pop .pop_box .chat_box p.gt_q {background: #e8f6fc; color:#111;}
 .chat_pop .pop_box .chat_ip {width: 100%; border-radius: 50px; padding: 10px 15px; background: #e8f6fc; border: none; display: flex; flex-wrap:wrap; align-items:center; justify-content:space-between;}
 .chat_pop .pop_box .chat_ip input[type="text"] {width: calc(100% - 30px); border:none; background: transparent; font: 400 13px / 23px "Pretendard", "Noto Sans KR", sans-serif; color:#555;}
-.chat_pop .pop_box .chat_ip .send {cursor: pointer; font-size: 0; border: none; width: 20px; height: 20px; background: url(../_img/pc/comn/chat_send_ico.svg)no-repeat center;}
+.chat_pop .pop_box .chat_ip .send {cursor: pointer; font-size: 0; border: none; width: 20px; height: 20px; background: url(../images/pc/comn/chat_send_ico.svg)no-repeat center;}
 
 #footer {width: 100%; margin: 0 auto; padding: 25px 20px; border-top: 1px solid #eee; z-index: 5000; margin-bottom: 80px;}
 #footer h1 {}
-#footer h1 a.ft_logo {display: block; width: 100px; height: 28px; background: url(../_img/pc/comn/ft_logo.svg)no-repeat center / contain;}
+#footer h1 a.ft_logo {display: block; width: 100px; height: 28px; background: url(../images/pc/comn/ft_logo.svg)no-repeat center / contain;}
 #footer .ft_info {margin-top: 10px; display: flex; flex-wrap:wrap; justify-content:space-between; gap:25px;}
 #footer .ft_left {width:100%;}
 #footer .ft_left .ft_txt {}

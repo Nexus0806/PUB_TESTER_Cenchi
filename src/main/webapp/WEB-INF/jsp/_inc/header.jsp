@@ -35,7 +35,7 @@
 	<div id="tm_header">
 		<div class="tm_h_wrap">
 			<h1>
-				<a href="/preuser/index.html" class="logo"></a>
+				<a href="/preuser/index.html" class="logo">공공체험단</a>
 			</h1>
 
 			<div class="tm_right">
@@ -120,30 +120,4 @@
 		</ul>
 	</div><!-- tm_bt_header -->
 
-	<div class="chat_bot">
-		<a href="javascript:void(0)" class="chat_btn"><img src="./_img/pc/comn/chat_bot.svg" alt="" /></a>
-
-		<div class="chat_pop">
-			<div class="pop_box">
-				<div class="btn_box">
-					<p class="chat_tit">공공체험단 톡톡이 도와드릴게요</p>
-					<button class="close_btn"><img src="./_img/pc/comn/chat_close.svg" alt="" /></button>
-				</div><!-- btn_box -->
-				<div class="chat">
-					<div class="chat_box">
-						<div class="tok">
-							<div class="tok_icon"><img src="./_img/pc/comn/chat_icon.svg" alt="" /></div>
-							<span>공공체험단 톡톡</span>
-						</div><!-- tok -->
-						<p class="gt">안녕하세요. 공공체험단 톡톡입니다. <br/>공공체험단 서비스에서 궁금 하신게 있으시면 <br/>언제든 물어보세요.</p>
-						<p class="gt gt_q">체험단 신청 문의드립니다.</p>
-					</div><!-- chat_box -->
-					<div class="chat_ip">
-						<input type="text">
-						<button class="send" type="button"></button>
-					</div><!-- chat_ip -->
-				</div><!-- chat -->
-			</div><!-- pop_box -->
-		</div><!-- chat_pop -->
-	</div><!-- chat_bot -->
 </header>
