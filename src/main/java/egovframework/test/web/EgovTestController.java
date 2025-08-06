@@ -32,6 +32,6 @@ public class EgovTestController {
         // 모델에도 담아서 화면에 전달
         model.addAttribute("testList", testList);
 
-        return "/test/test";
+        return "/test/PubTesterMain";
     }
 }

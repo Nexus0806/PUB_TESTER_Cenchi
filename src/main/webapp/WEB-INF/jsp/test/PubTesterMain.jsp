@@ -6,39 +6,22 @@
 <html>
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<link rel="shortcut icon" href="_img/favicon.png"/> <!-- 파비콘 -->
-<link rel="stylesheet" type="text/css" href="/preuser/_css/default.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<title>중소기업을 위한 공공체험단</title>
-<script src="/preuser/_js/pop_layer.js"></script>
-<script src="/preuser/_js/cont.js"></script>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="shortcut icon" href="_img/favicon.png"/> <!-- 파비콘 -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/default.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/slick.css"/>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<title>중소기업을 위한 공공체험단</title>
+	<script src="/preuser/_js/pop_layer.js"></script>
+	<script src="/preuser/_js/cont.js"></script>
 </head>
 <body>
 
 <jsp:include page="/WEB-INF/jsp/_inc/header.jsp" />
-
-<script type="text/javascript">
-
-/* chat_pop */
-$(".chat_btn").click(function(){
-	$(".chat_pop").fadeIn();
-	$(".chat_pop").addClass('on');
-
-})
-
-$(".close_btn").click(function(){
-	$(".chat_pop").fadeOut();
-	$(".chat_pop").removeClass('on');
-
-});
-
-</script>
 
 <script type="text/javascript">
 
@@ -141,65 +124,6 @@ $('#header ul.gnb > li').mouseleave(function(){
 				</li>
 			</ul>
 		</div><!-- banner_wrap 메인 롤링배너 -->
-
-		<div class="quick_mn section sec01">
-			<ul class="sec01_li">
-				<li>
-					<a href="#none">
-						<img src="./_img/pc/main/sec01_ico01.svg" alt="" />
-						<p>전체</p>
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<img src="./_img/pc/main/sec01_ico02.svg" alt="" />
-						<p>생활</p>
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<img src="./_img/pc/main/sec01_ico03.svg" alt="" />
-						<p>식품</p>
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<img src="./_img/pc/main/sec01_ico04.svg" alt="" />
-						<p>뷰티</p>
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<img src="./_img/pc/main/sec01_ico05.svg" alt="" />
-						<p>운동</p>
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<img src="./_img/pc/main/sec01_ico06.svg" alt="" />
-						<p>문화</p>
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<img src="./_img/pc/main/sec01_ico07.svg" alt="" />
-						<p>커뮤니티</p>
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<img src="./_img/pc/main/sec01_ico08.svg" alt="" />
-						<p>이벤트</p>
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<img src="./_img/pc/main/sec01_ico09.svg" alt="" />
-						<p>광고문의</p>
-					</a>
-				</li>
-			</ul>
-		</div><!-- quick_mn sec01 메인 상단 퀵메뉴 -->
 
 		<div class="pd_slider section sec02">
 			<h2 class="h2_tit h2_tit01">프리미엄 체험단</h2>

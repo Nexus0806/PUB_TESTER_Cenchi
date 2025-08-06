@@ -1,0 +1,338 @@
+@charset "utf-8";
+
+/* PC */
+@media only screen and (min-width: 960px) {
+
+#sub_content {width: 100%; padding: 50px 0 100px;}
+
+/* 레이어 팝업 기본 */
+div.layer					{display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:100000;}
+div.layer .bg				{position:absolute; top:0; left:0; width:100%; height:100%; background:#000; opacity:.5; filter:alpha(opacity=50);}
+div.layer .pop-layer	{position:absolute; top: 50%; left: 50%;  transform:translateX(-50%) translateY(-50%); max-width:1400px; background:#fff; z-index: 10;}
+
+.pop_title				{width:100%; position:relative; font-size:26px; font-weight:600; color:#222; padding:30px}
+.pop_title a.cbtn	{position:absolute; top:30px; right:30px; display:block; font-size:0; width:20px; height:20px;  background:url('../_img/cont/pop_cbtn.png')no-repeat 50% 50%/100%}
+.pop_cont				{width:100%; padding:10px 30px 30px; max-height:calc(100dvh - 150px); overflow-y:auto;}
+
+/* 페이지네이션 */
+.pagination											{text-align: center; margin-top: 50px;}
+.pagination > *										{display: inline-block; border-radius:5px;  transition:all .2s;}
+.pagination a.direction							{text-indent: -9999px; border:solid 1px #fff; padding:2px; width:30px; height:30px;}
+.pagination a.direction:hover, 
+.pagination a.direction:focus					{border:solid 1px var(--co01)}
+.pagination a.direction.prev					{background: url('../_img/pc/comn/prev.png') no-repeat 50% 48%; margin-right: 5px;}
+.pagination a.direction.prev.end			{background: url('../_img/pc/comn/prev_end.png') no-repeat 50% 48%;}
+
+.pagination a.direction.next					{background: url('../_img/pc/comn/next.png') no-repeat 53% 50%; margin-left: 5px;}
+.pagination a.direction.next.end			{background: url('../_img/pc/comn/next_end.png') no-repeat 53% 50%;}
+
+.pagination a:not(.direction)				{margin: 0 7px; display:inline-block; min-width:30px; height:30px; padding:5px 0; vertical-align:top; text-align:center; font: 400 15px/21px "Pretendard","Noto Sans KR", sans-serif; color:#888; transition:.2s;}
+.pagination a:not(.direction):hover,
+.pagination a:not(.direction):focus	{color:var(--co01); }
+.pagination a:not(.direction).on		{color:#fff; background:var(--co01); border-radius:5px; padding:5px; width:30px; height:30px; }
+
+/* bbs 상세 */
+
+h2.sub_tit {font: 800 26px / 26px "Pretendard", "Noto Sans KR", sans-serif; color:#222; margin-bottom: 25px;}
+
+.s_cont {max-width: 1400px; width: 100%; margin: 0 auto; display: flex; flex-wrap:wrap; gap:80px;}
+.s_cont .left {width: 220px;}
+.s_cont .right {width: calc(100% - 300px);}
+.s_cont .cont_all {width: 100%;}
+
+.s_cont p.left_tit {font: 700 20px / 28px "Pretendard", "Noto Sans KR", sans-serif; color:#333; margin-bottom: 15px;}
+.s_cont .lnb {min-height: 440px; height: 100%; }
+.s_cont .lnb ul.lnb_li {}
+.s_cont .lnb ul.lnb_li > li {display: block;}
+.s_cont .lnb ul.lnb_li > li:not(:first-child) {margin-top:25px;}
+.s_cont .lnb ul.lnb_li > li > ul.sub_li {}
+.s_cont .lnb ul.lnb_li > li > ul.sub_li li {border-top: 1px solid #eee; font: 400 17px / 29px "Pretendard", "Noto Sans KR", sans-serif; transition: .3s;}
+.s_cont .lnb ul.lnb_li > li > ul.sub_li li:hover a {color:var(--co01);}
+.s_cont .lnb ul.lnb_li > li > ul.sub_li li.on a {color:var(--co01);}
+.s_cont .lnb ul.lnb_li > li > ul.sub_li li:not(:first-child) {}
+.s_cont .lnb ul.lnb_li > li > ul.sub_li li a {display: block; padding: 10px 0; color:#666;}
+
+.s_cont .right {}
+
+/* 검색창 */
+.sel select									{min-width: 120px; height:45px; padding-left:15px; margin-right:10px; border-radius:10px; border: 1px solid #ddd; font:400 15px/45px "Pretendard", "Noto Sans KR", sans-serif; color: #333;}
+
+div.list_search								{overflow:hidden; width:100%; text-align:center; margin-bottom:30px; display:flex; align-items: center; justify-content: space-between;}
+div.list_search select						{position: relative; width:120px; height:45px; padding-left:15px; margin-right:10px; border-radius:10px; border: 1px solid #ddd; font:400 15px/30px "Pretendard", "Noto Sans KR", sans-serif; color: #333;}
+div.list_search input.info_in				{vertical-align:top;display:inline-block; width:calc(100% - 220px); height:45px; padding:0 15px; margin-right:10px; border:none;  border: 1px solid #ddd; background:#f9f9f9; border-radius:10px;  font:400 15px/30px "Pretendard", "Noto Sans KR", sans-serif; color: #333;}
+div.list_search input::placeholder			{color:#888}
+div.list_search a.b_btn						{display:inline-block; width:90px; height:45px;  text-align:center; padding:10px; background:#555; color:#fff; font:400 16px/25px "Pretendard", "Noto Sans KR", sans-serif; border-radius:10px; transition:all .2s;}
+div.list_search a.b_btn:hover,
+div.list_search a.b_btn:focus				{background:#333;}
+
+div.list_search:has(.dic_radio)				{flex-wrap:wrap; justify-content: center;}
+div.list_search ul.dic_radio				{display:flex; justify-content: center; width:100%; margin-bottom:20px;}
+div.list_search ul.dic_radio	 li			{margin:0 10px}
+div.list_search ul.dic_radio	 li	a		{display:inline-block; width:40px; height:40px; border-radius:10px; border:solid 1px #ddd; background:#f9f9f9; text-align:center; color:#666; font:400 17px/35px "Pretendard", "Noto Sans KR", sans-serif; transition:.2s;}
+div.list_search ul.dic_radio	 li	a.on	{color:#fff !important; background:var(--co01); border-color:var(--co01);}
+div.list_search ul.dic_radio	 li	a:hover,
+div.list_search ul.dic_radio	 li	a:focus	{border-color:var(--co01); color:var(--co01);}
+div.list_search .sub	{font:400 15px/24px "Noto Sans KR", sans-serif; color:var(--co01); margin-top:10px;}
+
+/* 용어 */
+.dic_result				{overflow:hidden;}
+.dic_result a			{display:inline-block; padding:5px 10px; border-radius:5px; background:#f9f9f9; font:400 16px/25px "Noto Sans KR", sans-serif; color:#666; margin:0 5px 5px 0; transition:.2s;}
+.dic_result a.on		{color:#fff !important; background:var(--co01)}
+.dic_result a:hover,
+.dic_result a:focus	{color:var(--co01); background:#f2faff;}
+
+.dic_cont					{margin-top:30px; border:solid 1px #ddd; border-radius:10px; padding:30px 25px; word-break:keep-all;}
+.dic_cont h5				{font:600 21px/28px "Noto Sans KR", sans-serif; color:#333; margin-bottom:10px; position:relative;}
+.dic_cont h5::after	{position:absolute; content:''; width:8px; height:8px; border-radius:50%; background:var(--co01); margin-left:3px;}
+.dic_cont .pl_box		{padding-left:10px;}
+.dic_cont p + p			{margin-top:15px}
+.dic_cont  .basic_table	{margin-top:20px;}
+.dic_cont table.basic_table td			{text-align:left;}
+
+.dic_cont .dot_list			{margin-bottom:25px;}
+.dic_cont .dot_list	> li	{font-size:18px; color:#333; padding-left:10px;}
+.dic_cont .dot_list	> li::before	{width:4px; height:4px; top:10px}
+
+/* bds */
+.listTop						{margin-bottom:10px; display:flex; justify-content: space-between; align-items: center;} 
+.bbs_total					{display:inline-block;font:400 17px/25px "Pretendard", "Noto Sans KR", sans-serif; color:#000;}
+.listTop:not(:has(.sel_box)) .bbs_total	{margin-bottom: 10px;}
+.bbs_total strong		{color:var(--co01);}
+.listTop	.basic_btn		{margin-top:0;}
+.listTop	.basic_btn a	{font-size:16px; padding:10px 15px}
+.listTop .sel				{display:inline-block;}
+.listTop .sel select		{position: relative; width:100px; height:40px; padding-left:15px; border-radius:10px; border: 1px solid #ddd; font:400 15px/24px"Pretendard", "Noto Sans KR", sans-serif; color: #333;}
+.listTop .sel_box a.btn			{vertical-align: top; display:inline-block; padding:8px 15px; background:#474747; color:#fff; border-radius:10px; font:300 15px/24px "Noto Sans KR", sans-serif; transition:.2s;}
+.listTop .sel_box a.btn:hover,
+.listTop .sel_box a.btn:focus	{background:var(--co01);}
+
+.bbs_list				{width:100%; border-top: 2px solid #333; table-layout: fixed; text-align:center;}
+.bbs_list thead tr	{border-bottom:solid 1px #e5e5e5}
+.bbs_list tbody tr	{border-bottom:solid 1px #e5e5e5}
+.bbs_list tr.notice	{background:#f3f8ff !important}
+.bbs_list tr:hover	{background:#f9f9f9}
+.bbs_list th			{padding:15px 0; font:500 17px/25px "Pretendard", "Noto Sans KR", sans-serif; color:#000; vertical-align:middle;}
+.bbs_list td			{padding:15px 0; font:400 16px/23px "Pretendard", "Noto Sans KR", sans-serif; color:#666; vertical-align:middle;}
+.bbs_list td.num,
+.bbs_list td.date						{font-family:"Pretendard"; font-weight:300; color:#888;}
+.bbs_list td.tit							{padding:15px 10px; text-align:left;}
+.bbs_list td.tit a							{vertical-align: top; font:400 16px/22px "Pretendard", "Noto Sans KR", sans-serif; color:#333; display:inline-block; max-width:100%; text-overflow: ellipsis; -o-text-overflow: ellipsis; overflow: hidden; white-space: nowrap; word-wrap: normal !important; transition:.2s;}
+.bbs_list td.tit:has(.new) a		{max-width:calc(100% - 30px);}
+.bbs_list td.tit:has(.cmt) a		{max-width:calc(100% - 60px);}
+.bbs_list td.tit a:hover, 
+.bbs_list td.tit a:focus				{color:var(--co01); text-decoration:underline;}
+.bbs_list td.tit .new					{font:600 11px/12px "Pretendard", "Noto Sans KR", sans-serif; display:inline-block; width:18px; height:18px; border-radius:50%; color:#fff; background:var(--co01); text-align:center; padding-top:4px; vertical-align:top; margin:4px 0 0 5px;}
+.bbs_list td.tit .cmt					{font:600 16px/22px "Pretendard", "Noto Sans KR", sans-serif; display:inline-block; color: var(--red); vertical-align:top; margin-left: 5px;}
+.bbs_list td.cate						{word-break:keep-all;}
+.bbs_list td.state .ing				{color:#E17A19;}
+.bbs_list td.state .com				{color:var(--co01);}
+.bbs_list td.print a						{display:inline-block;text-align:center;width: 32px;height: 27px;border:solid 1px transparent;border-radius:5px;transition:.2s;}
+.bbs_list td.print a img				{vertical-align:top;}
+.bbs_list td.print a:hover img	{opacity:0;}
+.bbs_list td.print a:hover			{background:url('../_img/pc/cont/print_on.png') no-repeat 50% 50%;}
+.bbs_list tr.nodata						{background:#fff !important;}
+.bbs_list tr.nodata	 td				{color:#959595; padding:50px 0; text-align:center;}
+
+.bbs_list td.like	{color: var(--co01);}
+span.mr	{font:500 15px/15px "Pretendard", "Noto Sans KR", sans-serif; color:#fff; padding: 4px 12px; border-radius: 50px; text-align:center; background: var(--co01);}
+
+.filter_wrap {display: flex; flex-wrap:wrap; justify-content:space-between; margin-bottom: 20px;}
+.filter_wrap .ck_btn {display: flex; gap: 5px;}
+.my_ck {display: flex; gap: 5px; align-items: center;}
+
+/* 검색 */
+.list_wrap {display: flex;}
+
+/* 체크박스 */
+.checkbox input[type="checkbox"]					{position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0}
+.checkbox input[type="checkbox"] + label			{display: inline-block; position: relative; padding-left: 28px; cursor: pointer; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; font-size:16px; color:#555; margin: 5px 15px 5px 0px;}
+.checkbox input[type="checkbox"] + label:before		{content: ' '; position:absolute; top:0; left:0; background:url('../_img/pc/cont/check.png')no-repeat center center / 14px; border: 1px solid #ccc; display: inline-block; width: 18px; height: 18px; line-height: 18px; text-align: center; vertical-align: middle;}
+.checkbox input[type="checkbox"]:checked + label	{color:var(--co01);}
+.checkbox input[type="checkbox"]:checked + label:before	{content: ' '; background:var(--co01) url('../_img/pc/cont/check_w.png')no-repeat center center / 14px; border-color:var(--co01);}
+
+/* 커뮤니티 필터버튼 */
+.ck_btn li input[type="checkbox"].n_ck				{display: none;}
+.ck_btn li input[type="checkbox"] + label			{display: inline-block; position: relative; padding: 8px 16px; background-color: #fafafa; border-radius: 50px; border: 1px solid #ddd; cursor: pointer; user-select: none; color: #999;}
+.ck_btn li input[type="checkbox"] + label:before	{display: none;}
+.ck_btn li input[type="checkbox"]:checked + label	{color:#fff; border: 1px solid #333; background: #333;}
+.ck_btn li input[type="checkbox"]:checked + label:before	{content: ''; background:#333; border-color:#333;}
+
+/* 버튼 */
+/* 글 작성 */
+.btn {display:inline-block; width:90px; height:45px;  text-align:center; padding:10px; background:var(--co01); color:#fff; font:400 16px/25px "Noto Sans KR", sans-serif; border-radius:10px; transition:all .2s;}
+.btn:hover {background: #1082b3;}
+
+.basic_btn a			{margin-top: 20px; display: block; font: 400 16px / 29px "Pretendard", "Noto Sans KR", sans-serif; text-align:center; background: #f7f7f7; border-radius: 10px; color: #999; border: 1px solid #ddd; padding: 8px 40px; transition: .3s; word-break:keep-all;}
+.basic_btn a.line_b		{display: inline-block; border:solid 1px #ddd; background:#fff; color:#474747;}
+.basic_btn a.line_b:hover,
+.basic_btn a.line_b:focus	{border:solid 1px var(--co01); color:var(--co01);}
+
+/* 로그아웃 버튼 */
+.logout {margin-top: 20px; display: inline-block; font: 400 16px / 29px "Pretendard", "Noto Sans KR", sans-serif; text-align:center; background: #f7f7f7; border-radius: 10px; color: #999; border: 1px solid #ddd; padding: 8px 20px; transition: .3s;}
+.logout:hover {background: #555; border: 1px solid #555; color:#fff;}
+
+/* bbs 상세 */
+.bbs_view				{width:100%; border-top:solid 2px #000; }
+.boardTop				{border-bottom:solid 1px #ddd; padding: 30px 25px}
+.boardTop h4.tit				{font:500 20px/30px "Pretendard", "Noto Sans KR", sans-serif; color:#333; margin-bottom:15px; padding-left:0; margin-bottom:10px}
+.boardTop p									{font:400 16px/27px "Noto Sans KR", sans-serif; color: #666; display: inline-block; ;}
+.boardTop p span							{display:inline-block; margin-right:9px; padding-right:12px; position:relative}
+.boardTop p span::after				{content: ''; width: 1px; height: 12px; background: #cdcdcd; display: inline-block; position:absolute; top:7px; right:0}
+.boardTop p span:last-child::after	{display: none;}
+.boardTop p span b						{font-weight:500;}
+
+.bbs_view .file_box						{display: block; width: 100%; padding:18px 25px; background: #f2faff;}
+.bbs_view .file_box p					{display: block;}
+.bbs_view .file_box p a					{transition: all .2s; font:400 16px/20px "Noto Sans KR", sans-serif; color: #666; display: block; margin-bottom: 8px; padding-left:23px; background:url('../_img/pc/cont/file.png') no-repeat 0% 50%/16px;}
+.bbs_view .file_box p:last-child a	{margin-bottom: 0;}
+.bbs_view .file_box p a:hover		{color: var(--co01); background:url('../_img/pc/cont/file_on.png') no-repeat 0% 50%/16px;}
+
+.board_cont			{padding:40px 25px 60px;}
+.board_cont > *	{font-family:revert;}
+.board_cont img	{max-width:100%;}
+
+/* 다음글, 이전글 */
+ul.prev_next									{border-top:solid 1px #333; border-bottom:solid 1px #333;}
+ul.prev_next li								{padding:15px 20px; overflow:hidden;}
+ul.prev_next li.prev						{border-bottom:solid 1px #ddd;}
+ul.prev_next li strong					{width:110px; float:left; line-height:30px; font-weight:500; position:relative;}
+ul.prev_next li strong::after			{position:absolute; content:''; right:0; top:50%; transform:translateY(-50%); width: 10px; height:10px;}
+ul.prev_next li.prev strong::after	{background:url('../_img/pc/comn/sel_arr.png') no-repeat 50% 50%;  transform:translateY(-50%) rotate(-180deg);}
+ul.prev_next li.next strong::after	{background:url('../_img/pc/comn/sel_arr.png') no-repeat 50% 50%; }
+ul.prev_next li a							{float:left; width:calc(100% - 110px); height:30px; font:500 17px/29px "Noto Sans KR", sans-serif; display:inline-block;  color:#333; overflow:hidden; transition:.2s;}
+ul.prev_next li a span					{padding-left:40px; display:inline-block; max-width:95%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+ul.prev_next .no-data					{padding-left:40px; display:inline-block; max-width:95%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;font:400 17px/29px "Noto Sans KR", sans-serif; color:#888;}
+ul.prev_next li a:hover span,
+ul.prev_next li a:focus span			{text-decoration:underline; color:var(--co01); }
+
+
+/* 체험단 검색 리스트 expList */
+.s_cont .cont_all ul.prd_li02 {display: flex; flex-wrap:wrap; gap:40px 24px;}
+.s_cont .cont_all ul.prd_li02 > li {width:calc((100% - 96px) / 5);}
+
+/* 체험단 검색 지역 필터 */
+.region {margin-bottom:20px;}
+.region .selec_reg {display: flex; flex-wrap:wrap; gap: 20px; align-items:center; margin-bottom: 20px;}
+.region .selec_reg .reg_tit {font:700 24px/34px "Pretendard", "Noto Sans KR", sans-serif; color:#222;}
+
+.search_filter			{display: grid; white-space: nowrap; position: relative; width: calc(100% - 62px);}
+.search_filter ul		{display: flex; gap: 6px; overflow-x: auto;}
+.search_filter ul li 	{display: flex; align-items: center; gap: 2px; padding: 0 0 0 16px; border: 1px solid #eee; background: #fff; height: 31px; font-size: 13px; border-radius: 50px;}
+.search_filter ul li .x				{width: 31px; height: 31px; display: block; background: url('../_img/cont/del.png')no-repeat 0% 50% / 25px;}
+
+.filter_btn			{display: flex; gap: 6px;}
+.filter_btn	li a	{display: flex; align-items: center; color: #bbb; border: 1px solid #eee; background: #fff; padding: 0 14px; border-radius: 50px; height: 27px; font-size: 13px; font-weight: 500;}
+.filter_btn	li.on a	{color: var(--red); border: 1px solid var(--red);}
+
+ul.reg01{display: flex; flex-wrap:wrap; gap: 10px;}
+ul.reg01 li{width: calc((100% - 90px) / 10); cursor:pointer; padding: 10px 0; text-align:center; font:400 16px/20px "Pretendard", "Noto Sans KR", sans-serif; color: #666; background: #f7f7f7; border-radius: 50px;}
+ul.reg01 li.current{background: var(--co01); color: #fff;}
+
+.tab_con {display: none; margin:20px 0; border-top: 1px solid #eee;}
+.tab_con.current{display: inherit; padding-top: 20px;}
+
+.reg02 {display: flex; flex-wrap:wrap; gap: 8px;}
+.reg02 li input[type="checkbox"].n_ck02				{display: none;}
+.reg02 li input[type="checkbox"] + label			{display: inline-block; position: relative; padding: 8px 16px; background-color: #f7f7f7; border-radius: 50px; cursor: pointer; user-select: none; color: #666;}
+.reg02 li input[type="checkbox"] + label:before	{display: none;}
+.reg02 li input[type="checkbox"]:checked + label	{color:#fff; background: var(--co01);}
+.reg02 li input[type="checkbox"]:checked + label:before	{content: ''; background:var(--co01);}
+
+.select_wrap {display: flex; flex-wrap:wrap; justify-content: flex-end; gap: 10px; margin-bottom: 20px;}
+.select_wrap .sel select {margin-right: 0;}
+
+/* 체험단 검색 상세 expView */
+.View_wrap {display: flex; flex-wrap:wrap;}
+.View_wrap .View_con {width: calc(100% - 350px);}
+.View_wrap .View_info {width: 350px; padding-left: 40px; border-left: 1px solid #eee;}
+
+.View_top {}
+.View_top .v_tit {}
+.View_top .opt {}
+.View_top .opt li {}
+.View_top .opt li > p {}
+.View_top .opt li p.op_sns {}
+.View_top .opt li p.op_num {}
+.View_top .opt li p.op_cate {}
+.View_top .opt li p.op_cate02 {}
+
+ul.con_list {}
+ul.con_list li {}
+ul.con_list li .c_tit {}
+ul.con_list li .c_info {}
+ul.con_list li .c_info .c_ic {}
+ul.con_list li p.edit {}
+ul.con_list li .tag {}
+ul.con_list li .tag > em {}
+
+/* 카카오맵 */
+ul.con_list li .root_daum_roughmap {border-bottom:1px solid #ddd;}
+ul.con_list li .root_daum_roughmap .wrap_controllers {display: none;}
+ul.con_list li .root_daum_roughmap .cont {display: none;}
+
+.comment_wrap {}
+.comment_wrap .cmt {}
+.comment_wrap .cmt .prop_img {}
+.comment_wrap .cmt .cmt_txt {}
+.comment_wrap .cmt .cmt_txt li {}
+.comment_wrap .cmt .cmt_txt li.name {}
+.comment_wrap .cmt .cmt_txt li.date {}
+
+.View_info {}
+.View_info p.sn_img {}
+.View_info .sche {}
+.View_info .sche_tit {}
+.sche_list {}
+.sche_list li {}
+.sche_list li.point {font-weight: 700; color: var(--co01);}
+.sche_list li .sc_tit {}
+.sche_list li > p {}
+.sche_list li > p > span {}
+
+/* 체험단 일정 */
+.number_list 					{padding-top: 50px; border-top: 1px dashed #aaa; padding-bottom: 20px;}
+.number_list.active				{height: 260px; overflow: hidden; position: relative;}
+.number_list.active:after		{content: ''; width: 100%; height: 50px; position: absolute; left: 0; bottom: 0; background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0) 100%);}
+.info_more						{font-size: 15px; height: 50px; cursor: pointer; display: block; width: 100%; background: #f5f5f5; border: 1px solid #ddd; border-radius: 5px; transition: all .2s;}
+.info_more:hover				{border: 1px solid #999;}
+
+/* 체험단 일정 리스트 (접었다 펴는부분) */
+ol.Onum							{position: relative; counter-reset: circle 0;}
+ol.Onum > li					{padding: 8px 0 0 23px; color: #222; position: relative; word-break: keep-all; list-style: none;}
+ol.Onum > li:nth-child(1)		{padding-top: 0;}
+ol.Onum > li .tit				{margin: 20px 0 10px; font-weight: 500;}
+ol.Onum > li .tit:first-child	{margin-top: 0px;}
+ol.Onum > li::before			{position: absolute; left: 0; display: inline-block; counter-increment: circle 1; content: counter(circle); width: 15px; height: 15px; border: 1px solid #aaa; border-radius: 50%; text-align: center; color: #555; font-weight: 500; font-size: 13px; line-height: 15px; margin-top: 3px;}
+ol.Onum > li + li				{margin-top: 5px;}
+ol.Onum_2						{counter-reset: li 0;}
+ol.Onum_2 > li					{color: #555; margin-top: 6px;}
+ol.Onum_2 > li::before			{font-size: 16px; content: counter(li) ') '; counter-increment: li 1;}
+
+/* 일정 캘린더 */
+.Calendar					{background: #f3f8ff; border-radius: 5px; padding: 25px 20px; overflow: hidden; font-family: "Pretendard";}
+.Calendar .month_box		{display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 20px;}
+.Calendar .month_box span	{font-size: 19px; font-weight: 700;}
+.Calendar .month_box a		{display: block; width: 30px; height: 20px; background: url('../_img/cont/head-left.png') no-repeat 50% 50% / 17px;}
+.Calendar .month_box .cla_r	{transform: rotate(-180deg);}
+.Calendar .Cal_li			{display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px 8px;}
+.Calendar .Cal_li li		{text-align: center; font-size: 13px; color: #777; position: relative;}
+.Calendar .Cal_li li:nth-child(-n+7)	{font-weight: 500;}
+.Calendar .Cal_li li:nth-child(1),
+.Calendar .Cal_li li:nth-child(7n+1) a	{color: var(--red);}
+.Calendar .Cal_li li:nth-child(7n),
+.Calendar .Cal_li li:nth-child(7n) a	{color: var(--co01);}
+.Calendar .Cal_li li a				{display: block; font-size: 13px; color: #777; width: 30px; height: 30px; border-radius: 50px; display: flex; align-items: center; justify-content: center; margin: 0 auto;}
+.Calendar .Cal_li li.on a			{background: var(--co01); color: #fff; font-weight: 500;}
+.Calendar .Cal_li li.li_on a		{color: var(--co01) !important; font-weight: 500;}
+.Calendar .Cal_li li.li_on:before	{content: ''; width: 18px; height: 2px; display: block; position: absolute; left: calc(50% - 10px); bottom: 0px; background: var(--co01);}
+.Calendar .Cal_li li.li_on.on a		{color: #fff !important;}
+
+.Calendar + *	{margin-top: 30px;}
+
+}
+
+/* Tablet */
+@media only screen and (min-width: 640px) and (max-width: 959px) {}
+
+/* Mobile */
+@media only screen and (max-width: 639px) {}
