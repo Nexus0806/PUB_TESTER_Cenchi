@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="campaignDAO">
+
+    <!-- 캠페인 리스트 조회 -->
+    <select id="selectCampaignList" parameterType="egovframework.pubtest.campaign.service.CampaignVO" resultType="egovframework.pubtest.campaign.service.CampaignVO">
+        SELECT
+            CAMP_IDX,
+            CAMP_TITLE,
+            CAMP_THUB,
+            CAMP_PHO_NUM,
+            CAMP_TYPE,
+            CAMP_ADDRESS,
+            CAMP_CATE,
+            CAMP_AD_TYPE,
+            CAMP_AVAIL_DAYS,
+            CAMP_REGDATE,   
+            CAMP_STARTDATE,
+            CAMP_ENDDATE,
+            CAMP_RESERVE,
+            CAMP_CAUTION,
+            CAMP_MISSION,
+            CAMP_KEYWORD,
+            CAMP_SERVICE,
+            CAMP_REWARD,
+            CAMP_RECRUITE,
+            CAMP_HIT,
+            CAMP_LIKE,
+            CAMP_DELYN,
+            CAMP_SUM_COUNT
+        FROM CAMPAIGN
+        WHERE CAMP_DELYN = 'N'
+        ORDER BY CAMP_IDX DESC
+    </select>
+
+    <!-- 캠페인 상세 조회 -->
+    <select id="selectCampaign" parameterType="int" resultType="egovframework.pubtest.campaign.service.CampaignVO">
+        SELECT *
+        FROM CAMPAIGN
+        WHERE CAMP_IDX = #{campIdx}
+    </select>
+
+    <!-- 캠페인 등록 -->
+    <insert id="insertCampaign" parameterType="egovframework.pubtest.campaign.service.CampaignVO">
+        INSERT INTO CAMPAIGN (
+            CAMP_TITLE,
+            CAMP_THUB,
+            CAMP_PHO_NUM,
+            CAMP_TYPE,
+            CAMP_ADDRESS,
+            CAMP_CATE,
+            CAMP_AD_TYPE,
+            CAMP_AVAIL_DAYS,
+            CAMP_STARTDATE,
+            CAMP_ENDDATE,
+            CAMP_RESERVE,
+            CAMP_CAUTION,
+            CAMP_MISSION,
+            CAMP_KEYWORD,
+            CAMP_SERVICE,
+            CAMP_REWARD,
+            CAMP_RECRUITE,
+            CAMP_HIT,
+            CAMP_LIKE,
+            CAMP_DELYN,
+            CAMP_SUM_COUNT
+        ) VALUES (
+            #{campTitle},
+            #{campThub},
+            #{campPhoNum},
+            #{campType},
+            #{campAddress},
+            #{campCate},
+            #{campAdType},
+            #{campAvailDays},
+            #{campStartdate},
+            #{campEnddate},
+            #{campReserve},
+            #{campCaution},
+            #{campMission},
+            #{campKeyword},
+            #{campService},
+            #{campReward},
+            #{campRecruite},
+            #{campHit},
+            #{campLike},
+            #{campDelyn},
+            #{campSumCount}
+        )
+    </insert>
+
+    <!-- 캠페인 수정 -->
+    <update id="updateCampaign" parameterType="egovframework.pubtest.campaign.service.CampaignVO">
+        UPDATE CAMPAIGN
+        SET
+            CAMP_TITLE = #{campTitle},
+            CAMP_THUB = #{campThub},
+            CAMP_PHO_NUM = #{campPhoNum},
+            CAMP_TYPE = #{campType},
+            CAMP_ADDRESS = #{campAddress},
+            CAMP_CATE = #{campCate},
+            CAMP_AD_TYPE = #{campAdType},
+            CAMP_AVAIL_DAYS = #{campAvailDays},
+            CAMP_STARTDATE = #{campStartdate},
+            CAMP_ENDDATE = #{campEnddate},
+            CAMP_RESERVE = #{campReserve},
+            CAMP_CAUTION = #{campCaution},
+            CAMP_MISSION = #{campMission},
+            CAMP_KEYWORD = #{campKeyword},
+            CAMP_SERVICE = #{campService},
+            CAMP_REWARD = #{campReward},
+            CAMP_RECRUITE = #{campRecruite},
+            CAMP_HIT = #{campHit},
+            CAMP_LIKE = #{campLike},
+            CAMP_DELYN = #{campDelyn},
+            CAMP_SUM_COUNT = #{campSumCount}
+        WHERE CAMP_IDX = #{campIdx}
+    </update>
+
+    <!-- 캠페인 조회수 증가 -->
+    <update id="updateCampaignHits" parameterType="int">
+        UPDATE CAMPAIGN
+        SET CAMP_HIT = CAMP_HIT + 1
+        WHERE CAMP_IDX = #{campIdx}
+    </update>
+
+    <!-- 캠페인 삭제 -->
+    <delete id="deleteCampaign" parameterType="int">
+        DELETE FROM CAMPAIGN
+        WHERE CAMP_IDX = #{campIdx}
+    </delete>
+
+</mapper>

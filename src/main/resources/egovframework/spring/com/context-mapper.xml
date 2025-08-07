@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
-    <!-- 실행환경에서 빈이름 참조(EgovAbstractDAO) -->
-	<bean id="egov.lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="egov.sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-	    <property name="dataSource" ref="dataSource"/>
-	    <property name="configLocation" value="classpath:/egovframework/mapper/config/mapper-config.xml"/>
-	    <property name="mapperLocations">
-	        <list>
-	            <value>classpath:/egovframework/mapper/egov/**/**/*_${Globals.DbType}.xml</value>
-	        </list>
-	    </property>
-	</bean>
-	
-	<bean id="egov.sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-	    <constructor-arg ref="egov.sqlSessionFactory"/>
-	</bean>
-	
-	<alias name="egov.sqlSessionFactory" alias="egov.sqlSession"/>
-	<alias name="egov.sqlSession" alias="sqlSession"/>
+    <!-- LOB 처리용 핸들러 (대용량 바이너리 등) -->
+    <bean id="egov.lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true"/>
 
-	
+    <!-- MyBatis SQL 세션 팩토리 설정 -->
+    <bean id="egov.sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:/egovframework/mapper/config/mapper-config.xml"/>
+        <property name="mapperLocations">
+            <list>
+                <!-- 불필요한 전체 경로 스캔 대신 필요한 파일만 명시적으로 지정 -->
+                <value>classpath:/egovframework/mapper/egov/campaign/Campaign_SQL_mysql.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- SqlSessionTemplate 설정 (DAO에서 사용) -->
+    <bean id="egov.sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="egov.sqlSessionFactory"/>
+    </bean>
+
+    <!-- 별칭 설정 -->
+    <alias name="egov.sqlSessionFactory" alias="egov.sqlSession"/>
+    <alias name="egov.sqlSession" alias="sqlSession"/>
+
 </beans>

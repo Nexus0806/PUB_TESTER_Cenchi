@@ -19,6 +19,8 @@ public class CampaignVO {
     private String campAdType;
 
     private String campAvailDays;
+    
+    private String camRegdate;
 
     private String campStartdate;
 
@@ -221,4 +223,14 @@ public class CampaignVO {
 	public void setCampSumCount(int campSumCount) {
 		this.campSumCount = campSumCount;
 	}
+
+	public String getCamRegdate() {
+		return camRegdate;
+	}
+
+	public void setCamRegdate(String camRegdate) {
+		this.camRegdate = camRegdate;
+	}
+	
+	
 }
