@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pubTesterMainDAO">
+	<select id="selectPopularCampaignList" resultType="PubTesterMainVO">
+			SELECT 
+				CAMP_TITLE 		as campTitle,
+				CAMP_THUB 		as campTumb,
+				CAMP_AD_TYPE	as campAdType,
+				CAMP_TYPE		as campType,
+				CAMP_SERVICE	as campService,
+				CAMP_STARTDATE	as campStartDate,
+				CAMP_SUM_COUNT	as campSumCount,
+				CAMP_RECRUITE	as campRecruite
+			FROM 
+				PUB_CAMP
+			WHERE
+				CAMP_DELYN = 'N'
+				AND CAMP_ENDDATE >= NOW()
+			ORDER BY
+				CAMP_HIT DESC
+			LIMIT 10
+	</select>
+	
+	<select id="selectNewCampaignList" resultType="PubTesterMainVO">
+			SELECT 
+				CAMP_TITLE 		as campTitle,
+				CAMP_THUB 		as campTumb,
+				CAMP_AD_TYPE	as campAdType,
+				CAMP_TYPE		as campType,
+				CAMP_SERVICE	as campService,
+				CAMP_STARTDATE	as campStartDate,
+				CAMP_SUM_COUNT	as campSumCount,
+				CAMP_RECRUITE	as campRecruite
+			FROM 
+				PUB_CAMP
+			WHERE
+				CAMP_DELYN = 'N'
+				AND CAMP_ENDDATE >= NOW()
+			ORDER BY
+				CAMP_REGDATE DESC
+			LIMIT 10
+	</select>
+	
+</mapper>
