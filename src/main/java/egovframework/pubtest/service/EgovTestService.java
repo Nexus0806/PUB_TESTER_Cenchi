@@ -1,4 +1,4 @@
-package egovframework.test.service;
+package egovframework.pubtest.service;
 
 import java.util.List;
 
