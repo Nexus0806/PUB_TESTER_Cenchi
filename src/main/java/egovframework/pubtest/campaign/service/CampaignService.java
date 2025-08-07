@@ -1,0 +1,7 @@
+package egovframework.pubtest.campaign.service;
+
+import java.util.List;
+
+public interface CampaignService {
+	public List<CampaignVO> selectCampaignList();
+}

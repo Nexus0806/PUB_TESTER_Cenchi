@@ -12,6 +12,7 @@
 	
 	<!-- Type Aliases 설정-->
 	<typeAliases>
+		<typeAlias alias="campaignVO"		type="egovframework.pubtest.campaign.service.CampaignVO"/>
 		<typeAlias alias="egovMap" 			type="org.egovframe.rte.psl.dataaccess.util.EgovMap" />
 		<typeAlias alias="FileVO"			type="egovframework.com.cmm.service.FileVO" />
 		<typeAlias alias="ComDefaultCodeVO" type="egovframework.com.cmm.ComDefaultCodeVO" />
