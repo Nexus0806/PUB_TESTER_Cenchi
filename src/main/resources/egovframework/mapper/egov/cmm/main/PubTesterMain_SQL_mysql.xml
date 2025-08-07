@@ -6,7 +6,7 @@
 	<select id="selectPopularCampaignList" resultType="PubTesterMainVO">
 			SELECT 
 				CAMP_TITLE 		as campTitle,
-				CAMP_THUB 		as campTumb,
+				CAMP_THUB 		as campThub,
 				CAMP_AD_TYPE	as campAdType,
 				CAMP_TYPE		as campType,
 				CAMP_SERVICE	as campService,

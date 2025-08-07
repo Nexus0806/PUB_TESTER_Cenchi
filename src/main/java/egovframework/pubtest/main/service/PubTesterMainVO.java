@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class PubTesterMainVO {
 	private String campTitle;
-	private String campTumb;
+	private String campThub;
 	private String campAdType;
 	private String campType;
 	private String campService;
@@ -19,11 +19,11 @@ public class PubTesterMainVO {
 	public void setCampTitle(String campTitle) {
 		this.campTitle = campTitle;
 	}
-	public String getCampTumb() {
-		return campTumb;
+	public String getCampThub() {
+		return campThub;
 	}
-	public void setCampTumb(String campTumb) {
-		this.campTumb = campTumb;
+	public void setCampThub(String campTumb) {
+		this.campThub = campTumb;
 	}
 	public String getCampAdType() {
 		return campAdType;

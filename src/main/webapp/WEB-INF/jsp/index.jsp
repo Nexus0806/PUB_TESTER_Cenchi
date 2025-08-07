@@ -274,7 +274,10 @@ $('#header ul.gnb > li').mouseleave(function(){
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/images/pc/main/${vo.campThub}"
+								alt="" 
+								style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;"
+								onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/images/pc/main/no_img.png';">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">${vo.campType}</p>
 							<div class="prd_txt">
