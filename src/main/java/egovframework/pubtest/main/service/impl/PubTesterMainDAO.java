@@ -13,4 +13,12 @@ public class PubTesterMainDAO extends EgovAbstractMapper{
 	public List<PubTesterMainVO> getPopularCampaign(){
 		return selectList("pubTesterMainDAO.selectPopularCampaignList");
 	}
+	
+	public List<PubTesterMainVO> getNewCampaign() {
+		return selectList("pubTesterMainDAO.selectNewCampaignList");
+	}
+	
+	public List<PubTesterMainVO> getDeadlineCampaign() {
+		return selectList("pubTesterMainDAO.selectDeadlineCampaignList");
+	}
 }

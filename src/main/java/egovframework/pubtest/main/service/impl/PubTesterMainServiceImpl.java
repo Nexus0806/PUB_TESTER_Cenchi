@@ -22,13 +22,11 @@ public class PubTesterMainServiceImpl implements PubTesterMainService{
 
 	@Override
 	public List<PubTesterMainVO> getNewCampaign() {
-		// TODO Auto-generated method stub
-		return null;
+		return pubTesterMainDAO.getNewCampaign();
 	}
 
 	@Override
 	public List<PubTesterMainVO> getDeadlineCampaign() {
-		// TODO Auto-generated method stub
-		return null;
+		return pubTesterMainDAO.getDeadlineCampaign();
 	}
 }

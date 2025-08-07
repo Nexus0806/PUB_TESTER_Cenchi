@@ -35,7 +35,7 @@
 	<div id="tm_header">
 		<div class="tm_h_wrap">
 			<h1>
-				<a href="/preuser/index.html" class="logo">공공체험단</a>
+				<a href="/preuser/index.html" class="logo"></a>
 			</h1>
 
 			<div class="tm_right">

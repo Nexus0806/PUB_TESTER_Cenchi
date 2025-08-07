@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import egovframework.pubtest.main.service.PubTesterMainService;
 import egovframework.pubtest.main.service.PubTesterMainVO;
+import egovframework.pubtest.util.PubTestUtil;
 
 @Controller
 public class PubTesterMainController {
@@ -23,28 +24,40 @@ public class PubTesterMainController {
 	
 	@RequestMapping(value = "/index.do")
     public String loadMain(Model model) throws Exception {
-		
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		
-		List<PubTesterMainVO> vo = pubTesterMainService.getPopularCampaign();
-		
-		// localdate 이용하여 체험단까지 남은 D-Day 계산
-		for(PubTesterMainVO row : vo)
+		List<PubTesterMainVO> popList = pubTesterMainService.getPopularCampaign();
+		for(PubTesterMainVO row : popList)
 		{			
 			if(row.getCampStartDate() != null)
 			{
-				// DB 에서 datetime 을 불러오는데 문제가 있어 String 으로 받은 후, LocalDateTime 으로 파싱
-				LocalDateTime dateStr = LocalDateTime.parse(row.getCampStartDate(),
-															DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-				LocalDate start = dateStr.toLocalDate();
-				LocalDate today = LocalDate.now();
-				long dDay = ChronoUnit.DAYS.between(today, start);
+				// localdate 이용하여 체험단까지 남은 D-Day 계산
+				long dDay = PubTestUtil.calcDday(row.getCampStartDate());
 				row.setdDay(dDay);
 			}
 		}
 		
-		model.addAttribute("popCampList",vo);
-
+		List<PubTesterMainVO> newList = pubTesterMainService.getNewCampaign();
+		for(PubTesterMainVO row : newList)
+		{			
+			if(row.getCampStartDate() != null)
+			{
+				long dDay = PubTestUtil.calcDday(row.getCampStartDate());
+				row.setdDay(dDay);
+			}
+		}
+		
+		List<PubTesterMainVO> deadList = pubTesterMainService.getDeadlineCampaign();
+		for(PubTesterMainVO row : deadList)
+		{			
+			if(row.getCampStartDate() != null)
+			{
+				long dDay = PubTestUtil.calcDday(row.getCampStartDate());
+				row.setdDay(dDay);
+			}
+		}
+		
+		model.addAttribute("popCampList",popList);
+		model.addAttribute("newCampList",newList);
+		model.addAttribute("deadCampList",deadList);
         return "/index";
     }
 }

@@ -19,7 +19,7 @@
 				CAMP_DELYN = 'N'
 				AND CAMP_ENDDATE >= NOW()
 			ORDER BY
-				CAMP_HIT DESC
+				CAMP_SUM_COUNT DESC
 			LIMIT 10
 	</select>
 	
@@ -40,6 +40,27 @@
 				AND CAMP_ENDDATE >= NOW()
 			ORDER BY
 				CAMP_REGDATE DESC
+			LIMIT 10
+	</select>
+	
+	<select id="selectDeadlineCampaignList" resultType="PubTesterMainVO">
+			SELECT 
+				CAMP_TITLE 		as campTitle,
+				CAMP_THUB 		as campTumb,
+				CAMP_AD_TYPE	as campAdType,
+				CAMP_TYPE		as campType,
+				CAMP_SERVICE	as campService,
+				CAMP_STARTDATE	as campStartDate,
+				CAMP_SUM_COUNT	as campSumCount,
+				CAMP_RECRUITE	as campRecruite
+			FROM 
+				PUB_CAMP
+			WHERE
+				CAMP_DELYN = 'N'
+				AND CAMP_ENDDATE >= NOW()
+			    AND CAMP_STARTDATE >= NOW()
+			ORDER BY
+    			CAMP_STARTDATE ASC
 			LIMIT 10
 	</select>
 	
