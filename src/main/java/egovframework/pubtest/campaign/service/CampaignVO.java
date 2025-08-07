@@ -20,9 +20,11 @@ public class CampaignVO {
 
     private String campAvailDays;
 
-    private String campStartdate;
+    private String campRegdate; 
 
-    private String campEnddate;
+    private String campStartdate; 
+
+    private String campEnddate; 
 
     private String campReserve;
 
@@ -34,7 +36,7 @@ public class CampaignVO {
 
     private String campService;
 
-    private int campReward;
+    private String campReward;
 
     private int campRecruite;
 
@@ -45,8 +47,8 @@ public class CampaignVO {
     private String campDelyn;
 
     private int campSumCount;
-    
-    public int getCampIdx() {
+
+	public int getCampIdx() {
 		return campIdx;
 	}
 
@@ -118,6 +120,14 @@ public class CampaignVO {
 		this.campAvailDays = campAvailDays;
 	}
 
+	public String getCampRegdate() {
+		return campRegdate;
+	}
+
+	public void setCampRegdate(String campRegdate) {
+		this.campRegdate = campRegdate;
+	}
+
 	public String getCampStartdate() {
 		return campStartdate;
 	}
@@ -174,11 +184,11 @@ public class CampaignVO {
 		this.campService = campService;
 	}
 
-	public int getCampReward() {
+	public String getCampReward() {
 		return campReward;
 	}
 
-	public void setCampReward(int campReward) {
+	public void setCampReward(String campReward) {
 		this.campReward = campReward;
 	}
 
@@ -221,4 +231,7 @@ public class CampaignVO {
 	public void setCampSumCount(int campSumCount) {
 		this.campSumCount = campSumCount;
 	}
+
+
+
 }

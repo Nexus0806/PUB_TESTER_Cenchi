@@ -14,6 +14,7 @@
 			CAMP_CATE,
 			CAMP_AD_TYPE,
 			CAMP_AVAIL_DAYS,
+			CAMP_REGDATE,
 			CAMP_STARTDATE,
 			CAMP_ENDDATE,
 			CAMP_RESERVE,
@@ -28,11 +29,48 @@
 			CAMP_DELYN,
 			CAMP_SUM_COUNT
 		FROM
-			CAMPAIGN
+			PUB_CAMP
 		WHERE
 			CAMP_DELYN = 'N'
 		ORDER BY
 			CAMP_IDX DESC
 	</select>
+	
+	<select id="selectCampaignDetail" resultType="campaignVO" parameterType="int">
+		SELECT
+			CAMP_IDX,
+			CAMP_TITLE,
+			CAMP_THUB,
+			CAMP_PHO_NUM,
+			CAMP_TYPE,
+			CAMP_ADDRESS,
+			CAMP_CATE,
+			CAMP_AD_TYPE,
+			CAMP_AVAIL_DAYS,
+			CAMP_REGDATE,
+			CAMP_STARTDATE,
+			CAMP_ENDDATE,
+			CAMP_RESERVE,
+			CAMP_CAUTION,
+			CAMP_MISSION,
+			CAMP_KEYWORD,
+			CAMP_SERVICE,
+			CAMP_REWARD,
+			CAMP_RECRUITE,
+			CAMP_HIT,
+			CAMP_LIKE,
+			CAMP_DELYN,
+			CAMP_SUM_COUNT
+		FROM
+			PUB_CAMP
+		WHERE
+			CAMP_IDX = #{campIdx}
+	</select>
 
+	<insert id="insertCampaignSubmit" parameterType="CampaignSubmitVO">
+		INSERT INTO PUB_CAMP_SUM (SUM_IDX, SUM_CONT, SUM_ADDRESS, CAMP_IDX, USER_IDX)
+		VALUES (#{sumIdx}, #{sumCont}, #{sumAddress}, #{campIdx}, #{userIdx})
+	</insert>
+	
+	
 </mapper>
