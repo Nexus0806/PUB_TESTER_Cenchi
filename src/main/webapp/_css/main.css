@@ -1,0 +1,421 @@
+@charset "utf-8";
+
+/* PC */
+@media only screen and (min-width: 960px) {
+
+.web			{display:block !important;}
+.mobile		{display:none;}
+.tablet		{display:none;}
+
+:root{
+	--co01: #12A0DD;
+}
+
+body {}
+
+#wrap {width:100%; max-width:1665px; margin: 0 auto;}
+.banner_wrap {padding-top:20px;}
+.banner_wrap ul.banner {width:calc(100% + 30px); position:relative;}
+.banner_wrap ul.banner .slick-track {margin-left:0;}
+.banner_wrap ul.banner li {margin-right: 30px;}
+.banner_wrap ul.banner li a {display: block;}
+.banner_wrap ul.banner li a .img_wrap {width: 100%; height: 100%; box-sizing:border-box;}
+.banner_wrap ul.banner li a .img_wrap img {width: 100%; height:100%; border-radius: 20px;}
+.banner_wrap ul.banner button {border: none;}
+.banner_wrap ul.banner button.slick-prev {position: absolute; top: 50%; left:-20px; transform:translate(-50%,-50%); font-size: 0; width:32px; height:32px; background: url(../_img/pc/main/arr_prev.svg)no-repeat center;}
+.banner_wrap ul.banner button.slick-next {position: absolute; top: 50%; right:-20px; transform:translate(-50%,-50%); font-size: 0; width:32px; height:32px; background: url(../_img/pc/main/arr_next.svg)no-repeat center;}
+
+.section {padding-bottom: 100px;}
+.section h2.h2_tit {position: relative; font: 800 30px / 40px "Pretendard", "Noto Sans KR", sans-serif; color:#111; margin-bottom:30px; padding-left: 48px;}
+.section h2.h2_tit01::before {position:absolute; content:''; width:38px; height:38px; background: url(../_img/pc/main/tit_ico01.svg)no-repeat; top:0; left: 0;}
+.section h2.h2_tit02 {padding-left: 45px;}
+.section h2.h2_tit02::before {position:absolute; content:''; width:38px; height:38px; background: url(../_img/pc/main/tit_ico02.svg)no-repeat; top:0; left: 0;}
+.section h2.h2_tit03::before {position:absolute; content:''; width:38px; height:38px; background: url(../_img/pc/main/tit_ico03.svg)no-repeat; top:0; left: 0;}
+.section h2.h2_tit04::before {position:absolute; content:''; width:38px; height:38px; background: url(../_img/pc/main/tit_ico04.svg)no-repeat; top:0; left: 0;}
+
+.quick_mn {padding: 60px 0 100px 0;}
+.quick_mn ul.sec01_li {display: flex; flex-wrap:wrap; gap:60px; justify-content: center;}
+.quick_mn ul.sec01_li li {width:80px;}
+.quick_mn ul.sec01_li li a {display: block;}
+.quick_mn ul.sec01_li li a img {}
+.quick_mn ul.sec01_li li a p {font: 400 16px / 16px "Pretendard", "Noto Sans KR", sans-serif; color:#111; text-align:center; margin-top: 12px;}
+
+.pd_slider {}
+ul.prd_li {}
+ul.prd_li li {}
+ul.prd_li li a {display: block;}
+ul.prd_li li .prd_img {width: 100%; height: 100%; box-sizing:border-box;}
+ul.prd_li li .prd_img img {width: 100%; height:100%; border-radius: 20px;}
+ul.prd_li li p.sns_txt {position: relative; padding-left: 30px; font: 400 15px / 25px "Pretendard", "Noto Sans KR", sans-serif; color:#555; margin-top: 20px;}
+ul.prd_li li p.sns_blog:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_na_ico.svg)no-repeat;}
+ul.prd_li li p.sns_inst:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_in_ico.svg)no-repeat;}
+ul.prd_li li p.sns_yout:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_yt_ico.svg)no-repeat;}
+ul.prd_li li .prd_txt {margin-top: 16px;}
+ul.prd_li li .prd_txt > strong {display: block; width: 100%; font: 600 18px / 18px "Pretendard", "Noto Sans KR", sans-serif; color:#111; overflow: hidden; text-overflow:ellipsis; -webkit-line-clamp:1; -webkit-box-orient:vertical; white-space:nowrap;}
+ul.prd_li li .prd_txt > p {width: 100%; font: 300 16px / 16px "Pretendard", "Noto Sans KR", sans-serif; color:#555; overflow: hidden; text-overflow:ellipsis; -webkit-line-clamp:1; -webkit-box-orient:vertical; white-space:nowrap; margin-top:12px;}
+ul.prd_li li .prd_rec {margin-top:20px; display: flex; flex-wrap:wrap; gap:10px; align-items:center;}
+ul.prd_li li .prd_rec span.p_date {display: block; font: 300 12px / 16px "Pretendard", "Noto Sans KR", sans-serif; color:#555; padding: 4px 8px; background:#f5f5f5; text-align:center; border-radius: 50px;}
+ul.prd_li li .prd_rec span.p_day {font-weight: 600; color: var(--co01); background: #e8f6fc;}
+ul.prd_li li .prd_rec ul.rec_app {}
+ul.prd_li li .prd_rec ul.rec_app li {font: 500 12px / 12px "Pretendard", "Noto Sans KR", sans-serif; color:#999; display: inline-block; margin-right: 0;}
+ul.prd_li li .prd_rec ul.rec_app li > b {font-weight: 600;}
+ul.prd_li li .prd_rec ul.rec_app li > em {font-style: normal;}
+ul.prd_li li .prd_rec ul.rec_app li.tt {color:#111;}
+
+ul.prd_slide {width:calc(100% + 24px);}
+ul.prd_slide li {margin-right: 24px;}
+ul.prd_slide button {border:none;}
+ul.prd_slide button.slick-prev {position: absolute; top: 22%; left:-35px; font-size: 0; width:32px; height:32px; background: url(../_img/pc/main/arr_prev.svg)no-repeat center;} 
+ul.prd_slide button.slick-next {position: absolute; top: 22%; right:-15px; font-size: 0; width:32px; height:32px; background: url(../_img/pc/main/arr_next.svg)no-repeat center;}
+ul.prd_slide .slick-track {margin-left:0;}
+
+ul.prd_li02 {display: flex; flex-wrap:wrap; gap:40px 24px;}
+ul.prd_li02 > li {width:calc((100% - 120px) / 6);}
+
+.bt_banner {padding-bottom: 60px;} 
+.bt_banner .bt_bn {} 
+.bt_banner .bt_bn img {width:100%; height:100%; border-radius: 20px;}
+
+}
+
+
+@media only screen and (min-width: 1440px) and (max-width: 1700px) {
+
+#wrap {width:100%; max-width:100%; margin: 0 auto; padding: 0 40px;}
+ul.prd_slide button.slick-prev {left:-35px} 
+ul.prd_slide button.slick-next {right:-10px;}
+
+}
+
+
+@media only screen and (min-width: 1441px) and (max-width: 1690px) {
+
+.banner_wrap ul.banner {width:calc(100% + 20px); position:relative;}
+.banner_wrap ul.banner .slick-track {margin-left:0;}
+.banner_wrap ul.banner li {margin-right: 20px;}
+.banner_wrap ul.banner button.slick-prev {position: absolute; top: 50%; left:-20px; transform:translate(-50%,-50%); font-size: 0; width:32px; height:32px; background: url(../_img/pc/main/arr_prev.svg)no-repeat center;}
+.banner_wrap ul.banner button.slick-next {position: absolute; top: 50%; right:-30px; transform:translate(-50%,-50%); font-size: 0; width:32px; height:32px; background: url(../_img/pc/main/arr_next.svg)no-repeat center;}
+
+.quick_mn ul.sec01_li {display: flex; flex-wrap:wrap; gap:40px; justify-content: center;}
+
+ul.prd_slide {width:calc(100% + 15px);}
+ul.prd_slide li {margin-right: 15px;}
+ul.prd_slide button.slick-prev {position: absolute; top: 18%; left:-35px; font-size: 0; width:32px; height:32px; background: url(../_img/pc/main/arr_prev.svg)no-repeat center;} 
+ul.prd_slide button.slick-next {position: absolute; top: 18%; right:-20px; font-size: 0; width:32px; height:32px; background: url(../_img/pc/main/arr_next.svg)no-repeat center;}
+
+ul.prd_li02 {display: flex; flex-wrap:wrap; gap:40px 15px;}
+ul.prd_li02 > li {width:calc((100% - 75px) / 6);}
+
+}
+
+
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+
+#wrap {width:100%; margin: 0 auto; padding: 0 40px;}
+.banner_wrap {padding-top:20px;} 
+.banner_wrap ul.banner {width:calc(100% + 20px); position:relative;}
+.banner_wrap ul.banner .slick-track {margin-left:0;}
+.banner_wrap ul.banner li {margin-right: 20px;}
+.banner_wrap ul.banner li a {display: block;}
+.banner_wrap ul.banner li a .img_wrap {width: 100%; height: 100%; box-sizing:border-box;}
+.banner_wrap ul.banner li a .img_wrap img {width: 100%; height:100%; border-radius: 20px;}
+.banner_wrap ul.banner button {border: none;}
+.banner_wrap ul.banner button.slick-prev {position: absolute; top: 50%; left:-18px; transform:translate(-50%,-50%); font-size: 0; width:32px; height:32px; background: url(../_img/pc/main/arr_prev.svg)no-repeat center;}
+.banner_wrap ul.banner button.slick-next {position: absolute; top: 50%; right:-30px; transform:translate(-50%,-50%); font-size: 0; width:32px; height:32px; background: url(../_img/pc/main/arr_next.svg)no-repeat center;}
+
+.section {padding-bottom: 90px;}
+.section h2.h2_tit {position: relative; font: 800 28px / 38px "Pretendard", "Noto Sans KR", sans-serif; color:#111; margin-bottom:25px; padding-left: 45px;}
+.section h2.h2_tit01::before {position:absolute; content:''; width:34px; height:34px; background: url(../_img/pc/main/tit_ico01.svg)no-repeat 50% 50% / contain; top:0; left: 0;}
+.section h2.h2_tit02 {padding-left: 43px;}
+.section h2.h2_tit02::before {position:absolute; content:''; width:34px; height:34px; background: url(../_img/pc/main/tit_ico02.svg)no-repeat 50% 50% / contain; top:0; left: 0;}
+.section h2.h2_tit03::before {position:absolute; content:''; width:34px; height:34px; background: url(../_img/pc/main/tit_ico03.svg)no-repeat 50% 50% / contain; top:0; left: 0;}
+.section h2.h2_tit04::before {position:absolute; content:''; width:34px; height:34px; background: url(../_img/pc/main/tit_ico04.svg)no-repeat 50% 50% / contain; top:0; left: 0;}
+
+.quick_mn {padding: 50px 0 90px 0;}
+.quick_mn ul.sec01_li {display: flex; flex-wrap:wrap; gap:22px; justify-content: center;}
+.quick_mn ul.sec01_li li {width:80px;}
+.quick_mn ul.sec01_li li a {display: block;}
+.quick_mn ul.sec01_li li a img {}
+.quick_mn ul.sec01_li li a p {font: 400 16px / 16px "Pretendard", "Noto Sans KR", sans-serif; color:#111; text-align:center; margin-top: 12px;}
+
+.pd_slider {}
+ul.prd_li {}
+ul.prd_li li {}
+ul.prd_li li a {display: block;}
+ul.prd_li li .prd_img {width: 100%; height: 100%; box-sizing:border-box;}
+ul.prd_li li .prd_img img {width: 100%; height:100%; border-radius: 20px;}
+ul.prd_li li p.sns_txt {position: relative; padding-left: 30px; font: 400 15px / 25px "Pretendard", "Noto Sans KR", sans-serif; color:#555; margin-top: 18px;}
+ul.prd_li li p.sns_blog:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_na_ico.svg)no-repeat;}
+ul.prd_li li p.sns_inst:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_in_ico.svg)no-repeat;}
+ul.prd_li li p.sns_yout:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_yt_ico.svg)no-repeat;}
+ul.prd_li li .prd_txt {margin-top: 16px;}
+ul.prd_li li .prd_txt > strong {display: block; width: 100%; font: 600 17px / 17px "Pretendard", "Noto Sans KR", sans-serif; color:#111; overflow: hidden; text-overflow:ellipsis; -webkit-line-clamp:1; -webkit-box-orient:vertical; white-space:nowrap;}
+ul.prd_li li .prd_txt > p {width: 100%; font: 300 15px / 15px "Pretendard", "Noto Sans KR", sans-serif; color:#555; overflow: hidden; text-overflow:ellipsis; -webkit-line-clamp:1; -webkit-box-orient:vertical; white-space:nowrap; margin-top:12px;}
+ul.prd_li li .prd_rec {margin-top:20px; display: flex; flex-wrap:wrap; gap:10px; align-items:center;}
+ul.prd_li li .prd_rec span.p_date {display: block; font: 300 12px / 16px "Pretendard", "Noto Sans KR", sans-serif; color:#555; padding: 4px 8px; background:#f5f5f5; text-align:center; border-radius: 50px;}
+ul.prd_li li .prd_rec span.p_day {font-weight: 600; color: var(--co01); background: #e8f6fc;}
+ul.prd_li li .prd_rec ul.rec_app {}
+ul.prd_li li .prd_rec ul.rec_app li {font: 500 12px / 12px "Pretendard", "Noto Sans KR", sans-serif; color:#999; display: inline-block; margin-right: 0;}
+ul.prd_li li .prd_rec ul.rec_app li > b {font-weight: 600;}
+ul.prd_li li .prd_rec ul.rec_app li > em {font-style: normal;}
+ul.prd_li li .prd_rec ul.rec_app li.tt {color:#111;}
+
+ul.prd_slide {width:calc(100% + 15px);}
+ul.prd_slide li {margin-right: 15px;}
+ul.prd_slide button {border:none;}
+ul.prd_slide button.slick-prev {position: absolute; top: 27%; left:-34px; transform:translateY(-50%); font-size: 0; width:32px; height:32px; background: url(../_img/pc/main/arr_prev.svg)no-repeat center;} 
+ul.prd_slide button.slick-next {position: absolute; top: 27%; right:-20px; transform:translateY(-50%); font-size: 0; width:32px; height:32px; background: url(../_img/pc/main/arr_next.svg)no-repeat center;}
+ul.prd_slide .slick-track {margin-left:0;}
+
+ul.prd_li02 {display: flex; flex-wrap:wrap; gap:40px 15px;}
+ul.prd_li02 > li {width:calc((100% - 45px) / 4);}
+
+.bt_banner {padding-bottom: 50px;} 
+.bt_banner .bt_bn {} 
+.bt_banner .bt_bn img {width:100%; height:100%; border-radius: 20px;}
+
+}
+
+
+@media only screen and (min-width: 960px) and (max-width: 1024px) {
+
+#wrap {width:100%; margin: 0 auto; padding: 0 30px;}
+.banner_wrap {padding-top:20px;}
+.banner_wrap ul.banner {width:calc(100% + 20px); position:relative;}
+.banner_wrap ul.banner .slick-track {margin-left:0;}
+.banner_wrap ul.banner li {margin-right: 20px;}
+.banner_wrap ul.banner li a {display: block;}
+.banner_wrap ul.banner li a .img_wrap {width: 100%; height: 100%; box-sizing:border-box;}
+.banner_wrap ul.banner li a .img_wrap img {width: 100%; height:100%; border-radius: 20px;}
+.banner_wrap ul.banner button {border: none;}
+.banner_wrap ul.banner button.slick-prev {position: absolute; top: 50%; left:-15px; transform:translate(-50%,-50%); font-size: 0; width:28px; height:28px; background: url(../_img/pc/main/arr_prev.svg)no-repeat center / contain;}
+.banner_wrap ul.banner button.slick-next {position: absolute; top: 50%; right:-24px; transform:translate(-50%,-50%); font-size: 0; width:28px; height:28px; background: url(../_img/pc/main/arr_next.svg)no-repeat center / contain;}
+
+.section {padding-bottom: 90px;}
+.section h2.h2_tit {position: relative; font: 800 28px / 38px "Pretendard", "Noto Sans KR", sans-serif; color:#111; margin-bottom:25px; padding-left: 45px;}
+.section h2.h2_tit01::before {position:absolute; content:''; width:34px; height:34px; background: url(../_img/pc/main/tit_ico01.svg)no-repeat center / contain; top:0; left: 0;}
+.section h2.h2_tit02 {padding-left: 43px;}
+.section h2.h2_tit02::before {position:absolute; content:''; width:34px; height:34px; background: url(../_img/pc/main/tit_ico02.svg)no-repeat center / contain; top:0; left: 0;}
+.section h2.h2_tit03::before {position:absolute; content:''; width:34px; height:34px; background: url(../_img/pc/main/tit_ico03.svg)no-repeat center / contain; top:0; left: 0;}
+.section h2.h2_tit04::before {position:absolute; content:''; width:34px; height:34px; background: url(../_img/pc/main/tit_ico04.svg)no-repeat center / contain; top:0; left: 0;}
+
+.quick_mn {padding: 50px 0 90px 0;}
+.quick_mn ul.sec01_li {display: flex; flex-wrap:wrap; gap:22px; justify-content: center;}
+.quick_mn ul.sec01_li li {width:80px;}
+.quick_mn ul.sec01_li li a {display: block;}
+.quick_mn ul.sec01_li li a img {}
+.quick_mn ul.sec01_li li a p {font: 400 16px / 16px "Pretendard", "Noto Sans KR", sans-serif; color:#111; text-align:center; margin-top: 12px;}
+
+.pd_slider {}
+ul.prd_li {}
+ul.prd_li li {}
+ul.prd_li li a {display: block;}
+ul.prd_li li .prd_img {width: 100%; height: 100%; box-sizing:border-box;}
+ul.prd_li li .prd_img img {width: 100%; height:100%; border-radius: 20px;}
+ul.prd_li li p.sns_txt {position: relative; padding-left: 30px; font: 400 15px / 25px "Pretendard", "Noto Sans KR", sans-serif; color:#555; margin-top: 18px;}
+ul.prd_li li p.sns_blog:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_na_ico.svg)no-repeat;}
+ul.prd_li li p.sns_inst:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_in_ico.svg)no-repeat;}
+ul.prd_li li p.sns_yout:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_yt_ico.svg)no-repeat;}
+ul.prd_li li .prd_txt {margin-top: 16px;}
+ul.prd_li li .prd_txt > strong {display: block; width: 100%; font: 600 17px / 17px "Pretendard", "Noto Sans KR", sans-serif; color:#111; overflow: hidden; text-overflow:ellipsis; -webkit-line-clamp:1; -webkit-box-orient:vertical; white-space:nowrap;}
+ul.prd_li li .prd_txt > p {width: 100%; font: 300 15px / 15px "Pretendard", "Noto Sans KR", sans-serif; color:#555; overflow: hidden; text-overflow:ellipsis; -webkit-line-clamp:1; -webkit-box-orient:vertical; white-space:nowrap; margin-top:12px;}
+ul.prd_li li .prd_rec {margin-top:20px; display: flex; flex-wrap:wrap; gap:10px; align-items:center;}
+ul.prd_li li .prd_rec span.p_date {display: block; font: 300 12px / 16px "Pretendard", "Noto Sans KR", sans-serif; color:#555; padding: 4px 8px; background:#f5f5f5; text-align:center; border-radius: 50px;}
+ul.prd_li li .prd_rec span.p_day {font-weight: 600; color: var(--co01); background: #e8f6fc;}
+ul.prd_li li .prd_rec ul.rec_app {}
+ul.prd_li li .prd_rec ul.rec_app li {font: 500 12px / 12px "Pretendard", "Noto Sans KR", sans-serif; color:#999; display: inline-block; margin-right: 0;}
+ul.prd_li li .prd_rec ul.rec_app li > b {font-weight: 600;}
+ul.prd_li li .prd_rec ul.rec_app li > em {font-style: normal;}
+ul.prd_li li .prd_rec ul.rec_app li.tt {color:#111;}
+
+ul.prd_slide {width:calc(100% + 15px);}
+ul.prd_slide li {margin-right: 15px;}
+ul.prd_slide button {border:none;}
+ul.prd_slide button.slick-prev {position: absolute; top: 20%; left:-28px; font-size: 0; width:28px; height:28px; background: url(../_img/pc/main/arr_prev.svg)no-repeat center / contain;} 
+ul.prd_slide button.slick-next {position: absolute; top: 20%; right:-15px; font-size: 0; width:28px; height:28px; background: url(../_img/pc/main/arr_next.svg)no-repeat center / contain;}
+ul.prd_slide .slick-track {margin-left:0;}
+
+ul.prd_li02 {display: flex; flex-wrap:wrap; gap:40px 15px;}
+ul.prd_li02 > li {width:calc((100% - 45px) / 4);}
+
+.bt_banner {padding-bottom: 50px;} 
+.bt_banner .bt_bn {} 
+.bt_banner .bt_bn img {width:100%; height:100%; border-radius: 20px;}
+
+}
+
+/* Tablet */
+@media only screen and (min-width: 640px) and (max-width: 959px) {
+
+.tablet		{display:block !important;}
+.mobile		{display:none;}
+.web		{display:none;}
+
+#wrap {width:100%; margin: 0 auto; padding: 0 20px;}
+.banner_wrap {padding-top:15px;}
+.banner_wrap ul.banner {width:calc(100% + 10px); position:relative;}
+.banner_wrap ul.banner .slick-track {margin-left:0;}
+.banner_wrap ul.banner li {margin-right: 10px;}
+.banner_wrap ul.banner li a {display: block;}
+.banner_wrap ul.banner li a .img_wrap {width: 100%; height: 100%; box-sizing:border-box;}
+.banner_wrap ul.banner li a .img_wrap img {width: 100%; height:100%; border-radius: 20px;}
+.banner_wrap ul.banner button {border: none;}
+.banner_wrap ul.banner button.slick-prev {position: absolute; top: 50%; left:-15px; transform:translate(-50%,-50%); font-size: 0; width:28px; height:28px; background: url(../_img/pc/main/arr_prev.svg)no-repeat center / contain;}
+.banner_wrap ul.banner button.slick-next {position: absolute; top: 50%; right:-24px; transform:translate(-50%,-50%); font-size: 0; width:28px; height:28px; background: url(../_img/pc/main/arr_next.svg)no-repeat center / contain;}
+.banner_wrap ul.banner ul.slick-dots {display: flex; flex-wrap:wrap; justify-content: center; gap: 10px; margin-top: 15px;}
+.banner_wrap ul.banner ul.slick-dots li {width: 8px; height: 8px; border-radius: 50%; background: #ddd; margin-right: 0;}
+.banner_wrap ul.banner ul.slick-dots li.slick-active {background: var(--co01);}
+.banner_wrap ul.banner ul.slick-dots li > button {font-size: 0;}
+
+.section {padding-bottom: 60px;}
+.section h2.h2_tit {position: relative; font: 800 24px / 34px "Pretendard", "Noto Sans KR", sans-serif; color:#111; margin-bottom:20px; padding-left: 40px;}
+.section h2.h2_tit01::before {position:absolute; content:''; width:30px; height:30px; background: url(../_img/pc/main/tit_ico01.svg)no-repeat center / contain; top:0; left: 0;}
+.section h2.h2_tit02 {padding-left: 38px;}
+.section h2.h2_tit02::before {position:absolute; content:''; width:30px; height:30px; background: url(../_img/pc/main/tit_ico02.svg)no-repeat center / contain; top:0; left: 0;}
+.section h2.h2_tit03::before {position:absolute; content:''; width:30px; height:30px; background: url(../_img/pc/main/tit_ico03.svg)no-repeat center / contain; top:0; left: 0;}
+.section h2.h2_tit04::before {position:absolute; content:''; width:30px; height:30px; background: url(../_img/pc/main/tit_ico04.svg)no-repeat center / contain; top:0; left: 0;}
+
+.quick_mn {padding: 40px 0 60px 0;}
+.quick_mn ul.sec01_li {display: flex; flex-wrap:wrap; gap:30px 15px; justify-content: center;}
+.quick_mn ul.sec01_li li {width:calc((100% - 60px) / 5); text-align:center;}
+.quick_mn ul.sec01_li li a {display: block;}
+.quick_mn ul.sec01_li li a img {width: 70px;}
+.quick_mn ul.sec01_li li a p {font: 400 14px / 14px "Pretendard", "Noto Sans KR", sans-serif; color:#111; text-align:center; margin-top: 10px;}
+
+.pd_slider {}
+ul.prd_li {}
+ul.prd_li li {}
+ul.prd_li li a {display: block;}
+ul.prd_li li .prd_img {width: 100%; height: 100%; box-sizing:border-box;}
+ul.prd_li li .prd_img img {width: 100%; height:100%; border-radius: 20px;}
+ul.prd_li li p.sns_txt {position: relative; padding-left: 30px; font: 400 14px / 24px "Pretendard", "Noto Sans KR", sans-serif; color:#555; margin-top: 12px;}
+ul.prd_li li p.sns_blog:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_na_ico.svg)no-repeat;}
+ul.prd_li li p.sns_inst:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_in_ico.svg)no-repeat;}
+ul.prd_li li p.sns_yout:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_yt_ico.svg)no-repeat;}
+ul.prd_li li .prd_txt {margin-top: 12px;}
+ul.prd_li li .prd_txt > strong {display: block; width: 100%; font: 600 16px / 16px "Pretendard", "Noto Sans KR", sans-serif; color:#111; overflow: hidden; text-overflow:ellipsis; -webkit-line-clamp:1; -webkit-box-orient:vertical; white-space:nowrap;}
+ul.prd_li li .prd_txt > p {width: 100%; font: 300 14px / 14px "Pretendard", "Noto Sans KR", sans-serif; color:#555; overflow: hidden; text-overflow:ellipsis; -webkit-line-clamp:1; -webkit-box-orient:vertical; white-space:nowrap; margin-top:12px;}
+ul.prd_li li .prd_rec {margin-top:15px; display: flex; flex-wrap:wrap; gap:5px; align-items: baseline;}
+ul.prd_li li .prd_rec span.p_date {display: block; font: 300 12px / 14px "Pretendard", "Noto Sans KR", sans-serif; color:#555; padding: 4px 8px; background:#f5f5f5; text-align:center; border-radius: 50px;}
+ul.prd_li li .prd_rec span.p_day {font-weight: 600; color: var(--co01); background: #e8f6fc;}
+ul.prd_li li .prd_rec ul.rec_app {}
+ul.prd_li li .prd_rec ul.rec_app li {font: 500 12px / 12px "Pretendard", "Noto Sans KR", sans-serif; color:#999; display: inline-block; margin-right: 0;}
+ul.prd_li li .prd_rec ul.rec_app li > b {font-weight: 600;}
+ul.prd_li li .prd_rec ul.rec_app li > em {font-style: normal;}
+ul.prd_li li .prd_rec ul.rec_app li.tt {color:#111;}
+
+ul.prd_slide {width:calc(100% + 10px);}
+ul.prd_slide li {margin-right: 10px;}
+ul.prd_slide button {border:none;}
+ul.prd_slide button.slick-prev {position: absolute; top: 20%; left:-28px; font-size: 0; width:28px; height:28px; background: url(../_img/pc/main/arr_prev.svg)no-repeat center / contain;} 
+ul.prd_slide button.slick-next {position: absolute; top: 20%; right:-15px; font-size: 0; width:28px; height:28px; background: url(../_img/pc/main/arr_next.svg)no-repeat center / contain;}
+
+ul.prd_slide .slick-dots {display: flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top: 30px;}
+ul.prd_slide .slick-dots li {width: 6px; height: 6px; background: #ddd; border-radius: 50%; margin-right: 0;}
+ul.prd_slide .slick-dots li.slick-active {background: #111;}
+ul.prd_slide .slick-dots li > button {font-size: 0;}
+
+
+ul.prd_li02 {display: flex; flex-wrap:wrap; gap:30px 10px;}
+ul.prd_li02 > li {width:calc((100% - 20px) / 3);}
+
+/* 신규체험단 더보기 */
+.list02_more a.li02_btn {margin-top: 30px; display: block; width:100%; background: #fff; border-radius: 50px; font: 500 15px / 15px "Pretendard", "Noto Sans KR", sans-serif; color:var(--co01); border: 1px solid var(--co01); text-align:center; padding: 12px;}
+
+/* 마감임박 더보기 */
+.list03_more a.li03_btn {margin-top: 30px; display: block; width:100%; background: #fff; border-radius: 50px; font: 500 15px / 15px "Pretendard", "Noto Sans KR", sans-serif; color:var(--co01); border: 1px solid var(--co01); text-align:center; padding: 12px;}
+
+
+.bt_banner {padding-bottom: 50px;} 
+.bt_banner .bt_bn {} 
+.bt_banner .bt_bn img {width:100%; height:100%; border-radius: 20px;}
+
+}
+
+
+/* Mobile */
+@media only screen and (max-width: 639px) {	
+
+.tablet		{display:none;}
+.mobile		{display:block !important;}
+.web			{display:none;}
+
+#wrap {width:100%; margin: 0 auto; padding: 0 20px;}
+.banner_wrap {padding-top:15px;}
+.banner_wrap ul.banner {width:calc(100% + 10px); position:relative;}
+.banner_wrap ul.banner .slick-track {margin-left:0;}
+.banner_wrap ul.banner li {margin-right: 10px;}
+.banner_wrap ul.banner li a {display: block;}
+.banner_wrap ul.banner li a .img_wrap {width: 100%; height: 100%; box-sizing:border-box;}
+.banner_wrap ul.banner li a .img_wrap img {width: 100%; height:100%; border-radius: 10px;}
+.banner_wrap ul.banner button {border: none;}
+.banner_wrap ul.banner button.slick-prev {position: absolute; top: 50%; left:-15px; transform:translate(-50%,-50%); font-size: 0; width:28px; height:28px; background: url(../_img/pc/main/arr_prev.svg)no-repeat center / contain;}
+.banner_wrap ul.banner button.slick-next {position: absolute; top: 50%; right:-24px; transform:translate(-50%,-50%); font-size: 0; width:28px; height:28px; background: url(../_img/pc/main/arr_next.svg)no-repeat center / contain;}
+.banner_wrap ul.banner ul.slick-dots {display: flex; flex-wrap:wrap; justify-content: center; gap: 10px; margin-top: 15px;}
+.banner_wrap ul.banner ul.slick-dots li {width: 8px; height: 8px; border-radius: 50%; background: #ddd; margin-right: 0;}
+.banner_wrap ul.banner ul.slick-dots li.slick-active {background: var(--co01);}
+.banner_wrap ul.banner ul.slick-dots li > button {font-size: 0;}
+
+.section {padding-bottom: 40px;}
+.section h2.h2_tit {position: relative; font: 800 20px / 30px "Pretendard", "Noto Sans KR", sans-serif; color:#111; margin-bottom:12px; padding-left: 35px;}
+.section h2.h2_tit01::before {position:absolute; content:''; width:26px; height:26px; background: url(../_img/pc/main/tit_ico01.svg)no-repeat center / contain; top:1px; left: 0;}
+.section h2.h2_tit02 {padding-left: 32px;}
+.section h2.h2_tit02::before {position:absolute; content:''; width:26px; height:26px; background: url(../_img/pc/main/tit_ico02.svg)no-repeat center / contain; top:1px; left: 0;}
+.section h2.h2_tit03::before {position:absolute; content:''; width:26px; height:26px; background: url(../_img/pc/main/tit_ico03.svg)no-repeat center / contain; top:1px; left: 0;}
+.section h2.h2_tit04::before {position:absolute; content:''; width:26px; height:26px; background: url(../_img/pc/main/tit_ico04.svg)no-repeat center / contain; top:1px; left: 0;}
+
+.quick_mn {padding: 35px 0 40px 0;}
+.quick_mn ul.sec01_li {display: flex; flex-wrap:wrap; gap:20px 10px; justify-content: center;}
+.quick_mn ul.sec01_li li {width:calc((100% - 40px) / 5); text-align:center;}
+.quick_mn ul.sec01_li li a {display: block;}
+.quick_mn ul.sec01_li li a img {width: 100%;}
+.quick_mn ul.sec01_li li a p {font: 400 13px / 13px "Pretendard", "Noto Sans KR", sans-serif; color:#111; text-align:center; margin-top: 10px;}
+
+.pd_slider {}
+ul.prd_li {}
+ul.prd_li li {}
+ul.prd_li li a {display: block;}
+ul.prd_li li .prd_img {width: 100%; height: 100%; box-sizing:border-box;}
+ul.prd_li li .prd_img img {width: 100%; height:100%; border-radius: 10px;}
+ul.prd_li li p.sns_txt {position: relative; padding-left: 25px; font: 400 13px / 23px "Pretendard", "Noto Sans KR", sans-serif; color:#555; margin-top: 10px;}
+ul.prd_li li p.sns_blog:before {position: absolute; content:''; width: 20px; height: 20px; top:0; left:0; background: url(../_img/pc/main/sns_na_ico.svg)no-repeat center / contain;}
+ul.prd_li li p.sns_inst:before {position: absolute; content:''; width: 20px; height: 20px; top:0; left:0; background: url(../_img/pc/main/sns_in_ico.svg)no-repeat center / contain;}
+ul.prd_li li p.sns_yout:before {position: absolute; content:''; width: 20px; height: 20px; top:0; left:0; background: url(../_img/pc/main/sns_yt_ico.svg)no-repeat center / contain;}
+ul.prd_li li .prd_txt {margin-top: 8px;}
+ul.prd_li li .prd_txt > strong {display: block; width: 100%; font: 600 15px / 15px "Pretendard", "Noto Sans KR", sans-serif; color:#111; overflow: hidden; text-overflow:ellipsis; -webkit-line-clamp:1; -webkit-box-orient:vertical; white-space:nowrap;}
+ul.prd_li li .prd_txt > p {width: 100%; font: 300 13px / 13px "Pretendard", "Noto Sans KR", sans-serif; color:#555; overflow: hidden; text-overflow:ellipsis; -webkit-line-clamp:1; -webkit-box-orient:vertical; white-space:nowrap; margin-top:10px;}
+ul.prd_li li .prd_rec {margin-top:12px; display: flex; flex-wrap:wrap; gap:5px; align-items: baseline;}
+ul.prd_li li .prd_rec span.p_date {display: block; max-width:46px; font: 300 10px / 13px "Pretendard", "Noto Sans KR", sans-serif; color:#555; padding: 3px 4px; background:#f5f5f5; text-align:center; border-radius: 50px;}
+ul.prd_li li .prd_rec span.p_day {font-weight: 600; color: var(--co01); background: #e8f6fc;}
+ul.prd_li li .prd_rec ul.rec_app {width:calc(100% - 51px); display: flex; flex-wrap:wrap;}
+ul.prd_li li .prd_rec ul.rec_app li {font: 500 11px / 11px "Pretendard", "Noto Sans KR", sans-serif; color:#999; display: inline-block; margin-right: 0;}
+ul.prd_li li .prd_rec ul.rec_app li:last-child {margin-left: 2px;}
+ul.prd_li li .prd_rec ul.rec_app li > b {font-weight: 600;}
+ul.prd_li li .prd_rec ul.rec_app li > em {font-style: normal;}
+ul.prd_li li .prd_rec ul.rec_app li.tt {color:#111;}
+
+ul.prd_slide {width:calc(100% + 10px);}
+ul.prd_slide li {margin-right: 10px;}
+ul.prd_slide button {border:none;}
+ul.prd_slide button.slick-prev {position: absolute; top: 20%; left:-28px; font-size: 0; width:28px; height:28px; background: url(../_img/pc/main/arr_prev.svg)no-repeat center / contain;} 
+ul.prd_slide button.slick-next {position: absolute; top: 20%; right:-15px; font-size: 0; width:28px; height:28px; background: url(../_img/pc/main/arr_next.svg)no-repeat center / contain;}
+
+ul.prd_slide .slick-dots {display: flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top: 20px;}
+ul.prd_slide .slick-dots li {width: 6px; height: 6px; background: #ddd; border-radius: 50%; margin-right: 0;}
+ul.prd_slide .slick-dots li.slick-active {background: #111;}
+ul.prd_slide .slick-dots li > button {font-size: 0;}
+
+ul.prd_li02 {display: flex; flex-wrap:wrap; gap:25px 10px;}
+ul.prd_li02 > li {width:calc((100% - 10px) / 2);}
+
+/* 신규체험단 더보기 */
+.list02_more a.li02_btn {margin-top: 25px; display: block; width:100%; background: #fff; border-radius: 50px; font: 500 13px / 13px "Pretendard", "Noto Sans KR", sans-serif; color:var(--co01); border: 1px solid var(--co01); text-align:center; padding: 10px;}
+
+/* 마감임박 더보기 */
+.list03_more a.li03_btn {margin-top: 25px; display: block; width:100%; background: #fff; border-radius: 50px; font: 500 13px / 13px "Pretendard", "Noto Sans KR", sans-serif; color:var(--co01); border: 1px solid var(--co01); text-align:center; padding: 10px;}
+
+.bt_banner {padding-bottom: 35px;} 
+.bt_banner .bt_bn {} 
+.bt_banner .bt_bn img {width:100%; height:100%; border-radius: 10px;}
+
+}
