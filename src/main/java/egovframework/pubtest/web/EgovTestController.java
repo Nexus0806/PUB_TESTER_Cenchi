@@ -1,4 +1,4 @@
-package egovframework.test.web;
+package egovframework.pubtest.web;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import egovframework.test.service.EgovTestService;
+import egovframework.pubtest.service.EgovTestService;
 
 @Controller
 public class EgovTestController {

@@ -1,4 +1,4 @@
-package egovframework.test.service.impl;
+package egovframework.pubtest.service.impl;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import org.springframework.stereotype.Service;
 
-import egovframework.test.service.EgovTestService;
+import egovframework.pubtest.service.EgovTestService;
 
 @Service("egovTestService")
 public class EgovTestServiceImpl implements EgovTestService {
