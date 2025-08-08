@@ -1,5 +1,5 @@
 package egovframework.admin.service;
 
-public class adminService {
+public interface AdminService {
 
 }

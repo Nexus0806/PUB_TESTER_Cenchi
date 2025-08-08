@@ -14,14 +14,14 @@
 	<meta name="description" content="">
 	<title>공공체험단 관리자</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/admin_css/default.css">
-	<link rel="icon" type="image/png" sizes="16x16" href="https://www.withsystem.com/with2019/_img/favicon/fvc.ico">
+	<%-- <link rel="icon" type="image/png" sizes="16x16" href="https://www.withsystem.com/with2019/_img/favicon/fvc.ico"> --%>
 	<script type="text/javascript" src="http://sian.pms.or.kr/with_adm/_js/jquery-3.2.1.min.js"></script>
 	<script src="http://sian.pms.or.kr/with_adm/_js/pop_layer.js"></script></head>
 <body>
 	<div class="login_bg">
 		<form name="login_frm" id="login_frm">
 			<div class="login">
-				<h1><img src="http://sian.pms.or.kr/with_adm/images/common/logo.svg" alt="동서발전"></h1>
+				<h1><img src="${pageContext.request.contextPath}/images/pc/comn/logo.svg"></h1>
 
 				<p class="lg_wrap">
 					<label for="loginId">아이디</label>
@@ -30,14 +30,11 @@
 					<input class="mt10" type="password" id="loginPass" name="loginPass" placeholder="비밀번호">
 				</p>
 				<p class="lg_btn">
-					<a href="http://sian.pms.or.kr/with_adm/main.html">로그인</a>
+					<a href="/admin/infList.do">로그인</a>
 				</p>
 				<p class="save_id">
 					<input class="checkbox" type="checkbox" id="save_id" name="save_id"> 
 					<label for="save_id">아이디 기억하기</label>
-				</p>
-				<p class="copy">
-					ⓒ KOREA EAST-WEST POWER CO.,LTD (EWP). <br>ALL RIGHTS RESERVED.
 				</p>
 			</div>
 		</form>	
