@@ -22,5 +22,4 @@
 	<alias name="egov.sqlSessionFactory" alias="egov.sqlSession"/>
 	<alias name="egov.sqlSession" alias="sqlSession"/>
 
-	
 </beans>
