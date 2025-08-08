@@ -3,7 +3,7 @@
 <header>
 	<div id="header">
 		<h1>
-			<a href="/preuser/index.html" class="logo"></a>
+			<a href="/index.do" class="logo"></a>
 		</h1>
 
 		<ul class="gnb">
@@ -35,7 +35,7 @@
 	<div id="tm_header">
 		<div class="tm_h_wrap">
 			<h1>
-				<a href="/preuser/index.html" class="logo"></a>
+				<a href="/index.html" class="logo"></a>
 			</h1>
 
 			<div class="tm_right">
@@ -52,7 +52,7 @@
 			<div class="lnb">
 				<div class="nv_h">
 					<h1>
-						<a href="/preuser/index.html" class="logo"></a>
+						<a href="/index.html" class="logo"></a>
 					</h1>
 
 					<div class="nv_btn">
