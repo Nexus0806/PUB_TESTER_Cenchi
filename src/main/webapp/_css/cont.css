@@ -1,14 +1,19 @@
 @charset "utf-8";
 
+/* 새창 팝업 */
+#windowPop	{padding:20px;}
+#windowPop .btn {display:block; margin: 40px auto 0; width:90px; height:45px;  text-align:center; padding:10px; background:#555; color:#fff; font:400 16px/25px "Pretendard", "Noto Sans KR", sans-serif; border-radius:10px; transition:all .2s;}
+
 /* PC */
 @media only screen and (min-width: 960px) {
+
 
 #sub_content {width: 100%; padding: 50px 0 100px;}
 
 /* 레이어 팝업 기본 */
 div.layer					{display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:100000;}
 div.layer .bg				{position:absolute; top:0; left:0; width:100%; height:100%; background:#000; opacity:.5; filter:alpha(opacity=50);}
-div.layer .pop-layer	{position:absolute; top: 50%; left: 50%;  transform:translateX(-50%) translateY(-50%); max-width:1400px; background:#fff; z-index: 10;}
+div.layer .pop-layer	{position:absolute; top: 50%; left: 50%;  transform:translateX(-50%) translateY(-50%); max-width:1400px; min-width:400px; background:#fff; z-index: 10;}
 
 .pop_title				{width:100%; position:relative; font-size:26px; font-weight:600; color:#222; padding:30px}
 .pop_title a.cbtn	{position:absolute; top:30px; right:30px; display:block; font-size:0; width:20px; height:20px;  background:url('../_img/cont/pop_cbtn.png')no-repeat 50% 50%/100%}
@@ -34,6 +39,8 @@ div.layer .pop-layer	{position:absolute; top: 50%; left: 50%;  transform:transla
 /* bbs 상세 */
 
 h2.sub_tit {font: 800 26px / 26px "Pretendard", "Noto Sans KR", sans-serif; color:#222; margin-bottom: 25px;}
+h3.sub_tit02 {font: 800 24px / 24px "Pretendard", "Noto Sans KR", sans-serif; color:#222; margin-bottom: 20px;}
+h4 {font: 600 18px / 18px "Pretendard", "Noto Sans KR", sans-serif; color:#222; margin-bottom: 15px;}
 
 .s_cont {max-width: 1400px; width: 100%; margin: 0 auto; display: flex; flex-wrap:wrap; gap:80px;}
 .s_cont .left {width: 220px;}
@@ -147,7 +154,7 @@ span.mr	{font:500 15px/15px "Pretendard", "Noto Sans KR", sans-serif; color:#fff
 .checkbox input[type="checkbox"]					{position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0}
 .checkbox input[type="checkbox"] + label			{display: inline-block; position: relative; padding-left: 28px; cursor: pointer; -webkit-user-select: none; -moz-user-select: none;  -ms-user-select: none; font-size:16px; color:#555; margin: 5px 15px 5px 0px;}
 .checkbox input[type="checkbox"] + label:before		{content: ' '; position:absolute; top:0; left:0; background:url('../_img/pc/cont/check.png')no-repeat center center / 14px; border: 1px solid #ccc; display: inline-block; width: 18px; height: 18px; line-height: 18px; text-align: center; vertical-align: middle;}
-.checkbox input[type="checkbox"]:checked + label	{color:var(--co01);}
+.checkbox input[type="checkbox"]:checked + label	{}
 .checkbox input[type="checkbox"]:checked + label:before	{content: ' '; background:var(--co01) url('../_img/pc/cont/check_w.png')no-repeat center center / 14px; border-color:var(--co01);}
 
 /* 커뮤니티 필터버튼 */
@@ -157,10 +164,18 @@ span.mr	{font:500 15px/15px "Pretendard", "Noto Sans KR", sans-serif; color:#fff
 .ck_btn li input[type="checkbox"]:checked + label	{color:#fff; border: 1px solid #333; background: #333;}
 .ck_btn li input[type="checkbox"]:checked + label:before	{content: ''; background:#333; border-color:#333;}
 
+/* input */
+input[type="text"]	{width: 100%; height: 45px; border: 1px solid #ddd; background: #fff; padding-left: 15px; border-radius: 10px; font: 400 15px/45px "Pretendard", "Noto Sans KR", sans-serif;}
+
+
 /* 버튼 */
 /* 글 작성 */
-.btn {display:inline-block; width:90px; height:45px;  text-align:center; padding:10px; background:var(--co01); color:#fff; font:400 16px/25px "Noto Sans KR", sans-serif; border-radius:10px; transition:all .2s;}
+.btn {display:inline-block; width:90px; height:45px; text-align:center; padding:10px; background:var(--co01); color:#fff; font:400 16px/25px "Pretendard", "Noto Sans KR", sans-serif; border-radius:10px; transition:all .2s;}
 .btn:hover {background: #1082b3;}
+.btn.a {width: auto; padding: 10px 14px;}
+.btn.bk {background: #333;}
+
+.btn2 {display:inline-block; min-width:80px; margin: 20px auto 0; text-align:center; padding:5px; background:#333; color:#fff; font:400 15px/24px "Pretendard", "Noto Sans KR", sans-serif; border-radius:5px; transition:all .2s;}
 
 .basic_btn a			{margin-top: 20px; display: block; font: 400 16px / 29px "Pretendard", "Noto Sans KR", sans-serif; text-align:center; background: #f7f7f7; border-radius: 10px; color: #999; border: 1px solid #ddd; padding: 8px 40px; transition: .3s; word-break:keep-all;}
 .basic_btn a.line_b		{display: inline-block; border:solid 1px #ddd; background:#fff; color:#474747;}
@@ -213,9 +228,9 @@ ul.prev_next li a:focus span			{text-decoration:underline; color:var(--co01); }
 /* 체험단 검색 지역 필터 */
 .region {margin-bottom:20px;}
 .region .selec_reg {display: flex; flex-wrap:wrap; gap: 20px; align-items:center; margin-bottom: 20px;}
-.region .selec_reg .reg_tit {font:700 24px/34px "Pretendard", "Noto Sans KR", sans-serif; color:#222;}
+.region .selec_reg h2.sub_tit {margin-bottom:0;}
 
-.search_filter			{display: grid; white-space: nowrap; position: relative; width: calc(100% - 62px);}
+.search_filter			{display: grid; white-space: nowrap; position: relative; width: calc(100% - 80px);}
 .search_filter ul		{display: flex; gap: 6px; overflow-x: auto;}
 .search_filter ul li 	{display: flex; align-items: center; gap: 2px; padding: 0 0 0 16px; border: 1px solid #eee; background: #fff; height: 31px; font-size: 13px; border-radius: 50px;}
 .search_filter ul li .x				{width: 31px; height: 31px; display: block; background: url('../_img/cont/del.png')no-repeat 0% 50% / 25px;}
@@ -243,51 +258,78 @@ ul.reg01 li.current{background: var(--co01); color: #fff;}
 
 /* 체험단 검색 상세 expView */
 .View_wrap {display: flex; flex-wrap:wrap;}
-.View_wrap .View_con {width: calc(100% - 350px);}
-.View_wrap .View_info {width: 350px; padding-left: 40px; border-left: 1px solid #eee;}
+.View_wrap .View_con {width: calc(100% - 350px); padding-right:40px;}
+.View_wrap .View_info {width: 350px; padding-left: 40px; }
 
 .View_top {}
-.View_top .v_tit {}
-.View_top .opt {}
-.View_top .opt li {}
-.View_top .opt li > p {}
-.View_top .opt li p.op_sns {}
-.View_top .opt li p.op_num {}
-.View_top .opt li p.op_cate {}
-.View_top .opt li p.op_cate02 {}
+.View_top .v_tit {font-size: 26px; font-weight: 700; color: #222; margin-bottom: 15px;}
+.opt {display: flex; flex-wrap:wrap; gap:10px;}
+.opt li {}
+.opt li.sns_tit {display: flex; flex-wrap:wrap; gap:5px; align-items:center;}
+.opt li > p {padding: 5px 10px; border-radius: 50px; font-size: 15px; color: #555; background: #eee;}
+.opt li p.op_sns {background:url(../_img/pc/main/sns_yt_ico02.svg)no-repeat center / contain; width:30px; height:30px;}
+.opt li p.op_sns.yout {background:url(../_img/pc/main/sns_yt_ico.svg)no-repeat center / contain; width:30px; height:30px;}
+.opt li p.op_sns.yout02 {background:url(../_img/pc/main/sns_yt_ico02.svg)no-repeat center / contain; width:30px; height:30px;}
+.opt li p.op_sns.nblog  {background:url(../_img/pc/main/sns_na_ico.svg)no-repeat center / contain; width:30px; height:30px;}
+.opt li p.op_sns.insta  {background:url(../_img/pc/main/sns_in_ico.svg)no-repeat center / contain; width:30px; height:30px;}
+.opt li p.op_num {}
+.opt li p.op_cate {}
+.opt li p.op_cate02 {}
 
 ul.con_list {}
-ul.con_list li {}
-ul.con_list li .c_tit {}
+ul.con_list li {display: flex; flex-wrap: wrap; gap: 20px; padding: 20px 0; border-bottom: 1px solid #eee;}
+ul.con_list li .c_tit {font-size: 18px; width: 150px; color:#222; font-weight:600;}
+ul.con_list li .clt {width: calc(100% - 170px); color:#666;}
 ul.con_list li .c_info {}
 ul.con_list li .c_info .c_ic {}
 ul.con_list li p.edit {}
-ul.con_list li .tag {}
-ul.con_list li .tag > em {}
+ul.con_list li .tag {display: flex; flex-wrap:wrap; gap: 5px; }
+ul.con_list li .tag > em {font-size: 15px; color:#333; padding: 5px 8px; border-radius: 3px; background: #f3f3f3; font-style:normal; display: inline-block; vertical-align:text-top;}
 
 /* 카카오맵 */
 ul.con_list li .root_daum_roughmap {border-bottom:1px solid #ddd;}
 ul.con_list li .root_daum_roughmap .wrap_controllers {display: none;}
 ul.con_list li .root_daum_roughmap .cont {display: none;}
 
+/* 댓글 */
 .comment_wrap {}
-.comment_wrap .cmt {}
-.comment_wrap .cmt .prop_img {}
-.comment_wrap .cmt .cmt_txt {}
-.comment_wrap .cmt .cmt_txt li {}
-.comment_wrap .cmt .cmt_txt li.name {}
-.comment_wrap .cmt .cmt_txt li.date {}
+.comment_wrap .cmt {display: flex; flex-wrap:wrap; gap: 15px; align-items:flex-start; padding: 20px 0;}
+.comment_wrap .cmt:not(:last-child) {border-bottom: 1px dashed #eee;}
+.comment_wrap .cmt .prop_img {background: url(../_img/pc/cont/user_profile_no.svg)no-repeat center / cover; width: 50px; height: 50px;}
+.comment_wrap .cmt .cmt_txt {width:calc(100% - 98px);}
+.comment_wrap .cmt .cmt_txt li {font-size: 15px; color:#666;}
+.comment_wrap .cmt .cmt_txt li:not(:last-child) {margin-bottom: 5px;}
+.comment_wrap .cmt .cmt_txt li.name {font-size: 17px; color:#222; font-weight: 700;}
+.comment_wrap .cmt .cmt_txt li.date {color:#999; font-weight: 300;}
+.comment_wrap .cmt .modify {display: block; font-size: 0; background: url(../_img/pc/cont/modify_ico.svg)no-repeat center / cover; width: 18px; height: 18px;}
+
+/* 댓글 반응 */
+
 
 .View_info {}
-.View_info p.sn_img {}
-.View_info .sche {}
-.View_info .sche_tit {}
-.sche_list {}
-.sche_list li {}
-.sche_list li.point {font-weight: 700; color: var(--co01);}
-.sche_list li .sc_tit {}
-.sche_list li > p {}
-.sche_list li > p > span {}
+.View_info p.sn_img {width: 310px; height: 210px; background: url(../_img/pc/cont/no_img_view.png)no-repeat center; border-radius: 20px;}
+.View_info .sche {position:sticky; top:100px;}
+.View_info .sche_tit {font-size: 20px; color:#222; font-weight: 700; margin-bottom: 15px;}
+.sche_list {margin-bottom: 20px;}
+.sche_list li {display: flex; flex-wrap:wrap; gap: 5px;}
+.sche_list li:not(:last-child) {margin-bottom: 8px;}
+.sche_list li.point > .sc_tit,
+.sche_list li.point > p {font-weight: 700; color: var(--co01);}
+.sche_list li.point {font-weight: 700; color: var(--co01) !important;}
+.sche_list li .sc_tit {width: 130px; font-weight: 600; position: relative; padding-left: 10px;}
+.sche_list li .sc_tit:before {position: absolute; content:''; width: 3px; height: 3px; background: var(--co01); border-radius: 50%; top: 8px; left: 0;}
+.sche_list li > p {width:calc(100% - 135px); color:#666;}
+.sche_list li > p > span {color: var(--co01);}
+
+.btn_wrap {display: flex; flex-wrap:wrap; gap: 5px;}
+.btn_wrap .btn {width: calc(100% - 100px);}
+.btn_wrap .v_icon {display: flex; flex-wrap:wrap; gap:5px;}
+.btn_wrap .v_icon .ic {width: 45px; height: 45px; font-size: 0;}
+.btn_wrap .v_icon .ic.like {background: #fff; border: 1px solid var(--red); color:var(--red);}
+.btn_wrap .v_icon .ic.like .like_icon {display: inline-block; vertical-align:middle; background:url(../_img/pc/cont/like_bd.svg)no-repeat center / cover; width: 19px; height: 19px;}
+.btn_wrap .v_icon .ic.like .like_icon.on {background:url(../_img/pc/cont/like_on.svg)no-repeat center / cover;}
+.btn_wrap .v_icon .ic.link {background: #fff; border: 1px solid var(--co01); color: var(--co01);}
+.btn_wrap .v_icon .ic.link .link_icon {display: inline-block; vertical-align:middle; background:url(../_img/pc/cont/share.svg)no-repeat center / cover; width: 20px; height: 20px;}
 
 /* 체험단 일정 */
 .number_list 					{padding-top: 50px; border-top: 1px dashed #aaa; padding-bottom: 20px;}
@@ -309,7 +351,7 @@ ol.Onum_2 > li					{color: #555; margin-top: 6px;}
 ol.Onum_2 > li::before			{font-size: 16px; content: counter(li) ') '; counter-increment: li 1;}
 
 /* 일정 캘린더 */
-.Calendar					{background: #f3f8ff; border-radius: 5px; padding: 25px 20px; overflow: hidden; font-family: "Pretendard";}
+.Calendar					{border: 1px solid #eee; border-radius: 20px; padding: 25px 20px; overflow: hidden;}
 .Calendar .month_box		{display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 20px;}
 .Calendar .month_box span	{font-size: 19px; font-weight: 700;}
 .Calendar .month_box a		{display: block; width: 30px; height: 20px; background: url('../_img/cont/head-left.png') no-repeat 50% 50% / 17px;}
@@ -323,11 +365,39 @@ ol.Onum_2 > li::before			{font-size: 16px; content: counter(li) ') '; counter-in
 .Calendar .Cal_li li:nth-child(7n) a	{color: var(--co01);}
 .Calendar .Cal_li li a				{display: block; font-size: 13px; color: #777; width: 30px; height: 30px; border-radius: 50px; display: flex; align-items: center; justify-content: center; margin: 0 auto;}
 .Calendar .Cal_li li.on a			{background: var(--co01); color: #fff; font-weight: 500;}
+.Calendar .Cal_li li.on.red a			{background: var(--red); color: #fff; font-weight: 500;}
+.Calendar .Cal_li li.on.blue a			{background: #f3f8ff; color: var(--co01); border: 1px solid var(--co01); font-weight: 500;}
+.Calendar .Cal_li li.on.tday a			{background: #ddd; color: #333; font-weight: 500;}
 .Calendar .Cal_li li.li_on a		{color: var(--co01) !important; font-weight: 500;}
 .Calendar .Cal_li li.li_on:before	{content: ''; width: 18px; height: 2px; display: block; position: absolute; left: calc(50% - 10px); bottom: 0px; background: var(--co01);}
 .Calendar .Cal_li li.li_on.on a		{color: #fff !important;}
 
-.Calendar + *	{margin-top: 30px;}
+.Calendar + *	{margin-top: 10px;}
+
+/* 달력 표시 */
+ul.cal_point {display: flex; flex-wrap:wrap; gap:10px; padding: 10px 20px;}
+ul.cal_point li {display: flex; flex-wrap:wrap; gap: 5px; width:calc((100% - 10px)/2);}
+ul.cal_point li span {width: 18px; height: 18px; border-radius: 50%; display: inline-block;}
+ul.cal_point li span.cal_on {background: var(--co01);}
+ul.cal_point li span.cal_red {background: var(--red);}
+ul.cal_point li span.cal_blue {background: #f3f8ff; border: 1px solid var(--co01);}
+ul.cal_point li span.cal_tday {background: #ddd;}
+ul.cal_point li p {font-Size: 14px; color:#666;} 
+ul.cal_point li:nth-child(1) p {color:var(--co01);} 
+
+/* 체험단 신청 */
+.apply_wrap {}
+.apply_wrap p {color:#666;}
+.apply_wrap h4 > span {color:#999;}
+
+/* 개인정보 동의 버튼 */
+.prv_cont {padding-left: 30px; color: #999; font-size: 14px; transition: .2s;}
+.prv_cont:hover {color:#222;}
+
+/* 주소 입력폼 우편번호 찾기 */
+.add_wrap {display: flex; flex-wrap:wrap; gap: 5px;}
+.add_wrap > input {width: calc(100% - 120px);}
+
 
 }
 

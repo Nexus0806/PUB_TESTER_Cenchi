@@ -24,37 +24,56 @@ public class CampaignController {
 	@Resource(name = "campaignService")
 	private CampaignService campaignService;
 	
-	@RequestMapping("/list.do")
+	@RequestMapping("/campaignList.do")
 	public String CampaignList(Model model) {
 		
-		List<CampaignVO> list = campaignService.selectCampaignList();
+		/*List<CampaignVO> list = campaignService.selectCampaignList();*/
 		
-		return "/preuser/campaign/list";
+		return "/preuser/campaign/campaignList";
 	}
 	
-	@GetMapping("detail.do")
-	public String Campaigndetail(@RequestParam int campIdx, Model model) {
-		
+	//@GetMapping("/campaignView.do")
+	@RequestMapping("/campaignView.do")
+	public String Campaigndetail(Model model) {
+		//@RequestParam int campIdx
+		/*
 		CampaignVO campvo = campaignService.selectCampaignDetail(campIdx);
 		
 		model.addAttribute(campvo);
+		*/
 		
-		//return "/preuser/campaign/detail";
-		return "/preuser/campaign/list";
+		return "/preuser/campaign/campaignView";
 	}
 	
 	
-	@GetMapping("submit.do")
+	/*
+	@GetMapping("/campaignSubmit.do")
 	public String CampaignSubmitForm(@RequestParam int campIdx, Model model) {
 		
+		
 		CampaignVO campvo = campaignService.selectCampaignDetail(campIdx);
 		
 		model.addAttribute(campvo);
-		//return "/preuser/campaign/submit";
-		return "/preuser/campaign/list";
+		 
+		
+		return "/preuser/campaign/campaignSubmit";
 	}
+	*/
 	
-	@PostMapping("submit.do")
+	@RequestMapping("/campaignSubmit.do")
+	public String CampaignSubmitForm(Model model) {
+		
+		/*
+		CampaignVO campvo = campaignService.selectCampaignDetail(campIdx);
+		
+		model.addAttribute(campvo);
+		 */
+		
+		return "/preuser/campaign/campaignSubmit";
+	}
+
+
+	@PostMapping("/campaignSubmit.do")
 	public String CampaignSubmitProcess(
 			@ModelAttribute CampaignSubmitVO submitVO, Model model, RedirectAttributes redirect) {
 		
@@ -63,12 +82,12 @@ public class CampaignController {
 		 * @ModelAttribute
 		 * 
 		 */
+		
 		campaignService.insertCampaignSubmit(submitVO);
 		
 		redirect.addFlashAttribute("msg","신청되었습니다.");
 		
-		//return "/preuser/campaign/submit"; 리다이렉트 만들기 
-		return "/preuser/campaign/list";
+		return "/preuser/campaign/campaignSubmit";
 	}
 	
 }

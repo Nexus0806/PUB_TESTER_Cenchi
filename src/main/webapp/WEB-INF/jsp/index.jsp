@@ -16,68 +16,16 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/slick.css"/>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<title>중소기업을 위한 공공체험단</title>
-	<script src="/preuser/_js/pop_layer.js"></script>
-	<script src="/preuser/_js/cont.js"></script>
+	<script src="/_js/pop_layer.js"></script>
+	<script src="/_js/cont.js"></script>
 </head>
 <body>
 
 <jsp:include page="/WEB-INF/jsp/_inc/header.jsp" />
 
-<script type="text/javascript">
-
-$('.navi_btn').click(function(){
-		$('.navi').stop(true).fadeToggle('fast');
-		$(this).toggleClass('on');
-		$('#tm_header').toggleClass('on');
-	});
-
-$('.close').click(function(){
-		$('.navi').stop(true).fadeOut('fast');
-		$('#tm_header').removeClass('on');
-	});
+<script src="/js/ui.js"></script>
 
 
-
-//dep01, dep02
-$('.lnb .dep01 > li:has(.dep02)').children('a').addClass('has-sub');
-if($(window).width() <= 1024) {
-	$(".lnb .dep01 > li > a").click(function(){
-		if($(this).is(".has-sub")){
-			event.preventDefault();
-			$(this).parent().siblings('li').children('ul.dep02').stop().slideUp();
-			$(this).parent().siblings('li').children('a').removeClass('on');
-			$(this).siblings('ul').stop().slideToggle();
-			$(this).toggleClass('on');
-		}else{
-		}
-	});
-};
-
-//search
- $('.sch_btn').click(function(){
-		$('.tm_sch_wrap').fadeIn();
-		//$('#header').addClass('click');
-	});
-	$('.tm_x').click(function(){
-		$('.tm_sch_wrap').fadeOut();
-		//$('#header').removeClass('click');
-});
-
-
-//gnb
-$('#header ul.gnb > li').mouseenter(function(){
-	$('#header ul.gnb > li').removeClass('on');
-	$('#header .gnb_sub').stop().hide();
-	$(this).addClass('on');
-	$(this).find('.gnb_sub').stop().fadeIn(200);
-});
-$('#header ul.gnb > li').mouseleave(function(){
-	$('#header ul.gnb > li').removeClass('on');
-	$('#header .gnb_sub').stop().fadeOut(200);
-});
-
-
-</script>    
 	<div id="wrap">
 		<div class="banner_wrap">
 			<ul class="banner">
