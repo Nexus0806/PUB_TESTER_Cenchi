@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -22,9 +23,7 @@
 	<h1><a href="/admin/infList.do"><img src="${pageContext.request.contextPath}/images/pc/comn/logo.svg"></a></h1>
 	<div id="head_right">	
 		<p>
-			<strong>관리자</strong>님 환영합니다. 
-<!-- 			<span class="timer">50:07</span>
-			<a href="#none" id="extendTimer"><img src="/with_adm/images/common/timeExtendBtn.png" alt="연장"></a> -->
+			<strong>admin</strong>님 환영합니다. 
 		</p>
 		<a href="adminList.html" class="mp">관리자 관리</a>
 		<a href="/admin/login.do" class="out">로그아웃</a>
@@ -33,34 +32,34 @@
 </div>			
 		<div id="container">
 			<ul id="lmn">
-	<li class="on"><a href="adminList.html">회원관리</a>
-		<ul class="dep3">
-			<li class="on"><a href="/admin/infList.do">인플루언서 관리</a></li>
-			<li><a href="/admin/bssList.do">사업자 관리</a></li>
-		</ul>	
-	</li>
-	<li ><a href="https://sian.pms.or.kr/with_adm/career/careerList.html">커뮤니티</a>
-		<ul class="dep3">
-			<li ><a href="https://sian.pms.or.kr/with_adm/career/careerList.html">커뮤니티 게시글 관리</a></li>
-			<li ><a href="https://sian.pms.or.kr/with_adm/career/idpList.html">관리자 게시글 관리</a></li>
-		</ul>
-	</li>
-	<li ><a href="https://sian.pms.or.kr/with_adm/contents/popupList.html">공지/이벤트관리</a>
-		<ul class="dep3">
-			<li ><a href="https://sian.pms.or.kr/with_adm/contents/popupList.html">공지사항 관리</a></li>
-			<li ><a href="https://sian.pms.or.kr/with_adm/contents/popupList.html">이벤트 관리</a></li>
-		</ul>
-	</li>
-	<li ><a href="https://sian.pms.or.kr/with_adm/board/boardList.html">체험단 관리</a>
-		<ul class="dep3">
-			<li ><a href="https://sian.pms.or.kr/with_adm/board/boardList.html">체험단 승인 관리</a></li>
-			<li ><a href="https://sian.pms.or.kr/with_adm/board/boardList.html">체험단 게시글 관리</a></li>
-			<!-- <li ><a href="/with_adm/board/boardList.html">자료실</a></li> -->
-		</ul>
-	</li>
-</ul>	
+				<li class="on"><a href="adminList.html">회원관리</a>
+					<ul class="dep3">
+						<li class="on"><a href="/admin/infList.do">인플루언서 관리</a></li>
+						<li><a href="/admin/bssList.do">사업자 관리</a></li>
+					</ul>	
+				</li>
+				<li ><a href="https://sian.pms.or.kr/with_adm/career/careerList.html">커뮤니티</a>
+					<ul class="dep3">
+						<li ><a href="https://sian.pms.or.kr/with_adm/career/careerList.html">커뮤니티 게시글 관리</a></li>
+						<li ><a href="https://sian.pms.or.kr/with_adm/career/idpList.html">관리자 게시글 관리</a></li>
+					</ul>
+				</li>
+				<li ><a href="https://sian.pms.or.kr/with_adm/contents/popupList.html">공지/이벤트관리</a>
+					<ul class="dep3">
+						<li ><a href="https://sian.pms.or.kr/with_adm/contents/popupList.html">공지사항 관리</a></li>
+						<li ><a href="https://sian.pms.or.kr/with_adm/contents/popupList.html">이벤트 관리</a></li>
+					</ul>
+				</li>
+				<li ><a href="https://sian.pms.or.kr/with_adm/board/boardList.html">체험단 관리</a>
+					<ul class="dep3">
+						<li ><a href="https://sian.pms.or.kr/with_adm/board/boardList.html">체험단 승인 관리</a></li>
+						<li ><a href="https://sian.pms.or.kr/with_adm/board/boardList.html">체험단 게시글 관리</a></li>
+					</ul>
+				</li>
+			</ul>	
+			
 			<div id="content">
-				<h2>관리자 관리</h2>
+				<h2>인플루언서 관리</h2>
 				<div id="search_field">
 					<table class="basic l">
 						<caption>검색 영역</caption>
@@ -97,7 +96,7 @@
 				</div>	
 
 				<div class="listTop">
-					<p>총 21명, 1 of 3 Pages</p>
+					<p>총 ${infListCnt}명, 1 of 3 Pages</p>
 					<div class="select_wrap">
 						<select id="orderBy" name="orderBy" title="정렬기준 선택">
 							<option value="desc" selected>등록일 정렬 ↓</option>
@@ -113,7 +112,23 @@
 
 				<table class="basic hover">
 					<caption>관리자 명단</caption>
-					<colgroup><col style="width:70px"><col style="width:auto"><col style="width:15%"><col style="width:15%"><col style="width:15%"><col style="width:15%"><col style="width:12%"></colgroup>
+					<colgroup>
+					<col style="width:10%"> <%-- 회원가입일 --%> 
+					<col style="width:5%">	<%-- 실명 --%> 
+					<col style="width:8%">	<%-- 닉네임 --%> 
+					<col style="width:10%">	<%-- 핸드폰번호 --%> 
+					<col style="width:10%">	<%-- 이메일 --%> 
+					<col style="width:8%">	<%-- 생일 --%> 
+					<col style="width:3%">	<%-- 성별 --%> 
+					<col style="width:5%">	<%-- 활동지역 --%> 
+					<col style="width:5%">	<%-- 활동주제 --%> 
+					<col style="width:5%">	<%-- 방문횟수 --%> 
+					<col style="width:5%">	<%-- 협찬횟수 --%> 
+					<col style="width:5%">	<%-- 패널티 --%> 
+					<col style="width:5%">	<%-- 취소횟수 --%> 
+					<col style="width:5%">	<%-- 유저평점 --%> 
+					<col style="width:auto"><%-- 활동내역 --%> 
+					</colgroup>
 					<thead>
 						<tr>
 							<th>회원가입일</th>
@@ -130,16 +145,31 @@
 							<th>패널티</th>
 							<th>취소횟수</th>
 							<th>유저평점</th>
+							<th>활동내역</th>
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach var="user" items="${infList}">
 						<tr>
-							<td>22</td>
-							<td>Abcke</td>
-							<td><a href="https://sian.pms.or.kr/with_adm/admin/adminView.html">김민정</a></td>
-							<td>070-1234-5678</td>
-							<td>2023-10-25</td>
-							<td><span class="state on">사용</span></td>
+							<td>${user.userRegDate}</td>
+							<td><a href="/admin/detail/infDetail.do">${user.userName}</a></td>
+							<td>${user.userNick}</td>
+							<td>${user.userPhoneNum}</td>
+							<td>${user.userEmail}</td>
+							<td>${user.userBirth}</td>
+							<td>
+							<c:choose>
+								<c:when test="${user.userSex == 'F'}">여</c:when>
+								<c:otherwise>남</c:otherwise>
+							</c:choose>
+							</td>
+							<td>${user.userArea}</td>
+							<td>${user.userAct}</td>
+							<td>${user.userVisitCnt}</td>
+							<td>${user.userhisCnt}</td>
+							<td>${user.userBanCnt}</td>
+							<td>${user.userCancelCnt}</td>
+							<td>${user.userScore}/5.0</td>
 							<td>
 								<p class="sbtn">
 									<a href="https://sian.pms.or.kr/with_adm/admin/adminWrite.html">수정</a>
@@ -147,135 +177,7 @@
 								</p>
 							</td>
 						</tr>
-						<tr>
-							<td>21</td>
-							<td>Abcke1234</td>
-							<td><a href="https://sian.pms.or.kr/with_adm/admin/adminView.html">김민정</a></td>
-							<td>070-1234-5678</td>
-							<td>2023-10-25</td>
-							<td><span class="state">미사용</span></td>
-							<td>
-								<p class="sbtn">
-									<a href="https://sian.pms.or.kr/with_adm/admin/adminWrite.html">수정</a>
-									<a class="gray_line" href="javascript:void(0)" onclick="layer_open('delPop', 'del_Pop');return false;">삭제</a>
-								</p>
-							</td>
-						</tr>
-						<tr>
-							<td>20</td>
-							<td>abcdefg1102</td>
-							<td><a href="https://sian.pms.or.kr/with_adm/admin/adminView.html">김민정</a></td>
-							<td>070-1234-5678</td>
-							<td>2023-10-25</td>
-							<td><span class="state on">사용</span></td>
-							<td>
-								<p class="sbtn">
-									<a href="https://sian.pms.or.kr/with_adm/admin/adminWrite.html">수정</a>
-									<a class="gray_line" href="javascript:void(0)" onclick="layer_open('delPop', 'del_Pop');return false;">삭제</a>
-								</p>
-							</td>
-						</tr>
-						<tr>
-							<td>19</td>
-							<td>xovudk0501</td>
-							<td><a href="https://sian.pms.or.kr/with_adm/admin/adminView.html">김태평</a></td>
-							<td>070-1234-5678</td>
-							<td>2023-10-25</td>
-							<td><span class="state">미사용</span></td>
-							<td>
-								<p class="sbtn">
-									<a href="https://sian.pms.or.kr/with_adm/admin/adminWrite.html">수정</a>
-									<a class="gray_line" href="javascript:void(0)" onclick="layer_open('delPop', 'del_Pop');return false;">삭제</a>
-								</p>
-							</td>
-						</tr>
-						<tr>
-							<td>18</td>
-							<td>dntjr0101</td>
-							<td><a href="https://sian.pms.or.kr/with_adm/admin/adminView.html">변우석</a></td>
-							<td>070-1234-5678</td>
-							<td>2023-10-25</td>
-							<td><span class="state on">사용</span></td>
-							<td>
-								<p class="sbtn">
-									<a href="https://sian.pms.or.kr/with_adm/admin/adminWrite.html">수정</a>
-									<a class="gray_line" href="javascript:void(0)" onclick="layer_open('delPop', 'del_Pop');return false;">삭제</a>
-								</p>
-							</td>
-						</tr>
-						<tr>
-							<td>17</td>
-							<td>gPdbs0708</td>
-							<td><a href="https://sian.pms.or.kr/with_adm/admin/adminView.html">김혜윤</a></td>
-							<td>070-1234-5678</td>
-							<td>2023-10-25</td>
-							<td><span class="state">미사용</span></td>
-							<td>
-								<p class="sbtn">
-									<a href="https://sian.pms.or.kr/with_adm/admin/adminWrite.html">수정</a>
-									<a class="gray_line" href="javascript:void(0)" onclick="layer_open('delPop', 'del_Pop');return false;">삭제</a>
-								</p>
-							</td>
-						</tr>
-						<tr>
-							<td>16</td>
-							<td>Abcke</td>
-							<td><a href="https://sian.pms.or.kr/with_adm/admin/adminView.html">김민정</a></td>
-							<td>070-1234-5678</td>
-							<td>2023-10-25</td>
-							<td><span class="state on">사용</span></td>
-							<td>
-								<p class="sbtn">
-									<a href="https://sian.pms.or.kr/with_adm/admin/adminWrite.html">수정</a>
-									<a class="gray_line" href="javascript:void(0)" onclick="layer_open('delPop', 'del_Pop');return false;">삭제</a>
-								</p>
-							</td>
-						</tr>
-						<tr>
-							<td>15</td>
-							<td>Abcke</td>
-							<td><a href="https://sian.pms.or.kr/with_adm/admin/adminView.html">김민정</a></td>
-							<td>070-1234-5678</td>
-							<td>2023-10-25</td>
-							<td><span class="state">미사용</span></td>
-							<td>
-								<p class="sbtn">
-									<a href="https://sian.pms.or.kr/with_adm/admin/adminWrite.html">수정</a>
-									<a class="gray_line" href="javascript:void(0)" onclick="layer_open('delPop', 'del_Pop');return false;">삭제</a>
-								</p>
-							</td>
-						</tr>
-						<tr>
-							<td>14</td>
-							<td>Abcke</td>
-							<td><a href="https://sian.pms.or.kr/with_adm/admin/adminView.html">김민정</a></td>
-							<td>070-1234-5678</td>
-							<td>2023-10-25</td>
-							<td><span class="state on">사용</span></td>
-							<td>
-								<p class="sbtn">
-									<a href="https://sian.pms.or.kr/with_adm/admin/adminWrite.html">수정</a>
-									<a class="gray_line" href="javascript:void(0)" onclick="layer_open('delPop', 'del_Pop');return false;">삭제</a>
-								</p>
-							</td>
-						</tr>
-						<tr>
-							<td>13</td>
-							<td>Abcke</td>
-							<td><a href="https://sian.pms.or.kr/with_adm/admin/adminView.html">김민정</a></td>
-							<td>070-1234-5678</td>
-							<td>2023-10-25</td>
-							<td><span class="state">미사용</span></td>
-							<td>
-								<p class="sbtn">
-									<a href="https://sian.pms.or.kr/with_adm/admin/adminWrite.html">수정</a>
-									<a class="gray_line" href="javascript:void(0)" onclick="layer_open('delPop', 'del_Pop');return false;">삭제</a>
-								</p>
-							</td>
-						</tr>
-						<!-- <tr class="nodata">
-							<td colspan="7">등록된 관리자가 없습니다.</td>
-						</tr> -->
+						</c:forEach>
 					</tbody>
 				</table>
 				
