@@ -45,4 +45,35 @@ public class AdminController {
 		model.addAttribute("infListCnt", listCount);
 		return "/admin/infList";
 	}
+	
+	@RequestMapping("/admin/bbsList.do")
+	public String adminBbsList(Model model)
+	{
+		
+		return "/admin/bbsList";
+	}
+	
+	@RequestMapping("/admin/comList.do")
+	public String adminComList(Model model)
+	{
+		return "/admin/comList";
+	}
+	
+	@RequestMapping("/admin/notList.do")
+	public String adminNotList(Model model)
+	{
+		return "/admin/notList";
+	}
+	
+	@RequestMapping("/admin/accWaitList.do")
+	public String adminAccWaitList(Model model)
+	{
+		return "/admin/accWaitList";
+	}
+	
+	@RequestMapping("/admin/accCompList.do")
+	public String adminAccCompList(Model model)
+	{
+		return "/admin/accCompList";
+	}
 }

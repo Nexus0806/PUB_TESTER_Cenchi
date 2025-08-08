@@ -32,28 +32,27 @@
 </div>			
 		<div id="container">
 			<ul id="lmn">
-				<li class="on"><a href="adminList.html">회원관리</a>
+				<li class="on"><a href="/admin/infList.do">회원관리</a>
 					<ul class="dep3">
 						<li class="on"><a href="/admin/infList.do">인플루언서 관리</a></li>
 						<li><a href="/admin/bssList.do">사업자 관리</a></li>
 					</ul>	
 				</li>
-				<li ><a href="https://sian.pms.or.kr/with_adm/career/careerList.html">커뮤니티</a>
+				<li ><a href="/admin/comList.do">커뮤니티</a>
 					<ul class="dep3">
-						<li ><a href="https://sian.pms.or.kr/with_adm/career/careerList.html">커뮤니티 게시글 관리</a></li>
-						<li ><a href="https://sian.pms.or.kr/with_adm/career/idpList.html">관리자 게시글 관리</a></li>
+						<li ><a href="/admin/comList.do">커뮤니티 게시글 관리</a></li>
 					</ul>
 				</li>
-				<li ><a href="https://sian.pms.or.kr/with_adm/contents/popupList.html">공지/이벤트관리</a>
+				<li ><a href="/admin/notList.do">공지/이벤트관리</a>
 					<ul class="dep3">
-						<li ><a href="https://sian.pms.or.kr/with_adm/contents/popupList.html">공지사항 관리</a></li>
-						<li ><a href="https://sian.pms.or.kr/with_adm/contents/popupList.html">이벤트 관리</a></li>
+						<li ><a href="/admin/notList.do">공지사항 관리</a></li>
+						<li ><a href="/admin/evtList.do">이벤트 관리</a></li>
 					</ul>
 				</li>
-				<li ><a href="https://sian.pms.or.kr/with_adm/board/boardList.html">체험단 관리</a>
+				<li ><a href="/admin/accWaitList.do">체험단 관리</a>
 					<ul class="dep3">
-						<li ><a href="https://sian.pms.or.kr/with_adm/board/boardList.html">체험단 승인 관리</a></li>
-						<li ><a href="https://sian.pms.or.kr/with_adm/board/boardList.html">체험단 게시글 관리</a></li>
+						<li ><a href="/admin/accWaitList.do">체험단 승인 관리</a></li>
+						<li ><a href="/admin/accCompList.do">체험단 게시글 관리</a></li>
 					</ul>
 				</li>
 			</ul>	
