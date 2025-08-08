@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+/* Layout */
+#wrap			{margin-left:0px; width:100%;}
+
+#container	{display:flex; flex-wrap:wrap; width:100%; min-width:1350px !important;  margin-top:0px;min-height:100%; height:auto !important;}
+#content		{width:calc(100% - 220px); min-height:441px;height:auto !important; box-sizing: border-box;padding: 30px;}
+
+#header									{width:100%; min-width:1350px !important; height:60px; position:sticky; top:0; z-index:2; display:flex; justify-content: space-between; align-items:center; background:#fff; padding-left:15px; border-bottom:solid 1px #ddd;}
+#header h1								{float:left; width: 180px;height: 50px; text-align:center;}
+#head_right 								{display:flex; align-items:center;}
+#head_right p 							{font-size:15px; color:#777}
+#head_right p strong 				{font-weight: 500; color:var(--navy); display:inline-block;margin-right: 4px; position:relative}
+#head_right p strong::before 	{display:inline-block; content:''; position:absolute; bottom:0; left:0; width:100%; height:8px;z-index: -1;background: #eaebf2;}
+#head_right a 	   						{display:inline-block; transition:all 0.2s}
+#head_right a#extendTimer		{margin:0; vertical-align:top;}
+#head_right .mp 						{font-size:0; width:18px; height:18px; background: url('../images/common/mp.png')no-repeat; margin-left:25px; color: #ddd;}
+#head_right .mp:hover 			{background-image:url('../images/common/mp_on.png')}
+#head_right .out 						{height: 59px; width:100px; background:#ededed; text-align:center; font-size:13px; color:#000;margin-left: 35px; padding-top:18px;}
+#head_right .out::before 			{display:inline-block; content:''; width:14px; height:15px;background: url('../images/common/out.png')no-repeat; vertical-align: middle; margin:3px 6px 5px 0;}
+#head_right .out:hover 			{background:#383838; color:#fff}
+#head_right .out:hover::before	{background-image:url('../images/common/out_on.png')} 
+#head_right .timer					{display:inline-block; background:var(--navyBg); border-radius:3px; padding:4px 6px; font-weight:500; font-size:14px; line-height:15px; color:var(--navy)}
+
+#header ul.gnb 				{display:flex;align-items: center; position:absolute; left:219px;}
+#header ul.gnb li				{display:block; position:relative;}
+#header ul.gnb li > a			{display:block; font-weight:500; color:#222; font-size:17px; line-height:57px; padding:0 30px 3px; transition:all 0.2s; text-align:center;}
+#header ul.gnb li a:hover	{color:var(--navy);}
+#header ul.gnb li.on::after{position:absolute; content:''; width:100%; height:3px; background:var(--navy); bottom:0; left:0;}			
+#header ul.gnb li.on a		{color:var(--navy);}
+
+#lmn									{width:220px; min-height:440px; height:100%; min-height:calc(100dvh - 60px); background:#383838; position: sticky; top: 60px;}
+#lmn > li > a						{display:block;color:#fff; font-weight:500; font-size:14px; background: #232323; padding: 7px 15px; min-height: 50px;display: flex;align-items: center;}
+#lmn > li.on > a					{color:var(--sky)}
+#lmn > li > a:hover			{color:var(--sky)}
+#lmn ul.dep3					{overflow:hidden;display:block;background:#383838;}
+#lmn ul.dep3 > li > a			{display:block;padding: 10px 25px 10px 15px; color:#afafaf; font-size:14px; word-break: keep-all; transition:all 0.2s;}
+#lmn ul.dep3 > li > a:hover{color:var(--sky);}
+#lmn ul.dep3 > li.on > a	{color:var(--sky); background:var(--navy) url('../images/common/left_arrow.png') right 14px center no-repeat;}
+
+h2					{overflow:hidden; display:block; margin:0 0 0 0; color:#222; font-weight:600; font-size:24px; margin:40px 0 15px;}
+h2:first-of-type,
+h2 + h3			{margin-top:0;}
+h3					{overflow:hidden; display:block; margin:0 0 0 0; color:#222; font-weight:600; font-size:19px; margin:30px 0 15px; position:relative;}
+h3 span			{font-weight:500; font-size:16px;}
+h3::before		{content:''; margin:5px 5px 0 0; vertical-align:top; display:inline-block; width:9px; height:9px; border-radius:50%; border:solid 3px var(--red)}
+
+ul.s_tab					{display:flex; gap:7px; margin-bottom:20px; background:var(--navy); padding:8px 10px 0 10px; border-radius:10px 10px 0 0}
+ul.s_tab > li				{width:100%; display:flex;justify-content: center; position:relative; margin-left:-1px;}
+ul.s_tab > li a			{display:block; width:100%; border-bottom:0; border-radius:7px 7px 0 0; font-size:16px; color:#ffffffcc; padding:10px 10px 11px 10px; text-align:center; transition:0.2s;}
+ul.s_tab > li a:hover	{color:var(--navy); font-weight:500; background:#fff;}
+ul.s_tab > li.on a		{font-weight:600; color:#222; background:#fff;}
+.tab_wrap .tab_cont					{display:none;}
+.tab_wrap .tab_cont.on			{display:block;}
+.swiper-container:has(ul.s_tab)	{background:var(--navy); border-radius:10px 10px 0 0; padding:8px 50px 0 50px;}
+.swiper-container ul.s_tab			{padding:0; gap:revert;}
+.swiper-button-next{background:var(--navy) url('../images/cont/next_arr.png') no-repeat 50% 50%/13px !important; right:0 !important;}
+.swiper-button-prev{background:var(--navy) url('../images/cont/prev_arr.png') no-repeat 50% 50%/13px !important; left:0 !important;}
+.swiper-button-next, .swiper-button-prev	{width:50px !important; height:50px !important; margin-top:-25px !important}
+
+/* 페이징 */
+.paging							{padding-top:26px; text-align:center; font-size:0;}
+.paging > a					{display:inline-block;margin: 0 4px;padding: 5px;  color:#555; border:1px solid #ddd;text-align: center; cursor:pointer !important; font-size:13px; font-weight:300; line-height:1.2; font-family:"Pretendard", sans-serif; border-radius: 3px;min-width: 28px;height: 28px; vertical-align: top; transition:all 0.2s}
+.paging > a.btn_first		{margin:0 5px; background:#f5f5f5 url('../images/common/ll.png') no-repeat 50% 50%;}
+.paging > a.btn_prev		{margin:0 10px 0 0;background: #f5f5f5 url('../images/common/l.png') no-repeat 50% 50%;}
+.paging > a.btn_next		{margin:0 5px 0 10px;background: #f5f5f5 url('../images/common/r.png') no-repeat 57% 50%;margin-left: 10px;}
+.paging > a.btn_last		{margin:0; background:#f5f5f5 url('../images/common/rr.png') no-repeat 50% 50%;}
+.paging > a.current		{color: #fff !important;border: 1px solid #414141;background: #414141;}
+.paging > a > span		{display:none;}
+.paging > a:not(.current):hover		{color:var(--navy); border-color:var(--navy);}

@@ -16,68 +16,16 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/slick.css"/>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<title>중소기업을 위한 공공체험단</title>
-	<script src="/preuser/_js/pop_layer.js"></script>
-	<script src="/preuser/_js/cont.js"></script>
+	<script src="/_js/pop_layer.js"></script>
+	<script src="/_js/cont.js"></script>
 </head>
 <body>
 
 <jsp:include page="/WEB-INF/jsp/_inc/header.jsp" />
 
-<script type="text/javascript">
-
-$('.navi_btn').click(function(){
-		$('.navi').stop(true).fadeToggle('fast');
-		$(this).toggleClass('on');
-		$('#tm_header').toggleClass('on');
-	});
-
-$('.close').click(function(){
-		$('.navi').stop(true).fadeOut('fast');
-		$('#tm_header').removeClass('on');
-	});
+<script src="/js/ui.js"></script>
 
 
-
-//dep01, dep02
-$('.lnb .dep01 > li:has(.dep02)').children('a').addClass('has-sub');
-if($(window).width() <= 1024) {
-	$(".lnb .dep01 > li > a").click(function(){
-		if($(this).is(".has-sub")){
-			event.preventDefault();
-			$(this).parent().siblings('li').children('ul.dep02').stop().slideUp();
-			$(this).parent().siblings('li').children('a').removeClass('on');
-			$(this).siblings('ul').stop().slideToggle();
-			$(this).toggleClass('on');
-		}else{
-		}
-	});
-};
-
-//search
- $('.sch_btn').click(function(){
-		$('.tm_sch_wrap').fadeIn();
-		//$('#header').addClass('click');
-	});
-	$('.tm_x').click(function(){
-		$('.tm_sch_wrap').fadeOut();
-		//$('#header').removeClass('click');
-});
-
-
-//gnb
-$('#header ul.gnb > li').mouseenter(function(){
-	$('#header ul.gnb > li').removeClass('on');
-	$('#header .gnb_sub').stop().hide();
-	$(this).addClass('on');
-	$(this).find('.gnb_sub').stop().fadeIn(200);
-});
-$('#header ul.gnb > li').mouseleave(function(){
-	$('#header ul.gnb > li').removeClass('on');
-	$('#header .gnb_sub').stop().fadeOut(200);
-});
-
-
-</script>    
 	<div id="wrap">
 		<div class="banner_wrap">
 			<ul class="banner">
@@ -270,619 +218,75 @@ $('#header ul.gnb > li').mouseleave(function(){
 			<h2 class="h2_tit h2_tit02">인기 체험단</h2>
 
 			<ul class="prd_li prd_slide">
-				<li>
-					<a href="#none">
-						<div class="prd_img">
-							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
-						</div><!-- prd_img -->
-						<p class="sns_txt sns_inst">방문</p>
-						<div class="prd_txt">
-							<strong>[서울/강동구] 셀프사진관 네모세모동그라미</strong>
-							<p>흑백/컬러 셀프사진 3만원권 (2~4인) 인원 변경시 사전 연락 필수</p>
-						</div><!-- prd_txt -->
-						<div class="prd_rec">
-							<span class="p_date p_day">D-Day</span>
-							<ul class="rec_app">
-								<li class="tt">신청 <b>120</b>명</li>
-								<li> / 모집 <em>10</em>명</li>
-							</ul>
-						</div><!-- prd_rec -->
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<div class="prd_img">
-							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
-						</div><!-- prd_img -->
-						<p class="sns_txt sns_inst">방문</p>
-						<div class="prd_txt">
-							<strong>[서울/용산구] 기왓집 간장게장 2인 정식</strong>
-							<p>간장게장 2인 정식</p>
-						</div><!-- prd_txt -->
-						<div class="prd_rec">
-							<span class="p_date p_day">D-Day</span>
-							<ul class="rec_app">
-								<li class="tt">신청 <b>120</b>명</li>
-								<li> / 모집 <em>10</em>명</li>
-							</ul>
-						</div><!-- prd_rec -->
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<div class="prd_img">
-							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
-						</div><!-- prd_img -->
-						<p class="sns_txt sns_yout">배송</p>
-						<div class="prd_txt">
-							<strong>[스미키] 마이크로 마스카라EX 외</strong>
-							<p>스미키 마스카라+뷰러 1세트</p>
-						</div><!-- prd_txt -->
-						<div class="prd_rec">
-							<span class="p_date">2일 남음</span>
-							<ul class="rec_app">
-								<li class="tt">신청 <b>150</b>명</li>
-								<li> / 모집 <em>20</em>명</li>
-							</ul>
-						</div><!-- prd_rec -->
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<div class="prd_img">
-							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
-						</div><!-- prd_img -->
-						<p class="sns_txt sns_yout">배송</p>
-						<div class="prd_txt">
-							<strong>[프레이포] 쿨링 아로마 스프레이</strong>
-							<p>아로마 스프레이 1세트</p>
-						</div><!-- prd_txt -->
-						<div class="prd_rec">
-							<span class="p_date">3일 남음</span>
-							<ul class="rec_app">
-								<li class="tt">신청 <b>150</b>명</li>
-								<li> / 모집 <em>10</em>명</li>
-							</ul>
-						</div><!-- prd_rec -->
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<div class="prd_img">
-							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
-						</div><!-- prd_img -->
-						<p class="sns_txt sns_inst">배송</p>
-						<div class="prd_txt">
-							<strong>[샤오] 샤오 무선 선풍기</strong>
-							<p>샤오 무선 선풍기 1개</p>
-						</div><!-- prd_txt -->
-						<div class="prd_rec">
-							<span class="p_date">3일 남음</span>
-							<ul class="rec_app">
-								<li class="tt">신청 <b>150</b>명</li>
-								<li> / 모집 <em>10</em>명</li>
-							</ul>
-						</div><!-- prd_rec -->
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<div class="prd_img">
-							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
-						</div><!-- prd_img -->
-						<p class="sns_txt sns_blog">배송</p>
-						<div class="prd_txt">
-							<strong>[미소건강헬스푸드] 미소건강주스 자몽주스</strong>
-							<p>미소건강주스 자몽</p>
-						</div><!-- prd_txt -->
-						<div class="prd_rec">
-							<span class="p_date">3일 남음</span>
-							<ul class="rec_app">
-								<li class="tt">신청 <b>150</b>명</li>
-								<li> / 모집 <em>10</em>명</li>
-							</ul>
-						</div><!-- prd_rec -->
-					</a>
-				</li>
-				<li>
-					<a href="#none">
-						<div class="prd_img">
-							<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
-						</div><!-- prd_img -->
-						<p class="sns_txt sns_blog">배송</p>
-						<div class="prd_txt">
-							<strong>[해준닭갈비] 춘천닭갈비</strong>
-							<p>춘천닭갈비(해준닭갈비) 밀키트</p>
-						</div><!-- prd_txt -->
-						<div class="prd_rec">
-							<span class="p_date">3일 남음</span>
-							<ul class="rec_app">
-								<li class="tt">신청 <b>150</b>명</li>
-								<li> / 모집 <em>10</em>명</li>
-							</ul>
-						</div><!-- prd_rec -->
-					</a>
-				</li>
+				<c:forEach var="vo" items="${popCampList}">
+					<li>
+						<a href="#none">
+							<div class="prd_img">
+								<img src="${pageContext.request.contextPath}/images/pc/main/${vo.campThub}"
+								alt="" 
+								style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;"
+								onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/images/pc/main/no_img.png';">
+							</div><!-- prd_img -->
+							<p class="sns_txt sns_inst">${vo.campType}</p>
+							<div class="prd_txt">
+								<strong>${vo.campTitle}</strong>
+								<p>${vo.campService}</p>
+							</div><!-- prd_txt -->
+							<div class="prd_rec">
+								<c:choose>
+								<c:when test="${vo.dDay == 0}">
+									<span class="p_date p_day">D-Day</span>
+								</c:when>
+								<c:when test="${vo.dDay != 0}">
+									<span class="p_date">${vo.dDay}일 남음</span>
+								</c:when>
+								</c:choose>
+									<ul class="rec_app">
+										<li class="tt">신청 <b>${vo.campSumCount}</b>명</li>
+										<li> / 모집 <em>${vo.campRecruite}</em>명</li>
+									</ul>
+							</div><!-- prd_rec -->
+						</a>
+					</li>
+				</c:forEach>
 			</ul>
-		</div><!-- pd_slider sec03 체험단 리스트 (슬라이드) -->
+		</div>
 
 		<div class="pd_list section sec04">
 			<h2 class="h2_tit h2_tit03">신규 체험단</h2>
 
 			<div class="web">
 				<ul class="prd_li prd_li02">
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_yout">배송</p>
-							<div class="prd_txt">
-								<strong>[스미키] 마이크로 마스카라EX 외</strong>
-								<p>스미키 마스카라+뷰러 1세트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">2일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>20</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[클리우] pck(블레미시 스틱)</strong>
-								<p>클리우 pck 블레미시 스틱 1ea</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[으뜸제약] 그린 오메가3</strong>
-								<p>으뜸제약 그린 오메가3 1세트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">1일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img12.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[아이아이] CCP로션&CCP스틱밤</strong>
-								<p>로션 1개+스틱밤 1개</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">1일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">배송</p>
-							<div class="prd_txt">
-								<strong>[듀이] 온열 진동 마사지기</strong>
-								<p>온열 진동 마사지기 1개</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_yout">배송</p>
-							<div class="prd_txt">
-								<strong>[프레이포] 쿨링 아로마 스프레이</strong>
-								<p>아로마 스프레이 1세트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[해준닭갈비] 춘천닭갈비</strong>
-								<p>춘천닭갈비(해준닭갈비) 밀키트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">방문</p>
-							<div class="prd_txt">
-								<strong>[서울/용산구] 기왓집 간장게장 2인 정식</strong>
-								<p>간장게장 2인 정식</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date p_day">D-Day</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>120</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
+				<c:forEach var="vo" items="${newCampList}">
 					<li>
 						<a href="#none">
 							<div class="prd_img">
 								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">방문</p>
+							<p class="sns_txt sns_inst">${vo.campType}</p>
 							<div class="prd_txt">
-								<strong>[서울/강동구] 셀프사진관 네모세모동그라미</strong>
-								<p>흑백/컬러 셀프사진 3만원권 (2~4인) 인원 변경시 사전 연락 필수</p>
+								<strong>${vo.campTitle}</strong>
+								<p>${vo.campService}</p>
 							</div><!-- prd_txt -->
 							<div class="prd_rec">
-								<span class="p_date p_day">D-Day</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>120</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
+								<c:choose>
+								<c:when test="${vo.dDay == 0}">
+									<span class="p_date p_day">D-Day</span>
+								</c:when>
+								<c:when test="${vo.dDay != 0}">
+									<span class="p_date">${vo.dDay}일 남음</span>
+								</c:when>
+								</c:choose>
+									<ul class="rec_app">
+										<li class="tt">신청 <b>${vo.campSumCount}</b>명</li>
+										<li> / 모집 <em>${vo.campRecruite}</em>명</li>
+									</ul>
 							</div><!-- prd_rec -->
 						</a>
 					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img11.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_yout">배송</p>
-							<div class="prd_txt">
-								<strong>[서울/구로구] 헤이세이치킨</strong>
-								<p>치킨 1마리(종류무관) 구매권</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">2일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[미소건강헬스푸드] 미소건강주스 자몽주스</strong>
-								<p>미소건강주스 자몽</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">배송</p>
-							<div class="prd_txt">
-								<strong>[샤오] 샤오 무선 선풍기</strong>
-								<p>샤오 무선 선풍기 1개</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
+				</c:forEach>
 				</ul>
 			</div> <!-- web -->
-
-			<!-- 이 아래에 있는 리스트도 상단의 web 안에 prd_li02 와 스타일 동일한 리스트 입니다!
-			반응형 959px 사이즈부터 최대 6개까지만 노출되고, 더보기 버튼 누르면 나머지 리스트 노출 되게 해주시면 됩니다.
-			아래 sec05 섹션도 동일하게 적용 부탁드립니다. -->
-
-			<div class="tablet mobile">
-				<ul class="prd_li prd_li02 prd_li02_2">
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_yout">배송</p>
-							<div class="prd_txt">
-								<strong>[스미키] 마이크로 마스카라EX 외</strong>
-								<p>스미키 마스카라+뷰러 1세트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">2일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>20</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[클리우] pck(블레미시 스틱)</strong>
-								<p>클리우 pck 블레미시 스틱 1ea</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[으뜸제약] 그린 오메가3</strong>
-								<p>으뜸제약 그린 오메가3 1세트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">1일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img12.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[아이아이] CCP로션&CCP스틱밤</strong>
-								<p>로션 1개+스틱밤 1개</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">1일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">배송</p>
-							<div class="prd_txt">
-								<strong>[듀이] 온열 진동 마사지기</strong>
-								<p>온열 진동 마사지기 1개</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_yout">배송</p>
-							<div class="prd_txt">
-								<strong>[프레이포] 쿨링 아로마 스프레이</strong>
-								<p>아로마 스프레이 1세트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[해준닭갈비] 춘천닭갈비</strong>
-								<p>춘천닭갈비(해준닭갈비) 밀키트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">방문</p>
-							<div class="prd_txt">
-								<strong>[서울/용산구] 기왓집 간장게장 2인 정식</strong>
-								<p>간장게장 2인 정식</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date p_day">D-Day</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>120</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">방문</p>
-							<div class="prd_txt">
-								<strong>[서울/강동구] 셀프사진관 네모세모동그라미</strong>
-								<p>흑백/컬러 셀프사진 3만원권 (2~4인) 인원 변경시 사전 연락 필수</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date p_day">D-Day</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>120</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img11.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_yout">배송</p>
-							<div class="prd_txt">
-								<strong>[서울/구로구] 헤이세이치킨</strong>
-								<p>치킨 1마리(종류무관) 구매권</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">2일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[미소건강헬스푸드] 미소건강주스 자몽주스</strong>
-								<p>미소건강주스 자몽</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">배송</p>
-							<div class="prd_txt">
-								<strong>[샤오] 샤오 무선 선풍기</strong>
-								<p>샤오 무선 선풍기 1개</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-				</ul>
-
-				<div class="list02_more">
-					<a href="#none" class="li02_btn">더보기</a>
-				</div><!-- list02_more -->
-			</div> <!-- prd_li_wrap ta,mo -->
-
 		</div><!-- pd_list sec04 체험단 리스트 (슬라이드X) -->
 
 		<div class="pd_list section sec05">
@@ -890,474 +294,36 @@ $('#header ul.gnb > li').mouseleave(function(){
 
 			<div class="web">
 				<ul class="prd_li prd_li02">
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">배송</p>
-							<div class="prd_txt">
-								<strong>[듀이] 온열 진동 마사지기</strong>
-								<p>온열 진동 마사지기 1개</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[해준닭갈비] 춘천닭갈비</strong>
-								<p>춘천닭갈비(해준닭갈비) 밀키트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img11.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_yout">배송</p>
-							<div class="prd_txt">
-								<strong>[서울/구로구] 헤이세이치킨</strong>
-								<p>치킨 1마리(종류무관) 구매권</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">2일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[미소건강헬스푸드] 미소건강주스 자몽주스</strong>
-								<p>미소건강주스 자몽</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_yout">배송</p>
-							<div class="prd_txt">
-								<strong>[스미키] 마이크로 마스카라EX 외</strong>
-								<p>스미키 마스카라+뷰러 1세트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">2일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>20</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[으뜸제약] 그린 오메가3</strong>
-								<p>으뜸제약 그린 오메가3 1세트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">1일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img12.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[아이아이] CCP로션&CCP스틱밤</strong>
-								<p>로션 1개+스틱밤 1개</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">1일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
+					<c:forEach var="vo" items="${deadCampList}">
 					<li>
 						<a href="#none">
 							<div class="prd_img">
 								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">방문</p>
+							<p class="sns_txt sns_inst">${vo.campType}</p>
 							<div class="prd_txt">
-								<strong>[서울/강동구] 셀프사진관 네모세모동그라미</strong>
-								<p>흑백/컬러 셀프사진 3만원권 (2~4인) 인원 변경시 사전 연락 필수</p>
+								<strong>${vo.campTitle}</strong>
+								<p>${vo.campService}</p>
 							</div><!-- prd_txt -->
 							<div class="prd_rec">
-								<span class="p_date p_day">D-Day</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>120</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
+								<c:choose>
+								<c:when test="${vo.dDay == 0}">
+									<span class="p_date p_day">D-Day</span>
+								</c:when>
+								<c:when test="${vo.dDay != 0}">
+									<span class="p_date">${vo.dDay}일 남음</span>
+								</c:when>
+								</c:choose>
+									<ul class="rec_app">
+										<li class="tt">신청 <b>${vo.campSumCount}</b>명</li>
+										<li> / 모집 <em>${vo.campRecruite}</em>명</li>
+									</ul>
 							</div><!-- prd_rec -->
 						</a>
 					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_yout">배송</p>
-							<div class="prd_txt">
-								<strong>[프레이포] 쿨링 아로마 스프레이</strong>
-								<p>아로마 스프레이 1세트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[클리우] pck(블레미시 스틱)</strong>
-								<p>클리우 pck 블레미시 스틱 1ea</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">방문</p>
-							<div class="prd_txt">
-								<strong>[서울/용산구] 기왓집 간장게장 2인 정식</strong>
-								<p>간장게장 2인 정식</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date p_day">D-Day</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>120</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">배송</p>
-							<div class="prd_txt">
-								<strong>[샤오] 샤오 무선 선풍기</strong>
-								<p>샤오 무선 선풍기 1개</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
+				</c:forEach>
 				</ul>
 			</div> <!-- web -->
-
-			<div class="tablet mobile">
-				<ul class="prd_li prd_li02 prd_li03_2">
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img04.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">배송</p>
-							<div class="prd_txt">
-								<strong>[듀이] 온열 진동 마사지기</strong>
-								<p>온열 진동 마사지기 1개</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img10.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[해준닭갈비] 춘천닭갈비</strong>
-								<p>춘천닭갈비(해준닭갈비) 밀키트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img11.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_yout">배송</p>
-							<div class="prd_txt">
-								<strong>[서울/구로구] 헤이세이치킨</strong>
-								<p>치킨 1마리(종류무관) 구매권</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">2일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img09.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[미소건강헬스푸드] 미소건강주스 자몽주스</strong>
-								<p>미소건강주스 자몽</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img03.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_yout">배송</p>
-							<div class="prd_txt">
-								<strong>[스미키] 마이크로 마스카라EX 외</strong>
-								<p>스미키 마스카라+뷰러 1세트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">2일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>20</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img06.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[으뜸제약] 그린 오메가3</strong>
-								<p>으뜸제약 그린 오메가3 1세트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">1일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img12.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[아이아이] CCP로션&CCP스틱밤</strong>
-								<p>로션 1개+스틱밤 1개</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">1일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">방문</p>
-							<div class="prd_txt">
-								<strong>[서울/강동구] 셀프사진관 네모세모동그라미</strong>
-								<p>흑백/컬러 셀프사진 3만원권 (2~4인) 인원 변경시 사전 연락 필수</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date p_day">D-Day</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>120</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img05.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_yout">배송</p>
-							<div class="prd_txt">
-								<strong>[프레이포] 쿨링 아로마 스프레이</strong>
-								<p>아로마 스프레이 1세트</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img01.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_blog">배송</p>
-							<div class="prd_txt">
-								<strong>[클리우] pck(블레미시 스틱)</strong>
-								<p>클리우 pck 블레미시 스틱 1ea</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img07.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">방문</p>
-							<div class="prd_txt">
-								<strong>[서울/용산구] 기왓집 간장게장 2인 정식</strong>
-								<p>간장게장 2인 정식</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date p_day">D-Day</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>120</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-					<li>
-						<a href="#none">
-							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img08.png)no-repeat 50% 50% / cover;">
-							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">배송</p>
-							<div class="prd_txt">
-								<strong>[샤오] 샤오 무선 선풍기</strong>
-								<p>샤오 무선 선풍기 1개</p>
-							</div><!-- prd_txt -->
-							<div class="prd_rec">
-								<span class="p_date">3일 남음</span>
-								<ul class="rec_app">
-									<li class="tt">신청 <b>150</b>명</li>
-									<li> / 모집 <em>10</em>명</li>
-								</ul>
-							</div><!-- prd_rec -->
-						</a>
-					</li>
-				</ul>
-
-				<div class="list03_more">
-					<a href="#none" class="li03_btn">더보기</a>
-				</div><!-- list03_more -->
-			</div> <!-- ta,mo -->
-
 		</div><!-- pd_list sec05 체험단 리스트 (슬라이드X) -->
 
 		<div class="bt_banner section sec06">

@@ -172,7 +172,6 @@
 			<version>8.4</version>
 		</dependency>
 		-->
-
         <dependency>
             <groupId>com.googlecode.log4jdbc</groupId>
             <artifactId>log4jdbc</artifactId>
