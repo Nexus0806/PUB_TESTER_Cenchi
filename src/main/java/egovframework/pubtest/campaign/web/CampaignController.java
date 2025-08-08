@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import egovframework.pubtest.campaign.service.CampaignService;
 import egovframework.pubtest.campaign.service.CampaignVO;
+import egovframework.pubtest.util.PubTestUtil;
 import egovframework.pubtest.campaign.service.CampaignSubmitVO;
 
 @Controller
@@ -27,20 +28,28 @@ public class CampaignController {
 	@RequestMapping("/campaignList.do")
 	public String CampaignList(Model model) {
 		
-		/*List<CampaignVO> list = campaignService.selectCampaignList();*/
+		List<CampaignVO> list = campaignService.selectCampaignList();
+		
+		model.addAttribute("popCampList", list);
 		
 		return "/preuser/campaign/campaignList";
 	}
 	
-	//@GetMapping("/campaignView.do")
-	@RequestMapping("/campaignView.do")
-	public String Campaigndetail(Model model) {
-		//@RequestParam int campIdx
-		/*
+	@GetMapping("/campaignView.do")
+	public String Campaigndetail(@RequestParam int campIdx, Model model) {
+		
+		
 		CampaignVO campvo = campaignService.selectCampaignDetail(campIdx);
 		
-		model.addAttribute(campvo);
-		*/
+		String startTime = PubTestUtil.datetimeToTime(campvo.getCampStartdate());
+		String endTime = PubTestUtil.datetimeToTime(campvo.getCampEnddate());
+		
+		String[] keyArray = campvo.getCampKeyword().split(",");
+		
+		model.addAttribute("startTime",startTime);
+		model.addAttribute("endTime",endTime);
+		model.addAttribute("keywordList", keyArray);
+		model.addAttribute("campVO",campvo);
 		
 		return "/preuser/campaign/campaignView";
 	}

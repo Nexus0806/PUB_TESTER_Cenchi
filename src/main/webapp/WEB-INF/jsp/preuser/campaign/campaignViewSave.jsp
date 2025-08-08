@@ -34,25 +34,25 @@
 				<div class="View_wrap">
 					<div class="View_con">
 						<div class="View_top mb40">
-							<p class="v_tit">${campVO.campTitle}</p>
+							<p class="v_tit">[함경/개성시] 함흥 북경 냉면 손치기 구이</p>
 
 							<ul class="opt">
 								<!-- 아이콘 클래스명 입니다. yout 유튜브 숏츠 / yout02 유튜브 / nblog 네이버 블로그 / insta 인스타그램 -->
-								<li class="sns_tit"><p class="op_sns yout02"></p><span>${campVO.campAdType}</span></li>
-								<li><p class="op_num">#${campVO.campIdx}</p></li>
-								<li><p class="op_cate">${campVO.campType}</p></li>
-								<li><p class="op_cate02">${campVO.campCate}</p></li>
+								<li class="sns_tit"><p class="op_sns yout02"></p><span>유튜브</span></li>
+								<li><p class="op_num">#800421</p></li>
+								<li><p class="op_cate">방문형(오프라인)</p></li>
+								<li><p class="op_cate02">맛집</p></li>
 							</ul>
 						</div><!-- View_top -->
 
 						<ul class="con_list">
 							<li>
 								<span class="c_tit">주최자</span>
-								<b class="c_info clt" style="color: #222;"><span class="c_ic"></span>관리자 DB 공사중</b>
+								<b class="c_info clt" style="color: #222;"><span class="c_ic"></span> 넥서스팀 김가현 사원</b>
 							</li>
 							<li>
 								<span class="c_tit">제공서비스/물품</span>
-								<p class="edit clt">${campVO.campService}</p>
+								<p class="edit clt">에디터에 입력된 내용 노출시켜주세요.</p>
 							</li>
 							<li>
 								<span class="c_tit">방문정보</span>
@@ -62,52 +62,22 @@
 							</li>
 							<li>
 								<span class="c_tit">방문 주소</span>
-								<p class="edit clt">${campVO.campAddress}</p>
+								<p class="edit clt">에디터에 입력된 내용 노출시켜주세요.</p>
 							</li>
 							<li>
 								<span class="c_tit">방문 및 예약 안내</span>
-								<p class="edit clt">
-								
-									- 체험 가능 요일 : ${campVO.campAvailDays}  <br>
-									- 체험 가능 시간 : ${startTime}	~ ${endTime} <br>
-									
-									- 당일 예약 : <c:choose>
-												    <c:when test="${campVO.campReserve eq 'Y'}">
-												        당일예약 가능합니다. <br>
-												    </c:when>
-												    <c:otherwise>
-												        당일예약이 불가능합니다. 사전 문의 바랍니다. <br>
-												    </c:otherwise>
-												</c:choose>
-									<br>
-									- 예약 시 주의사항: ${campVO.campCaution}
-									<br><br>
-																		
-								<c:choose>
-							        <c:when test="${campVO.campType == '방문형' or campVO.campType == '구매형' or campVO.campType == '포장형'}"> 
-							                🚨 자세한 방문 일정 및 영상가이드는 담당자 연락처로 연락하여 조율 바랍니다.
-							        </c:when>
-							        <c:when test="${campVO.campType == '배송형'}">
-							                💻 온라인으로 진행되는 체험입니다. 제품은 회원 정보에 등록된 주소로 발송될 예정이니, 주소를 다시 한번 확인해 주세요.
-							        </c:when>
-							        <c:otherwise>
-							                - 자세한 가이드는 선정 후 개별적으로 안내됩니다.
-							        </c:otherwise>
-							    </c:choose>
-							    
-								</p>
+								<p class="edit clt">에디터에 입력된 내용 노출시켜주세요.</p>
 							</li>
 							<li>
 								<span class="c_tit">키워드 정보</span>
 								<div class="tag clt">
-									<c:forEach var="keyword" items="${keywordList}">
-										<em>${keyword}</em>
-									</c:forEach>
+									<em>북한 면치기 음식점</em>
+									<em>남북 관계</em>
 								</div>
 							</li>
 							<li>
 								<span class="c_tit">체험단 미션</span>
-								<p class="edit clt">${campVO.campMission}</p>
+								<p class="edit clt">에디터에 입력된 내용 노출시켜주세요.</p>
 							</li>
 							<li>
 								<span class="c_tit">공정위 문구(배너)</span>
@@ -149,8 +119,8 @@
 
 					<div class="View_info">
 						<!-- 이미지 -->
-						<p class="sn_img mb20" style="background: url(${pageContext.request.contextPath}/images/pc/main/${campVO.campThub})no-repeat 50% 50% / cover;"></p> 		
-							
+						<p class="sn_img mb20" style="background: url(https://sian.pms.or.kr/preuser/_img/pc/cont/view_img.jpg)no-repeat 50% 50% / cover;"></p>
+
 						<div class="sche">
 							<p class="sche_tit">체험단 일정</p>
 							<ul class="sche_list">

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import egovframework.pubtest.campaign.service.CampaignService;
 import egovframework.pubtest.campaign.service.CampaignSubmitVO;
 import egovframework.pubtest.campaign.service.CampaignVO;
+import egovframework.pubtest.util.PubTestUtil;
 
 @Service("campaignService")
 public class CampaignServiceImpl implements CampaignService{
@@ -15,7 +16,15 @@ public class CampaignServiceImpl implements CampaignService{
     
     @Override
 	public List<CampaignVO> selectCampaignList(){
-		return campaignDAO.selectCampaignList();
+    	List<CampaignVO> campaignList = campaignDAO.selectCampaignList();
+    	for(CampaignVO row : campaignList) {
+			if(row.getCampStartdate() != null)
+			{
+				long dDay = PubTestUtil.calcDday(row.getCampStartdate());
+				row.setdDay(dDay);
+			}
+    	}
+		return campaignList;
 	}
     
     @Override 
