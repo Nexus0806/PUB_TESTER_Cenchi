@@ -23,5 +23,29 @@ public class PubTestUtil {
 	       return dateTime.format(timeFormatter);
 	}
 	
+	public static String removeYearAndTimeFromDateTime(String dateStr) {
+	    DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	    LocalDateTime dateTime = LocalDateTime.parse(dateStr, inputFormatter);
+	    DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MM-dd");
+	        
+	    return dateTime.format(outputFormatter);
+	}
+	   
+    public static String datetimeToDate(String dateStr) {
+        // 입력값이 null이거나 비어있으면 그대로 null 반환
+        if (dateStr == null || dateStr.trim().isEmpty()) {
+            return null;
+        }
+        
+        try {
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime dateTime = LocalDateTime.parse(dateStr, inputFormatter);
+            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            return dateTime.format(outputFormatter);
+        } catch (Exception e) {
+            // 혹시 모를 포맷 에러에 대비
+            return null;
+        }
+    }
 }
 
