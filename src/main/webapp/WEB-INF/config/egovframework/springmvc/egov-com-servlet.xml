@@ -45,7 +45,22 @@
     <!-- IP 정보 기록 및 로그인 체크가 필요한 URL과 로그인 여부를 체크해줄 인터셉터를 등록한다. -->
 	<mvc:interceptors>
 		<mvc:interceptor>
+			<mvc:mapping path="/preuser/campaign/**"/>
+			<mvc:mapping path="/preuser/board/**"/>
+			<mvc:mapping path="/admin/**"/>
+			
+			<mvc:exclude-mapping path="/index.do"/>
+    		<mvc:exclude-mapping path="/_css/**"/>
+    		<mvc:exclude-mapping path="/_js/**"/>
+    		<mvc:exclude-mapping path="/_img/**"/>
+    		
+    		<bean class="egovframework.pubtest.main.web.LoginChkInterceptor">
+    		</bean>
+		</mvc:interceptor>
+	
+		<mvc:interceptor>		
 			<mvc:mapping path="/egov/**" />
+
 			<mvc:exclude-mapping path="/egov/login.do" />
 			<mvc:exclude-mapping path="/egov/makeSession.do" />
 			<bean class="egovframework.usr.com.interceptor.EgovWebAuthenticInterceptor">

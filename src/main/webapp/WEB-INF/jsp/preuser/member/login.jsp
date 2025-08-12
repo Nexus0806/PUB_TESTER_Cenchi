@@ -41,21 +41,27 @@
 			<li class="tab-link" data-tab="tab-2">소상공인</li>
         </ul>
 
-		<form action="${pageContext.request.contextPath}/preuser/member/login.do" method="post">
+		<form action="${pageContext.request.contextPath}/preuser/member/login.do" method="post" id="loginForm">
         <div id="tab-1" class="mem_con current">
 			<div class="login">
 				<p class="lg_wrap">
 					<label for="loginId">ID</label>
-					<input type="text" id="loginId" name="loginId" placeholder="이메일을 입력해주세요.">
+					<input type="text" id="loginId" name="loginId" placeholder="이메일을 입력해주세요."
+					value="${not empty savedID ? savedID : ''}">
 					<label for="password">Password</label>
 					<input class="mt10" type="password" id="loginPass" name="loginPass" placeholder="비밀번호를 입력해주세요.">
 				</p>
 				<div class="flex">
 					<p class="save_id">
-						<input class="checkbox" type="checkbox" id="save_id" name="save_id">
+						<input class="checkbox" type="checkbox" id="save_id" name="save_id"
+						<c:if test="${not empty savedID}">checked</c:if>>	<%-- savedID 항목이 비어있지 않다면, id 저장을 한것으로 간주 --%>
 						<label for="save_id">ID 저장</label>
 					</p>
 				</div>
+				
+				<c:if test="${not empty loginError}"> <%-- 로그인에 실패했다면(로그인 에러가 null 이 아니라면) --%>
+					<p class="j_caution" style="color:#e33">${loginError}</p>
+				</c:if>
 
 				<p class="lg_btn">
 					<a href="/preuser/member/join.do?type=inf">회원가입</a>
@@ -70,7 +76,7 @@
 				<p class="lg_wrap">
 					<label for="loginId">ID</label>
 					<input type="text" id="loginId" name="loginId" placeholder="이메일을 입력해주세요."
-					value = "${savedID != null ? savedID : ''}">
+					value = "${not empty savedID ? savedID : ''}">
 					<label for="password">Password</label>
 					<input class="mt10" type="password" id="loginPass" name="loginPass" placeholder="비밀번호를 입력해주세요.">
 				</p>
