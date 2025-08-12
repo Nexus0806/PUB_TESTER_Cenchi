@@ -20,7 +20,7 @@
 <body>
 	<div id="wrap">
 		<div id="header">
-	<h1><a href="/admin/infList.do"><img src="${pageContext.request.contextPath}/images/pc/comn/logo.svg"></a></h1>
+	<h1><a href="/admin/infList.do"><img src="${pageContext.request.contextPath}/_img/pc/comn/logo.svg"></a></h1>
 	<div id="head_right">	
 		<p>
 			<strong>admin</strong>님 환영합니다. 

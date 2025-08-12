@@ -34,10 +34,10 @@
 				
 				<ul class="ft_btn">
 					<li>
-						<a href="#none"><img src="./_img/pc/comn/ft_sns_fb.svg" alt="" /></a>
+						<a href="#none"><img src="../_img/pc/comn/ft_sns_fb.svg" alt="" /></a>
 					</li>
 					<li>
-						<a href="#none"><img src="./_img/pc/comn/ft_sns_blog.svg" alt="" /></a>
+						<a href="#none"><img src="../_img/pc/comn/ft_sns_blog.svg" alt="" /></a>
 					</li>
 					<li>
 						<a href="#none" class="btn01">Brochure Download</a>

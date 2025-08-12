@@ -21,7 +21,7 @@
 	<div class="login_bg">
 		<form name="login_frm" id="login_frm">
 			<div class="login">
-				<h1><img src="${pageContext.request.contextPath}/images/pc/comn/logo.svg"></h1>
+				<h1><img src="${pageContext.request.contextPath}/_img/pc/comn/logo.svg"></h1>
 
 				<p class="lg_wrap">
 					<label for="loginId">아이디</label>

@@ -11,9 +11,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="format-detection" content="telephone=no" />
 	<link rel="shortcut icon" href="_img/favicon.png"/> <!-- 파비콘 -->
+	
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/default.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/slick.css"/>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<title>중소기업을 위한 공공체험단</title>
 	<script src="/_js/pop_layer.js"></script>
@@ -32,42 +34,42 @@
 				<li>
 					<a href="#none">
 						<div class="img_wrap">
-							<img src="${pageContext.request.contextPath}/images/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/bn01.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/_img/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/_img/pc/main/bn01.png)no-repeat 50% 50% / cover;">
 						</div><!-- img_wrap -->
 					</a>
 				</li>
 				<li>
 					<a href="#none">
 						<div class="img_wrap">
-							<img src="${pageContext.request.contextPath}/images/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/bn02.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/_img/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/_img/pc/main/bn02.png)no-repeat 50% 50% / cover;">
 						</div><!-- img_wrap -->
 					</a>
 				</li>
 				<li>
 					<a href="#none">
 						<div class="img_wrap">
-							<img src="${pageContext.request.contextPath}/images/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/bn03.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/_img/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/_img/pc/main/bn03.png)no-repeat 50% 50% / cover;">
 						</div><!-- img_wrap -->
 					</a>
 				</li>
 				<li>
 					<a href="#none">
 						<div class="img_wrap">
-							<img src="${pageContext.request.contextPath}/images/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/bn01.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/_img/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/_img/pc/main/bn01.png)no-repeat 50% 50% / cover;">
 						</div><!-- img_wrap -->
 					</a>
 				</li>
 				<li>
 					<a href="#none">
 						<div class="img_wrap">
-							<img src="${pageContext.request.contextPath}/images/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/bn02.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/_img/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/_img/pc/main/bn02.png)no-repeat 50% 50% / cover;">
 						</div><!-- img_wrap -->
 					</a>
 				</li>
 				<li>
 					<a href="#none">
 						<div class="img_wrap">
-							<img src="${pageContext.request.contextPath}/images/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/bn03.png)no-repeat 50% 50% / cover;">
+							<img src="${pageContext.request.contextPath}/_img/pc/main/bn_no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/_img/pc/main/bn03.png)no-repeat 50% 50% / cover;">
 						</div><!-- img_wrap -->
 					</a>
 				</li>
@@ -82,10 +84,10 @@
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/${vo.campThub}"
+								<img src="${pageContext.request.contextPath}/_img/pc/main/${vo.campThub}"
 								alt="" 
-								style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;"
-								onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/images/pc/main/no_img.png';">
+								style="background: url(${pageContext.request.contextPath}/_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;"
+								onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/_img/pc/main/no_img.png';">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">${vo.campType}</p>
 							<div class="prd_txt">
@@ -121,7 +123,7 @@
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/_img/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">${vo.campType}</p>
 							<div class="prd_txt">
@@ -158,7 +160,7 @@
 					<li>
 						<a href="#none">
 							<div class="prd_img">
-								<img src="${pageContext.request.contextPath}/images/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/images/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
+								<img src="${pageContext.request.contextPath}/_img/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
 							<p class="sns_txt sns_inst">${vo.campType}</p>
 							<div class="prd_txt">
@@ -188,7 +190,7 @@
 
 		<div class="bt_banner section sec06">
 			<div class="bt_bn">
-				<p class="web"><img src="${pageContext.request.contextPath}/images/pc/main/ft_bn.png" alt="" /></p>
+				<p class="web"><img src="${pageContext.request.contextPath}/_img/pc/main/ft_bn.png" alt="" /></p>
 				<p class="tablet"><img src="./_img/ta/main/ft_bn_ta.png" alt="" /></p>
 				<p class="mobile"><img src="./_img/mo/main/ft_bn_mo.png" alt="" /></p>
 			</div><!-- bt_bn -->
