@@ -1,6 +1,8 @@
 package egovframework.pubtest.login.web;
 
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -9,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,9 +30,27 @@ public class PubTesterLoginController {
 	@Resource(name = "loginService")
 	private PubTesterLoginService pubTesterLoginService;
 	
-	@RequestMapping("login.do")
-	public String infLogin(Model model){
+	@GetMapping("login.do")
+	public String infLogin(@CookieValue(value="savedID", required=false) String savedID,
+							Model model){
+		model.addAttribute("savedID", savedID);
+		return "preuser/member/login";
+	}
+	
+	@PostMapping("login.do")
+	public String infLoginChk(@RequestParam("type") String type,
+								@RequestParam("loginId") String id,
+								@RequestParam("loginPass") String pw,
+								@RequestParam(value="save_id", required=false) String saveIDChk,
+								Model model){
 
+		Map<String, Object> idpw = new HashMap<>();
+		idpw.put("type", type);
+		idpw.put("id", id);
+		idpw.put("pw", pw);
+		
+		pubTesterLoginService.chklogin(idpw);
+		
 		return "preuser/member/login";
 	}
 	
@@ -54,12 +75,14 @@ public class PubTesterLoginController {
 		// 비어있는 값 체크, DTO 에서 채널 정보를 입력했는지 체크 했을때도 여기로 옴
 		if(binding.hasErrors()) {
 			model.addAttribute("userType", form.getUserType()); 
+			model.addAttribute("joinForm", form);
 			return "preuser/member/join"; // 검증에 실패하면 원래 페이지로 되돌려보냄
 		}
 		
 		// 비밀번호 검증
 		if(!form.getPassword().equals(form.getPassword_Chk())) {
 			model.addAttribute("userType", form.getUserType());
+			model.addAttribute("joinForm", form);
 			model.addAttribute("pwError", "비밀번호가 일치하지 않습니다.");
 			return "preuser/member/join";
 		}
@@ -67,6 +90,7 @@ public class PubTesterLoginController {
 		// 약관동의 체크
 		if(form.getPrivacy1() == null || form.getPrivacy2() == null) {
 			model.addAttribute("userType", form.getUserType());
+			model.addAttribute("joinForm", form);
 			model.addAttribute("agreeError", "필수 약관에 동의가 필요합니다.");
 			return "preuser/member/join";
 		}
@@ -101,11 +125,15 @@ public class PubTesterLoginController {
 		String email = form.getMbEmail1() + "@" + form.getMbEmail2();
 		boolean able = pubTesterLoginService.chkEmail(form.getUserType(), email);
 		
+	    System.err.printf("[form] userType=%s, email=%s@%s,",
+        form.getUserType(), form.getMbEmail1(), form.getMbEmail2());
+		
 		model.addAttribute("userType",form.getUserType());
-		model.addAttribute("emailChk", able);
-		model.addAttribute("emailMsg", able ? "사용가능한 이메일입니다." : "이미 사용중인 이메일입니다.");
+		model.addAttribute("joinForm", form);
+		model.addAttribute("emailMsg", able ? "이미 사용중인 이메일입니다." : "사용가능한 이메일입니다.");
 		
 		return "preuser/member/join";
 	}
+	
 	
 }
