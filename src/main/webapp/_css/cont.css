@@ -403,7 +403,7 @@ ul.reg01 li.current{background: var(--co01); color: #fff;}
 ul.con_list {}
 ul.con_list li {display: flex; flex-wrap: wrap; gap: 20px; padding: 20px 0; border-bottom: 1px solid #eee;}
 ul.con_list li .c_tit {font-size: 18px; width: 150px; color:#222; font-weight:600;}
-ul.con_list li .clt {width: calc(100% - 170px); color:#666;}
+ul.con_list li .clt {width: calc(100% - 170px); color:#666; line-height: 2;}
 ul.con_list li .c_info {}
 ul.con_list li .c_info .c_ic {}
 ul.con_list li p.edit {}

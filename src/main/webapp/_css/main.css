@@ -52,7 +52,7 @@ ul.prd_li li p.sns_txt {position: relative; padding-left: 30px; font: 400 15px /
 ul.prd_li li p.sns_blog:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_na_ico.svg)no-repeat;}
 ul.prd_li li p.sns_inst:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_in_ico.svg)no-repeat;}
 ul.prd_li li p.sns_yout:before {position: absolute; content:''; width: 24px; height: 24px; top:0; left:0; background: url(../_img/pc/main/sns_yt_ico.svg)no-repeat;}
-ul.prd_li li .prd_txt {margin-top: 16px;}
+
 ul.prd_li li .prd_txt > strong {display: block; width: 100%; font: 600 18px / 18px "Pretendard", "Noto Sans KR", sans-serif; color:#111; overflow: hidden; text-overflow:ellipsis; -webkit-line-clamp:1; -webkit-box-orient:vertical; white-space:nowrap;}
 ul.prd_li li .prd_txt > p {width: 100%; font: 300 16px / 16px "Pretendard", "Noto Sans KR", sans-serif; color:#555; overflow: hidden; text-overflow:ellipsis; -webkit-line-clamp:1; -webkit-box-orient:vertical; white-space:nowrap; margin-top:12px;}
 ul.prd_li li .prd_rec {margin-top:20px; display: flex; flex-wrap:wrap; gap:10px; align-items:center;}
