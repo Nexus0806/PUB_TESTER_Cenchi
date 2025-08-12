@@ -127,7 +127,7 @@
 							<li>
 								<span class="c_tit">공정위 문구(배너)</span>
 								<p class="edit clt"> 
-									<img src="${pageContext.request.contextPath}/images/pc/comn/JFTC_logo.avif"
+									<img src="${pageContext.request.contextPath}/_img/pc/comn/JFTC_logo.avif"
 									         alt="공정거래위원회 로고" 
 									         style="width: 100px; vertical-align: middle;">
 								</p>
