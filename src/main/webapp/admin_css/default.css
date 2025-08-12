@@ -58,7 +58,7 @@ table  				{border-collapse:collapse;}
 
 /* From Style */
 textarea			{border:1px solid #d3d0c9; padding:10px;}
-select				{font-size:13px; border-radius:3px; font-weight:400; min-width:100px; height: 32px; color:#555; border: 1px solid #ddd; padding:0 20px 0 7px; background: #fff url('../images/common/sel_arrow.png')no-repeat right 7px top 50% !important; outline:none; -moz-appearance:none; -webkit-appearance:none; appearance:none; -webkit-appearance: none;}
+select				{font-size:13px; border-radius:3px; font-weight:400; min-width:100px; height: 32px; color:#555; border: 1px solid #ddd; padding:0 20px 0 7px; background: #fff url('../_img/common/sel_arrow.png')no-repeat right 7px top 50% !important; outline:none; -moz-appearance:none; -webkit-appearance:none; appearance:none; -webkit-appearance: none;}
 select::-ms-expand	{display:none;}
 
 /* Font Class Style */

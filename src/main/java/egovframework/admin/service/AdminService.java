@@ -1,5 +1,8 @@
 package egovframework.admin.service;
 
-public interface AdminService {
+import java.util.List;
 
+public interface AdminService {
+	List<InfUserVO> getInfUserList();
+	int countInfUserList();
 }

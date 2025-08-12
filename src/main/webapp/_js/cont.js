@@ -23,3 +23,17 @@ $(document).ready(function(){
 		});
 
 	});
+	
+	//로그인 탭
+$(document).ready(function(){
+		$('ul.mem_tab li').click(function(){
+			var tab_id = $(this).attr('data-tab');
+
+			$('ul.mem_tab li').removeClass('current');
+			$('.mem_con').removeClass('current');
+
+			$(this).addClass('current');
+			$("#"+tab_id).addClass('current');
+		});
+
+	});

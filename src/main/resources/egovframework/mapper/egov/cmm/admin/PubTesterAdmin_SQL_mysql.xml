@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminDAO">
+<!-- DATE_FORMAT(USER_REGDATE, '%Y-%m-%d %H:%i:%s')	 -->
+	<select id="selectInfUserList" resultType="egovframework.admin.service.InfUserVO">
+			SELECT 
+				DATE_FORMAT(USER_REGDATE, '%Y-%m-%d %H:%i:%s')		as userRegDate,
+				USER_NAME			as userName,
+				USER_NICKNAME		as userNick,
+				USER_PHO_NUM		as userPhoneNum,
+				USER_EMAIL			as userEmail,
+				USER_BIRTH			as userBirth,
+				USER_SEX			as userSex,
+				USER_AREA			as userArea,
+				USER_ACT			as userAct,
+				USER_BLOG			as userBlog,
+				USER_INSTA			as userInsta,
+				USER_YOUTU			as userYoutube,
+				USER_TIKTOK			as userTiktok,
+				USER_ETC			as userETC,
+				USER_ADDRESS		as userAddress,
+				USER_VISIT_CNT		as userVisitCnt,
+				USER_HIS_CNT		as userhisCnt,
+				USER_BAN_CNT		as userBanCnt,
+				USER_CAN_CNT		as userCancelCnt,
+				USER_SCORE			as userScore,
+				USER_DELYN			as userDelYN
+			FROM
+				pub_user
+			WHERE
+				USER_DELYN = 'N'
+	</select>
+
+	<select id="countInfUserList" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			pub_user
+	</select>
+	
+</mapper>
