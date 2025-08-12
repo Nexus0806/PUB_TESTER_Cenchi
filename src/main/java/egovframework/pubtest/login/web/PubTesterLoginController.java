@@ -1,14 +1,21 @@
 package egovframework.pubtest.login.web;
 
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,10 +34,61 @@ public class PubTesterLoginController {
 	@Resource(name = "loginService")
 	private PubTesterLoginService pubTesterLoginService;
 	
-	@RequestMapping("login.do")
-	public String infLogin(Model model){
-
+	@GetMapping("login.do")
+	public String infLogin(@CookieValue(value="savedID", required=false) String savedID,
+							Model model){
+		model.addAttribute("savedID", savedID);
 		return "preuser/member/login";
+	}
+	
+	@PostMapping("login.do")
+	public String infLoginChk(@RequestParam(value = "type", required=false) String type,
+								@RequestParam("loginId") String id,
+								@RequestParam("loginPass") String pw,
+								@RequestParam(value="save_id", required=false) String saveIDChk,
+								HttpServletRequest req,
+								HttpServletResponse res,
+								Model model){
+		Map<String, Object> idpw = new HashMap<>();	// id pw 검증을 위한 map
+		idpw.put("type", type);
+		idpw.put("id", id);
+		idpw.put("pw", pw);
+		
+		boolean chk = pubTesterLoginService.chklogin(idpw);	// id,pw를 db에서 조회한 결과를 저장 (true or false)
+
+		if(!chk) {
+			model.addAttribute("loginError", "이메일이나 비밀번호가 올바르지 않습니다.");
+			model.addAttribute("savedID", id);
+			return "preuser/member/login";
+		}
+		
+		HttpSession old = req.getSession(false);			// 기존 세션이 있는지 확인
+		if(old != null) old.invalidate();					// 만약에 세션이 남아있었다면 해당 세션을 파기
+		HttpSession session = req.getSession(true);			// 새로운 세션을 생성
+		session.setAttribute("LOGIN_USER", new SessionUser("사용자 이름", type)); // 로그인 한 사용자 정보 저장 (이름/로그인 유형)
+		
+		// ID 저장 체크박스 쿠키 처리
+	    String ctxPath = req.getContextPath().isEmpty() ? "/" : req.getContextPath();
+	    if (saveIDChk != null) {	// 체크박스는 체크하지 않으면 null 값을 반환
+	      Cookie c = new Cookie("savedLoginId", id);	// 브라우저에 저장할 쿠키, 여기서는 id 저장
+	      c.setPath(ctxPath);							// 위에서 설정한 경로에서만 유효한 쿠키로 설정
+	      c.setMaxAge(60 * 60 * 24 * 30); // 쿠키 만료일 (30일)
+	      res.addCookie(c);
+	    } else {
+	      Cookie c = new Cookie("savedLoginId", "");
+	      c.setPath(ctxPath);
+	      c.setMaxAge(0); 		// 쿠키 만료일을 0으로 설정해서 쿠키를 삭제함
+	      res.addCookie(c);
+	    }
+		
+		return "redirect:/index.do";
+	}
+	
+	@GetMapping("logout.do")
+	public String logout(HttpServletRequest req) {
+		HttpSession s = req.getSession(false);
+		if(s != null) s.invalidate();
+		return "redirect:/preuser/member/login.do";
 	}
 	
 	@GetMapping("join.do")
@@ -54,12 +112,14 @@ public class PubTesterLoginController {
 		// 비어있는 값 체크, DTO 에서 채널 정보를 입력했는지 체크 했을때도 여기로 옴
 		if(binding.hasErrors()) {
 			model.addAttribute("userType", form.getUserType()); 
+			model.addAttribute("joinForm", form);
 			return "preuser/member/join"; // 검증에 실패하면 원래 페이지로 되돌려보냄
 		}
 		
 		// 비밀번호 검증
 		if(!form.getPassword().equals(form.getPassword_Chk())) {
 			model.addAttribute("userType", form.getUserType());
+			model.addAttribute("joinForm", form);
 			model.addAttribute("pwError", "비밀번호가 일치하지 않습니다.");
 			return "preuser/member/join";
 		}
@@ -67,6 +127,7 @@ public class PubTesterLoginController {
 		// 약관동의 체크
 		if(form.getPrivacy1() == null || form.getPrivacy2() == null) {
 			model.addAttribute("userType", form.getUserType());
+			model.addAttribute("joinForm", form);
 			model.addAttribute("agreeError", "필수 약관에 동의가 필요합니다.");
 			return "preuser/member/join";
 		}
@@ -101,11 +162,23 @@ public class PubTesterLoginController {
 		String email = form.getMbEmail1() + "@" + form.getMbEmail2();
 		boolean able = pubTesterLoginService.chkEmail(form.getUserType(), email);
 		
+	    System.err.printf("[form] userType=%s, email=%s@%s,",
+        form.getUserType(), form.getMbEmail1(), form.getMbEmail2());
+		
 		model.addAttribute("userType",form.getUserType());
-		model.addAttribute("emailChk", able);
-		model.addAttribute("emailMsg", able ? "사용가능한 이메일입니다." : "이미 사용중인 이메일입니다.");
+		model.addAttribute("joinForm", form);
+		model.addAttribute("emailMsg", able ? "이미 사용중인 이메일입니다." : "사용가능한 이메일입니다.");
 		
 		return "preuser/member/join";
 	}
 	
+	public static class SessionUser {
+	    private final String userNickName;
+	    private final String type;
+	    
+	    public SessionUser(String nickName, String type)
+	    { userNickName=nickName; this.type=type;}
+	    public String getNickName(){ return userNickName; }
+	    public String getType(){ return type; }
+	  }
 }

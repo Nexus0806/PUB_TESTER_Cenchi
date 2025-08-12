@@ -1,5 +1,7 @@
 package egovframework.pubtest.login.service.impl;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -28,7 +30,15 @@ public class PubTesterLoginServiceImpl implements PubTesterLoginService{
 			return pubTesterLoginDAO.chkInfEmail(email);
 		else if("bss".equals(type))
 			return pubTesterLoginDAO.chkBssEmail(email);
-		
+		return false;
+	}
+	
+	@Override
+	public boolean chklogin(Map<String, Object> param) {
+		if("inf".equals(param.get("type")))
+			return pubTesterLoginDAO.chkInfLogin(param);
+		else if ("bss".equals(param.get("type")))
+			return pubTesterLoginDAO.chkBssLogin(param);
 		return false;
 	}
 }

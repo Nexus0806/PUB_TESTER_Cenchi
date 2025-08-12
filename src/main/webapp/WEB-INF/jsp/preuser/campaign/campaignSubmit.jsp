@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="View_info">
-                        <p class="sn_img mb20" style="background: url(${pageContext.request.contextPath}/images/pc/main/${campVo.campThub})no-repeat 50% 50% / cover;"></p> 		
+                        <p class="sn_img mb20" style="background: url(${pageContext.request.contextPath}/_img/pc/main/${campVo.campThub})no-repeat 50% 50% / cover;"></p> 		
                         <div class="sche">
                             <p class="sche_tit">${campVo.campTitle}</p>
                             <%-- ... 캠페인 정보 표시 ... --%>

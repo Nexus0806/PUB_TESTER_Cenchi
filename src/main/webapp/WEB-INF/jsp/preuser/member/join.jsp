@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     
 <!DOCTYPE html>
 <html lang="ko">
@@ -35,14 +36,20 @@
 
 				<div class="join_wrap">
 					<h2 class="sub_tit">회원가입</h2>
+					
+					<c:if test="${not empty emailMsg}">
+  						<input type="hidden" id="emailMsg" value="${fn:escapeXml(emailMsg)}"/>
+					</c:if>
 
 					<div class="join_con">
 						<h4>이메일<sup>*</sup></h4>
 						<div class="j_flex">
 							<p class="mail sel">
-								<input type="text" name="mbEmail1" id="mb_email1" required>
+								<input type="text" name="mbEmail1" id="mb_email1" required
+								value = "${joinForm.mbEmail1 != null ? joinForm.mbEmail1 : ''}">
 								<span>@</span>
-								<input type="text" name="mbEmail2" id="mb_email2" required>
+								<input type="text" name="mbEmail2" id="mb_email2" required
+								value = "${joinForm.mbEmail2 != null ? joinForm.mbEmail2 : ''}">
 								<!-- 위나 아래 둘중 하나만 하도록 고치기 -->
 								<select class="sel_email" title="이메일 선택">
 									<option value="">직접입력</option>
@@ -65,28 +72,34 @@
 
 					<div class="join_con">
 						<h4>비밀번호<sup>*</sup></h4>
-						<input type="password" name="password" placeholder="비밀번호를 입력해주세요." required>
+						<input type="password" name="password" placeholder="비밀번호를 입력해주세요." required
+						value = "${joinForm.password != null ? joinForm.password : ''}">
 					</div><!-- join_con -->
 
 					<div class="join_con">
 						<h4>비밀번호 확인<sup>*</sup></h4>
-						<input type="password" name="password_Chk" placeholder="비밀번호를 확인해주세요." required>
+						<input type="password" name="password_Chk" placeholder="비밀번호를 확인해주세요." required
+						value = "${joinForm.password_Chk != null ? joinForm.password_Chk : ''}">
 					</div><!-- join_con -->
 
 					<div class="join_con">
 						<h4>이름<sup>*</sup></h4>
-						<input type="text" name="mbName" placeholder="반드시 실명을 입력하세요." required>
+						<input type="text" name="mbName" placeholder="반드시 실명을 입력하세요." required
+						value = "${joinForm.mbName != null ? joinForm.mbName : ''}">
 						<p class="j_caution">이름을 입력해주세요. <br>실명으로 등록하지 않을 경우 불이익이 있을 수 있습니다.</p>
 					</div><!-- join_con -->
 
 					<div class="join_con">
 						<h4>휴대폰 번호<sup>*</sup></h4>
 						<p class="phone">
-							<input type="text" name="call1" maxlength="3" placeholder="010" required>
+							<input type="text" name="call1" maxlength="3" placeholder="010" required
+							value = "${joinForm.call1 != null ? joinForm.call1 : ''}">
 							<span>-</span>
-							<input type="text" name="call2" maxlength="4" placeholder="4567" required>
+							<input type="text" name="call2" maxlength="4" placeholder="4567" required
+							value = "${joinForm.call2 != null ? joinForm.call2 : ''}">
 							<span>-</span>
-							<input type="text" name="call3" maxlength="4" placeholder="7890" required>
+							<input type="text" name="call3" maxlength="4" placeholder="7890" required
+							value = "${joinForm.call3 != null ? joinForm.call3 : ''}">
 						</p>
 						<p class="j_caution">필수 입력사항입니다. <br>휴대폰 번호를 정확히 입력해 주세요.</p>
 					</div><!-- join_con -->
@@ -94,15 +107,21 @@
 					<div class="join_con">
 						<h4>생년월일</h4>
 						<p class="birth">
-							<input type="date" name="birthDate" placeholder="생년" required>
+							<input type="date" name="birthDate" placeholder="생년" required
+							value = "${joinForm.birthDate != null ? joinForm.birthDate : ''}">
 						</p>
 					</div><!-- join_con -->
 
 					<div class="join_con">
 						<h4>성별</h4>
 						<div class="radio_wrap">
-							<input type="radio" id="radio01" name="gender" value="F" checked><label for="radio01">여성</label>
-							<input type="radio" id="radio02" name="gender" value="M"><label for="radio02">남성</label>
+							<input type="radio" id="radio01" name="gender" value="F"
+							<c:if test="${empty joinForm.gender or joinForm.gender eq 'F'}">checked="checked"</c:if> />
+							<label for="radio01">여성</label>
+							
+							<input type="radio" id="radio02" name="gender" value="M"
+							<c:if test="${empty joinForm.gender or joinForm.gender eq 'M'}">checked="checked"</c:if> />
+							<label for="radio02">남성</label>
 						</div>
 					</div><!-- join_con -->
 
@@ -112,26 +131,30 @@
 						<h4>인플루언서 유형<sup>*</sup></h4>
 						<div class="j_flex j_ico">
 							<p class="ico blog">네이버블로그</p>
-							<input type="text" name="url_Blog" placeholder="블로그 url을 입력해주세요.">
+							<input type="text" name="url_Blog" placeholder="블로그 url을 입력해주세요."
+							value = "${joinForm.url_Blog != null ? joinForm.url_Blog : ''}">
 						</div>
-						<p class="j_caution" style="padding-left: 45px;">필수 입력사항 입니다.</p>
-
 						<div class="j_flex j_ico mt10">
 							<p class="ico insta">인스타그램</p>
-							<input type="text" name="url_Insta" placeholder="인스타그램 ID를 입력해주세요.">
+							<input type="text" name="url_Insta" placeholder="인스타그램 ID를 입력해주세요."
+							value = "${joinForm.url_Insta != null ? joinForm.url_Insta : ''}">
 						</div>
 						<div class="j_flex j_ico mt10">
 							<p class="ico yout">유튜브</p>
-							<input type="text" name="url_Youtube" placeholder="유튜브 url을 입력해주세요.">
+							<input type="text" name="url_Youtube" placeholder="유튜브 url을 입력해주세요."
+							value = "${joinForm.url_Youtube != null ? joinForm.url_Youtube : ''}">
 						</div>
 						<div class="j_flex j_ico mt10">
 							<p class="ico tiktok">틱톡</p>
-							<input type="text" name="url_Tiktok" placeholder="틱톡 url을 입력해주세요.">
+							<input type="text" name="url_Tiktok" placeholder="틱톡 url을 입력해주세요."
+							value = "${joinForm.url_Tiktok != null ? joinForm.url_Tiktok : ''}">
 						</div>
 						<div class="j_flex j_ico mt10">
 							<p class="ico sns">기타</p>
-							<input type="text" name="url_ETC" placeholder="기타 url을 입력해주세요.">
+							<input type="text" name="url_ETC" placeholder="기타 url을 입력해주세요."
+							value = "${joinForm.url_ETC != null ? joinForm.url_ETC : ''}">
 						</div>
+						<p class="j_caution" style="padding-left: 45px;">반드시 하나는 입력해야 합니다.</p>
 					</div>
 					</c:if>
 
@@ -178,7 +201,7 @@ $(function () {
       $email2.val(val).prop('readonly', true).addClass('readonly');
     } else {
       // 직접입력 모드 → input 비우고 수정 가능
-      $email2.val('').prop('readonly', false).removeClass('readonly').focus();
+      $email2.prop('readonly', false).removeClass('readonly').focus();
     }
   }
 
@@ -194,6 +217,16 @@ $(function () {
 	      alert(el.value);
 	    }
 	  })();
+	});
+	
+	// 페이지로 다시 돌아왔을때, 입력 폼 유지
+$(function () {
+	  const options = ["naver.com","hanmail.net","hotmail.com","nate.com","gmail.com"];
+	  const pre = $('#mb_email2').val();
+	  if (options.includes(pre)) {
+	    $('.sel_email').val(pre);
+	  }
+	  applyEmailMode();
 	});
 </script>
 

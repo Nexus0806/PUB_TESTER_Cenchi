@@ -41,34 +41,42 @@
 			<li class="tab-link" data-tab="tab-2">소상공인</li>
         </ul>
 
+		<form action="${pageContext.request.contextPath}/preuser/member/login.do" method="post" id="loginForm">
         <div id="tab-1" class="mem_con current">
 			<div class="login">
 				<p class="lg_wrap">
 					<label for="loginId">ID</label>
-					<input type="text" id="loginId" name="loginId" placeholder="이메일을 입력해주세요.">
+					<input type="text" id="loginId" name="loginId" placeholder="이메일을 입력해주세요."
+					value="${not empty savedID ? savedID : ''}">
 					<label for="password">Password</label>
 					<input class="mt10" type="password" id="loginPass" name="loginPass" placeholder="비밀번호를 입력해주세요.">
 				</p>
 				<div class="flex">
 					<p class="save_id">
-						<input class="checkbox" type="checkbox" id="save_id" name="save_id">
+						<input class="checkbox" type="checkbox" id="save_id" name="save_id"
+						<c:if test="${not empty savedID}">checked</c:if>>	<%-- savedID 항목이 비어있지 않다면, id 저장을 한것으로 간주 --%>
 						<label for="save_id">ID 저장</label>
 					</p>
 				</div>
+				
+				<c:if test="${not empty loginError}"> <%-- 로그인에 실패했다면(로그인 에러가 null 이 아니라면) --%>
+					<p class="j_caution" style="color:#e33">${loginError}</p>
+				</c:if>
 
 				<p class="lg_btn">
 					<a href="/preuser/member/join.do?type=inf">회원가입</a>
-					<a href="#none">로그인</a>
+					<a href="#" class="btn" onclick="document.getElementById('loginForm').submit(); return false;">로그인</a>
 				</p>
 			</div><!-- login -->
 		</div> <!-- tab-1 인플루언서 -->
+		</form>
 
         <div id="tab-2" class="mem_con">
-
 			<div class="login">
 				<p class="lg_wrap">
 					<label for="loginId">ID</label>
-					<input type="text" id="loginId" name="loginId" placeholder="이메일을 입력해주세요.">
+					<input type="text" id="loginId" name="loginId" placeholder="이메일을 입력해주세요."
+					value = "${not empty savedID ? savedID : ''}">
 					<label for="password">Password</label>
 					<input class="mt10" type="password" id="loginPass" name="loginPass" placeholder="비밀번호를 입력해주세요.">
 				</p>
@@ -84,67 +92,11 @@
 					<a href="#none">로그인</a>
 				</p>
 			</div><!-- login -->
-
 		</div> <!-- tab-2 소상공인 -->
-
 		</div><!-- login_all -->
 	</div><!-- sub_content -->
 
-<script type="text/javascript">
-
-$('.navi_btn').click(function(){
-		$('.navi').stop(true).fadeToggle('fast');
-		$(this).toggleClass('on');
-		$('#tm_header').toggleClass('on');
-	});
-
-$('.close').click(function(){
-		$('.navi').stop(true).fadeOut('fast');
-		$('#tm_header').removeClass('on');
-	});
-
-
-
-//dep01, dep02
-$('.lnb .dep01 > li:has(.dep02)').children('a').addClass('has-sub');
-if($(window).width() <= 1024) {
-	$(".lnb .dep01 > li > a").click(function(){
-		if($(this).is(".has-sub")){
-			event.preventDefault();
-			$(this).parent().siblings('li').children('ul.dep02').stop().slideUp();
-			$(this).parent().siblings('li').children('a').removeClass('on');
-			$(this).siblings('ul').stop().slideToggle();
-			$(this).toggleClass('on');
-		}else{
-		}
-	});
-};
-
-//search
- $('.sch_btn').click(function(){
-		$('.tm_sch_wrap').fadeIn();
-		//$('#header').addClass('click');
-	});
-	$('.tm_x').click(function(){
-		$('.tm_sch_wrap').fadeOut();
-		//$('#header').removeClass('click');
-});
-
-
-//gnb
-$('#header ul.gnb > li').mouseenter(function(){
-	$('#header ul.gnb > li').removeClass('on');
-	$('#header .gnb_sub').stop().hide();
-	$(this).addClass('on');
-	$(this).find('.gnb_sub').stop().fadeIn(200);
-});
-$('#header ul.gnb > li').mouseleave(function(){
-	$('#header ul.gnb > li').removeClass('on');
-	$('#header .gnb_sub').stop().fadeOut(200);
-});
-
-
-</script>
+<script src="/_js/ui.js"></script>
 
 <jsp:include page="/WEB-INF/jsp/_inc/footer.jsp" />
 </body>

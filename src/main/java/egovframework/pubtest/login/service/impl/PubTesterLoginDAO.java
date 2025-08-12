@@ -1,5 +1,7 @@
 package egovframework.pubtest.login.service.impl;
 
+import java.util.Map;
+
 import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
 import org.springframework.stereotype.Repository;
 import egovframework.pubtest.login.service.UserRegVO;
@@ -16,10 +18,18 @@ public class PubTesterLoginDAO extends EgovAbstractMapper{
 	}
 	
 	public boolean chkInfEmail(String email) {
-		return selectOne("loginDAO.existByInfEmail");
+		return selectOne("loginDAO.existByInfEmail", email);
 	}
 	
 	public boolean chkBssEmail(String email) {
-		return selectOne("loginDAO.existByBssEmail");
+		return selectOne("loginDAO.existByBssEmail", email);
+	}
+	
+	public boolean chkInfLogin(Map<String, Object> param){
+		return selectOne("loginDAO.chkInfLogin", param);
+	}
+	
+	public boolean chkBssLogin(Map<String, Object> param){
+		return selectOne("loginDAO.chkBssLogin", param);
 	}
 }

@@ -78,4 +78,29 @@
 					BUSS_EMAIL = #{email}	)
 	</select>
 
+	<select id="chkInfLogin" parameterType="map" resultType="boolean">
+		SELECT 
+			EXISTS (
+			SELECT 
+				1
+			FROM
+				pub_user
+			WHERE
+				USER_EMAIL = #{id} AND
+				USER_PW = #{pw}
+			)
+	</select>
+	
+	<select id="chkBssLogin" parameterType="map" resultType="boolean">
+		SELECT 
+			EXISTS (
+			SELECT 
+				1
+			FROM
+				pub_buss
+			WHERE
+				BUSS_EMAIL = #{id} AND
+				BUSS_PW = #{pw}
+			)
+	</select>
 </mapper>
