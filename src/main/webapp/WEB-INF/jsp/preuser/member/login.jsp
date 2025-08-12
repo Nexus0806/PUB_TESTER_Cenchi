@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,10 +18,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <title>중소기업을 위한 공공체험단</title>
-<script src="/preuser/_js/pop_layer.js"></script>
-<script src="/preuser/_js/cont.js"></script>
+<script src="/_js/pop_layer.js"></script>
+<script src="/_js/cont.js"></script>
 </head>
 <body>
+
+<!-- 알림 (회원가입 성공시 1회성으로 뜸) -->
+<c:if test="${not empty joinSuccess}">
+<script>
+  alert('회원가입이 완료되었습니다.\n이메일과 비밀번호로 로그인해 주세요.');
+</script>
+</c:if>
+
 <jsp:include page="/WEB-INF/jsp/_inc/header.jsp" />
 
 <div id="sub_content">
@@ -47,7 +57,7 @@
 				</div>
 
 				<p class="lg_btn">
-					<a href="/preuser/member/join.html">회원가입</a>
+					<a href="/preuser/member/join.do?type=inf">회원가입</a>
 					<a href="#none">로그인</a>
 				</p>
 			</div><!-- login -->
@@ -70,7 +80,7 @@
 				</div>
 
 				<p class="lg_btn">
-					<a href="/preuser/member/join.html">회원가입</a>
+					<a href="/preuser/member/join.do?type=bss">회원가입</a>
 					<a href="#none">로그인</a>
 				</p>
 			</div><!-- login -->

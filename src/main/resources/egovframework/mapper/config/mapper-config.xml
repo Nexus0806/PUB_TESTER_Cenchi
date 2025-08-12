@@ -12,6 +12,7 @@
 
 	<!-- Type Aliases 설정-->
 	<typeAliases>
+		<typeAlias alias="UserRegVO"			type="egovframework.pubtest.login.service.UserRegVO"/>
 		<typeAlias alias="campaignSubmitVO"		type="egovframework.pubtest.campaign.service.CampaignSubmitVO"/>
 		<typeAlias alias="campaignVO"			type="egovframework.pubtest.campaign.service.CampaignVO"/>
 		<typeAlias alias="infUserVO"			type="egovframework.admin.service.InfUserVO"/>
