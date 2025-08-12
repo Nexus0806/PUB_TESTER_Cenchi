@@ -55,5 +55,27 @@
 			#{userBirth},
 			#{userGender}	)
 	</insert>
+	
+	<select id="existByInfEmail" parameterType="java.lang.String" resultType="boolean">
+		SELECT 
+			EXISTS 
+				(SELECT 
+					1 
+				FROM 
+					pub_user 
+				WHERE 
+					USER_EMAIL = #{email}	)
+	</select>
+	
+	<select id="existByBssEmail" parameterType="java.lang.String" resultType="boolean">
+		SELECT 
+			EXISTS 
+				(SELECT 
+					1 
+				FROM 
+					pub_buss 
+				WHERE 
+					BUSS_EMAIL = #{email}	)
+	</select>
 
 </mapper>

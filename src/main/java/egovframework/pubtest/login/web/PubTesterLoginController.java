@@ -96,4 +96,16 @@ public class PubTesterLoginController {
 		return "redirect:/preuser/member/login.do"; // 임시
 	}
 	
+	@PostMapping("email-check.do")
+	public String emailCheck(@ModelAttribute JoinFormDTO form, Model model) {
+		String email = form.getMbEmail1() + "@" + form.getMbEmail2();
+		boolean able = pubTesterLoginService.chkEmail(form.getUserType(), email);
+		
+		model.addAttribute("userType",form.getUserType());
+		model.addAttribute("emailChk", able);
+		model.addAttribute("emailMsg", able ? "사용가능한 이메일입니다." : "이미 사용중인 이메일입니다.");
+		
+		return "preuser/member/join";
+	}
+	
 }

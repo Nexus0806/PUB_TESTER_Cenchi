@@ -53,7 +53,13 @@
 									<option value="gmail.com">gmail.com</option>
 								</select>
 							</p>
-							<a href="#none" class="btn bk">중복확인</a>
+							<button type="submit"
+        							class="btn bk"
+        							formaction="${pageContext.request.contextPath}/preuser/member/email-check.do"
+        							formmethod="post"
+        							formnovalidate>
+  									중복확인
+							</button>
 						</div>
 					</div><!-- join_con -->
 
@@ -181,7 +187,14 @@ $(function () {
 
   // 초기 로드 시도 적용 (뒤로가기/새로고침 대비)
   applyEmailMode();
-});
+  
+  (function () {
+	    var el = document.getElementById('emailMsg');
+	    if (el && el.value) {
+	      alert(el.value);
+	    }
+	  })();
+	});
 </script>
 
 

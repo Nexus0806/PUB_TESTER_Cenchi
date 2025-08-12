@@ -14,4 +14,12 @@ public class PubTesterLoginDAO extends EgovAbstractMapper{
 	public void regBssUser(UserRegVO vo) {
 		insert("loginDAO.regBssUser",vo);
 	}
+	
+	public boolean chkInfEmail(String email) {
+		return selectOne("loginDAO.existByInfEmail");
+	}
+	
+	public boolean chkBssEmail(String email) {
+		return selectOne("loginDAO.existByBssEmail");
+	}
 }

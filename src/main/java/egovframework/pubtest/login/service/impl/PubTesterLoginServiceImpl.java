@@ -16,10 +16,19 @@ public class PubTesterLoginServiceImpl implements PubTesterLoginService{
 	
 	@Override
 	public void regUser(String type, UserRegVO vo) {
-		
 		if("inf".equals(type))
 			pubTesterLoginDAO.regInfUser(vo);
 		else if("bss".equals(type))
 			pubTesterLoginDAO.regBssUser(vo);
+	}
+	
+	@Override
+	public boolean chkEmail(String type, String email){
+		if("inf".equals(type))
+			return pubTesterLoginDAO.chkInfEmail(email);
+		else if("bss".equals(type))
+			return pubTesterLoginDAO.chkBssEmail(email);
+		
+		return false;
 	}
 }
