@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="loginDAO">
+
+	<insert id="regInfUser" parameterType="UserRegVO">
+		INSERT INTO 
+			pub_user (
+				USER_REGDATE,
+				USER_EMAIL,
+				USER_PW,
+				USER_NAME,
+				USER_PHO_NUM,
+				USER_BIRTH,
+				USER_SEX,
+				USER_BLOG,
+				USER_INSTA,
+				USER_YOUTU,
+				USER_TIKTOK,
+				USER_ETC	)
+		VALUES 
+			(
+			NOW(),
+			#{userEmail},
+			#{userPW},
+			#{userName},
+			#{userPhone},
+			#{userBirth},
+			#{userGender},
+			#{userBlog},
+			#{userInsta},
+			#{userYoutube},
+			#{userTiktok},
+			#{userETC}		)
+	</insert>
+	
+	<insert id="regBssUser" parameterType="UserRegVO">
+		INSERT INTO 
+			pub_buss (
+				BUSS_REGDATE,
+				BUSS_EMAIL,
+				BUSS_PW,
+				BUSS_NAME,
+				BUSS_PHO_NUM,
+				BUSS_BIRTH,
+				BUSS_SEX	)
+		VALUES 
+			(
+			NOW(),
+			#{userEmail},
+			#{userPW},
+			#{userName},
+			#{userPhone},
+			#{userBirth},
+			#{userGender}	)
+	</insert>
+	
+	<select id="existByInfEmail" parameterType="java.lang.String" resultType="boolean">
+		SELECT 
+			EXISTS 
+				(SELECT 
+					1 
+				FROM 
+					pub_user 
+				WHERE 
+					USER_EMAIL = #{email}	)
+	</select>
+	
+	<select id="existByBssEmail" parameterType="java.lang.String" resultType="boolean">
+		SELECT 
+			EXISTS 
+				(SELECT 
+					1 
+				FROM 
+					pub_buss 
+				WHERE 
+					BUSS_EMAIL = #{email}	)
+	</select>
+
+</mapper>

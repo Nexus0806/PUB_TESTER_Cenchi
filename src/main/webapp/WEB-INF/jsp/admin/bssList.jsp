@@ -19,12 +19,12 @@
 <body>
 	<div id="wrap">
 		<div id="header">
-	<h1><a href="/admin/infList.do"><img src="${pageContext.request.contextPath}/images/pc/comn/logo.svg"></a></h1>
+	<h1><a href="/admin/infList.do"><img src="${pageContext.request.contextPath}/_img/pc/comn/logo.svg"></a></h1>
 	<div id="head_right">	
 		<p>
 			<strong>관리자</strong>님 환영합니다. 
 <!-- 			<span class="timer">50:07</span>
-			<a href="#none" id="extendTimer"><img src="/with_adm/images/common/timeExtendBtn.png" alt="연장"></a> -->
+			<a href="#none" id="extendTimer"><img src="/with_adm/_img/common/timeExtendBtn.png" alt="연장"></a> -->
 		</p>
 		<a href="adminList.html" class="mp">관리자 관리</a>
 		<a href="/admin/login.do" class="out">로그아웃</a>

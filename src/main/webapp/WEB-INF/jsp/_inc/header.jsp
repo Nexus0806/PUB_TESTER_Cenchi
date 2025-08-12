@@ -8,7 +8,7 @@
 
 		<ul class="gnb">
 			<li>
-				<a href="#none">체험단 검색</a>
+				<a href="/preuser/campaign/campaignList.do">체험단 검색</a>
 				<div class="gnb_sub">
 					<ul class="sub_menu">
 						<li><a href="#none">체험단 신청하기</a></li>
@@ -27,7 +27,7 @@
 				<a href="#none" class="s_btn" type="button">검색</a>
 			</div><!-- search_wrap -->
 			<div class="login_wrap">
-				<a href="#none">로그인</a>
+				<a href="/preuser/member/login.do">로그인</a>
 			</div><!-- login_wrap -->
 		</div><!-- h_right -->
 	</div> <!-- header -->
@@ -61,12 +61,12 @@
 				</div><!-- nv_h -->
 
 				<div class="login_wrap">
-					<a href="#none">로그인 <p>해주세요.</p></a>
+					<a href="/preuser/member/login.do">로그인 <p>해주세요.</p></a>
 				</div><!-- login_wrap -->
 
 				<ul class="dep01">
 					<li>
-						<a href="#none">체험단 검색</a>
+						<a href="/preuser/campaign/campaignList.do">체험단 검색</a>
 						<ul class="dep02">
 							<li><a href="#none">- 체험단 신청하기</a></li>
 							<li><a href="#none">- 체험단 문의사항</a></li>
