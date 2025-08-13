@@ -43,6 +43,7 @@
 
 		<form action="${pageContext.request.contextPath}/preuser/member/login.do" method="post" id="loginForm">
         <div id="tab-1" class="mem_con current">
+        <input type="hidden" name="type" value="inf">
 			<div class="login">
 				<p class="lg_wrap">
 					<label for="loginId">ID</label>
@@ -72,6 +73,7 @@
 		</form>
 
         <div id="tab-2" class="mem_con">
+        <input type="hidden" name="type" value="bss">
 			<div class="login">
 				<p class="lg_wrap">
 					<label for="loginId">ID</label>

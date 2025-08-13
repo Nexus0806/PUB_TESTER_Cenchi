@@ -70,12 +70,12 @@ public class PubTesterLoginController {
 		// ID 저장 체크박스 쿠키 처리
 	    String ctxPath = req.getContextPath().isEmpty() ? "/" : req.getContextPath();
 	    if (saveIDChk != null) {	// 체크박스는 체크하지 않으면 null 값을 반환
-	      Cookie c = new Cookie("savedLoginId", id);	// 브라우저에 저장할 쿠키, 여기서는 id 저장
+	      Cookie c = new Cookie("savedID", id);	// 브라우저에 저장할 쿠키, 여기서는 id 저장
 	      c.setPath(ctxPath);							// 위에서 설정한 경로에서만 유효한 쿠키로 설정
 	      c.setMaxAge(60 * 60 * 24 * 30); // 쿠키 만료일 (30일)
 	      res.addCookie(c);
 	    } else {
-	      Cookie c = new Cookie("savedLoginId", "");
+	      Cookie c = new Cookie("savedID", "");
 	      c.setPath(ctxPath);
 	      c.setMaxAge(0); 		// 쿠키 만료일을 0으로 설정해서 쿠키를 삭제함
 	      res.addCookie(c);
@@ -178,7 +178,7 @@ public class PubTesterLoginController {
 	    
 	    public SessionUser(String nickName, String type)
 	    { userNickName=nickName; this.type=type;}
-	    public String getNickName(){ return userNickName; }
+	    public String getuserNickName(){ return userNickName; }
 	    public String getType(){ return type; }
 	  }
 }
