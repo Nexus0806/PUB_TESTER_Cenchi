@@ -8,15 +8,7 @@
 		</h1>
 
 		<ul class="gnb">
-			<li>
-				<a href="/preuser/campaign/campaignList.do">체험단 검색</a>
-				<div class="gnb_sub">
-					<ul class="sub_menu">
-						<li><a href="#none">체험단 신청하기</a></li>
-						<li><a href="#none">체험단 문의사항</a></li>
-					</ul>
-				</div><!-- gnb_sub -->
-			</li>
+			<li><a href="/preuser/campaign/campaignList.do">체험단 검색</a></li>
 			<li><a href="#none">커뮤니티</a></li>
 			<li><a href="#none">공지/이벤트</a></li>
 			<li><a href="#none">이용가이드</a></li>
@@ -37,7 +29,7 @@
 					<%-- 나중에 마이페이지 연결하기... --%>
 					<a href="#" class="my">
 					<span class="myimg"></span> 
-					<c:out value="${sessionScope.LOGIN_USER.name != null ? sessionScope.LOGIN_USER.name : sessionScope.LOGIN_USER.email}"/> 님
+					<c:out value="${sessionScope.LOGIN_USER.userNickName != null ? sessionScope.LOGIN_USER.userNickName : '닉네임설정'}"/> 님
 					</a>
 				</div>
 			</c:when>
@@ -83,13 +75,7 @@
 				</div><!-- login_wrap -->
 
 				<ul class="dep01">
-					<li>
-						<a href="/preuser/campaign/campaignList.do">체험단 검색</a>
-						<ul class="dep02">
-							<li><a href="#none">- 체험단 신청하기</a></li>
-							<li><a href="#none">- 체험단 문의사항</a></li>
-						</ul>
-					</li>
+					<li><a href="/preuser/campaign/campaignList.do">체험단 검색</a></li>
 					<li><a href="#none">커뮤니티</a></li>
 					<li><a href="#none">공지/이벤트</a></li>
 					<li><a href="#none">이용가이드</a></li>

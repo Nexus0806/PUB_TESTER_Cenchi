@@ -170,19 +170,38 @@
 								style="background: url(${pageContext.request.contextPath}/_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;"
 								onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/_img/pc/main/no_img.png';">
 							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">${vo.campType}</p>
+							<c:choose>
+								<c:when test="${vo.campAdType eq '틱톡'}">
+									<p class="sns_txt sns_tik">${vo.campType}</p>
+								</c:when>
+								<c:when test="${vo.campAdType eq '클립' or vo.campAdType eq '구매형'}">
+									<p class="sns_txt sns_etc">${vo.campType}</p>
+								</c:when>
+								<c:when test="${vo.campAdType eq '인스타그램' or vo.campAdType eq '릴스'}">
+									<p class="sns_txt sns_inst">${vo.campType}</p>
+								</c:when>
+								<c:when test="${vo.campAdType eq '유튜브'}">
+									<p class="sns_txt sns_yout">${vo.campType}</p>
+								</c:when>
+								<c:when test="${vo.campAdType eq '블로그' or vo.campAdType eq '블로그+클립'}">
+									<p class="sns_txt sns_blog">${vo.campType}</p>
+								</c:when>
+							</c:choose>
 							<div class="prd_txt">
 								<strong>${vo.campTitle}</strong>
 								<p>${vo.campService}</p>
 							</div><!-- prd_txt -->
 							<div class="prd_rec">
 								<c:choose>
-								<c:when test="${vo.dDay == 0}">
+								<c:when test="${vo.dDay eq 0}">
 									<span class="p_date p_day">D-Day</span>
 								</c:when>
-								<c:when test="${vo.dDay != 0}">
-									<span class="p_date">${vo.dDay}일 남음</span>
+								<c:when test="${vo.dDay lt 0}">
+									<span class="p_date p_day">모집 마감</span>
 								</c:when>
+								<c:otherwise>
+									<span class="p_date">${vo.dDay}일 남음</span>
+								</c:otherwise>
 								</c:choose>
 									<ul class="rec_app">
 										<li class="tt">신청 <b>${vo.campSumCount}</b>명</li>
