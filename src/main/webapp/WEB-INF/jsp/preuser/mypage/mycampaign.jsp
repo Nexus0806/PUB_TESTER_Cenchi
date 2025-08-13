@@ -4,7 +4,7 @@
     
 <!DOCTYPE html>
 <html lang="ko">
- <head>
+<head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -29,8 +29,8 @@
 	<div class="s_cont">
 		<jsp:include page="/WEB-INF/jsp/_inc/sideMenu.jsp" />
 	
-<div class="right">
-				<h2 class="sub_tit">내 체험단</h2>
+	<div class="right">
+			<h2 class="sub_tit">내 체험단</h2>
 
 				<div class="select_wrap sel_flex">
 					<div class="sel">

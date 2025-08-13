@@ -36,6 +36,6 @@
 		</li>
 	</ul>
 	<p class="basic_btn">
-		<a href="/preuser/login/logout.do" class="logout">로그아웃</a>
+		<a href="/preuser/member/logout.do" class="logout">로그아웃</a>
 	</p>
 </div> <!-- left -->
