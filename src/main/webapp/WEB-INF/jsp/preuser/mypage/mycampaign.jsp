@@ -25,47 +25,11 @@
 <jsp:include page="/WEB-INF/jsp/_inc/header.jsp" />
 <script src="/js/ui.js"></script>
 
-	<div id="sub_content">
-		<div class="s_cont">
-		<div id="left_menu" class="lnb left">
-	<ul class="lnb_li">
-		<li>
-			<p class="left_tit">마이페이지</p>
-			<ul class="sub_li">
-				<li class="on"><a href="/preuser/mypage/mycampaign.do">내 체험단</a></li>
-				<li><a href="#none">체험단 신청 관리</a></li>
-				<li><a href="#none">체험단 취소</a></li>
-				<li><a href="#none">커뮤니티</a></li>
-			</ul>
-		</li>
-		<li>
-			<ul class="sub_li">
-				<li><a href="#none">커뮤니티</a></li>
-			</ul>
-			<li><a href="#none">체험단 신청 관리</a></li>
-			<li><a href="#none">체험단 취소</a></li>
-			<li><a href="#none">커뮤니티</a></li>
-		</li>
-		<li>
-			<p class="left_tit">내 정보 관리</p>
-			<ul class="sub_li">
-				<li><a href="#none">프로필</a></li>
-				<li><a href="#none">찜 목록</a></li>
-			</ul>
-		</li>
-		<li>
-			<p class="left_tit">고객센터</p>
-			<ul class="sub_li">
-				<li><a href="#none">자주 묻는 질문</a></li>
-				<li><a href="#none">문의 내역</a></li>
-				<li><a href="#none">공지 / 이벤트</a></li>
-			</ul>
-		</li>
-	</ul>
-	<p class="basic_btn">
-		<a href="/preuser/login/logout.do" class="logout">로그아웃</a>
-	</p>
-</div> <!-- left -->			<div class="right">
+<div id="sub_content">
+	<div class="s_cont">
+		<jsp:include page="/WEB-INF/jsp/_inc/sideMenu.jsp" />
+	
+<div class="right">
 				<h2 class="sub_tit">내 체험단</h2>
 
 				<div class="select_wrap sel_flex">
