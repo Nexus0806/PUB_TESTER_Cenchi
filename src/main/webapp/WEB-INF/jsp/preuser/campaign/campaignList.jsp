@@ -177,12 +177,15 @@
 							</div><!-- prd_txt -->
 							<div class="prd_rec">
 								<c:choose>
-								<c:when test="${vo.dDay == 0}">
+								<c:when test="${vo.dDay eq 0}">
 									<span class="p_date p_day">D-Day</span>
 								</c:when>
-								<c:when test="${vo.dDay != 0}">
-									<span class="p_date">${vo.dDay}일 남음</span>
+								<c:when test="${vo.dDay lt 0}">
+									<span class="p_date p_day">모집 마감</span>
 								</c:when>
+								<c:otherwise>
+									<span class="p_date">${vo.dDay}일 남음</span>
+								</c:otherwise>
 								</c:choose>
 									<ul class="rec_app">
 										<li class="tt">신청 <b>${vo.campSumCount}</b>명</li>

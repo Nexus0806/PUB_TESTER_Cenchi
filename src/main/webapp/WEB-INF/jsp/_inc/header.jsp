@@ -8,15 +8,7 @@
 		</h1>
 
 		<ul class="gnb">
-			<li>
-				<a href="/preuser/campaign/campaignList.do">체험단 검색</a>
-				<div class="gnb_sub">
-					<ul class="sub_menu">
-						<li><a href="#none">체험단 신청하기</a></li>
-						<li><a href="#none">체험단 문의사항</a></li>
-					</ul>
-				</div><!-- gnb_sub -->
-			</li>
+			<li><a href="/preuser/campaign/campaignList.do">체험단 검색</a></li>
 			<li><a href="#none">커뮤니티</a></li>
 			<li><a href="#none">공지/이벤트</a></li>
 			<li><a href="#none">이용가이드</a></li>
@@ -80,13 +72,7 @@
 				</div><!-- login_wrap -->
 
 				<ul class="dep01">
-					<li>
-						<a href="/preuser/campaign/campaignList.do">체험단 검색</a>
-						<ul class="dep02">
-							<li><a href="#none">- 체험단 신청하기</a></li>
-							<li><a href="#none">- 체험단 문의사항</a></li>
-						</ul>
-					</li>
+					<li><a href="/preuser/campaign/campaignList.do">체험단 검색</a></li>
 					<li><a href="#none">커뮤니티</a></li>
 					<li><a href="#none">공지/이벤트</a></li>
 					<li><a href="#none">이용가이드</a></li>

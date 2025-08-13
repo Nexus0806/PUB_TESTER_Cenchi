@@ -58,6 +58,7 @@ ul.prd_li li .prd_txt > p {width: 100%; font: 300 16px / 16px "Pretendard", "Not
 ul.prd_li li .prd_rec {margin-top:20px; display: flex; flex-wrap:wrap; gap:10px; align-items:center;}
 ul.prd_li li .prd_rec span.p_date {display: block; font: 300 12px / 16px "Pretendard", "Noto Sans KR", sans-serif; color:#555; padding: 4px 8px; background:#f5f5f5; text-align:center; border-radius: 50px;}
 ul.prd_li li .prd_rec span.p_day {font-weight: 600; color: var(--co01); background: #e8f6fc;}
+ul.prd_li li .prd_rec span.p_close {font-weight: 600; color: var(--red); background: #fdeaea;}
 ul.prd_li li .prd_rec ul.rec_app {}
 ul.prd_li li .prd_rec ul.rec_app li {font: 500 12px / 12px "Pretendard", "Noto Sans KR", sans-serif; color:#999; display: inline-block; margin-right: 0;}
 ul.prd_li li .prd_rec ul.rec_app li > b {font-weight: 600;}
@@ -156,6 +157,7 @@ ul.prd_li li .prd_txt > p {width: 100%; font: 300 15px / 15px "Pretendard", "Not
 ul.prd_li li .prd_rec {margin-top:20px; display: flex; flex-wrap:wrap; gap:10px; align-items:center;}
 ul.prd_li li .prd_rec span.p_date {display: block; font: 300 12px / 16px "Pretendard", "Noto Sans KR", sans-serif; color:#555; padding: 4px 8px; background:#f5f5f5; text-align:center; border-radius: 50px;}
 ul.prd_li li .prd_rec span.p_day {font-weight: 600; color: var(--co01); background: #e8f6fc;}
+ul.prd_li li .prd_rec span.p_close {font-weight: 600; color: var(--red); background: #fdeaea;}
 ul.prd_li li .prd_rec ul.rec_app {}
 ul.prd_li li .prd_rec ul.rec_app li {font: 500 12px / 12px "Pretendard", "Noto Sans KR", sans-serif; color:#999; display: inline-block; margin-right: 0;}
 ul.prd_li li .prd_rec ul.rec_app li > b {font-weight: 600;}
@@ -224,6 +226,7 @@ ul.prd_li li .prd_txt > p {width: 100%; font: 300 15px / 15px "Pretendard", "Not
 ul.prd_li li .prd_rec {margin-top:20px; display: flex; flex-wrap:wrap; gap:10px; align-items:center;}
 ul.prd_li li .prd_rec span.p_date {display: block; font: 300 12px / 16px "Pretendard", "Noto Sans KR", sans-serif; color:#555; padding: 4px 8px; background:#f5f5f5; text-align:center; border-radius: 50px;}
 ul.prd_li li .prd_rec span.p_day {font-weight: 600; color: var(--co01); background: #e8f6fc;}
+ul.prd_li li .prd_rec span.p_close {font-weight: 600; color: var(--red); background: #fdeaea;}
 ul.prd_li li .prd_rec ul.rec_app {}
 ul.prd_li li .prd_rec ul.rec_app li {font: 500 12px / 12px "Pretendard", "Noto Sans KR", sans-serif; color:#999; display: inline-block; margin-right: 0;}
 ul.prd_li li .prd_rec ul.rec_app li > b {font-weight: 600;}
@@ -300,6 +303,7 @@ ul.prd_li li .prd_txt > p {width: 100%; font: 300 14px / 14px "Pretendard", "Not
 ul.prd_li li .prd_rec {margin-top:15px; display: flex; flex-wrap:wrap; gap:5px; align-items: baseline;}
 ul.prd_li li .prd_rec span.p_date {display: block; font: 300 12px / 14px "Pretendard", "Noto Sans KR", sans-serif; color:#555; padding: 4px 8px; background:#f5f5f5; text-align:center; border-radius: 50px;}
 ul.prd_li li .prd_rec span.p_day {font-weight: 600; color: var(--co01); background: #e8f6fc;}
+ul.prd_li li .prd_rec span.p_close {font-weight: 600; color: var(--red); background: #fdeaea;}
 ul.prd_li li .prd_rec ul.rec_app {}
 ul.prd_li li .prd_rec ul.rec_app li {font: 500 12px / 12px "Pretendard", "Noto Sans KR", sans-serif; color:#999; display: inline-block; margin-right: 0;}
 ul.prd_li li .prd_rec ul.rec_app li > b {font-weight: 600;}
@@ -389,6 +393,7 @@ ul.prd_li li .prd_txt > p {width: 100%; font: 300 13px / 13px "Pretendard", "Not
 ul.prd_li li .prd_rec {margin-top:12px; display: flex; flex-wrap:wrap; gap:5px; align-items: baseline;}
 ul.prd_li li .prd_rec span.p_date {display: block; max-width:46px; font: 300 10px / 13px "Pretendard", "Noto Sans KR", sans-serif; color:#555; padding: 3px 4px; background:#f5f5f5; text-align:center; border-radius: 50px;}
 ul.prd_li li .prd_rec span.p_day {font-weight: 600; color: var(--co01); background: #e8f6fc;}
+ul.prd_li li .prd_rec span.p_close {font-weight: 600; color: var(--red); background: #fdeaea;}
 ul.prd_li li .prd_rec ul.rec_app {width:calc(100% - 51px); display: flex; flex-wrap:wrap;}
 ul.prd_li li .prd_rec ul.rec_app li {font: 500 11px / 11px "Pretendard", "Noto Sans KR", sans-serif; color:#999; display: inline-block; margin-right: 0;}
 ul.prd_li li .prd_rec ul.rec_app li:last-child {margin-left: 2px;}
