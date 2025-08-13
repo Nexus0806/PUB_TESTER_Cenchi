@@ -27,7 +27,6 @@
 
 <script src="/js/ui.js"></script>
 
-
 	<div id="wrap">
 		<div class="banner_wrap">
 			<ul class="banner">
