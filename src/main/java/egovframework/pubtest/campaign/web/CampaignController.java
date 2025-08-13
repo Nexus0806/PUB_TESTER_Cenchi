@@ -1,9 +1,5 @@
 package egovframework.pubtest.campaign.web;
 
-import java.text.SimpleDateFormat;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -25,9 +21,6 @@ import egovframework.pubtest.campaign.service.CampaignSubmitVO;
 @Controller
 @RequestMapping("/preuser/campaign")
 public class CampaignController {
-	
-	private static final Logger logger = LoggerFactory.getLogger(CampaignController.class);
-
 	
 	@Resource(name = "campaignService")
 	private CampaignService campaignService;

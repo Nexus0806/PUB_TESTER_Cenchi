@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardDAO">
+
+	<select id="selectBoardList" resultType="boardListDTO">
+		SELECT
+		    P.PST_IDX,
+		    P.PST_CATE,
+		    P.PST_TITLE,
+		    P.PST_CMT_CNT,
+		    COALESCE(U.USER_NICKNAME, B.BUSS_NICKNAME) AS AUTHOR_NICKNAME,
+		    P.PST_REGDATE,
+		    P.PST_HIT,
+		    P.PST_LIKE
+		FROM
+		    PUB_PST P
+		LEFT JOIN
+		    PUB_USER U ON P.USER_IDX = U.USER_IDX
+		LEFT JOIN
+		    PUB_BUSS B ON P.BUSS_IDX = B.BUSS_IDX
+		WHERE
+		    P.PST_DELYN = 'N'
+		ORDER BY
+		    CASE
+		        WHEN P.PST_CATE = '필독' THEN 1
+		        ELSE 2
+		    END,
+		    P.PST_IDX DESC;
+	</select>
+	
+	<select id="selectBoardDetail" resultType="boardDetailDTO" parameterType="int">
+		SELECT
+		    P.PST_IDX,
+		    P.PST_CATE,
+		    P.PST_TITLE,
+		    P.PST_CMT_CNT,
+		    COALESCE(U.USER_NICKNAME, B.BUSS_NICKNAME) AS AUTHOR_NICKNAME,
+		    P.PST_REGDATE,
+		    P.PST_HIT,
+		    P.PST_LIKE,
+		    P.PST_CONT,
+		    P.PST_IMG
+		FROM
+		    PUB_PST P
+		LEFT JOIN
+		    PUB_USER U ON P.USER_IDX = U.USER_IDX
+		LEFT JOIN
+		    PUB_BUSS B ON P.BUSS_IDX = B.BUSS_IDX
+		WHERE
+			P.PST_IDX = #{pstIdx}	
+	</select>
+	
+</mapper>
