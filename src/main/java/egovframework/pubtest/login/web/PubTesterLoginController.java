@@ -72,6 +72,7 @@ public class PubTesterLoginController {
 		System.err.println("nickName : " + nickName);
 		
 		session.setAttribute("LOGIN_USER", new SessionUser(nickName, type, idx)); // 로그인 한 사용자 정보 저장 (닉네임/로그인유형/인덱스)
+		pubTesterLoginService.updateVisitCnt(type, idx);
 		
 		// ID 저장 체크박스 쿠키 처리
 	    String ctxPath = req.getContextPath().isEmpty() ? "/" : req.getContextPath();

@@ -42,7 +42,7 @@
 				AND CAMP_ENDDATE >= NOW()
 			ORDER BY
 				CAMP_REGDATE DESC
-			LIMIT 10
+			LIMIT 12
 	</select>
 	
 	<select id="selectDeadlineCampaignList" resultType="PubTesterMainVO">
@@ -64,7 +64,7 @@
 			    AND CAMP_STARTDATE >= NOW()
 			ORDER BY
     			CAMP_STARTDATE ASC
-			LIMIT 10
+			LIMIT 12
 	</select>
 	
 </mapper>
