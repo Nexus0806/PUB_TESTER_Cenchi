@@ -23,6 +23,9 @@
 			<%-- 세션에 로그인 정보가 있다면 --%>
 			<c:when test="${not empty sessionScope.LOGIN_USER}">
 				<div class="login_wrap02">
+					<a href="javascript:void(0)" class="bell" onclick="">
+						<span>1</span>
+					</a>
 					<%-- 나중에 마이페이지 연결하기... --%>
 					<a href="#" class="my">
 					<span class="myimg"></span> 

@@ -82,7 +82,7 @@
 			<ul class="prd_li prd_slide">
 				<c:forEach var="vo" items="${popCampList}">
 					<li>
-						<a href="#none">
+						<a href="${pageContext.request.contextPath}/preuser/campaign/campaignView.do?campIdx=${vo.campIdx}">
 							<div class="prd_img">
 								<img src="${pageContext.request.contextPath}/_img/pc/main/${vo.campThub}"
 								alt="" 
@@ -93,7 +93,7 @@
 								<!-- 찜하기 O -->
 								<!-- <a href="#none" class="sn_like on">찜하기</a> -->
 							</div><!-- prd_img -->
-							<a href="#none">
+							<a href="${pageContext.request.contextPath}/preuser/campaign/campaignView.do?campIdx=${vo.campIdx}">
 								<c:choose>
 								<c:when test="${vo.campAdType eq '틱톡'}">
 									<p class="sns_txt sns_tik">${vo.campType}</p>
@@ -146,7 +146,7 @@
 				<ul class="prd_li prd_li02">
 				<c:forEach var="vo" items="${newCampList}">
 					<li>
-						<a href="#none">
+						<a href="${pageContext.request.contextPath}/preuser/campaign/campaignView.do?campIdx=${vo.campIdx}">
 							<div class="prd_img">
 								<img src="${pageContext.request.contextPath}/_img/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
@@ -202,7 +202,7 @@
 				<ul class="prd_li prd_li02">
 					<c:forEach var="vo" items="${deadCampList}">
 					<li>
-						<a href="#none">
+						<a href="${pageContext.request.contextPath}/preuser/campaign/campaignView.do?campIdx=${vo.campIdx}">
 							<div class="prd_img">
 								<img src="${pageContext.request.contextPath}/_img/pc/main/no_img.png" alt="" / style="background: url(${pageContext.request.contextPath}/_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;">
 							</div><!-- prd_img -->
