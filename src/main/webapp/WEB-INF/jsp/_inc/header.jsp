@@ -9,7 +9,7 @@
 
 		<ul class="gnb">
 			<li><a href="/preuser/campaign/campaignList.do">체험단 검색</a></li>
-			<li><a href="#none">커뮤니티</a></li>
+			<li><a href="/preuser/board/boardList.do">커뮤니티</a></li>
 			<li><a href="#none">공지/이벤트</a></li>
 			<li><a href="#none">이용가이드</a></li>
 		</ul><!-- gnb -->
