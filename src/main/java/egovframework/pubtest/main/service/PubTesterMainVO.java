@@ -1,8 +1,7 @@
 package egovframework.pubtest.main.service;
 
-import java.time.LocalDateTime;
-
 public class PubTesterMainVO {
+	private int campIdx;
 	private String campTitle;
 	private String campThub;
 	private String campAdType;
@@ -13,6 +12,12 @@ public class PubTesterMainVO {
 	private int campRecruite;
 	private long dDay;
 	
+	public int getCampIdx() {
+		return campIdx;
+	}
+	public void setCampIdx(int campIdx) {
+		this.campIdx = campIdx;
+	}
 	public String getCampTitle() {
 		return campTitle;
 	}

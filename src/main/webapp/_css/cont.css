@@ -394,8 +394,10 @@ ul.reg01 li.current{background: var(--co01); color: #fff;}
 .opt li p.op_sns {background:url(../_img/pc/main/sns_yt_ico02.svg)no-repeat center / contain; width:30px; height:30px;}
 .opt li p.op_sns.yout {background:url(../_img/pc/main/sns_yt_ico.svg)no-repeat center / contain; width:30px; height:30px;}
 .opt li p.op_sns.yout02 {background:url(../_img/pc/main/sns_yt_ico02.svg)no-repeat center / contain; width:30px; height:30px;}
-.opt li p.op_sns.nblog  {background:url(../_img/pc/main/sns_na_ico.svg)no-repeat center / contain; width:30px; height:30px;}
 .opt li p.op_sns.insta  {background:url(../_img/pc/main/sns_in_ico.svg)no-repeat center / contain; width:30px; height:30px;}
+.opt li p.op_sns.tiktok  {background:url(../_img/pc/main/sns_tik_ico.svg)no-repeat center / contain; width:30px; height:30px;}
+.opt li p.op_sns.nblog  {background:url(../_img/pc/main/sns_na_ico.svg)no-repeat center / contain; width:30px; height:30px;}
+.opt li p.op_sns.etc  {background:url(../_img/pc/main/sns_etc_ico.svg)no-repeat center / contain; width:30px; height:30px;}
 .opt li p.op_num {}
 .opt li p.op_cate {}
 .opt li p.op_cate02 {}
@@ -496,7 +498,7 @@ ol.Onum_2 > li::before			{font-size: 16px; content: counter(li) ') '; counter-in
 .Calendar					{border: 1px solid #eee; border-radius: 20px; padding: 25px 20px; overflow: hidden;}
 .Calendar .month_box		{display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 20px;}
 .Calendar .month_box span	{font-size: 19px; font-weight: 700;}
-.Calendar .month_box a		{display: block; width: 30px; height: 20px; background: url('../_img/cont/head-left.png') no-repeat 50% 50% / 17px;}
+.Calendar .month_box a		{display: block; width: 30px; height: 20px; background: url('../_img/pc/cont/head-left.png') no-repeat 50% 50% / 17px;}
 .Calendar .month_box .cla_r	{transform: rotate(-180deg);}
 .Calendar .Cal_li			{display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px 8px;}
 .Calendar .Cal_li li		{text-align: center; font-size: 13px; color: #777; position: relative;}

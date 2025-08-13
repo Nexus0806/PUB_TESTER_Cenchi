@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<!-- 약관 자세히보기 내용 표시 -->
 </body>
 </html>

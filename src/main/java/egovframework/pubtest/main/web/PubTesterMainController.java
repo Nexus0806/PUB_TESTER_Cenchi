@@ -19,7 +19,7 @@ public class PubTesterMainController {
     private PubTesterMainService pubTesterMainService;
 	
 	@RequestMapping(value = "/index.do")
-    public String loadMain(Model model) throws Exception {
+    public String loadMain(Model model) {
 		List<PubTesterMainVO> popList = pubTesterMainService.getPopularCampaign();
 		for(PubTesterMainVO row : popList)
 		{			
