@@ -40,7 +40,30 @@
 
 							<ul class="opt">
 								<!-- 아이콘 클래스명 입니다. yout 유튜브 숏츠 / yout02 유튜브 / nblog 네이버 블로그 / insta 인스타그램 -->
-								<li class="sns_tit"><p class="op_sns yout02"></p><span>${campVo.campAdType}</span></li>
+								<li class="sns_tit">
+								<c:choose>
+									<c:when test="${campVo.campAdType eq '유튜브'}">
+										<p class="op_sns yout02"></p>
+										<span>${campVo.campAdType}</span>
+									</c:when>
+									<c:when test="${campVo.campAdType eq '블로그' or campVo.campAdType eq '블로그+클립'}">
+										<p class="op_sns nblog"></p>
+										<span>${campVo.campAdType}</span>
+									</c:when>
+									<c:when test="${campVo.campAdType eq '인스타그램' or campVo.campAdType eq '릴스'}">
+										<p class="op_sns insta"></p>
+										<span>${campVo.campAdType}</span>
+									</c:when>
+									<c:when test="${campVo.campAdType eq '틱톡'}">
+										<p class="op_sns tiktok"></p>
+										<span>${campVo.campAdType}</span>
+									</c:when>
+									<c:otherwise>
+										<p class="op_sns etc"></p>
+										<span>${campVo.campAdType}</span>
+									</c:otherwise>
+								</c:choose>
+								</li>
 								<li><p class="op_num">#${campVo.campIdx}</p></li>
 								<li><p class="op_cate">${campVo.campType}</p></li>
 								<li><p class="op_cate02">${campVo.campCate}</p></li>

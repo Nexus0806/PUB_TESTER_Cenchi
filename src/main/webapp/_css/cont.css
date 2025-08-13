@@ -394,8 +394,10 @@ ul.reg01 li.current{background: var(--co01); color: #fff;}
 .opt li p.op_sns {background:url(../_img/pc/main/sns_yt_ico02.svg)no-repeat center / contain; width:30px; height:30px;}
 .opt li p.op_sns.yout {background:url(../_img/pc/main/sns_yt_ico.svg)no-repeat center / contain; width:30px; height:30px;}
 .opt li p.op_sns.yout02 {background:url(../_img/pc/main/sns_yt_ico02.svg)no-repeat center / contain; width:30px; height:30px;}
-.opt li p.op_sns.nblog  {background:url(../_img/pc/main/sns_na_ico.svg)no-repeat center / contain; width:30px; height:30px;}
 .opt li p.op_sns.insta  {background:url(../_img/pc/main/sns_in_ico.svg)no-repeat center / contain; width:30px; height:30px;}
+.opt li p.op_sns.tiktok  {background:url(../_img/pc/main/sns_tik_ico.svg)no-repeat center / contain; width:30px; height:30px;}
+.opt li p.op_sns.nblog  {background:url(../_img/pc/main/sns_na_ico.svg)no-repeat center / contain; width:30px; height:30px;}
+.opt li p.op_sns.etc  {background:url(../_img/pc/main/sns_etc_ico.svg)no-repeat center / contain; width:30px; height:30px;}
 .opt li p.op_num {}
 .opt li p.op_cate {}
 .opt li p.op_cate02 {}
