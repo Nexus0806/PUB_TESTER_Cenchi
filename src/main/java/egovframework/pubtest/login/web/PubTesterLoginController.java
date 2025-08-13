@@ -54,9 +54,9 @@ public class PubTesterLoginController {
 		idpw.put("id", id);
 		idpw.put("pw", pw);
 		
-		Integer idx = pubTesterLoginService.chklogin(idpw);	// id,pw를 db에서 조회한 결과를 저장 (사용자 idx 번호, 없다면 null)
+		boolean chk = pubTesterLoginService.chklogin(idpw);	// id,pw를 db에서 조회한 결과를 저장 (true or false)
 
-		if(idx == 0 || idx == null) {
+		if(!chk) {
 			model.addAttribute("loginError", "이메일이나 비밀번호가 올바르지 않습니다.");
 			model.addAttribute("savedID", id);
 			return "preuser/member/login";
@@ -65,23 +65,17 @@ public class PubTesterLoginController {
 		HttpSession old = req.getSession(false);			// 기존 세션이 있는지 확인
 		if(old != null) old.invalidate();					// 만약에 세션이 남아있었다면 해당 세션을 파기
 		HttpSession session = req.getSession(true);			// 새로운 세션을 생성
-		String nickName = pubTesterLoginService.getNickName(type, idx);
-		
-		idpw.forEach((key,value) -> {System.err.println(key+ " : " + value);});
-		System.err.println("idx : " + idx);
-		System.err.println("nickName : " + nickName);
-		
-		session.setAttribute("LOGIN_USER", new SessionUser(nickName, type, idx)); // 로그인 한 사용자 정보 저장 (닉네임/로그인유형/인덱스)
+		session.setAttribute("LOGIN_USER", new SessionUser("사용자 이름", type)); // 로그인 한 사용자 정보 저장 (이름/로그인 유형)
 		
 		// ID 저장 체크박스 쿠키 처리
 	    String ctxPath = req.getContextPath().isEmpty() ? "/" : req.getContextPath();
 	    if (saveIDChk != null) {	// 체크박스는 체크하지 않으면 null 값을 반환
-	      Cookie c = new Cookie("savedID", id);	// 브라우저에 저장할 쿠키, 여기서는 id 저장
+	      Cookie c = new Cookie("savedLoginId", id);	// 브라우저에 저장할 쿠키, 여기서는 id 저장
 	      c.setPath(ctxPath);							// 위에서 설정한 경로에서만 유효한 쿠키로 설정
 	      c.setMaxAge(60 * 60 * 24 * 30); // 쿠키 만료일 (30일)
 	      res.addCookie(c);
 	    } else {
-	      Cookie c = new Cookie("savedID", "");
+	      Cookie c = new Cookie("savedLoginId", "");
 	      c.setPath(ctxPath);
 	      c.setMaxAge(0); 		// 쿠키 만료일을 0으로 설정해서 쿠키를 삭제함
 	      res.addCookie(c);
@@ -180,13 +174,11 @@ public class PubTesterLoginController {
 	
 	public static class SessionUser {
 	    private final String userNickName;
-	    private final int idx;
 	    private final String type;
 	    
-	    public SessionUser(String nickName, String type, int idx)
-	    { userNickName=nickName; this.type=type; this.idx=idx;}
-	    public String getUserNickName(){ return userNickName; }
-	    public int getIdx(){ return idx; }
+	    public SessionUser(String nickName, String type)
+	    { userNickName=nickName; this.type=type;}
+	    public String getNickName(){ return userNickName; }
 	    public String getType(){ return type; }
 	  }
 }

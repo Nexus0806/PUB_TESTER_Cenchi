@@ -4,8 +4,7 @@
 
 <mapper namespace="pubTesterMainDAO">
 	<select id="selectPopularCampaignList" resultType="PubTesterMainVO">
-			SELECT
-				CAMP_IDX		as campIdx,
+			SELECT 
 				CAMP_TITLE 		as campTitle,
 				CAMP_THUB 		as campThub,
 				CAMP_AD_TYPE	as campAdType,
@@ -26,7 +25,6 @@
 	
 	<select id="selectNewCampaignList" resultType="PubTesterMainVO">
 			SELECT 
-				CAMP_IDX		as campIdx,
 				CAMP_TITLE 		as campTitle,
 				CAMP_THUB 		as campTumb,
 				CAMP_AD_TYPE	as campAdType,
@@ -47,7 +45,6 @@
 	
 	<select id="selectDeadlineCampaignList" resultType="PubTesterMainVO">
 			SELECT 
-				CAMP_IDX		as campIdx,
 				CAMP_TITLE 		as campTitle,
 				CAMP_THUB 		as campTumb,
 				CAMP_AD_TYPE	as campAdType,
