@@ -16,6 +16,7 @@ public class PubTesterLoginServiceImpl implements PubTesterLoginService{
 	@Resource(name = "loginDAO")
 	private PubTesterLoginDAO pubTesterLoginDAO;
 	
+	// 회원가입
 	@Override
 	public void regUser(String type, UserRegVO vo) {
 		if("inf".equals(type))
@@ -24,6 +25,7 @@ public class PubTesterLoginServiceImpl implements PubTesterLoginService{
 			pubTesterLoginDAO.regBssUser(vo);
 	}
 	
+	// 이메일 중복 확인
 	@Override
 	public boolean chkEmail(String type, String email){
 		if("inf".equals(type))
@@ -33,12 +35,23 @@ public class PubTesterLoginServiceImpl implements PubTesterLoginService{
 		return false;
 	}
 	
+	// 로그인 확인
 	@Override
-	public boolean chklogin(Map<String, Object> param) {
+	public Integer chklogin(Map<String, Object> param) {
 		if("inf".equals(param.get("type")))
 			return pubTesterLoginDAO.chkInfLogin(param);
 		else if ("bss".equals(param.get("type")))
 			return pubTesterLoginDAO.chkBssLogin(param);
-		return false;
+		return null;
+	}
+	
+	// 사용자 이름 표시
+	@Override
+	public String getNickName(String type, int idx){
+		if("inf".equals(type))
+			return pubTesterLoginDAO.getInfNickName(idx);
+		else if("bss".equals(type))
+			return pubTesterLoginDAO.getBssNickName(idx);
+		return null;
 	}
 }

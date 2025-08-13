@@ -6,5 +6,6 @@ public interface PubTesterLoginService {
 	
 	void regUser(String type, UserRegVO vo);
 	boolean chkEmail(String type, String email);
-	boolean chklogin(Map<String, Object> param);
+	Integer chklogin(Map<String, Object> param);
+	String getNickName(String type, int idx);
 }

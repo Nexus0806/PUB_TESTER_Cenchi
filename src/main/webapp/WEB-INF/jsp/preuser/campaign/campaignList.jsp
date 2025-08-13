@@ -170,7 +170,23 @@
 								style="background: url(${pageContext.request.contextPath}/_img/pc/main/sec02_img02.png)no-repeat 50% 50% / cover;"
 								onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/_img/pc/main/no_img.png';">
 							</div><!-- prd_img -->
-							<p class="sns_txt sns_inst">${vo.campType}</p>
+							<c:choose>
+								<c:when test="${vo.campAdType eq '틱톡'}">
+									<p class="sns_txt sns_tik">${vo.campType}</p>
+								</c:when>
+								<c:when test="${vo.campAdType eq '클립' or vo.campAdType eq '구매형'}">
+									<p class="sns_txt sns_etc">${vo.campType}</p>
+								</c:when>
+								<c:when test="${vo.campAdType eq '인스타그램' or vo.campAdType eq '릴스'}">
+									<p class="sns_txt sns_inst">${vo.campType}</p>
+								</c:when>
+								<c:when test="${vo.campAdType eq '유튜브'}">
+									<p class="sns_txt sns_yout">${vo.campType}</p>
+								</c:when>
+								<c:when test="${vo.campAdType eq '블로그' or vo.campAdType eq '블로그+클립'}">
+									<p class="sns_txt sns_blog">${vo.campType}</p>
+								</c:when>
+							</c:choose>
 							<div class="prd_txt">
 								<strong>${vo.campTitle}</strong>
 								<p>${vo.campService}</p>
