@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html lang="ko">
  <head>
@@ -9,9 +11,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no" />
 <link rel="shortcut icon" href="_img/favicon.png"/> <!-- 파비콘 -->
-<link rel="stylesheet" type="text/css" href="/preuser/_css/default.css" />
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/default.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/slick.css"/>
+	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <title>중소기업을 위한 공공체험단</title>
 <script src="/preuser/_js/pop_layer.js"></script>
@@ -28,17 +32,20 @@
 		<li>
 			<p class="left_tit">마이페이지</p>
 			<ul class="sub_li">
-				<li class="on"><a href="#none">내 체험단</a></li>
+				<li class="on"><a href="/preuser/mypage/mycampaign.do">내 체험단</a></li>
 				<li><a href="#none">체험단 신청 관리</a></li>
 				<li><a href="#none">체험단 취소</a></li>
 				<li><a href="#none">커뮤니티</a></li>
 			</ul>
 		</li>
-		<!-- <li>
+		<li>
 			<ul class="sub_li">
 				<li><a href="#none">커뮤니티</a></li>
 			</ul>
-		</li> -->
+			<li><a href="#none">체험단 신청 관리</a></li>
+			<li><a href="#none">체험단 취소</a></li>
+			<li><a href="#none">커뮤니티</a></li>
+		</li>
 		<li>
 			<p class="left_tit">내 정보 관리</p>
 			<ul class="sub_li">
@@ -56,7 +63,7 @@
 		</li>
 	</ul>
 	<p class="basic_btn">
-		<a href="#none" class="logout">로그아웃</a>
+		<a href="/preuser/login/logout.do" class="logout">로그아웃</a>
 	</p>
 </div> <!-- left -->			<div class="right">
 				<h2 class="sub_tit">내 체험단</h2>

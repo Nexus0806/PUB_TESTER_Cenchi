@@ -27,7 +27,7 @@
 						<span>1</span>
 					</a>
 					<%-- 나중에 마이페이지 연결하기... --%>
-					<a href="#" class="my">
+					<a href="/preuser/mypage/mycampaign.do" class="my">
 					<span class="myimg"></span> 
 					<c:out value="${sessionScope.LOGIN_USER.userNickName != null ? sessionScope.LOGIN_USER.userNickName : '닉네임설정'}"/> 님
 					</a>
