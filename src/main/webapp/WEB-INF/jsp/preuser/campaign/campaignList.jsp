@@ -197,7 +197,7 @@
 									<span class="p_date p_day">D-Day</span>
 								</c:when>
 								<c:when test="${vo.dDay lt 0}">
-									<span class="p_date p_day">모집 마감</span>
+									<span class="p_date p_close">모집 마감</span>
 								</c:when>
 								<c:otherwise>
 									<span class="p_date">${vo.dDay}일 남음</span>

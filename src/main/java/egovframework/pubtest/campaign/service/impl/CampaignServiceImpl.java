@@ -21,7 +21,7 @@ public class CampaignServiceImpl implements CampaignService{
     	for(CampaignVO row : campaignList) {
 			if(row.getCampStartdate() != null)
 			{
-				long dDay = PubTestUtil.calcDday(row.getCampStartdate());
+				long dDay = PubTestUtil.calcDday(row.getCampRecEnddate());
 				row.setdDay(dDay);
 			}
     	}

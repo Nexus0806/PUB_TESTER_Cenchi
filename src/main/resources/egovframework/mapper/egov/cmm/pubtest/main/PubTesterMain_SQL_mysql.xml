@@ -4,27 +4,30 @@
 
 <mapper namespace="pubTesterMainDAO">
 	<select id="selectPopularCampaignList" resultType="PubTesterMainVO">
+			/* 모집이 끝나지 않았지만, 신청자가 많은 순서 */
 			SELECT
-				CAMP_IDX		as campIdx,
-				CAMP_TITLE 		as campTitle,
-				CAMP_THUB 		as campThub,
-				CAMP_AD_TYPE	as campAdType,
-				CAMP_TYPE		as campType,
-				CAMP_SERVICE	as campService,
-				CAMP_STARTDATE	as campStartDate,
-				CAMP_SUM_COUNT	as campSumCount,
-				CAMP_RECRUITE	as campRecruite
+				CAMP_IDX			as campIdx,
+				CAMP_TITLE 			as campTitle,
+				CAMP_THUB 			as campThub,
+				CAMP_AD_TYPE		as campAdType,
+				CAMP_TYPE			as campType,
+				CAMP_SERVICE		as campService,
+				CAMP_STARTDATE		as campStartDate,
+				CAMP_REC_ENDDATE	as campRecEndDate,
+				CAMP_SUM_COUNT		as campSumCount,
+				CAMP_RECRUITE		as campRecruite
 			FROM 
 				PUB_CAMP
 			WHERE
 				CAMP_DELYN = 'N'
-				AND CAMP_ENDDATE >= NOW()
+				AND CAMP_REC_ENDDATE >= NOW()
 			ORDER BY
 				CAMP_SUM_COUNT DESC
 			LIMIT 10
 	</select>
 	
 	<select id="selectNewCampaignList" resultType="PubTesterMainVO">
+			/* 새롭게 등록된 체험단 부터 */
 			SELECT 
 				CAMP_IDX		as campIdx,
 				CAMP_TITLE 		as campTitle,
@@ -33,37 +36,39 @@
 				CAMP_TYPE		as campType,
 				CAMP_SERVICE	as campService,
 				CAMP_STARTDATE	as campStartDate,
+				CAMP_REC_ENDDATE	as campRecEndDate,
 				CAMP_SUM_COUNT	as campSumCount,
 				CAMP_RECRUITE	as campRecruite
 			FROM 
 				PUB_CAMP
 			WHERE
 				CAMP_DELYN = 'N'
-				AND CAMP_ENDDATE >= NOW()
+				AND CAMP_REC_ENDDATE >= NOW()
 			ORDER BY
 				CAMP_REGDATE DESC
 			LIMIT 12
 	</select>
 	
 	<select id="selectDeadlineCampaignList" resultType="PubTesterMainVO">
+			/* 체험단 모집이 얼마 남지 않은 체험단들 부터*/
 			SELECT 
-				CAMP_IDX		as campIdx,
-				CAMP_TITLE 		as campTitle,
-				CAMP_THUB 		as campTumb,
-				CAMP_AD_TYPE	as campAdType,
-				CAMP_TYPE		as campType,
-				CAMP_SERVICE	as campService,
-				CAMP_STARTDATE	as campStartDate,
-				CAMP_SUM_COUNT	as campSumCount,
-				CAMP_RECRUITE	as campRecruite
+				CAMP_IDX			as campIdx,
+				CAMP_TITLE 			as campTitle,
+				CAMP_THUB 			as campTumb,
+				CAMP_AD_TYPE		as campAdType,
+				CAMP_TYPE			as campType,
+				CAMP_SERVICE		as campService,
+				CAMP_STARTDATE		as campStartDate,
+				CAMP_REC_ENDDATE	as campRecEndDate,
+				CAMP_SUM_COUNT		as campSumCount,
+				CAMP_RECRUITE		as campRecruite
 			FROM 
 				PUB_CAMP
 			WHERE
 				CAMP_DELYN = 'N'
-				AND CAMP_ENDDATE >= NOW()
-			    AND CAMP_STARTDATE >= NOW()
+				AND CAMP_REC_ENDDATE >= NOW()
 			ORDER BY
-    			CAMP_STARTDATE ASC
+    			CAMP_REC_ENDDATE ASC
 			LIMIT 12
 	</select>
 	

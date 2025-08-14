@@ -120,18 +120,35 @@
 
 							<!-- prd_rec02 내 체험단 리스트 my_review 리뷰기한까지 / my_select 선정까지 / my_comp 리뷰 완료됨 -->
 							<div class="prd_rec02">
-								<%-- C--%>
-								<p class="my_review">리뷰기한까지 <span>10</span>일 남음</p>
-								<p class="my_select">선정 까지 <span>10</span>일 남음</p>
+								<%-- 리뷰 기한은 오늘 ~ CAMP_ENDDATE--%>
+								<p class="my_review">리뷰기한까지 <span>${vo.reviewDday}</span>일 남음</p>
+								<%-- 발표 기한은 오늘 ~ CAMP_ANODATE--%>
+								<p class="my_select">체험단 선정 까지 <span>${vo.selectDday}</span>일 남음</p>
 								<!-- <p class="my_comp">리뷰 완료됨</p> -->
 							</div><!-- prd_rec02 -->
 
 							<!-- btn 리뷰 제출 / btn gray_line 체험단 취소 / btn bk 신청 내역 수정 / btn blue_line w100 완료된 리뷰 보기 -->
 							<div class="btn_wrap flex mt15">
+							<c:choose>
+							<c:when test="${vo.sumState eq '신청'}">	<%-- 체험단에 신청했을때 --%>
+								<a href="#none" class="btn gray_line">신청 취소</a>
+								<a href="/preuser/campaign/campaignSubmit.html" class="btn bk">신청 내역 수정</a>
+							</c:when>	
+							<c:when test="${vo.sumState eq '취소'}">	<%-- 체험단을 취소 했을 때 --%>
+								<a href="#none" class="btn red_line w100">취소 사유 보기</a>
+							</c:when>	
+							<c:when test="${vo.reviewDday lt 0}">	<%-- 체험단이 완전히 끝난 후 --%>
+								<a href="#none" class="btn blue_line w100">완료된 리뷰 보기</a>
+							</c:when>	
+							<c:when test="${vo.reviewDday ge 0}">	<%-- 체험단 선정 후, 리뷰 기한 일때 --%>
 								<a href="#none" class="btn">리뷰 제출</a>
 								<a href="#none" class="btn gray_line">체험단 취소</a>
-								<!-- <a href="/preuser/mypage/expgroEdit.html" class="btn bk">신청 내역 수정</a> -->
-								<!-- <a href="#none" class="btn blue_line w100">완료된 리뷰 보기</a> -->
+							</c:when>	
+							<%-- 체험단 모집이 끝났을 때 1. 체험단 선정됨 2. 체험단에 떨어짐--%>
+							<c:when test="${vo.selectDday lt 0}">	
+								<a href="#none" class="btn blue_line w100">모집이 종료된 체험단입니다.</a>
+							</c:when>	
+							</c:choose>
 							</div>
 						</li>
 						</c:forEach>

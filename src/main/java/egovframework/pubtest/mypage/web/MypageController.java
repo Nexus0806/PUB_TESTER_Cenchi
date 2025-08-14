@@ -34,11 +34,22 @@ public class MypageController {
     	
     	for(CampaignVO row : userCampList)
 		{			
-			if(row.getCampStartdate() != null)
+			if(row.getCampStartdate() != null) // 체험단 모집 마감일 계산
 			{
-				// localdate 이용하여 체험단까지 남은 D-Day 계산
 				long dDay = PubTestUtil.calcDday(row.getCampStartdate());
 				row.setdDay(dDay);
+			}
+			
+			if(row.getCampStartdate() != null)	// 체험단 리뷰 마감일 계산
+			{
+				long reviewDday = PubTestUtil.calcDday(row.getCampEnddate());
+				row.setReviewDday(reviewDday);
+			}
+			
+			if(row.getCampStartdate() != null)	// 체험단 발표일 계산
+			{
+				long selectDday = PubTestUtil.calcDday(row.getCampAnoDate());
+				row.setSelectDday(selectDday);
 			}
 		}
     	

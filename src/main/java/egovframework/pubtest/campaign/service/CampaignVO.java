@@ -3,58 +3,39 @@ package egovframework.pubtest.campaign.service;
 public class CampaignVO {
 
     private int campIdx;
-
     private String campTitle;
-
     private String campThub;
-
     private String campPhoNum;
-
     private String campType;
-
     private String campAddress;
-
     private String campCate;
-
     private String campAdType;
-
     private String campAvailDays;
-
     private String campRegdate; 
-
     private String campRecStartdate;
-    
     private String campRecEnddate;
-    
-    private String campAnoDate;
-    
+    private String campAnoDate;  
     private String campStartdate; 
-
     private String campEnddate; 
-
     private String campReserve;
-
     private String campCaution;
-
     private String campMission;
-
     private String campKeyword;
-
     private String campService;
-
     private String campReward;
-
     private int campRecruite;
-
     private int campHit;
-
     private int campLike;
-
     private String campDelyn;
-
     private int campSumCount;
     
+    // 여기에 있으면 안될것 같지만 일단 임시로
+    private String sumState;
+    
+    // 외부 가공 데이터
     private long dDay;
+    private long reviewDday;
+    private long selectDday;
 
 	public int getCampIdx() {
 		return campIdx;
@@ -272,6 +253,27 @@ public class CampaignVO {
 		this.campAnoDate = campAnoDate;
 	}
 
+	public long getReviewDday() {
+		return reviewDday;
+	}
 
+	public void setReviewDday(long reviewDday) {
+		this.reviewDday = reviewDday;
+	}
 
+	public long getSelectDday() {
+		return selectDday;
+	}
+
+	public void setSelectDday(long selectDday) {
+		this.selectDday = selectDday;
+	}
+
+	public String getSumState() {
+		return sumState;
+	}
+
+	public void setSumState(String sumState) {
+		this.sumState = sumState;
+	}
 }
