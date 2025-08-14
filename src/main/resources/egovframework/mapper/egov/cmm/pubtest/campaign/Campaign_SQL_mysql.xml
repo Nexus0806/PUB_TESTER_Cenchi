@@ -73,7 +73,7 @@
 			CAMP_IDX = #{campIdx}
 	</select>
 
-	<insert id="insertCampaignSubmit" parameterType="CampaignSubmitVO">
+	<insert id="insertCampaignSubmit" parameterType="campaignSubmitVO">
 		INSERT INTO PUB_CAMP_SUM (SUM_IDX, SUM_CONT, SUM_ADDRESS, CAMP_IDX, USER_IDX)
 		VALUES (#{sumIdx}, #{sumCont}, #{sumAddress}, #{campIdx}, #{userIdx})
 	</insert>

@@ -38,7 +38,6 @@
                 <%-- 2. 서버로부터 받은 campIdx, userIdx를 숨겨서 전송합니다. --%>
                 <%-- 이 값들은 이 페이지를 보여주는 GET 방식 컨트롤러에서 model.addAttribute로 전달해야 합니다. --%>
                 <input type="hidden" name="campIdx" value="${campVo.campIdx}">
-                <input type="hidden" name="userIdx" value="${sessionScope.loginUser.userIdx}"> <%-- 예시: 세션에 저장된 사용자 정보 --%>
                 <%-- ================================================================= --%>
                 
                 <div class="View_wrap">
