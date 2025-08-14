@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mypageDAO">
+	
+	<select id="getUserCampList" resultType="campaignVO" parameterType="int">
+	/*사용자가 신청한 체험단 리스트 출력, user_idx로 camp_idx 를 찾아와서 출력함*/
+		SELECT
+			PC.CAMP_IDX,
+			PC.CAMP_TITLE,
+			PC.CAMP_THUB,
+			PC.CAMP_PHO_NUM,
+			PC.CAMP_TYPE,
+			PC.CAMP_ADDRESS,
+			PC.CAMP_CATE,
+			PC.CAMP_AD_TYPE,
+			PC.CAMP_AVAIL_DAYS,
+			PC.CAMP_REGDATE,
+			PC.CAMP_REC_STARTDATE,
+			PC.CAMP_REC_ENDDATE,
+			PC.CAMP_ANODATE,
+			PC.CAMP_STARTDATE,
+			PC.CAMP_ENDDATE,
+			PC.CAMP_RESERVE,
+			PC.CAMP_CAUTION,
+			PC.CAMP_MISSION,
+			PC.CAMP_KEYWORD,
+			PC.CAMP_SERVICE,
+			PC.CAMP_REWARD,
+			PC.CAMP_RECRUITE,
+			PC.CAMP_HIT,
+			PC.CAMP_LIKE,
+			PC.CAMP_DELYN,
+			PC.CAMP_SUM_COUNT
+		FROM
+			pub_camp_sum PS
+		JOIN
+			pub_camp PC ON PC.CAMP_IDX = PS.CAMP_IDX 
+		WHERE
+			PS.USER_IDX = #{value}
+		ORDER BY
+			PS.SUM_DATE DESC
+	</select>
+	
+</mapper>

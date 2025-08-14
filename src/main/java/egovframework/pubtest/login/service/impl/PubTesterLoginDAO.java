@@ -40,4 +40,13 @@ public class PubTesterLoginDAO extends EgovAbstractMapper{
 	public String getBssNickName(int idx) {
 		return selectOne("loginDAO.getBssNickName", idx);
 	}
+	
+	public void updateInfVisitCnt(int idx){
+		update("loginDAO.updateInfVisitCnt", idx);
+	}
+	
+	public void updateBssVisitCnt(int idx){
+		update("loginDAO.updateBssVisitCnt", idx);
+	}
+
 }

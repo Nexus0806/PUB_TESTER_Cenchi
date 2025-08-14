@@ -117,4 +117,22 @@
 			BUSS_IDX = #{value}
 	</select>
 	
+	<update id="updateInfVisitCnt" parameterType="int">
+		UPDATE
+			pub_user
+		SET
+			USER_VISIT_CNT = USER_VISIT_CNT + 1
+		WHERE
+			USER_IDX = #{value}
+	</update>
+	
+	<update id="updateBssVisitCnt" parameterType="int">
+		UPDATE
+			bss_user
+		SET
+			BUSS_VISIT_CNT = BUSS_VISIT_CNT + 1
+		WHERE
+			BUSS_IDX = #{value}
+	</update>
+	
 </mapper>

@@ -54,4 +54,12 @@ public class PubTesterLoginServiceImpl implements PubTesterLoginService{
 			return pubTesterLoginDAO.getBssNickName(idx);
 		return null;
 	}
+	
+	@Override
+	public void updateVisitCnt(String type, int idx) {
+		if("inf".equals(type))
+			pubTesterLoginDAO.updateInfVisitCnt(idx);
+		else if("bss".equals(type))
+			pubTesterLoginDAO.updateBssVisitCnt(idx);
+	}
 }

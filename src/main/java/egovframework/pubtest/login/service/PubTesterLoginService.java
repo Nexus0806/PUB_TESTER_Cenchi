@@ -8,4 +8,5 @@ public interface PubTesterLoginService {
 	boolean chkEmail(String type, String email);
 	Integer chklogin(Map<String, Object> param);
 	String getNickName(String type, int idx);
+	void updateVisitCnt(String type, int idx);
 }

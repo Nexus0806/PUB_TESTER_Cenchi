@@ -72,6 +72,7 @@ public class PubTesterLoginController {
 		System.err.println("nickName : " + nickName);
 		
 		session.setAttribute("LOGIN_USER", new SessionUser(nickName, type, idx)); // 로그인 한 사용자 정보 저장 (닉네임/로그인유형/인덱스)
+		pubTesterLoginService.updateVisitCnt(type, idx);
 		
 		// ID 저장 체크박스 쿠키 처리
 	    String ctxPath = req.getContextPath().isEmpty() ? "/" : req.getContextPath();
@@ -187,6 +188,6 @@ public class PubTesterLoginController {
 	    { userNickName=nickName; this.type=type; this.idx=idx;}
 	    public String getUserNickName(){ return userNickName; }
 	    public int getIdx(){ return idx; }
-	    public String getType(){ return type; }
+	    public String getType(){ return type; } // 로그인 유형(사업자/인플루언서)
 	  }
 }
