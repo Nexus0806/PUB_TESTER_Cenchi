@@ -32,7 +32,8 @@
 			PC.CAMP_HIT,
 			PC.CAMP_LIKE,
 			PC.CAMP_DELYN,
-			PC.CAMP_SUM_COUNT
+			PC.CAMP_SUM_COUNT,
+			PS.SUM_STATE
 		FROM
 			pub_camp_sum PS
 		JOIN

@@ -26,7 +26,7 @@ public class PubTesterMainController {
 			if(row.getCampStartDate() != null)
 			{
 				// localdate 이용하여 체험단까지 남은 D-Day 계산
-				long dDay = PubTestUtil.calcDday(row.getCampStartDate());
+				long dDay = PubTestUtil.calcDday(row.getCampRecEndDate());
 				row.setdDay(dDay);
 			}
 		}
@@ -36,7 +36,7 @@ public class PubTesterMainController {
 		{			
 			if(row.getCampStartDate() != null)
 			{
-				long dDay = PubTestUtil.calcDday(row.getCampStartDate());
+				long dDay = PubTestUtil.calcDday(row.getCampRecEndDate());
 				row.setdDay(dDay);
 			}
 		}
@@ -46,7 +46,7 @@ public class PubTesterMainController {
 		{			
 			if(row.getCampStartDate() != null)
 			{
-				long dDay = PubTestUtil.calcDday(row.getCampStartDate());
+				long dDay = PubTestUtil.calcDday(row.getCampRecEndDate());
 				row.setdDay(dDay);
 			}
 		}

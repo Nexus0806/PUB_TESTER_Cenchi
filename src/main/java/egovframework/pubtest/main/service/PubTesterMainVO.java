@@ -8,6 +8,7 @@ public class PubTesterMainVO {
 	private String campType;
 	private String campService;
 	private String campStartDate;
+	private String campRecEndDate;
 	private int campSumCount;
 	private int campRecruite;
 	private long dDay;
@@ -65,6 +66,12 @@ public class PubTesterMainVO {
 	}
 	public void setCampStartDate(String campStartDate) {
 		this.campStartDate = campStartDate;
+	}
+	public String getCampRecEndDate() {
+		return campRecEndDate;
+	}
+	public void setCampRecEndDate(String campRecEndDate) {
+		this.campRecEndDate = campRecEndDate;
 	}
 	public long getdDay() {
 		return dDay;
