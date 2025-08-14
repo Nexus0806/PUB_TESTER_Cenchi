@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import egovframework.pubtest.campaign.service.CampaignService;
 import egovframework.pubtest.campaign.service.CampaignVO;
 import egovframework.pubtest.util.PubTestUtil;
 import egovframework.pubtest.campaign.service.CampaignSubmitVO;
+
+import egovframework.pubtest.login.web.PubTesterLoginController.SessionUser;
+import egovframework.pubtest.mypage.service.MypageService;
 
 @Controller
 @RequestMapping("/preuser/campaign")
@@ -93,7 +97,6 @@ public class CampaignController {
 		
 		
 		CampaignVO campVo = campaignService.selectCampaignDetail(campIdx);
-		
 		model.addAttribute("campVo",campVo);
 		
 		return "/preuser/campaign/campaignSubmit";
@@ -101,7 +104,9 @@ public class CampaignController {
 
 	@PostMapping("/campaignSubmit.do")
 	public String CampaignSubmitProcess(
-			@ModelAttribute CampaignSubmitVO submitVo, Model model, RedirectAttributes redirect) {
+			@ModelAttribute CampaignSubmitVO submitVo, 
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser,
+			Model model, RedirectAttributes redirect) {
 		
 		/* 현재 <input type="hidden" name="userIdx" value="${sessionScope.loginUser.userIdx}"> <%-- 예시: 세션에 저장된 사용자 정보 --%>
 		 * 위의 세션 정보가 없어, userIdx가 비어있는 "" string 데이터를 사용하기 때문에 사용 불가. 
@@ -110,19 +115,48 @@ public class CampaignController {
 		 * @ModelAttribute
 		 * 
 		 */
-		
+	    submitVo.setUserIdx(loginUser.getIdx());
+	    
 		System.err.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		System.err.println("sumIdx" + submitVo.getSumIdx());
 		System.err.println("sumCont" + submitVo.getSumCont());
 		System.err.println("sumAddress" + submitVo.getSumAddress());
-		System.err.println("campIdx" + submitVo.getCampIdx());
-		System.err.println("userIdx" + submitVo.getUserIdx());
-
+		System.err.println("campIdx : " + submitVo.getCampIdx());
+		System.err.println("userIdx : " + submitVo.getUserIdx());
+	    
 		//campaignService.insertCampaignSubmit(submitVo);
-		
 		redirect.addFlashAttribute("msg","신청되었습니다.");
 		
-		return "/preuser/campaign/campaignView.do?campIdx=" + submitVo.getCampIdx();
+	    return "redirect:/preuser/campaign/campaignView.do?campIdx=" + submitVo.getCampIdx();
 	}
+	
+	@PostMapping("/campaignEdit.do")
+	public String CampaignEditProcess(
+			@ModelAttribute CampaignSubmitVO submitVo, 
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser,
+			Model model, RedirectAttributes redirect) {
+		
+		/* 현재 <input type="hidden" name="userIdx" value="${sessionScope.loginUser.userIdx}"> <%-- 예시: 세션에 저장된 사용자 정보 --%>
+		 * 위의 세션 정보가 없어, userIdx가 비어있는 "" string 데이터를 사용하기 때문에 사용 불가. 
+		 * 
+		 * 이 기능이 제대로 동작하려면, HTML <form> 안에 있는 <input> 태그의 name 속성이 CampaignSubmitVO의 필드명과 일치해야 합니다.
+		 * @ModelAttribute
+		 * 
+		 */
+	    submitVo.setUserIdx(loginUser.getIdx());
+	    
+		System.err.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		System.err.println("sumIdx" + submitVo.getSumIdx());
+		System.err.println("sumCont" + submitVo.getSumCont());
+		System.err.println("sumAddress" + submitVo.getSumAddress());
+		System.err.println("campIdx : " + submitVo.getCampIdx());
+		System.err.println("userIdx : " + submitVo.getUserIdx());
+	    
+		//campaignService.insertCampaignSubmit(submitVo);
+		redirect.addFlashAttribute("msg","신청되었습니다.");
+		
+	    return "redirect:/preuser/campaign/campaignView.do?campIdx=" + submitVo.getCampIdx();
+	}
+	
 	
 }

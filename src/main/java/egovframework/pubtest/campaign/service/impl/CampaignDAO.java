@@ -20,6 +20,6 @@ public class CampaignDAO extends EgovAbstractMapper {
 	}
 	
 	public void insertCampaignSubmit(CampaignSubmitVO submitVO) {
-		insert("campaignDAO.insertCampaignSubmit");
+		insert("campaignDAO.insertCampaignSubmit", submitVO);
 	}
 }
