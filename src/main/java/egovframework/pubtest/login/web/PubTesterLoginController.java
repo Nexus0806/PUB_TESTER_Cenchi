@@ -188,6 +188,6 @@ public class PubTesterLoginController {
 	    { userNickName=nickName; this.type=type; this.idx=idx;}
 	    public String getUserNickName(){ return userNickName; }
 	    public int getIdx(){ return idx; }
-	    public String getType(){ return type; }
+	    public String getType(){ return type; } // 로그인 유형(사업자/인플루언서)
 	  }
 }

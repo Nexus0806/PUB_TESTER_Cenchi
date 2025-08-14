@@ -5,7 +5,7 @@
 <mapper namespace="mypageDAO">
 	
 	<select id="getUserCampList" resultType="campaignVO" parameterType="int">
-	/*다음에 마저 수정하기*/
+	/*사용자가 신청한 체험단 리스트 출력, user_idx로 camp_idx 를 찾아와서 출력함*/
 		SELECT
 			PC.CAMP_IDX,
 			PC.CAMP_TITLE,
@@ -34,15 +34,13 @@
 			PC.CAMP_DELYN,
 			PC.CAMP_SUM_COUNT
 		FROM
-			pub_camp PC
-		LEFT JOIN
-			pub_camp_sum PS ON PC.CAMP_IDX = PS.CAMP_IDX 
+			pub_camp_sum PS
+		JOIN
+			pub_camp PC ON PC.CAMP_IDX = PS.CAMP_IDX 
 		WHERE
-			PS.USER_IDX = #{value} AND
-			
+			PS.USER_IDX = #{value}
 		ORDER BY
-			CAMP_IDX DESC
-			
+			PS.SUM_DATE DESC
 	</select>
 	
 </mapper>
