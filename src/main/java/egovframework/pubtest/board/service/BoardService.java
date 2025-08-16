@@ -8,4 +8,5 @@ public interface BoardService {
 	
 	BoardDetailDTO selectBoardDetail(int pstIdx);
 	
+	void insertboardComment(BoardCommentDTO comment);
 }

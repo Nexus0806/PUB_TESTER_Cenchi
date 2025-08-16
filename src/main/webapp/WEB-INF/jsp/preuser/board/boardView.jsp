@@ -120,10 +120,14 @@
 
 						<!-- 새 댓글 입력창 -->
 						<h4>댓글 등록</h4>
-						<div class="cmt_ip mb40">
-							<textarea name="" placeholder="댓글을 입력해주세요."></textarea>
-							<a href="#none" class="btn">등록</a>
-						</div><!-- cmt_ip -->
+						<form action="addComment.do" method="post">
+						    <input type="hidden" name="pstIdx" value="${board.pstIdx}">
+						    
+						    <div class="cmt_ip mb40">
+						        <textarea name="cmtCont" placeholder="댓글을 입력해주세요."></textarea>
+						        <button type="submit" class="btn">등록</button>
+						    </div>
+						</form>
 
 						<ul class="prev_next">
 							<li class="prev">

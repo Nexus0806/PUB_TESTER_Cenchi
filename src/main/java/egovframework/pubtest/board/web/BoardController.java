@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import egovframework.pubtest.board.service.BoardService;
 import egovframework.pubtest.board.service.BoardDetailDTO;
 import egovframework.pubtest.board.service.BoardListDTO;
+import egovframework.pubtest.board.service.BoardCommentDTO;
 
 @Controller
 @RequestMapping("/preuser/board")
@@ -25,7 +26,7 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@RequestMapping("/boardList.do")
-	public String BoardList(Model model) {
+	public String boardList(Model model) {
 		
 		List<BoardListDTO> boardList = boardService.selectBoardList();
 		model.addAttribute("boardList", boardList);
@@ -34,7 +35,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/boardView.do")
-	public String BoardView(@RequestParam int pstIdx, Model model) {
+	public String boardView(@RequestParam int pstIdx, Model model) {
 		
 		BoardDetailDTO board = boardService.selectBoardDetail(pstIdx);
 		model.addAttribute("board", board);
@@ -42,8 +43,16 @@ public class BoardController {
 		return "/preuser/board/boardView";
 	}
 	
+	@PostMapping("/addComment.do")
+	public String addComment(BoardCommentDTO comment) {
+		
+		
+		
+        return "redirect:/preuser/board/boardView.do?pstIdx=" + comment.getPstIdx();
+	}
+	
 	@RequestMapping("/boardWrite.do")
-	public String BoardWrite(Model model) {
+	public String boardWrite(Model model) {
 		
 		return "/preuser/board/boardWrite";
 	}

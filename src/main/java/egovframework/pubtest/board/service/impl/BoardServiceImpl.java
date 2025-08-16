@@ -30,12 +30,16 @@ public class BoardServiceImpl implements BoardService {
 	public BoardDetailDTO selectBoardDetail(int pstIdx) {
 		
 		BoardDetailDTO detail = boardDAO.selectBoardDetail(pstIdx); 
-		/*
-		List<BoardCommentDTO> commentList = boardCommentDAO.selectBoardCommentList(pstIdx);
-		
-		detail.setComments(commentList);
-		*/
+	    if (detail != null) {
+	        List<BoardCommentDTO> commentList = boardCommentDAO.selectBoardCommentList(pstIdx);
+	        detail.setComments(commentList);
+	    }
 		return detail;
+	}
+	
+	@Override
+	public void insertboardComment(BoardCommentDTO comment) {
+		boardCommentDAO.insertboardComment(comment);
 	}
 
 	

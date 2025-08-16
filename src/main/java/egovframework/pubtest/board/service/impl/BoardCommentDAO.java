@@ -9,7 +9,11 @@ import egovframework.pubtest.board.service.BoardCommentDTO;
 public class BoardCommentDAO extends EgovAbstractMapper{
 
 	public List<BoardCommentDTO> selectBoardCommentList(int pstIdx) {
-		return selectList("boardDAO.selectBoardCommmentList", pstIdx); 
+		return selectList("boardCommentDAO.selectBoardCommentList", pstIdx); 
+	}
+	
+	public void insertboardComment(BoardCommentDTO comment) {
+		insert("boardCommentDAO.insertboardComment", comment);
 	}
 	
 }
