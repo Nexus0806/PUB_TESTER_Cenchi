@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import egovframework.pubtest.board.service.BoardService;
 import egovframework.pubtest.board.service.BoardVO;
@@ -13,6 +14,7 @@ import egovframework.pubtest.board.service.BoardDetailDTO;
 import egovframework.pubtest.board.service.BoardCommentDTO;
 
 @Service("boardService")
+@Transactional
 public class BoardServiceImpl implements BoardService {
 
 	@Resource(name = "boardDAO")

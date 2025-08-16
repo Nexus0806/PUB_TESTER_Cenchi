@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import egovframework.pubtest.board.service.BoardService;
+import egovframework.pubtest.login.web.PubTesterLoginController.SessionUser;
 import egovframework.pubtest.board.service.BoardDetailDTO;
 import egovframework.pubtest.board.service.BoardListDTO;
 import egovframework.pubtest.board.service.BoardCommentDTO;
@@ -44,9 +46,19 @@ public class BoardController {
 	}
 	
 	@PostMapping("/addComment.do")
-	public String addComment(BoardCommentDTO comment) {
+	public String addComment(BoardCommentDTO comment,
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser) {
 		
+		if(loginUser.getType().equals("inf")) {
+			comment.setUserIdx(loginUser.getIdx());
+		}
+		else {
+			comment.setBussIdx(loginUser.getIdx());
+		}
 		
+		System.err.println(comment.toString());
+		
+		boardService.insertboardComment(comment);
 		
         return "redirect:/preuser/board/boardView.do?pstIdx=" + comment.getPstIdx();
 	}

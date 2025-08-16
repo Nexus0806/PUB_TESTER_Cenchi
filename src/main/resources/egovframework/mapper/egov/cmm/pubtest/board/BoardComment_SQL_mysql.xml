@@ -24,9 +24,28 @@
 	        C.CMT_REGDATE DESC;
 	</select>
 	
-	<select id = "insertboardComment" parameterType="BoardCommentDTO">
-		INSERT INTO PUB_CMT (PST_IDX, CMT_CONT, USER_IDX)
-		VALUES (#{sumIdx}, #{cmtCont}, #{userIdx})
-	</select>
+	<insert id="insertboardComment" parameterType="BoardCommentDTO">
+	    INSERT INTO PUB_CMT
+	    <trim prefix="(" suffix=")" suffixOverrides=",">
+	        PST_IDX,
+	        CMT_CONT,
+	        <if test="userIdx != null and userIdx != 0">
+	            USER_IDX,
+	        </if>
+	        <if test="bussIdx != null and bussIdx != 0">
+	            BUSS_IDX,
+	        </if>
+	    </trim>
+	    <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+	        #{pstIdx},
+	        #{cmtCont},
+	        <if test="userIdx != null and userIdx != 0">
+	            #{userIdx},
+	        </if>
+	        <if test="bussIdx != null and bussIdx != 0">
+	            #{bussIdx},
+	        </if>
+	    </trim>
+	</insert>
 	
 </mapper>
