@@ -21,6 +21,64 @@
 	<title>중소기업을 위한 공공체험단</title>
 	<script src="/_js/pop_layer.js"></script>
 	<script src="/_js/cont.js"></script>
+	
+	<script>
+	    $(document).ready(function() {
+	        // ✅ 1. 지역 탭 클릭 이벤트
+	        $('.tab-link').on('click', function() {
+	            // 모든 탭의 'current' 클래스 제거
+	            $('.tab-link').removeClass('current');
+	            $('.tab_con').removeClass('current');
+	            // 클릭한 탭과 해당 내용에 'current' 클래스 추가
+	            $(this).addClass('current');
+	            var tabId = $(this).data('tab');
+	            $('#' + tabId).addClass('current');
+	
+	            // ✅ 클릭한 탭의 지역 이름을 hidden input에 설정
+	            var selectedRegion = $(this).data('region-name');
+	            $('#regionInput').val(selectedRegion);
+	
+	            // ✅ 폼 제출
+	            $('#campaignSearchForm').submit();
+	        });
+	
+	        // ✅ 2. 드롭다운 선택 이벤트 (select 태그)
+	        $('.searchCondition').on('change', function() {
+	            // ✅ 드롭다운 메뉴 값이 변경되면 폼을 제출
+	            $('#campaignSearchForm').submit();
+	        });
+	        
+	        // ✅ 3. 페이지 로드 시, 이전에 선택한 필터 값을 유지
+	        // 이 부분은 서버에서 전달받은 DTO 객체를 활용해 구현합니다.
+	        // 예를 들어, 모델에 담긴 campaignSearchDTO.region 값을 가져와서 탭에 current 클래스를 추가합니다.
+	        var selectedRegion = '${campaignSearchDTO.region}';
+	        if (selectedRegion) {
+	            $('.tab-link').removeClass('current');
+	            $('li[data-region-name="' + selectedRegion + '"]').addClass('current');
+	        }
+	        
+	        // 드롭다운 값도 동일하게 유지
+	        var selectedCategory = '${campaignSearchDTO.category}';
+	        if (selectedCategory) {
+	            $('#category').val(selectedCategory);
+	        }
+	        
+	        var selectedChannel = '${campaignSearchDTO.channel}';
+	        if (selectedChannel) {
+	            $('#channel').val(selectedChannel);
+	        }
+	        
+	        var selectedType = '${campaignSearchDTO.type}';
+	        if (selectedType) {
+	            $('#type').val(selectedType);
+	        }
+	        
+	        var selectedSort = '${campaignSearchDTO.sort}';
+	        if (selectedSort) {
+	            $('#sort').val(selectedSort);
+	        }
+	    });
+	</script>
 </head>
 <body>
 
@@ -31,132 +89,79 @@
 <div id="sub_content">
 		<div class="s_cont">
 			<div class="cont_all">
-				<div class="region">
-					<div class="selec_reg">
-						<h2 class="sub_tit">지역</h2>
-						<div class="search_filter">
-							<!-- 선택된 reg01, reg02 -->
-							<ul>
-								<li>재택<a href="javascript:void(0)" class="x"></a></li>
-								<li>동대문구<a href="javascript:void(0)" class="x"></a></li>
-							</ul>
+				<form id="campaignSearchForm" action="${pageContext.request.contextPath}/preuser/campaign/campaignList.do" method="GET">
+				
+					<input type="hidden" id="regionInput" name="region" value="" />
+
+					<div class="region">
+						<div class="selec_reg">
+							<h2 class="sub_tit">지역</h2>
 						</div>
-					</div> <!-- selec_reg -->
-					<ul class="reg01">
-						<li class="tab-link current" data-tab="tab-1">재택</li>
-						<li class="tab-link" data-tab="tab-2">기자단</li>
-						<li class="tab-link" data-tab="tab-3">당일지급</li>
-						<li class="tab-link" data-tab="tab-4">서울</li>
-						<li class="tab-link" data-tab="tab-5">경기</li>
-						<li class="tab-link" data-tab="tab-6">인천</li>
-						<li class="tab-link" data-tab="tab-7">강원</li>
-						<li class="tab-link" data-tab="tab-8">대전</li>
-						<li class="tab-link" data-tab="tab-9">세종</li>
-						<li class="tab-link" data-tab="tab-10">충남</li>
-						<li class="tab-link" data-tab="tab-11">충북</li>
-						<li class="tab-link" data-tab="tab-12">부산</li>
-						<li class="tab-link" data-tab="tab-13">울산</li>
-						<li class="tab-link" data-tab="tab-14">경남</li>
-						<li class="tab-link" data-tab="tab-15">경북</li>
-						<li class="tab-link" data-tab="tab-16">대구</li>
-						<li class="tab-link" data-tab="tab-17">광주</li>
-						<li class="tab-link" data-tab="tab-18">전남</li>
-						<li class="tab-link" data-tab="tab-19">전북</li>
-						<li class="tab-link" data-tab="tab-20">제주</li>
-					</ul>
-
-					<div id="tab-1" class="tab_con current">
-						<ul class="reg02">
-							<li>
-								<input type="checkbox" id="re01" class="n_ck02" checked>
-								<label for="re01" class="ft_btn">동대문구</label>
-							</li>
-							<li>
-								<input type="checkbox" id="re02" class="n_ck02">
-								<label for="re02" class="ft_btn">동작구</label>
-							</li>
-							<li>
-								<input type="checkbox" id="re03" class="n_ck02">
-								<label for="re03" class="ft_btn">마포구</label>
-							</li>
-							<li>
-								<input type="checkbox" id="re04" class="n_ck02">
-								<label for="re04" class="ft_btn">서대문구</label>
-							</li>
-							<li>
-								<input type="checkbox" id="re05" class="n_ck">
-								<label for="re05" class="ft_btn">서초구</label>
-							</li>
-							<li>
-								<input type="checkbox" id="re06" class="n_ck">
-								<label for="re06" class="ft_btn">성동구</label>
-							</li>
+						<ul class="reg01">
+							<li class="tab-link current" data-tab="tab-1" data-region-name="재택">재택</li>
+							<li class="tab-link" data-tab="tab-4" data-region-name="서울">서울</li>
+							<li class="tab-link" data-tab="tab-5" data-region-name="경기">경기</li>
+							<li class="tab-link" data-tab="tab-6" data-region-name="인천">인천</li>
+							<li class="tab-link" data-tab="tab-7" data-region-name="강원">강원</li>
+							<li class="tab-link" data-tab="tab-8" data-region-name="대전">대전</li>
+							<li class="tab-link" data-tab="tab-9" data-region-name="세종">세종</li>
+							<li class="tab-link" data-tab="tab-10" data-region-name="충남">충남</li>
+							<li class="tab-link" data-tab="tab-11" data-region-name="충북">충북</li>
+							<li class="tab-link" data-tab="tab-12" data-region-name="부산">부산</li>
+							<li class="tab-link" data-tab="tab-13" data-region-name="울산">울산</li>
+							<li class="tab-link" data-tab="tab-14" data-region-name="경남">경남</li>
+							<li class="tab-link" data-tab="tab-15" data-region-name="경북">경북</li>
+							<li class="tab-link" data-tab="tab-16" data-region-name="대구">대구</li>
+							<li class="tab-link" data-tab="tab-17" data-region-name="광주">광주</li>
+							<li class="tab-link" data-tab="tab-18" data-region-name="전남">전남</li>
+							<li class="tab-link" data-tab="tab-19" data-region-name="전북">전북</li>
+							<li class="tab-link" data-tab="tab-20" data-region-name="제주">제주</li>
 						</ul>
+						
+					</div><div class="select_wrap">
+						<div class="sel">
+							<select id="category" name="category" class="searchCondition">
+								<option value="">카테고리</option>
+								<option value="맛집">맛집</option>
+								<option value="식품">식품</option>
+								<option value="뷰티">뷰티</option>
+								<option value="여행">여행</option>
+								<option value="디지털">디지털</option>
+								<option value="반려동물">반려동물</option>
+								<option value="기타">기타</option>
+							</select>
+						</div>
+						<div class="sel">
+							<select id="channel" name="channel" class="searchCondition">
+								<option value="">채널</option>
+								<option value="블로그">블로그</option>
+								<option value="인스타그램">인스타그램</option>
+								<option value="유튜브">유튜브</option>
+								<option value="숏츠">숏츠</option>
+								<option value="클립">클립</option>
+							</select>
+						</div>
+						<div class="sel">
+							<select id="type" name="type" class="searchCondition">
+								<option value="">유형</option>
+								<option value="방문형(오프라인)">방문형(오프라인)</option>
+								<option value="구매형(온라인)">구매형(온라인)</option>
+								<option value="배송형(온라인)">배송형(온라인)</option>
+								<option value="기자단">기자단</option>
+								<option value="플랫폼 기자단">플랫폼 기자단</option>
+								<option value="당일지급">당일지급</option>
+								<option value="포장">포장</option>
+							</select>
+						</div>
+						<div class="sel">
+							<select id="sort" name="sort" class="searchCondition">
+								<option value="">최신순</option>
+								<option value="마감임박순">마감임박순</option>
+								<option value="인기순">인기순</option>
+							</select>
+						</div>
 					</div>
-					<div id="tab-2" class="tab_con"><p>기자단</p></div>
-					<div id="tab-3" class="tab_con"><p>당일지급</p></div>
-					<div id="tab-4" class="tab_con">서울</div><!-- tab-4 -->
-					<div id="tab-5" class="tab_con"><p>경기</p></div>
-					<div id="tab-6" class="tab_con"><p>인천</p></div>
-					<div id="tab-7" class="tab_con"><p>강원</p></div>
-					<div id="tab-8" class="tab_con"><p>대전</p></div>
-					<div id="tab-9" class="tab_con"><p>세종</p></div>
-					<div id="tab-10" class="tab_con"><p>충남</p></div>
-					<div id="tab-11" class="tab_con"><p>충북</p></div>
-					<div id="tab-12" class="tab_con"><p>부산</p></div>
-					<div id="tab-13" class="tab_con"><p>울산</p></div>
-					<div id="tab-14" class="tab_con"><p>경남</p></div>
-					<div id="tab-15" class="tab_con"><p>경북</p></div>
-					<div id="tab-16" class="tab_con"><p>대구</p></div>
-					<div id="tab-17" class="tab_con"><p>광주</p></div>
-					<div id="tab-18" class="tab_con"><p>전남</p></div>
-					<div id="tab-19" class="tab_con"><p>전북</p></div>
-					<div id="tab-20" class="tab_con"><p>제주</p></div>
-				</div><!-- region -->
-
-				<div class="select_wrap">
-					<div class="sel">
-						<select id="" name="" class="searchCondition">
-							<option value="">카테고리</option>
-							<option value="">맛집</option>
-							<option value="">식품</option>
-							<option value="">뷰티</option>
-							<option value="">여행</option>
-							<option value="">디지털</option>
-							<option value="">반려동물</option>
-							<option value="">기타</option>
-						</select>
-					</div>
-					<div class="sel">
-						<select id="" name="" class="searchCondition">
-							<option value="">채널</option>
-							<option value="">블로그</option>
-							<option value="">인스타그램</option>
-							<option value="">유튜브</option>
-							<option value="">숏츠</option>
-							<option value="">클립</option>
-						</select>
-					</div>
-					<div class="sel">
-						<select id="" name="" class="searchCondition">
-							<option value="">유형</option>
-							<option value="">방문형(오프라인)</option>
-							<option value="">구매형(온라인)</option>
-							<option value="">배송형(온라인)</option>
-							<option value="">기자단</option>
-							<option value="">플랫폼 기자단</option>
-							<option value="">당일지급</option>
-							<option value="">포장</option>
-						</select>
-					</div>
-					<div class="sel">
-						<select id="" name="" class="searchCondition">
-							<option value="">최신순</option>
-							<option value="">마감임박순</option>
-							<option value="">인기순</option>
-						</select>
-					</div>
-				</div>
+				</form>
 
 				<div class="pd_list">
 					<ul class="prd_li prd_li02">
@@ -221,5 +226,5 @@
 
 <jsp:include page="/WEB-INF/jsp/_inc/footer.jsp" />
 
-</body>>
+</body>
 </html>

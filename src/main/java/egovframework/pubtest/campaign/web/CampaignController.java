@@ -18,6 +18,7 @@ import egovframework.pubtest.campaign.service.CampaignService;
 import egovframework.pubtest.campaign.service.CampaignVO;
 import egovframework.pubtest.util.PubTestUtil;
 import egovframework.pubtest.campaign.service.CampaignSubmitVO;
+import egovframework.pubtest.campaign.service.CampaignSearchDTO;
 
 import egovframework.pubtest.login.web.PubTesterLoginController.SessionUser;
 import egovframework.pubtest.mypage.service.MypageService;
@@ -29,10 +30,14 @@ public class CampaignController {
 	@Resource(name = "campaignService")
 	private CampaignService campaignService;
 	
-	@RequestMapping("/campaignList.do")
-	public String CampaignList(Model model) {
+	@GetMapping("/campaignList.do")
+	public String CampaignList(
+			@ModelAttribute CampaignSearchDTO campaignSearchDTO,
+			Model model) {
 		
 		List<CampaignVO> list = campaignService.selectCampaignList();
+		
+		System.err.println(campaignSearchDTO.toString());
 		
 		model.addAttribute("popCampList", list);
 		
