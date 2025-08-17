@@ -21,6 +21,63 @@
 	<title>중소기업을 위한 공공체험단</title>
 	<script src="/_js/pop_layer.js"></script>
 	<script src="/_js/cont.js"></script>
+	
+	<script type="text/javascript">
+	function fn_link_page(pageNo) {
+	    // 현재 URL의 모든 파라미터를 가져옵니다.
+	    const urlParams = new URLSearchParams(window.location.search);
+	    
+	    // 'currentPageNo' 파라미터 값을 클릭한 페이지 번호로 설정(또는 변경)합니다.
+	    urlParams.set('currentPageNo', pageNo);
+	    
+	    // 새로운 파라미터가 적용된 URL로 페이지를 이동시킵니다.
+	    location.href = "${pageContext.request.contextPath}/preuser/board/boardList.do?" + urlParams.toString();
+	}
+	function fn_search(fromCheckbox) {
+	    const wrtCheckbox = document.getElementById('wrt');
+	    const cmtCheckbox = document.getElementById('cmt');
+
+	    // 체크박스 중 하나만 선택되도록 처리
+	    if (fromCheckbox === 'wrt' && wrtCheckbox.checked) {
+	        cmtCheckbox.checked = false;
+	    } else if (fromCheckbox === 'cmt' && cmtCheckbox.checked) {
+	        wrtCheckbox.checked = false;
+	    }
+
+	    // myContent 파라미터 값 결정
+	    let myContent = '';
+	    if (wrtCheckbox.checked) {
+	        myContent = 'wrt';
+	    } else if (cmtCheckbox.checked) {
+	        myContent = 'cmt';
+	    }
+
+	    const urlParams = new URLSearchParams(window.location.search);
+	    let category = urlParams.get('category') || 'ALL';
+	    const searchCondition = document.getElementById('searchCondition').value;
+	    const searchKeyword = document.getElementById('searchKeyword').value;
+	    
+	    // 새 URL 생성 (searchKeyword가 없어도 검색 가능하도록 수정)
+	    let newUrl = "${pageContext.request.contextPath}/preuser/board/boardList.do?category=" + category;
+	    if (myContent) {
+	        newUrl += "&myContent=" + myContent;
+	    }
+	    if (searchKeyword.trim() !== "") {
+	        newUrl += "&searchCondition=" + searchCondition + "&searchKeyword=" + encodeURIComponent(searchKeyword);
+	    }
+	    
+	    location.href = newUrl;
+	}
+
+	// 검색 버튼용 함수 (기존 검색 기능 유지)
+	function fn_search_btn() {
+	    if (document.getElementById('searchKeyword').value.trim() === "") {
+	        alert("검색어를 입력해주세요.");
+	        return;
+	    }
+	    fn_search(); // 메인 검색 함수 호출
+	}
+	</script>
 </head>
 <body>
 
@@ -34,68 +91,72 @@
 			
 			<div class="cont right">
 				<h2 class="sub_tit">커뮤니티</h2>
-
+				
 				<div class="filter_wrap">
-					<ul class="ck_btn">
-						<li>
-							<input type="checkbox" id="ft01" class="n_ck" checked>
-							<label for="ft01" class="ft_btn">ALL</label>
-						</li>
-						<li>
-							<input type="checkbox" id="ft02" class="n_ck">
-							<label for="ft02" class="ft_btn">BEST</label>
-						</li>
-						<li>
-							<input type="checkbox" id="ft03" class="n_ck">
-							<label for="ft03" class="ft_btn">노하우</label>
-						</li>
-						<li>
-							<input type="checkbox" id="ft04" class="n_ck">
-							<label for="ft04" class="ft_btn">일상</label>
-						</li>
-						<li>
-							<input type="checkbox" id="ft05" class="n_ck">
-							<label for="ft05" class="ft_btn">질문하기</label>
-						</li>
-						<li>
-							<input type="checkbox" id="ft06" class="n_ck">
-							<label for="ft06" class="ft_btn">동행</label>
-						</li>
-						<li>
-							<input type="checkbox" id="ft07" class="n_ck">
-							<label for="ft07" class="ft_btn">공지</label>
-						</li>
-					</ul>
-
-				</div><!-- filter_wrap -->
-
+				    <ul class="ck_btn">
+				        <li>
+				            <input type="checkbox" id="ft01" class="n_ck" ${search.category == 'ALL' || search.category == null ? 'checked' : ''}>
+				            
+				            <label for="ft01" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=ALL'">ALL</label>
+				        </li>
+				        <li>
+				            <input type="checkbox" id="ft02" class="n_ck" ${search.category == 'BEST' ? 'checked' : ''}>
+				            <label for="ft02" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=BEST'">BEST</label>
+				        </li>
+				        <li>
+				            <input type="checkbox" id="ft03" class="n_ck" ${search.category == '노하우' ? 'checked' : ''}>
+				            <label for="ft03" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=노하우'">노하우</label>
+				        </li>
+				        <li>
+				            <input type="checkbox" id="ft04" class="n_ck" ${search.category == '일상' ? 'checked' : ''}>
+				            <label for="ft04" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=일상'">일상</label>
+				        </li>
+				        <li>
+				            <input type="checkbox" id="ft05" class="n_ck" ${search.category == '질문하기' ? 'checked' : ''}>
+				            <label for="ft05" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=질문하기'">질문하기</label>
+				        </li>
+				        <li>
+				            <input type="checkbox" id="ft06" class="n_ck" ${search.category == '동행' ? 'checked' : ''}>
+				            <label for="ft06" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=동행'">동행</label>
+				        </li>
+				        <li>
+				            <input type="checkbox" id="ft07" class="n_ck" ${search.category == '공지' ? 'checked' : ''}>
+				            <label for="ft07" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=공지'">공지</label>
+				        </li>
+				    </ul>
+				</div>
+				
 				<div class="list_search">
-					<div class="list_wrap">
-						<label for="searchCondition" class="sr-only">검색조건 선택</label>
-						<select id="searchCondition" name="searchCondition" class="searchCondition">
-							<option value="all">전체</option>
-							<option value="bbsTitle">제목</option>
-							<option value="bbsCont">내용</option>
-						</select>
-						<label for="searchKeyword" class="sr-only">검색어 입력</label>
-						<input id="searchKeyword" name="searchKeyword" title="검색어 입력" placeholder="검색어를 입력하세요." class="info_in" type="text" value="">
-						<a href="javascript:;" class="b_btn" title="검색버튼" onclick="submit('', 1);">검색</a>
-					</div>
-
+				    <div class="list_wrap">
+				        <label for="searchCondition" class="sr-only">검색조건 선택</label>
+				        
+				        <select id="searchCondition" name="searchCondition" class="searchCondition">
+				            <option value="all" ${search.searchCondition == 'all' ? 'selected' : ''}>전체</option>
+				            <option value="bbsTitle" ${search.searchCondition == 'bbsTitle' ? 'selected' : ''}>제목</option>
+				            <option value="bbsCont" ${search.searchCondition == 'bbsCont' ? 'selected' : ''}>내용</option>
+				        </select>
+				        
+				        <label for="searchKeyword" class="sr-only">검색어 입력</label>
+				        
+				        <input id="searchKeyword" name="searchKeyword" title="검색어 입력" placeholder="검색어를 입력하세요." class="info_in" type="text" value="${search.searchKeyword}">
+				        
+				        <a href="javascript:;" class="b_btn" title="검색버튼" onclick="fn_search_btn();">검색</a>
+				    </div>
+				
 					<div class="my_ck">
-						<p class="checkbox">
-							<span>
-								<input type="checkbox" id="wrt" name="fix" value="wrt">
-								<label for="wrt">내글</label>
-							</span>
-						</p>
-						<p class="checkbox">
-							<span>
-								<input type="checkbox" id="cmt" name="fix" value="cmt">
-								<label for="cmt">내 댓글</label>
-							</span>
-						</p>
-						<a href="boardWrite.html" class="btn">글 작성</a>
+					    <p class="checkbox">
+					        <span>
+					            <input type="checkbox" id="wrt" name="fix" value="wrt" onchange="fn_search('wrt');" ${search.myContent == 'wrt' ? 'checked' : ''}>
+					            <label for="wrt">내글</label>
+					        </span>
+					    </p>
+					    <p class="checkbox">
+					        <span>
+					            <input type="checkbox" id="cmt" name="fix" value="cmt" onchange="fn_search('cmt');" ${search.myContent == 'cmt' ? 'checked' : ''}>
+					            <label for="cmt">내 댓글</label>
+					        </span>
+					    </p>
+					    <a href="${pageContext.request.contextPath}/preuser/board/boardWrite.do" class="btn">글 작성</a>
 					</div>
 				</div>
 
@@ -127,7 +188,7 @@
 											<span class="cmt"></span>
 										</c:when>
 										<c:otherwise>
-											<span class="cmt">${board.pstCmtCnt}</span>
+											<span class="cmt">[${board.pstCmtCnt}]</span>
 										</c:otherwise>
 									</c:choose>
 								</td>
@@ -164,22 +225,41 @@
 				</tbody>
 			</table>
 
-			<p class="pagination">
-				<a href="#" class="direction prev end" title="맨처음 페이지로 이동" onclick="fnLinkPage(1); ">맨처음 페이지로 이동</a>
-				<a href="#" class="direction prev" title="이전 페이지로 이동" onclick="fnLinkPage(1); ">이전 페이지로 이동</a>
-				<a href="javascript:void(0);" class="on" title="현재 페이지">1</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(2);">2</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(3);">3</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(4);">4</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(5);">5</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(6);">6</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(7);">7</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(8);">8</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(9);">9</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(10);">10</a>
-				<a href="#" class="direction next" title="다음 페이지로 이동" onclick="fnLinkPage(11); ">다음 페이지로 이동</a>
-				<a href="#" class="direction next end" title="맨끝 페이지로 이동" onclick="fnLinkPage(121); ">맨끝 페이지로 이동</a>
-			</p>
+			<div class="pagination">
+			    <%-- paginationInfo 객체가 존재하고, 총 페이지가 1개 이상일 때만 표시 --%>
+			    <c:if test="${not empty paginationInfo and paginationInfo.totalPageCount > 1}">
+			    
+			        <%-- [맨처음 페이지] 링크 --%>
+			        <a href="javascript:void(0);" class="direction prev end" title="맨처음 페이지로 이동" onclick="fn_link_page(1);">맨처음 페이지로 이동</a>
+			
+			        <%-- [이전 페이지 목록] 링크 (이전 페이지 블록이 있을 경우에만 표시) --%>
+			        <c:if test="${paginationInfo.hasPrevPage}">
+			            <a href="javascript:void(0);" class="direction prev" title="이전 페이지로 이동" onclick="fn_link_page(${paginationInfo.firstPageNoOnPageList - 1});">이전 페이지로 이동</a>
+			        </c:if>
+			
+			        <%-- [페이지 번호] 목록 --%>
+			        <c:forEach var="i" begin="${paginationInfo.firstPageNoOnPageList}" end="${paginationInfo.lastPageNoOnPageList}">
+			            <c:choose>
+			                <%-- 현재 페이지일 경우 --%>
+			                <c:when test="${i == paginationInfo.currentPageNo}">
+			                    <a href="javascript:void(0);" class="on" title="현재 페이지">${i}</a>
+			                </c:when>
+			                <%-- 다른 페이지일 경우 --%>
+			                <c:otherwise>
+			                    <a href="javascript:void(0);" onclick="fn_link_page(${i});">${i}</a>
+			                </c:otherwise>
+			            </c:choose>
+			        </c:forEach>
+			
+			        <%-- [다음 페이지 목록] 링크 (다음 페이지 블록이 있을 경우에만 표시) --%>
+			        <c:if test="${paginationInfo.hasNextPage}">
+			            <a href="javascript:void(0);" class="direction next" title="다음 페이지로 이동" onclick="fn_link_page(${paginationInfo.lastPageNoOnPageList + 1});">다음 페이지로 이동</a>
+			        </c:if>
+			
+			        <%-- [맨끝 페이지] 링크 --%>
+			        <a href="javascript:void(0);" class="direction next end" title="맨끝 페이지로 이동" onclick="fn_link_page(${paginationInfo.totalPageCount});">맨끝 페이지로 이동</a>
+			    </c:if>
+			</div>
 
 
 			</div>

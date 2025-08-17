@@ -21,6 +21,126 @@
 	<title>중소기업을 위한 공공체험단</title>
 	<script src="/_js/pop_layer.js"></script>
 	<script src="/_js/cont.js"></script>
+	
+	<script>
+	    $(document).ready(function() {
+	        // 필터링 이벤트를 처리하는 함수
+	        function filterCampaigns() {
+	            var searchData = {
+	                region: $('#regionInput').val(),
+	                category: $('#category').val(),
+	                channel: $('#channel').val(),
+	                type: $('#type').val(),
+	                sort: $('#sort').val()
+	            };
+	
+	            $.ajax({
+	                url: '${pageContext.request.contextPath}/preuser/campaign/filterCampaigns.do', // 컨트롤러의 새로운 URL
+	                type: 'GET',
+	                data: searchData,
+	                dataType: 'json',
+	                success: function(response) {
+	                    var campaignListHtml = '';
+	                    var contextPath = '${pageContext.request.contextPath}';
+	
+	                    if (response && response.length > 0) {
+	                        $.each(response, function(index, vo) {
+	                            var dDayText = '';
+	                            if (vo.dDay === 0) {
+	                                dDayText = '<span class="p_date p_day">D-Day</span>';
+	                            } else if (vo.dDay < 0) {
+	                                dDayText = '<span class="p_date p_close">모집 마감</span>';
+	                            } else {
+	                                dDayText = '<span class="p_date">' + vo.dDay + '일 남음</span>';
+	                            }
+	
+	                            var adTypeClass = '';
+	                            if (vo.campAdType === '틱톡') adTypeClass = 'sns_tik';
+	                            else if (vo.campAdType === '클립' || vo.campAdType === '구매형') adTypeClass = 'sns_etc';
+	                            else if (vo.campAdType === '인스타그램' || vo.campAdType === '릴스') adTypeClass = 'sns_inst';
+	                            else if (vo.campAdType === '유튜브') adTypeClass = 'sns_yout';
+	                            else if (vo.campAdType === '블로그' || vo.campAdType === '블로그+클립') adTypeClass = 'sns_blog';
+	
+	                            campaignListHtml += '<li>' +
+	                                '<a href="' + contextPath + '/preuser/campaign/campaignView.do?campIdx=' + vo.campIdx + '">' +
+	                                '<div class="prd_img">' +
+	                                '<img src="' + contextPath + '/_img/pc/main/' + vo.campThub + '" alt="" onerror="this.onerror=null; this.src=\'' + contextPath + '/_img/pc/main/no_img.png\';">' +
+	                                '</div>' +
+	                                '<p class="sns_txt ' + adTypeClass + '">' + vo.campType + '</p>' +
+	                                '<div class="prd_txt">' +
+	                                '<strong>' + vo.campTitle + '</strong>' +
+	                                '<p>' + vo.campService + '</p>' +
+	                                '</div>' +
+	                                '<div class="prd_rec">' +
+	                                dDayText +
+	                                '<ul class="rec_app">' +
+	                                '<li class="tt">신청 <b>' + vo.campSumCount + '</b>명</li>' +
+	                                '<li> / 모집 <em>' + vo.campRecruite + '</em>명</li>' +
+	                                '</ul>' +
+	                                '</div>' +
+	                                '</a>' +
+	                                '</li>';
+	                        });
+	                    } else {
+	                        campaignListHtml = '<li><p>검색 결과가 없습니다.</p></li>';
+	                    }
+	
+	                    $('.pd_list ul.prd_li').html(campaignListHtml);
+	                },
+	                error: function(xhr, status, error) {
+	                    console.error("AJAX Error:", status, error);
+	                    $('.pd_list ul.prd_li').html('<li><p>데이터를 불러오는 중 오류가 발생했습니다.</p></li>');
+	                }
+	            });
+	        }
+	    
+	        // 탭 클릭 이벤트
+	        $('.tab-link').on('click', function() {
+	            $('.tab-link').removeClass('current');
+	            $(this).addClass('current');
+	            
+	            // ✅ hidden input에 선택한 지역 이름 설정
+	            var selectedRegion = $(this).data('region-name');
+	            $('#regionInput').val(selectedRegion);
+	            
+	            // ✅ 필터링 함수 호출
+	            filterCampaigns();
+	        });
+	    
+	        // 드롭다운 변경 이벤트
+	        $('.searchCondition').on('change', function() {
+	            // ✅ 필터링 함수 호출
+	            filterCampaigns();
+	        });
+	
+	        // 페이지 로드 시, DTO 값에 따라 초기 필터 상태 유지
+	        var selectedRegion = '${campaignSearchDTO.region}';
+	        if (selectedRegion) {
+	            $('.tab-link').removeClass('current');
+	            $('li[data-region-name="' + selectedRegion + '"]').addClass('current');
+	        }
+	        
+	        var selectedCategory = '${campaignSearchDTO.category}';
+	        if (selectedCategory) {
+	            $('#category').val(selectedCategory);
+	        }
+	        
+	        var selectedChannel = '${campaignSearchDTO.channel}';
+	        if (selectedChannel) {
+	            $('#channel').val(selectedChannel);
+	        }
+	        
+	        var selectedType = '${campaignSearchDTO.type}';
+	        if (selectedType) {
+	            $('#type').val(selectedType);
+	        }
+	        
+	        var selectedSort = '${campaignSearchDTO.sort}';
+	        if (selectedSort) {
+	            $('#sort').val(selectedSort);
+	        }
+	    });
+	</script>
 </head>
 <body>
 
@@ -31,132 +151,79 @@
 <div id="sub_content">
 		<div class="s_cont">
 			<div class="cont_all">
-				<div class="region">
-					<div class="selec_reg">
-						<h2 class="sub_tit">지역</h2>
-						<div class="search_filter">
-							<!-- 선택된 reg01, reg02 -->
-							<ul>
-								<li>재택<a href="javascript:void(0)" class="x"></a></li>
-								<li>동대문구<a href="javascript:void(0)" class="x"></a></li>
-							</ul>
+				<form id="campaignSearchForm" action="${pageContext.request.contextPath}/preuser/campaign/campaignList.do" method="GET">
+				
+					<input type="hidden" id="regionInput" name="region" value="" />
+
+					<div class="region">
+						<div class="selec_reg">
+							<h2 class="sub_tit">지역</h2>
 						</div>
-					</div> <!-- selec_reg -->
-					<ul class="reg01">
-						<li class="tab-link current" data-tab="tab-1">재택</li>
-						<li class="tab-link" data-tab="tab-2">기자단</li>
-						<li class="tab-link" data-tab="tab-3">당일지급</li>
-						<li class="tab-link" data-tab="tab-4">서울</li>
-						<li class="tab-link" data-tab="tab-5">경기</li>
-						<li class="tab-link" data-tab="tab-6">인천</li>
-						<li class="tab-link" data-tab="tab-7">강원</li>
-						<li class="tab-link" data-tab="tab-8">대전</li>
-						<li class="tab-link" data-tab="tab-9">세종</li>
-						<li class="tab-link" data-tab="tab-10">충남</li>
-						<li class="tab-link" data-tab="tab-11">충북</li>
-						<li class="tab-link" data-tab="tab-12">부산</li>
-						<li class="tab-link" data-tab="tab-13">울산</li>
-						<li class="tab-link" data-tab="tab-14">경남</li>
-						<li class="tab-link" data-tab="tab-15">경북</li>
-						<li class="tab-link" data-tab="tab-16">대구</li>
-						<li class="tab-link" data-tab="tab-17">광주</li>
-						<li class="tab-link" data-tab="tab-18">전남</li>
-						<li class="tab-link" data-tab="tab-19">전북</li>
-						<li class="tab-link" data-tab="tab-20">제주</li>
-					</ul>
-
-					<div id="tab-1" class="tab_con current">
-						<ul class="reg02">
-							<li>
-								<input type="checkbox" id="re01" class="n_ck02" checked>
-								<label for="re01" class="ft_btn">동대문구</label>
-							</li>
-							<li>
-								<input type="checkbox" id="re02" class="n_ck02">
-								<label for="re02" class="ft_btn">동작구</label>
-							</li>
-							<li>
-								<input type="checkbox" id="re03" class="n_ck02">
-								<label for="re03" class="ft_btn">마포구</label>
-							</li>
-							<li>
-								<input type="checkbox" id="re04" class="n_ck02">
-								<label for="re04" class="ft_btn">서대문구</label>
-							</li>
-							<li>
-								<input type="checkbox" id="re05" class="n_ck">
-								<label for="re05" class="ft_btn">서초구</label>
-							</li>
-							<li>
-								<input type="checkbox" id="re06" class="n_ck">
-								<label for="re06" class="ft_btn">성동구</label>
-							</li>
+						<ul class="reg01">
+							<li class="tab-link current" data-tab="tab-1" data-region-name="재택">재택</li>
+							<li class="tab-link" data-tab="tab-4" data-region-name="서울">서울</li>
+							<li class="tab-link" data-tab="tab-5" data-region-name="경기">경기</li>
+							<li class="tab-link" data-tab="tab-6" data-region-name="인천">인천</li>
+							<li class="tab-link" data-tab="tab-7" data-region-name="강원">강원</li>
+							<li class="tab-link" data-tab="tab-8" data-region-name="대전">대전</li>
+							<li class="tab-link" data-tab="tab-9" data-region-name="세종">세종</li>
+							<li class="tab-link" data-tab="tab-10" data-region-name="충남">충남</li>
+							<li class="tab-link" data-tab="tab-11" data-region-name="충북">충북</li>
+							<li class="tab-link" data-tab="tab-12" data-region-name="부산">부산</li>
+							<li class="tab-link" data-tab="tab-13" data-region-name="울산">울산</li>
+							<li class="tab-link" data-tab="tab-14" data-region-name="경남">경남</li>
+							<li class="tab-link" data-tab="tab-15" data-region-name="경북">경북</li>
+							<li class="tab-link" data-tab="tab-16" data-region-name="대구">대구</li>
+							<li class="tab-link" data-tab="tab-17" data-region-name="광주">광주</li>
+							<li class="tab-link" data-tab="tab-18" data-region-name="전남">전남</li>
+							<li class="tab-link" data-tab="tab-19" data-region-name="전북">전북</li>
+							<li class="tab-link" data-tab="tab-20" data-region-name="제주">제주</li>
 						</ul>
+						
+					</div><div class="select_wrap">
+						<div class="sel">
+							<select id="category" name="category" class="searchCondition">
+								<option value="">카테고리</option>
+								<option value="맛집">맛집</option>
+								<option value="식품">식품</option>
+								<option value="뷰티">뷰티</option>
+								<option value="여행">여행</option>
+								<option value="디지털">디지털</option>
+								<option value="반려동물">반려동물</option>
+								<option value="기타">기타</option>
+							</select>
+						</div>
+						<div class="sel">
+							<select id="channel" name="channel" class="searchCondition">
+								<option value="">채널</option>
+								<option value="블로그">블로그</option>
+								<option value="인스타그램">인스타그램</option>
+								<option value="유튜브">유튜브</option>
+								<option value="숏츠">숏츠</option>
+								<option value="클립">클립</option>
+							</select>
+						</div>
+						<div class="sel">
+							<select id="type" name="type" class="searchCondition">
+								<option value="">유형</option>
+								<option value="방문형(오프라인)">방문형(오프라인)</option>
+								<option value="구매형(온라인)">구매형(온라인)</option>
+								<option value="배송형(온라인)">배송형(온라인)</option>
+								<option value="기자단">기자단</option>
+								<option value="플랫폼 기자단">플랫폼 기자단</option>
+								<option value="당일지급">당일지급</option>
+								<option value="포장">포장</option>
+							</select>
+						</div>
+						<div class="sel">
+							<select id="sort" name="sort" class="searchCondition">
+								<option value="">최신순</option>
+								<option value="마감임박순">마감임박순</option>
+								<option value="인기순">인기순</option>
+							</select>
+						</div>
 					</div>
-					<div id="tab-2" class="tab_con"><p>기자단</p></div>
-					<div id="tab-3" class="tab_con"><p>당일지급</p></div>
-					<div id="tab-4" class="tab_con">서울</div><!-- tab-4 -->
-					<div id="tab-5" class="tab_con"><p>경기</p></div>
-					<div id="tab-6" class="tab_con"><p>인천</p></div>
-					<div id="tab-7" class="tab_con"><p>강원</p></div>
-					<div id="tab-8" class="tab_con"><p>대전</p></div>
-					<div id="tab-9" class="tab_con"><p>세종</p></div>
-					<div id="tab-10" class="tab_con"><p>충남</p></div>
-					<div id="tab-11" class="tab_con"><p>충북</p></div>
-					<div id="tab-12" class="tab_con"><p>부산</p></div>
-					<div id="tab-13" class="tab_con"><p>울산</p></div>
-					<div id="tab-14" class="tab_con"><p>경남</p></div>
-					<div id="tab-15" class="tab_con"><p>경북</p></div>
-					<div id="tab-16" class="tab_con"><p>대구</p></div>
-					<div id="tab-17" class="tab_con"><p>광주</p></div>
-					<div id="tab-18" class="tab_con"><p>전남</p></div>
-					<div id="tab-19" class="tab_con"><p>전북</p></div>
-					<div id="tab-20" class="tab_con"><p>제주</p></div>
-				</div><!-- region -->
-
-				<div class="select_wrap">
-					<div class="sel">
-						<select id="" name="" class="searchCondition">
-							<option value="">카테고리</option>
-							<option value="">맛집</option>
-							<option value="">식품</option>
-							<option value="">뷰티</option>
-							<option value="">여행</option>
-							<option value="">디지털</option>
-							<option value="">반려동물</option>
-							<option value="">기타</option>
-						</select>
-					</div>
-					<div class="sel">
-						<select id="" name="" class="searchCondition">
-							<option value="">채널</option>
-							<option value="">블로그</option>
-							<option value="">인스타그램</option>
-							<option value="">유튜브</option>
-							<option value="">숏츠</option>
-							<option value="">클립</option>
-						</select>
-					</div>
-					<div class="sel">
-						<select id="" name="" class="searchCondition">
-							<option value="">유형</option>
-							<option value="">방문형(오프라인)</option>
-							<option value="">구매형(온라인)</option>
-							<option value="">배송형(온라인)</option>
-							<option value="">기자단</option>
-							<option value="">플랫폼 기자단</option>
-							<option value="">당일지급</option>
-							<option value="">포장</option>
-						</select>
-					</div>
-					<div class="sel">
-						<select id="" name="" class="searchCondition">
-							<option value="">최신순</option>
-							<option value="">마감임박순</option>
-							<option value="">인기순</option>
-						</select>
-					</div>
-				</div>
+				</form>
 
 				<div class="pd_list">
 					<ul class="prd_li prd_li02">
@@ -221,5 +288,5 @@
 
 <jsp:include page="/WEB-INF/jsp/_inc/footer.jsp" />
 
-</body>>
+</body>
 </html>

@@ -16,7 +16,17 @@ public class BoardDetailDTO {
     private String pstImg;
     
     private List<BoardCommentDTO> comments;
-    
+    private boolean isLikedByCurrentUser;
+
+	public boolean getIsLikedByCurrentUser() {
+		return this.isLikedByCurrentUser;
+	}
+	public boolean isLikedByCurrentUser() {
+		return isLikedByCurrentUser;
+	}
+	public void setLikedByCurrentUser(boolean isLikedByCurrentUser) {
+		this.isLikedByCurrentUser = isLikedByCurrentUser;
+	}
 	public int getPstIdx() {
 		return pstIdx;
 	}
@@ -85,5 +95,6 @@ public class BoardDetailDTO {
 		this.comments = comments;
 	}
     
+
 
 }

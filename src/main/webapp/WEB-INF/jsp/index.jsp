@@ -25,7 +25,7 @@
 
 <jsp:include page="/WEB-INF/jsp/_inc/header.jsp" />
 
-<script src="/js/ui.js"></script>
+<script src="/_js/ui.js"></script> 
 
 	<div id="wrap">
 		<div class="banner_wrap">

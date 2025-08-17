@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardLikeDAO">
+
+    <select id="checkLike" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM PUB_PST_LIKE
+        WHERE PST_IDX = #{pstIdx} AND USER_IDX = #{loginUserIdx}
+    </select>
+    
+    <insert id="insertLike" parameterType="map">
+        INSERT INTO PUB_PST_LIKE (PST_IDX, USER_IDX)
+        VALUES (#{pstIdx}, #{loginUserIdx})
+    </insert>
+    
+    <delete id="deleteLike" parameterType="map">
+        DELETE FROM PUB_PST_LIKE
+        WHERE PST_IDX = #{pstIdx} AND USER_IDX = #{loginUserIdx}
+    </delete>
+    
+
+    
+    <select id="getLikeInfo" parameterType="map" resultType="map">
+        SELECT
+            (SELECT COUNT(*) FROM PUB_PST_LIKE WHERE PST_IDX = #{pstIdx} AND USER_IDX = #{loginUserIdx}) > 0 AS isLiked,
+            (SELECT COUNT(*) FROM PUB_PST_LIKE WHERE PST_IDX = #{pstIdx}) AS likeCount
+    </select>
+    
+</mapper>
