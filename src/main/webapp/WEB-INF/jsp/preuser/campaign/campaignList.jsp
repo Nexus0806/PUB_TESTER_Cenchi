@@ -24,40 +24,102 @@
 	
 	<script>
 	    $(document).ready(function() {
-	        // ✅ 1. 지역 탭 클릭 이벤트
-	        $('.tab-link').on('click', function() {
-	            // 모든 탭의 'current' 클래스 제거
-	            $('.tab-link').removeClass('current');
-	            $('.tab_con').removeClass('current');
-	            // 클릭한 탭과 해당 내용에 'current' 클래스 추가
-	            $(this).addClass('current');
-	            var tabId = $(this).data('tab');
-	            $('#' + tabId).addClass('current');
+	        // 필터링 이벤트를 처리하는 함수
+	        function filterCampaigns() {
+	            var searchData = {
+	                region: $('#regionInput').val(),
+	                category: $('#category').val(),
+	                channel: $('#channel').val(),
+	                type: $('#type').val(),
+	                sort: $('#sort').val()
+	            };
 	
-	            // ✅ 클릭한 탭의 지역 이름을 hidden input에 설정
+	            $.ajax({
+	                url: '${pageContext.request.contextPath}/preuser/campaign/filterCampaigns.do', // 컨트롤러의 새로운 URL
+	                type: 'GET',
+	                data: searchData,
+	                dataType: 'json',
+	                success: function(response) {
+	                    var campaignListHtml = '';
+	                    var contextPath = '${pageContext.request.contextPath}';
+	
+	                    if (response && response.length > 0) {
+	                        $.each(response, function(index, vo) {
+	                            var dDayText = '';
+	                            if (vo.dDay === 0) {
+	                                dDayText = '<span class="p_date p_day">D-Day</span>';
+	                            } else if (vo.dDay < 0) {
+	                                dDayText = '<span class="p_date p_close">모집 마감</span>';
+	                            } else {
+	                                dDayText = '<span class="p_date">' + vo.dDay + '일 남음</span>';
+	                            }
+	
+	                            var adTypeClass = '';
+	                            if (vo.campAdType === '틱톡') adTypeClass = 'sns_tik';
+	                            else if (vo.campAdType === '클립' || vo.campAdType === '구매형') adTypeClass = 'sns_etc';
+	                            else if (vo.campAdType === '인스타그램' || vo.campAdType === '릴스') adTypeClass = 'sns_inst';
+	                            else if (vo.campAdType === '유튜브') adTypeClass = 'sns_yout';
+	                            else if (vo.campAdType === '블로그' || vo.campAdType === '블로그+클립') adTypeClass = 'sns_blog';
+	
+	                            campaignListHtml += '<li>' +
+	                                '<a href="' + contextPath + '/preuser/campaign/campaignView.do?campIdx=' + vo.campIdx + '">' +
+	                                '<div class="prd_img">' +
+	                                '<img src="' + contextPath + '/_img/pc/main/' + vo.campThub + '" alt="" onerror="this.onerror=null; this.src=\'' + contextPath + '/_img/pc/main/no_img.png\';">' +
+	                                '</div>' +
+	                                '<p class="sns_txt ' + adTypeClass + '">' + vo.campType + '</p>' +
+	                                '<div class="prd_txt">' +
+	                                '<strong>' + vo.campTitle + '</strong>' +
+	                                '<p>' + vo.campService + '</p>' +
+	                                '</div>' +
+	                                '<div class="prd_rec">' +
+	                                dDayText +
+	                                '<ul class="rec_app">' +
+	                                '<li class="tt">신청 <b>' + vo.campSumCount + '</b>명</li>' +
+	                                '<li> / 모집 <em>' + vo.campRecruite + '</em>명</li>' +
+	                                '</ul>' +
+	                                '</div>' +
+	                                '</a>' +
+	                                '</li>';
+	                        });
+	                    } else {
+	                        campaignListHtml = '<li><p>검색 결과가 없습니다.</p></li>';
+	                    }
+	
+	                    $('.pd_list ul.prd_li').html(campaignListHtml);
+	                },
+	                error: function(xhr, status, error) {
+	                    console.error("AJAX Error:", status, error);
+	                    $('.pd_list ul.prd_li').html('<li><p>데이터를 불러오는 중 오류가 발생했습니다.</p></li>');
+	                }
+	            });
+	        }
+	    
+	        // 탭 클릭 이벤트
+	        $('.tab-link').on('click', function() {
+	            $('.tab-link').removeClass('current');
+	            $(this).addClass('current');
+	            
+	            // ✅ hidden input에 선택한 지역 이름 설정
 	            var selectedRegion = $(this).data('region-name');
 	            $('#regionInput').val(selectedRegion);
-	
-	            // ✅ 폼 제출
-	            $('#campaignSearchForm').submit();
+	            
+	            // ✅ 필터링 함수 호출
+	            filterCampaigns();
 	        });
-	
-	        // ✅ 2. 드롭다운 선택 이벤트 (select 태그)
+	    
+	        // 드롭다운 변경 이벤트
 	        $('.searchCondition').on('change', function() {
-	            // ✅ 드롭다운 메뉴 값이 변경되면 폼을 제출
-	            $('#campaignSearchForm').submit();
+	            // ✅ 필터링 함수 호출
+	            filterCampaigns();
 	        });
-	        
-	        // ✅ 3. 페이지 로드 시, 이전에 선택한 필터 값을 유지
-	        // 이 부분은 서버에서 전달받은 DTO 객체를 활용해 구현합니다.
-	        // 예를 들어, 모델에 담긴 campaignSearchDTO.region 값을 가져와서 탭에 current 클래스를 추가합니다.
+	
+	        // 페이지 로드 시, DTO 값에 따라 초기 필터 상태 유지
 	        var selectedRegion = '${campaignSearchDTO.region}';
 	        if (selectedRegion) {
 	            $('.tab-link').removeClass('current');
 	            $('li[data-region-name="' + selectedRegion + '"]').addClass('current');
 	        }
 	        
-	        // 드롭다운 값도 동일하게 유지
 	        var selectedCategory = '${campaignSearchDTO.category}';
 	        if (selectedCategory) {
 	            $('#category').val(selectedCategory);

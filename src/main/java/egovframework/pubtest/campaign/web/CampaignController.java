@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import egovframework.pubtest.campaign.service.CampaignService;
 import egovframework.pubtest.campaign.service.CampaignVO;
@@ -42,6 +43,15 @@ public class CampaignController {
 		model.addAttribute("popCampList", list);
 		
 		return "/preuser/campaign/campaignList";
+	}
+	
+	@GetMapping("/filterCampaigns.do")
+	@ResponseBody
+	public List<CampaignVO> filterCampaigns(@ModelAttribute CampaignSearchDTO campaignSearchDTO) {
+		List<CampaignVO> filteredList = campaignService.selectCampaignList();
+		System.err.println(campaignSearchDTO.toString());
+
+		return filteredList; 
 	}
 	
 	@GetMapping("/campaignView.do")
