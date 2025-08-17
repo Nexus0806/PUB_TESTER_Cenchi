@@ -21,6 +21,30 @@
 	<title>중소기업을 위한 공공체험단</title>
 	<script src="/_js/pop_layer.js"></script>
 	<script src="/_js/cont.js"></script>
+	
+	<script type="text/javascript">
+	function fn_search() {
+	    // 현재 URL에서 'category' 파라미터 값을 가져옵니다.
+	    const urlParams = new URLSearchParams(window.location.search);
+	    let category = urlParams.get('category');
+	    if (!category) {
+	        category = 'ALL'; // 카테고리 값이 없으면 'ALL'로 간주
+	    }
+	
+	    const searchCondition = document.getElementById('searchCondition').value;
+	    const searchKeyword = document.getElementById('searchKeyword').value;
+	
+	    if (searchKeyword.trim() === "") {
+	        alert("검색어를 입력해주세요.");
+	        return;
+	    }
+	
+	    // 모든 파라미터를 조합하여 URL을 만들어 이동합니다.
+	    location.href = "${pageContext.request.contextPath}/preuser/board/boardList.do?category=" + category 
+	                  + "&searchCondition=" + searchCondition 
+	                  + "&searchKeyword=" + encodeURIComponent(searchKeyword);
+	}
+	</script>
 </head>
 <body>
 
@@ -70,33 +94,37 @@
 				</div>
 				
 				<div class="list_search">
-					<div class="list_wrap">
-						<label for="searchCondition" class="sr-only">검색조건 선택</label>
-						<select id="searchCondition" name="searchCondition" class="searchCondition">
-							<option value="all">전체</option>
-							<option value="bbsTitle">제목</option>
-							<option value="bbsCont">내용</option>
-						</select>
-						<label for="searchKeyword" class="sr-only">검색어 입력</label>
-						<input id="searchKeyword" name="searchKeyword" title="검색어 입력" placeholder="검색어를 입력하세요." class="info_in" type="text" value="">
-						<a href="javascript:;" class="b_btn" title="검색버튼" onclick="submit('', 1);">검색</a>
-					</div>
-
-					<div class="my_ck">
-						<p class="checkbox">
-							<span>
-								<input type="checkbox" id="wrt" name="fix" value="wrt">
-								<label for="wrt">내글</label>
-							</span>
-						</p>
-						<p class="checkbox">
-							<span>
-								<input type="checkbox" id="cmt" name="fix" value="cmt">
-								<label for="cmt">내 댓글</label>
-							</span>
-						</p>
-						<a href="${pageContext.request.contextPath}/preuser/board/boardWrite.do" class="btn">글 작성</a>
-					</div>
+				    <div class="list_wrap">
+				        <label for="searchCondition" class="sr-only">검색조건 선택</label>
+				        
+				        <select id="searchCondition" name="searchCondition" class="searchCondition">
+				            <option value="all" ${search.searchCondition == 'all' ? 'selected' : ''}>전체</option>
+				            <option value="bbsTitle" ${search.searchCondition == 'bbsTitle' ? 'selected' : ''}>제목</option>
+				            <option value="bbsCont" ${search.searchCondition == 'bbsCont' ? 'selected' : ''}>내용</option>
+				        </select>
+				        
+				        <label for="searchKeyword" class="sr-only">검색어 입력</label>
+				        
+				        <input id="searchKeyword" name="searchKeyword" title="검색어 입력" placeholder="검색어를 입력하세요." class="info_in" type="text" value="${search.searchKeyword}">
+				        
+				        <a href="javascript:;" class="b_btn" title="검색버튼" onclick="fn_search();">검색</a>
+				    </div>
+				
+				    <div class="my_ck">
+				        <p class="checkbox">
+				            <span>
+				                <input type="checkbox" id="wrt" name="fix" value="wrt">
+				                <label for="wrt">내글</label>
+				            </span>
+				        </p>
+				        <p class="checkbox">
+				            <span>
+				                <input type="checkbox" id="cmt" name="fix" value="cmt">
+				                <label for="cmt">내 댓글</label>
+				            </span>
+				        </p>
+				        <a href="${pageContext.request.contextPath}/preuser/board/boardWrite.do" class="btn">글 작성</a>
+				    </div>
 				</div>
 
 			<table class="bbs_list">
@@ -127,7 +155,7 @@
 											<span class="cmt"></span>
 										</c:when>
 										<c:otherwise>
-											<span class="cmt">${board.pstCmtCnt}</span>
+											<span class="cmt">[${board.pstCmtCnt}]</span>
 										</c:otherwise>
 									</c:choose>
 								</td>

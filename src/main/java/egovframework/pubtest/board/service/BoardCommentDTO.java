@@ -14,13 +14,6 @@ public class BoardCommentDTO {
 
 	private String cmtDelYn;
 	
-	@Override
-	public String toString() {
-		return "BoardCommentDTO [cmtIdx=" + cmtIdx + ", pstIdx=" + pstIdx + ", cmtCont=" + cmtCont + ", cmtAns="
-				+ cmtAns + ", cmtRegdate=" + cmtRegdate + ", userIdx=" + userIdx + ", bussIdx=" + bussIdx
-				+ ", authorNickname=" + authorNickname + ", cmtDelYn=" + cmtDelYn + "]";
-	}
-	
 	public int getCmtIdx() {
 		return cmtIdx;
 	}

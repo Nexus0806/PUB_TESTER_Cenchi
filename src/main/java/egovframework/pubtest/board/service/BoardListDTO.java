@@ -5,6 +5,7 @@ public class BoardListDTO { //pst와 대응
 	private int pstIdx;          // 게시글 고유번호 (INT)
     private String pstCate;      // 게시글 카테고리 (VARCHAR)
     private String pstTitle;     // 게시글 제목 (VARCHAR)
+    private String pstCont;
     private int pstCmtCnt;       // 댓글 수 (INT)
     private String pstRegdate;     // 작성일 (DATETIME)
     private int pstHit;          // 조회수 (INT)
@@ -61,6 +62,13 @@ public class BoardListDTO { //pst와 대응
 	}
 	public void setAuthorNickname(String authorNickname) {
 		this.authorNickname = authorNickname;
+	}
+	
+	public String getPstCont() {
+		return pstCont;
+	}
+	public void setPstCont(String pstCont) {
+		this.pstCont = pstCont;
 	}
 	
 	

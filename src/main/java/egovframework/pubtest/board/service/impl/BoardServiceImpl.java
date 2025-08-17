@@ -11,6 +11,7 @@ import egovframework.pubtest.board.service.BoardService;
 import egovframework.pubtest.board.service.BoardVO;
 import egovframework.pubtest.board.service.BoardWriteDTO;
 import egovframework.pubtest.board.service.BoardListDTO;
+import egovframework.pubtest.board.service.BoardSearchDTO;
 import egovframework.pubtest.board.service.BoardDetailDTO;
 import egovframework.pubtest.board.service.BoardCommentDTO;
 
@@ -25,8 +26,8 @@ public class BoardServiceImpl implements BoardService {
 	private BoardCommentDAO boardCommentDAO; 
 	
 	@Override
-	public List<BoardListDTO> selectBoardList(String category){
-		return boardDAO.selectBoardList(category);
+	public List<BoardListDTO> selectBoardList(BoardSearchDTO searchDTO){
+		return boardDAO.selectBoardList(searchDTO);
 	}
 
 	@Override
