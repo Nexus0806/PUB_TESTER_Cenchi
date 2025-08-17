@@ -24,7 +24,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/jsp/_inc/header.jsp" />
-<script src="/js/ui.js"></script>
+<script src="/_js/ui.js"></script>
 
 <div id="sub_content">
 	<div class="s_cont">

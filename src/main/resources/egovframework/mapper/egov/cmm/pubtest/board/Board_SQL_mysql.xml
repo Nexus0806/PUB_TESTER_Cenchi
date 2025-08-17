@@ -3,52 +3,151 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardDAO">
 
-	<select id="selectBoardList" resultType="boardListDTO">
-		SELECT
-		    P.PST_IDX,
-		    P.PST_CATE,
-		    P.PST_TITLE,
-		    P.PST_CMT_CNT,
-		    COALESCE(U.USER_NICKNAME, B.BUSS_NICKNAME) AS AUTHOR_NICKNAME,
-		    P.PST_REGDATE,
-		    P.PST_HIT,
-		    P.PST_LIKE
-		FROM
-		    PUB_PST P
-		LEFT JOIN
-		    PUB_USER U ON P.USER_IDX = U.USER_IDX
-		LEFT JOIN
-		    PUB_BUSS B ON P.BUSS_IDX = B.BUSS_IDX
-		WHERE
-		    P.PST_DELYN = 'N'
-		ORDER BY
-		    CASE
-		        WHEN P.PST_CATE = '필독' THEN 1
-		        ELSE 2
-		    END,
-		    P.PST_IDX DESC;
+
+	<select id="selectBoardList" parameterType="boardSearchDTO" resultType="boardListDTO">
+	    SELECT
+	        P.PST_IDX, P.PST_CATE, P.PST_TITLE, 
+	        (SELECT COUNT(*) FROM PUB_CMT C WHERE C.PST_IDX = P.PST_IDX AND C.CMT_DELYN = 'N') AS PST_CMT_CNT,
+	        COALESCE(U.USER_NICKNAME, B.BUSS_NICKNAME) AS AUTHOR_NICKNAME,
+	        P.PST_REGDATE, P.PST_HIT, 
+	        (SELECT COUNT(*) FROM PUB_PST_LIKE L WHERE L.PST_IDX = P.PST_IDX) AS PST_LIKE
+	    FROM
+	        PUB_PST P
+	    LEFT JOIN
+	        PUB_USER U ON P.USER_IDX = U.USER_IDX
+	    LEFT JOIN
+	        PUB_BUSS B ON P.BUSS_IDX = B.BUSS_IDX
+	    <where>
+	        P.PST_DELYN = 'N'
+	        
+	        <if test="category != null and category != 'ALL'">
+	            AND P.PST_CATE = #{category}
+	        </if>
+	        
+	        <if test="searchKeyword != null and searchKeyword != ''">
+	            </if>
+	
+	        <if test="myContent != null and myContent != '' and loginUserIdx > 0">
+	            <choose>
+	                <when test="myContent == 'wrt'">
+	                    AND (P.USER_IDX = #{loginUserIdx} OR P.BUSS_IDX = #{loginUserIdx})
+	                </when>
+	                <when test="myContent == 'cmt'">
+	                    AND P.PST_IDX IN (
+	                        SELECT DISTINCT CMT.PST_IDX
+	                        FROM PUB_CMT CMT
+	                        WHERE CMT.USER_IDX = #{loginUserIdx} OR CMT.BUSS_IDX = #{loginUserIdx}
+	                    )
+	                </when>
+	            </choose>
+	        </if>
+	    </where>
+	    ORDER BY
+	        CASE WHEN P.PST_CATE = '필독' THEN 1 ELSE 2 END,
+	        P.PST_IDX DESC
+	    LIMIT #{recordCountPerPage} OFFSET #{firstRecordIndex}
 	</select>
 	
-	<select id="selectBoardDetail" resultType="boardDetailDTO" parameterType="int">
+	<update id="updateBoardHit" parameterType="int">
+		    UPDATE PUB_PST
+		       SET PST_HIT = PST_HIT + 1
+		    WHERE PST_IDX = #{pstIdx}
+	</update>	
+	
+	<select id="selectBoardListTotalCount" parameterType="boardSearchDTO" resultType="int">
+	    SELECT
+	        COUNT(*)
+	    FROM
+	        PUB_PST P
+	    <where>
+	        P.PST_DELYN = 'N'
+	
+	        <if test="category != null and category != 'ALL'">
+	            AND P.PST_CATE = #{category}
+	        </if>
+	
+	        <if test="searchKeyword != null and searchKeyword != ''">
+	            <choose>
+	                <when test="searchCondition == 'bbsTitle'">
+	                    AND P.PST_TITLE LIKE CONCAT('%', #{searchKeyword}, '%')
+	                </when>
+	                <when test="searchCondition == 'bbsCont'">
+	                    AND P.PST_CONT LIKE CONCAT('%', #{searchKeyword}, '%')
+	                </when>
+	                <otherwise>
+	                    AND (P.PST_TITLE LIKE CONCAT('%', #{searchKeyword}, '%') OR P.PST_CONT LIKE CONCAT('%', #{searchKeyword}, '%'))
+	                </otherwise>
+	            </choose>
+	        </if>
+	
+	        <if test="myContent != null and myContent != '' and loginUserIdx > 0">
+	            <choose>
+	                <when test="myContent == 'wrt'">
+	                    AND (P.USER_IDX = #{loginUserIdx} OR P.BUSS_IDX = #{loginUserIdx})
+	                </when>
+	                <when test="myContent == 'cmt'">
+	                    AND P.PST_IDX IN (
+	                        SELECT DISTINCT CMT.PST_IDX
+	                        FROM PUB_CMT CMT
+	                        WHERE CMT.USER_IDX = #{loginUserIdx} OR CMT.BUSS_IDX = #{loginUserIdx}
+	                    )
+	                </when>
+	            </choose>
+	        </if>
+	    </where>
+	</select>
+	
+	<select id="selectBoardDetail" resultType="boardDetailDTO" parameterType="map">
 		SELECT
 		    P.PST_IDX,
 		    P.PST_CATE,
 		    P.PST_TITLE,
-		    P.PST_CMT_CNT,
+		    (SELECT COUNT(*) FROM PUB_CMT C WHERE C.PST_IDX = P.PST_IDX AND C.CMT_DELYN = 'N') AS PST_CMT_CNT,
 		    COALESCE(U.USER_NICKNAME, B.BUSS_NICKNAME) AS AUTHOR_NICKNAME,
 		    P.PST_REGDATE,
 		    P.PST_HIT,
-		    P.PST_LIKE,
+		    (SELECT COUNT(*) FROM PUB_PST_LIKE L WHERE L.PST_IDX = P.PST_IDX) AS PST_LIKE,
 		    P.PST_CONT,
-		    P.PST_IMG
+		    P.PST_IMG,
+		    CASE WHEN L.LIKE_IDX IS NOT NULL THEN 1 ELSE 0 END AS isLikedByCurrentUser
 		FROM
 		    PUB_PST P
 		LEFT JOIN
 		    PUB_USER U ON P.USER_IDX = U.USER_IDX
 		LEFT JOIN
 		    PUB_BUSS B ON P.BUSS_IDX = B.BUSS_IDX
+		LEFT JOIN
+        	PUB_PST_LIKE L ON P.PST_IDX = L.PST_IDX AND (L.USER_IDX = #{loginUserIdx} OR L.BUSS_IDX = #{loginUserIdx})
 		WHERE
 			P.PST_IDX = #{pstIdx}	
 	</select>
+	
+	<insert id="insertBoard" parameterType="boardWriteDTO">
+		INSERT INTO PUB_PST
+	    <trim prefix="(" suffix=")" suffixOverrides=",">
+			PST_CATE,
+	        PST_TITLE,
+	        PST_CONT,
+	        PST_IMG,
+	        <if test="userIdx != null and userIdx != 0">
+	            USER_IDX,
+	        </if>
+	        <if test="bussIdx != null and bussIdx != 0">
+	            BUSS_IDX,
+	        </if>
+	    </trim>
+	    <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+	        #{pstCate},
+	        #{pstTitle},
+	        #{pstCont},
+	        #{pstImg}
+	        <if test="userIdx != null and userIdx != 0">
+	            #{userIdx},
+	        </if>
+	        <if test="bussIdx != null and bussIdx != 0">
+	            #{bussIdx},
+	        </if>
+	    </trim>
+	</insert>
 	
 </mapper>

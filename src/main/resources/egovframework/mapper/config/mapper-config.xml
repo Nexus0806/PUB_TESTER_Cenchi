@@ -27,8 +27,11 @@
 		<typeAlias alias="boardVO"				type="egovframework.pubtest.board.service.BoardVO"/>
 		<typeAlias alias="boardDetailDTO"		type="egovframework.pubtest.board.service.BoardDetailDTO"/>
 		<typeAlias alias="boardListDTO" 		type="egovframework.pubtest.board.service.BoardListDTO"/>
+		<typeAlias alias="boardWriteDTO"		type="egovframework.pubtest.board.service.BoardWriteDTO"/>
+		<typeAlias alias="boardSearchDTO"	 	type="egovframework.pubtest.board.service.BoardSearchDTO"/>
 		
 		<typeAlias alias="boardCommentDTO"		type="egovframework.pubtest.board.service.BoardCommentDTO" />
+		
 	</typeAliases>
     
 </configuration>
