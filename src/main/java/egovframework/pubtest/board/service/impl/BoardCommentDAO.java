@@ -12,8 +12,8 @@ public class BoardCommentDAO extends EgovAbstractMapper{
 		return selectList("boardCommentDAO.selectBoardCommentList", pstIdx); 
 	}
 	
-	public void insertboardComment(BoardCommentDTO comment) {
-		insert("boardCommentDAO.insertboardComment", comment);
+	public void insertBoardComment(BoardCommentDTO comment) {
+		insert("boardCommentDAO.insertBoardComment", comment);
 	}
 	
 }

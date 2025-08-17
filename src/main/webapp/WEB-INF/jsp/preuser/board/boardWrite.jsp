@@ -21,105 +21,87 @@
 	<title>중소기업을 위한 공공체험단</title>
 	<script src="/_js/pop_layer.js"></script>
 	<script src="/_js/cont.js"></script>
+	
+	<script type="text/javascript">
+		// 폼 제출 시 실행될 함수
+		function validateForm() {
+			const form = document.getElementById("writeForm");
+			
+			// 1. 카테고리 선택 여부 확인
+			if (form.pstCate.value === "") {
+				alert("카테고리를 선택해주세요.");
+				form.pstCate.focus();
+				return false; // 폼 제출 중단
+			}
+			
+			// 2. 제목 입력 여부 확인
+			if (form.pstTitle.value.trim() === "") {
+				alert("제목을 입력해주세요.");
+				form.pstTitle.focus();
+				return false; // 폼 제출 중단
+			}
+			
+			// 3. 내용 입력 여부 확인
+			if (form.pstCont.value.trim() === "") {
+				alert("내용을 입력해주세요.");
+				form.pstCont.focus();
+				return false; // 폼 제출 중단
+			}
+			
+			// 모든 검사를 통과하면 true를 반환하여 폼 제출 진행
+			return true; 
+		}
+	</script>
 </head>
 <body>
 
 <jsp:include page="/WEB-INF/jsp/_inc/header.jsp" />
 
-<script src="/_js/ui.js"></script>
-
+<script src="${pageContext.request.contextPath}/_js/ui.js"></script>
 
 <div id="sub_content">
-		<div class="s_cont">
-		<div id="left_menu" class="lnb left">
-	<ul class="lnb_li">
-		<li>
-			<p class="left_tit">마이페이지</p>
-			<ul class="sub_li">
-				<li class="on"><a href="#none">내 체험단</a></li>
-				<li><a href="#none">체험단 신청 관리</a></li>
-				<li><a href="#none">체험단 취소</a></li>
-				<li><a href="#none">커뮤니티</a></li>
-			</ul>
-		</li>
-		<!-- <li>
-			<ul class="sub_li">
-				<li><a href="#none">커뮤니티</a></li>
-			</ul>
-		</li> -->
-		<li>
-			<p class="left_tit">내 정보 관리</p>
-			<ul class="sub_li">
-				<li><a href="#none">프로필</a></li>
-				<li><a href="#none">찜 목록</a></li>
-			</ul>
-		</li>
-		<li>
-			<p class="left_tit">고객센터</p>
-			<ul class="sub_li">
-				<li><a href="#none">자주 묻는 질문</a></li>
-				<li><a href="#none">문의 내역</a></li>
-				<li><a href="#none">공지 / 이벤트</a></li>
-			</ul>
-		</li>
-	</ul>
-	<p class="basic_btn">
-		<a href="#none" class="logout">로그아웃</a>
-	</p>
-</div> <!-- left -->			<div class="cont right">
-				<h2 class="sub_tit">게시글 작성</h2>
-				<!-- 게시글 수정 시 타이틀 변경 -->
-				<!-- <h2 class="sub_tit">게시글 수정</h2> -->
+	<div class="s_cont">
+		
+		<%-- 사이드 메뉴 Include --%>
+		<jsp:include page="/WEB-INF/jsp/_inc/sideMenu.jsp" />
 
+		<div class="cont right">
+			<h2 class="sub_tit">게시글 작성</h2>
+			
+			<form id="writeForm" action="${pageContext.request.contextPath}/preuser/board/addBoard.do" method="post" enctype="multipart/form-data" onsubmit="return validateForm();">
 				<div class="write_wrap">
 					<h4 class="mt30">제목</h4>
 					<div class="sel tit_flex">
 						<label class="sr-only">카테고리</label>
-						<select>
-							<option value="">ALL</option>
-							<option value="">BEST</option>
-							<option value="">노하우</option>
-							<option value="">일상</option>
-							<option value="">질문하기</option>
-							<option value="">동행</option>
-							<option value="">공지</option>
+						<select name="pstCate">
+							<option value="">카테고리 선택</option>
+							<option value="노하우">노하우</option>
+							<option value="일상">일상</option>
+							<option value="질문하기">질문하기</option>
+							<option value="동행">동행</option>
 						</select>
-						<input type="text" class="wt_tit" placeholder="제목을 입력해주세요.">
+						
+						<input type="text" name="pstTitle" class="wt_tit" placeholder="제목을 입력해주세요.">
 					</div>
 
 					<h4 class="mt30">내용</h4>
-					<p style="padding: 120px 10px; border-radius: 10px; border: 1px solid #ddd;">에디터 넣어주세요.</p>
-
+					<textarea name="pstCont" style="width: 100%; height: 350px; padding: 15px; border-radius: 10px; border: 1px solid #ddd; resize: vertical;" placeholder="내용을 입력해주세요."></textarea>
 
 					<h4 class="mt30">파일업로드</h4>
 					<div class="filebox">
-						<input type="file" id="file" class="sr-only">
+						<input type="file" name="pstImg" id="file" class="sr-only">
 						<label for="file"><span></span>클릭하거나 드래그/드롭 해주세요. 5MB 이하의 JPEG, PNG 파일</label>
-						<!-- 첨부된 파일표시 -->
-						<!-- <p>
-							<a href="javascript:void(0)">File 1.jpg(128KB)</a>
-							<button class="del"></button>
-						</p> -->
 					</div>
 
 					<div class="btn_wrap ct mt40">
-						<!-- 등록하기 버튼 -->
-						<a href="#none" class="btn ct">등록하기</a>
-
-						<!-- 삭제하기 / 수정하기 버튼 -->
-						<!-- <a href="#none" class="btn ct bk_line">삭제하기</a>
-						<a href="#none" class="btn ct bk">수정하기</a> -->
+						<button type="submit" class="btn ct">등록하기</button>
+						
+						<a href="${pageContext.request.contextPath}/preuser/board/boardList.do" class="btn ct bk_line">목록으로</a>
 					</div>
-				</div><!-- write_wrap -->
-			</div><!-- cont right -->
-		</div><!-- s_cont -->
-	</div><!-- sub_content -->
-
-
-<jsp:include page="/WEB-INF/jsp/_inc/footer.jsp" />
+				</div></form>
+		</div></div></div>
+		<jsp:include page="/WEB-INF/jsp/_inc/footer.jsp" />
 
 </body>
 </html>
 
-
-<!-- 이건 대부분 공통으로 사용되는 양식임, 사용하세요! -->

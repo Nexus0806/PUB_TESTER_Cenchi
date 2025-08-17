@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import egovframework.pubtest.board.service.BoardService;
 import egovframework.pubtest.board.service.BoardVO;
+import egovframework.pubtest.board.service.BoardWriteDTO;
 import egovframework.pubtest.board.service.BoardListDTO;
 import egovframework.pubtest.board.service.BoardDetailDTO;
 import egovframework.pubtest.board.service.BoardCommentDTO;
@@ -40,8 +41,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public void insertboardComment(BoardCommentDTO comment) {
-		boardCommentDAO.insertboardComment(comment);
+	public void insertBoardComment(BoardCommentDTO comment) {
+		boardCommentDAO.insertBoardComment(comment);
+	}
+	
+	@Override
+	public void insertBoard(BoardWriteDTO board) {
+		boardDAO.insertBoard(board);
 	}
 
 	

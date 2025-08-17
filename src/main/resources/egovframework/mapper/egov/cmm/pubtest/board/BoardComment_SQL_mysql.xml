@@ -24,7 +24,7 @@
 	        C.CMT_REGDATE DESC;
 	</select>
 	
-	<insert id="insertboardComment" parameterType="BoardCommentDTO">
+	<insert id="insertBoardComment" parameterType="BoardCommentDTO">
 	    INSERT INTO PUB_CMT
 	    <trim prefix="(" suffix=")" suffixOverrides=",">
 	        PST_IDX,

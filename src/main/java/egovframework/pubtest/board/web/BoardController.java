@@ -19,6 +19,7 @@ import egovframework.pubtest.login.web.PubTesterLoginController.SessionUser;
 import egovframework.pubtest.board.service.BoardDetailDTO;
 import egovframework.pubtest.board.service.BoardListDTO;
 import egovframework.pubtest.board.service.BoardCommentDTO;
+import egovframework.pubtest.board.service.BoardWriteDTO;
 
 @Controller
 @RequestMapping("/preuser/board")
@@ -56,17 +57,41 @@ public class BoardController {
 			comment.setBussIdx(loginUser.getIdx());
 		}
 		
-		System.err.println(comment.toString());
-		
-		boardService.insertboardComment(comment);
+		boardService.insertBoardComment(comment);
 		
         return "redirect:/preuser/board/boardView.do?pstIdx=" + comment.getPstIdx();
 	}
 	
-	@RequestMapping("/boardWrite.do")
-	public String boardWrite(Model model) {
+	@GetMapping("/boardWrite.do")
+	public String boardWrite(Model model, @SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser) {
 		
 		return "/preuser/board/boardWrite";
 	}
 	
+	@PostMapping("/addBoard.do")
+	public String addBoard(@ModelAttribute BoardWriteDTO board,
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser) {
+		
+		// 비로그인 사용자가 POST 요청을 보낼 경우 대비
+		if (loginUser == null) {
+			return "redirect:/preuser/login.do"; 
+		}
+		
+		// DTO에 작성자 정보(세션) 설정
+		if("inf".equals(loginUser.getType())) {
+			board.setUserIdx(loginUser.getIdx());
+		} else {
+			board.setBussIdx(loginUser.getIdx());
+		}
+
+		// 파일 처리 로직은 여기에 추가해야 합니다.
+		// (예: MultipartFile을 받아서 서버에 저장하고, 파일 정보를 board DTO에 설정)
+		
+		// 서비스를 호출하여 게시글 DB에 저장
+		boardService.insertBoard(board);
+		
+		// 글 등록 후 목록 페이지로 리다이렉트
+		return "redirect:/preuser/board/boardList.do";
+	}
+
 }

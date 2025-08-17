@@ -51,4 +51,32 @@
 			P.PST_IDX = #{pstIdx}	
 	</select>
 	
+	<insert id="insertBoard" parameterType="boardWriteDTO">
+		INSERT INTO PUB_PST
+	    <trim prefix="(" suffix=")" suffixOverrides=",">
+			PST_CATE,
+	        PST_TITLE,
+	        PST_CONT,
+	        PST_IMG,
+	        <if test="userIdx != null and userIdx != 0">
+	            USER_IDX,
+	        </if>
+	        <if test="bussIdx != null and bussIdx != 0">
+	            BUSS_IDX,
+	        </if>
+	    </trim>
+	    <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+	        #{pstCate},
+	        #{pstTitle},
+	        #{pstCont},
+	        #{pstImg}
+	        <if test="userIdx != null and userIdx != 0">
+	            #{userIdx},
+	        </if>
+	        <if test="bussIdx != null and bussIdx != 0">
+	            #{bussIdx},
+	        </if>
+	    </trim>
+	</insert>
+	
 </mapper>

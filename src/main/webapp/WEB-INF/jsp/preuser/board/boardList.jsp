@@ -95,7 +95,7 @@
 								<label for="cmt">내 댓글</label>
 							</span>
 						</p>
-						<a href="boardWrite.html" class="btn">글 작성</a>
+						<a href="${pageContext.request.contextPath}/preuser/board/boardWrite.do" class="btn">글 작성</a>
 					</div>
 				</div>
 
