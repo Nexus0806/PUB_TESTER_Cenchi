@@ -31,11 +31,6 @@ public class BoardLikeDAO extends EgovAbstractMapper{
         params.put("loginUserIdx", loginUserIdx);
         delete("boardLikeDAO.deleteLike", params);
     }
-
-    // 게시물 테이블의 좋아요 총 수 업데이트
-    public void updateLikeCount(int pstIdx) {
-        update("boardLikeDAO.updateLikeCount", pstIdx);
-    }
     
     // 최신 좋아요 정보 조회
     public Map<String, Object> getLikeInfo(int pstIdx, int loginUserIdx) {

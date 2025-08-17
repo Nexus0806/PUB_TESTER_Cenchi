@@ -10,6 +10,8 @@
 	        C.CMT_CONT,
 	        C.CMT_ANS,
 	        C.CMT_REGDATE,
+	        C.USER_IDX,
+        	C.BUSS_IDX,
 	        COALESCE(U.USER_NICKNAME, B.BUSS_NICKNAME) AS AUTHOR_NICKNAME
 	    FROM
 	        PUB_CMT C

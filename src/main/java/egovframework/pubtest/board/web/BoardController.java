@@ -22,10 +22,6 @@ import egovframework.pubtest.board.service.BoardService;
 import egovframework.pubtest.board.service.BoardWriteDTO;
 import egovframework.pubtest.login.web.PubTesterLoginController.SessionUser;
 
-import javax.annotation.PostConstruct;
-import java.net.URL;
-import java.net.URLClassLoader;
-
 @Controller
 @RequestMapping("/preuser/board")
 public class BoardController {
@@ -55,10 +51,37 @@ public class BoardController {
 			Model model) {
 
 		BoardDetailDTO board = boardService.selectBoardDetail(pstIdx, loginUser.getIdx());
+		
 		model.addAttribute("board", board);
-
+		
+		
+		model.addAttribute("loginUserIdx", loginUser.getIdx());
+		model.addAttribute("loginUserType", loginUser.getType());
+		
+		System.err.println(loginUser.getType());
+		
 		return "/preuser/board/boardView";
 	}
+	
+	@PostMapping("/updateComment.do")
+	@ResponseBody
+	public String updateComment(@ModelAttribute BoardCommentDTO comment, 
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser) {
+
+
+        return "";
+    }
+	
+    @PostMapping("/deleteComment.do")
+    @ResponseBody
+    public String deleteComment(@RequestParam("cmtIdx") int cmtIdx, 
+    		@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser) {
+    	
+    	
+    	return "";
+    }
+	
+	
 	
 	@PostMapping("/toggleLike.do")
 	@ResponseBody 

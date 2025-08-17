@@ -91,7 +91,6 @@ public class BoardServiceImpl implements BoardService {
             boardLikeDAO.insertLike(pstIdx, loginUserIdx);
         }
         
-        boardLikeDAO.updateLikeCount(pstIdx);
 	}
 	
     @Override
