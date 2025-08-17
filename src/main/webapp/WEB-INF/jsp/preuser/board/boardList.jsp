@@ -34,41 +34,41 @@
 			
 			<div class="cont right">
 				<h2 class="sub_tit">커뮤니티</h2>
-
+				
 				<div class="filter_wrap">
-					<ul class="ck_btn">
-						<li>
-							<input type="checkbox" id="ft01" class="n_ck" checked>
-							<label for="ft01" class="ft_btn">ALL</label>
-						</li>
-						<li>
-							<input type="checkbox" id="ft02" class="n_ck">
-							<label for="ft02" class="ft_btn">BEST</label>
-						</li>
-						<li>
-							<input type="checkbox" id="ft03" class="n_ck">
-							<label for="ft03" class="ft_btn">노하우</label>
-						</li>
-						<li>
-							<input type="checkbox" id="ft04" class="n_ck">
-							<label for="ft04" class="ft_btn">일상</label>
-						</li>
-						<li>
-							<input type="checkbox" id="ft05" class="n_ck">
-							<label for="ft05" class="ft_btn">질문하기</label>
-						</li>
-						<li>
-							<input type="checkbox" id="ft06" class="n_ck">
-							<label for="ft06" class="ft_btn">동행</label>
-						</li>
-						<li>
-							<input type="checkbox" id="ft07" class="n_ck">
-							<label for="ft07" class="ft_btn">공지</label>
-						</li>
-					</ul>
-
-				</div><!-- filter_wrap -->
-
+				    <ul class="ck_btn">
+				        <li>
+				            <input type="checkbox" id="ft01" class="n_ck" ${selectedCategory == 'ALL' || selectedCategory == null ? 'checked' : ''}>
+				            
+				            <label for="ft01" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=ALL'">ALL</label>
+				        </li>
+				        <li>
+				            <input type="checkbox" id="ft02" class="n_ck" ${selectedCategory == 'BEST' ? 'checked' : ''}>
+				            <label for="ft02" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=BEST'">BEST</label>
+				        </li>
+				        <li>
+				            <input type="checkbox" id="ft03" class="n_ck" ${selectedCategory == '노하우' ? 'checked' : ''}>
+				            <label for="ft03" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=노하우'">노하우</label>
+				        </li>
+				        <li>
+				            <input type="checkbox" id="ft04" class="n_ck" ${selectedCategory == '일상' ? 'checked' : ''}>
+				            <label for="ft04" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=일상'">일상</label>
+				        </li>
+				        <li>
+				            <input type="checkbox" id="ft05" class="n_ck" ${selectedCategory == '질문하기' ? 'checked' : ''}>
+				            <label for="ft05" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=질문하기'">질문하기</label>
+				        </li>
+				        <li>
+				            <input type="checkbox" id="ft06" class="n_ck" ${selectedCategory == '동행' ? 'checked' : ''}>
+				            <label for="ft06" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=동행'">동행</label>
+				        </li>
+				        <li>
+				            <input type="checkbox" id="ft07" class="n_ck" ${selectedCategory == '공지' ? 'checked' : ''}>
+				            <label for="ft07" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=공지'">공지</label>
+				        </li>
+				    </ul>
+				</div>
+				
 				<div class="list_search">
 					<div class="list_wrap">
 						<label for="searchCondition" class="sr-only">검색조건 선택</label>

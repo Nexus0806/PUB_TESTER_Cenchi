@@ -28,11 +28,13 @@ public class BoardController {
 	@Resource(name = "boardService")
 	private BoardService boardService;
 	
-	@RequestMapping("/boardList.do")
-	public String boardList(Model model) {
+	@GetMapping("/boardList.do")
+	public String boardList(@RequestParam(value = "category", required = false, defaultValue = "ALL") String category ,Model model) {
 		
-		List<BoardListDTO> boardList = boardService.selectBoardList();
+		List<BoardListDTO> boardList = boardService.selectBoardList(category);
+		
 		model.addAttribute("boardList", boardList);
+		model.addAttribute("selectedCategory", category);
 		
 		return "/preuser/board/boardList";
 	}

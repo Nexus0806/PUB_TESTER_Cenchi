@@ -11,8 +11,8 @@ import egovframework.pubtest.board.service.BoardDetailDTO;
 @Repository("boardDAO")
 public class BoardDAO extends EgovAbstractMapper{
 	
-	public List<BoardListDTO> selectBoardList(){
-		return selectList("boardDAO.selectBoardList");
+	public List<BoardListDTO> selectBoardList(String category){
+		return selectList("boardDAO.selectBoardList", category);
 	}
 	
 	public BoardDetailDTO selectBoardDetail(int pstIdx) {

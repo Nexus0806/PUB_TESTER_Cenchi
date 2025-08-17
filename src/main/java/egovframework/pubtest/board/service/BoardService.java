@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface BoardService {
 	
-	List<BoardListDTO> selectBoardList();
+	List<BoardListDTO> selectBoardList(String category);
 	
 	BoardDetailDTO selectBoardDetail(int pstIdx);
 	
