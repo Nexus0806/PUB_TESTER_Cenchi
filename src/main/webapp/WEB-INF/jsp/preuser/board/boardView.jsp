@@ -21,6 +21,35 @@
 	<title>중소기업을 위한 공공체험단</title>
 	<script src="/_js/pop_layer.js"></script>
 	<script src="/_js/cont.js"></script>
+	
+	<script type.text/javascript>
+	// '좋아요' 버튼을 클릭했을 때 실행되는 함수
+	function toggleLike(pstIdx) {
+	    // jQuery의 ajax 기능을 사용하여 서버와 통신
+	    $.ajax({
+	        type: "POST", // HTTP 요청 방식
+	        url: "${pageContext.request.contextPath}/preuser/board/toggleLike.do", // 요청을 보낼 서버 API 주소
+	        data: { pstIdx: pstIdx }, // 서버에 보낼 데이터 (게시물 번호)
+	        
+	        // 서버로부터 성공적으로 응답을 받았을 때 실행되는 함수
+	        success: function(response) {
+	            // response 객체에는 {isLiked: true, likeCount: 124} 와 같은 JSON 데이터가 들어있습니다.
+	            
+	            // 1. 화면의 '좋아요' 숫자 업데이트
+	            $("#likeCount").text(response.likeCount);
+	            
+	            // 2. 버튼의 스타일(class) 변경
+	            // isLiked가 true이면 'liked' 클래스를 추가하고, false이면 제거합니다.
+	            $("#likeBtn").toggleClass('liked', response.isLiked);
+	        },
+	        // 통신 중 에러가 발생했을 때 실행되는 함수
+	        error: function(err) {
+	            alert("좋아요 처리에 실패했습니다. 다시 시도해주세요.");
+	            console.log(err);
+	        }
+	    });
+	}
+	</script>
 </head>
 <body>
 
@@ -80,8 +109,10 @@
 
 						<div class="cmt_ico">
 							<div class="cmt01">
-								<span class="like_img">좋아요</span>
-								<p>좋아요 <span> ${board.pstLike}</span></p>
+							    <button type="button" id="likeBtn" class="like_btn ${board.isLikedByCurrentUser ? 'liked' : ''}" onclick="toggleLike(${board.pstIdx});">
+							        <span class="like_img">좋아요</span>
+							    </button>
+							    <p>좋아요 <span id="likeCount">${board.pstLike}</span></p> <%-- JS가 숫자를 업데이트할 수 있도록 ID 부여 --%>
 							</div>
 							<div class="cmt01">
 								<span class="comm_img">댓글</span>
@@ -120,7 +151,7 @@
 
 						<!-- 새 댓글 입력창 -->
 						<h4>댓글 등록</h4>
-						<form action="addComment.do" method="post">
+						<form action="${pageContext.request.contextPath}/preuser/board/addComment.do" method="post">
 						    <input type="hidden" name="pstIdx" value="${board.pstIdx}">
 						    
 						    <div class="cmt_ip mb40">
@@ -141,10 +172,10 @@
 						</ul>
 					</div>
 					<p class="basic_btn c">
-						<a class="line_b" href="boardList.html" onclick="">목록으로</a>
+						<a class="line_b" href="${pageContext.request.contextPath}/preuser/board/boardList.do" onclick="">목록으로</a>
 					</p>
 
-				</div>
+				
 
 			</div>
 		</div><!-- s_cont -->

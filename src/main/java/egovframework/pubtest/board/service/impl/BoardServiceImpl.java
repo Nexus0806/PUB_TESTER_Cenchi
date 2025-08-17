@@ -28,6 +28,9 @@ public class BoardServiceImpl implements BoardService {
 	@Resource(name = "boardCommentDAO")
 	private BoardCommentDAO boardCommentDAO; 
 	
+	@Resource(name = "boardLikeDAO")
+	private BoardLikeDAO boardLikeDAO;
+	
 	 @Override
 	 public Map<String, Object> selectBoardList(BoardSearchDTO searchDTO) {
 	        
@@ -61,9 +64,15 @@ public class BoardServiceImpl implements BoardService {
 	}
 	 
 	@Override
-	public BoardDetailDTO selectBoardDetail(int pstIdx) {
+	public BoardDetailDTO selectBoardDetail(int pstIdx, int loginUserIdx) {
 		
-		BoardDetailDTO detail = boardDAO.selectBoardDetail(pstIdx); 
+	    Map<String, Object> params = new HashMap<>();
+	    
+	    params.put("pstIdx", pstIdx);
+	    params.put("loginUserIdx", loginUserIdx);
+	    
+		boardDAO.updateBoardHit(pstIdx);
+		BoardDetailDTO detail = boardDAO.selectBoardDetail(params); 
 	    if (detail != null) {
 	        List<BoardCommentDTO> commentList = boardCommentDAO.selectBoardCommentList(pstIdx);
 	        detail.setComments(commentList);
@@ -71,6 +80,25 @@ public class BoardServiceImpl implements BoardService {
 		return detail;
 	}
 	
+	@Override
+    public void toggleLike(int pstIdx, int loginUserIdx) {
+		
+        int count = boardLikeDAO.checkLike(pstIdx, loginUserIdx);
+
+        if (count > 0) {
+            boardLikeDAO.deleteLike(pstIdx, loginUserIdx);
+        } else {
+            boardLikeDAO.insertLike(pstIdx, loginUserIdx);
+        }
+        
+        boardLikeDAO.updateLikeCount(pstIdx);
+	}
+	
+    @Override
+    public Map<String, Object> getLikeInfo(int pstIdx, int loginUserIdx) {
+        return boardLikeDAO.getLikeInfo(pstIdx, loginUserIdx);
+    }
+    
 	@Override
 	public void insertBoardComment(BoardCommentDTO comment) {
 		boardCommentDAO.insertBoardComment(comment);
