@@ -23,6 +23,16 @@
 	<script src="/_js/cont.js"></script>
 	
 	<script type="text/javascript">
+	function fn_link_page(pageNo) {
+	    // 현재 URL의 모든 파라미터를 가져옵니다.
+	    const urlParams = new URLSearchParams(window.location.search);
+	    
+	    // 'currentPageNo' 파라미터 값을 클릭한 페이지 번호로 설정(또는 변경)합니다.
+	    urlParams.set('currentPageNo', pageNo);
+	    
+	    // 새로운 파라미터가 적용된 URL로 페이지를 이동시킵니다.
+	    location.href = "${pageContext.request.contextPath}/preuser/board/boardList.do?" + urlParams.toString();
+	}
 	function fn_search(fromCheckbox) {
 	    const wrtCheckbox = document.getElementById('wrt');
 	    const cmtCheckbox = document.getElementById('cmt');
@@ -215,22 +225,41 @@
 				</tbody>
 			</table>
 
-			<p class="pagination">
-				<a href="#" class="direction prev end" title="맨처음 페이지로 이동" onclick="fnLinkPage(1); ">맨처음 페이지로 이동</a>
-				<a href="#" class="direction prev" title="이전 페이지로 이동" onclick="fnLinkPage(1); ">이전 페이지로 이동</a>
-				<a href="javascript:void(0);" class="on" title="현재 페이지">1</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(2);">2</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(3);">3</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(4);">4</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(5);">5</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(6);">6</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(7);">7</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(8);">8</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(9);">9</a>
-				<a href="javascript:void(0);" onclick="fnLinkPage(10);">10</a>
-				<a href="#" class="direction next" title="다음 페이지로 이동" onclick="fnLinkPage(11); ">다음 페이지로 이동</a>
-				<a href="#" class="direction next end" title="맨끝 페이지로 이동" onclick="fnLinkPage(121); ">맨끝 페이지로 이동</a>
-			</p>
+			<div class="pagination">
+			    <%-- paginationInfo 객체가 존재하고, 총 페이지가 1개 이상일 때만 표시 --%>
+			    <c:if test="${not empty paginationInfo and paginationInfo.totalPageCount > 1}">
+			    
+			        <%-- [맨처음 페이지] 링크 --%>
+			        <a href="javascript:void(0);" class="direction prev end" title="맨처음 페이지로 이동" onclick="fn_link_page(1);">맨처음 페이지로 이동</a>
+			
+			        <%-- [이전 페이지 목록] 링크 (이전 페이지 블록이 있을 경우에만 표시) --%>
+			        <c:if test="${paginationInfo.hasPrevPage}">
+			            <a href="javascript:void(0);" class="direction prev" title="이전 페이지로 이동" onclick="fn_link_page(${paginationInfo.firstPageNoOnPageList - 1});">이전 페이지로 이동</a>
+			        </c:if>
+			
+			        <%-- [페이지 번호] 목록 --%>
+			        <c:forEach var="i" begin="${paginationInfo.firstPageNoOnPageList}" end="${paginationInfo.lastPageNoOnPageList}">
+			            <c:choose>
+			                <%-- 현재 페이지일 경우 --%>
+			                <c:when test="${i == paginationInfo.currentPageNo}">
+			                    <a href="javascript:void(0);" class="on" title="현재 페이지">${i}</a>
+			                </c:when>
+			                <%-- 다른 페이지일 경우 --%>
+			                <c:otherwise>
+			                    <a href="javascript:void(0);" onclick="fn_link_page(${i});">${i}</a>
+			                </c:otherwise>
+			            </c:choose>
+			        </c:forEach>
+			
+			        <%-- [다음 페이지 목록] 링크 (다음 페이지 블록이 있을 경우에만 표시) --%>
+			        <c:if test="${paginationInfo.hasNextPage}">
+			            <a href="javascript:void(0);" class="direction next" title="다음 페이지로 이동" onclick="fn_link_page(${paginationInfo.lastPageNoOnPageList + 1});">다음 페이지로 이동</a>
+			        </c:if>
+			
+			        <%-- [맨끝 페이지] 링크 --%>
+			        <a href="javascript:void(0);" class="direction next end" title="맨끝 페이지로 이동" onclick="fn_link_page(${paginationInfo.totalPageCount});">맨끝 페이지로 이동</a>
+			    </c:if>
+			</div>
 
 
 			</div>

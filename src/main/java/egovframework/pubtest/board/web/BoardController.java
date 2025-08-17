@@ -1,6 +1,7 @@
 package egovframework.pubtest.board.web;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import org.springframework.ui.Model;
@@ -37,9 +38,10 @@ public class BoardController {
 		
 		searchDTO.setLoginUserIdx(loginUser.getIdx());
 		
-		List<BoardListDTO> boardList = boardService.selectBoardList(searchDTO);
+        Map<String, Object> resultMap = boardService.selectBoardList(searchDTO);
 		
-		model.addAttribute("boardList", boardList);
+		model.addAttribute("boardList",  resultMap.get("boardList"));
+        model.addAttribute("paginationInfo", resultMap.get("paginationInfo")); 
 		
 		return "/preuser/board/boardList";
 	}

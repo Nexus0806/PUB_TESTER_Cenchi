@@ -23,4 +23,8 @@ public class BoardDAO extends EgovAbstractMapper{
 	public void insertBoard(BoardWriteDTO board) {
 		insert("boardDAO.insertBoard", board);
 	}
+	
+	public int selectBoardListTotalCount(BoardSearchDTO searchDTO) {
+	    return selectOne("boardDAO.selectBoardListTotalCount", searchDTO);
+	}
 }

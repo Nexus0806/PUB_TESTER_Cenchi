@@ -43,52 +43,51 @@
 	    ORDER BY
 	        CASE WHEN P.PST_CATE = '필독' THEN 1 ELSE 2 END,
 	        P.PST_IDX DESC
+	    LIMIT #{recordCountPerPage} OFFSET #{firstRecordIndex}
 	</select>
-	<!-- 
-		<select id="selectBoardList" parameterType="egovframework.pubtest.board.service.BoardSearchDTO" resultType="egovframework.pubtest.board.service.BoardListDTO">
-		    SELECT
-		        P.PST_IDX,
-		        P.PST_CATE,
-		        P.PST_TITLE,
-		        P.PST_CMT_CNT,
-		        COALESCE(U.USER_NICKNAME, B.BUSS_NICKNAME) AS AUTHOR_NICKNAME,
-		        P.PST_REGDATE,
-		        P.PST_HIT,
-		        P.PST_LIKE
-		    FROM
-		        PUB_PST P
-		    LEFT JOIN
-		        PUB_USER U ON P.USER_IDX = U.USER_IDX
-		    LEFT JOIN
-		        PUB_BUSS B ON P.BUSS_IDX = B.BUSS_IDX
-		    <where>
-		        P.PST_DELYN = 'N'
-		
-		        <if test="category != null and category != 'ALL'">
-		            AND P.PST_CATE = #{category}
-		        </if>
-		
-		        <if test="searchKeyword != null and searchKeyword != ''">
-		            <choose>
-		                <when test="searchCondition == 'bbsTitle'">
-		                    AND P.PST_TITLE LIKE CONCAT('%', #{searchKeyword}, '%')
-		                </when>
-		                <when test="searchCondition == 'bbsCont'">
-		                    AND P.PST_CONT LIKE CONCAT('%', #{searchKeyword}, '%')
-		                </when>
-		                <otherwise> AND (P.PST_TITLE LIKE CONCAT('%', #{searchKeyword}, '%') OR P.PST_CONT LIKE CONCAT('%', #{searchKeyword}, '%'))
-		                </otherwise>
-		            </choose>
-		        </if>
-		    </where>
-		    ORDER BY
-		        CASE
-		            WHEN P.PST_CATE = '필독' THEN 1
-		            ELSE 2
-		        END,
-		        P.PST_IDX DESC
-		</select>
-		 -->
+	
+	<select id="selectBoardListTotalCount" parameterType="egovframework.pubtest.board.service.BoardSearchDTO" resultType="int">
+	    SELECT
+	        COUNT(*)
+	    FROM
+	        PUB_PST P
+	    <where>
+	        P.PST_DELYN = 'N'
+	
+	        <if test="category != null and category != 'ALL'">
+	            AND P.PST_CATE = #{category}
+	        </if>
+	
+	        <if test="searchKeyword != null and searchKeyword != ''">
+	            <choose>
+	                <when test="searchCondition == 'bbsTitle'">
+	                    AND P.PST_TITLE LIKE CONCAT('%', #{searchKeyword}, '%')
+	                </when>
+	                <when test="searchCondition == 'bbsCont'">
+	                    AND P.PST_CONT LIKE CONCAT('%', #{searchKeyword}, '%')
+	                </when>
+	                <otherwise>
+	                    AND (P.PST_TITLE LIKE CONCAT('%', #{searchKeyword}, '%') OR P.PST_CONT LIKE CONCAT('%', #{searchKeyword}, '%'))
+	                </otherwise>
+	            </choose>
+	        </if>
+	
+	        <if test="myContent != null and myContent != '' and loginUserIdx > 0">
+	            <choose>
+	                <when test="myContent == 'wrt'">
+	                    AND (P.USER_IDX = #{loginUserIdx} OR P.BUSS_IDX = #{loginUserIdx})
+	                </when>
+	                <when test="myContent == 'cmt'">
+	                    AND P.PST_IDX IN (
+	                        SELECT DISTINCT CMT.PST_IDX
+	                        FROM PUB_CMT CMT
+	                        WHERE CMT.USER_IDX = #{loginUserIdx} OR CMT.BUSS_IDX = #{loginUserIdx}
+	                    )
+	                </when>
+	            </choose>
+	        </if>
+	    </where>
+	</select>
 	
 	<select id="selectBoardDetail" resultType="boardDetailDTO" parameterType="int">
 		SELECT

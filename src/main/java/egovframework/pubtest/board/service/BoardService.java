@@ -1,14 +1,15 @@
 package egovframework.pubtest.board.service;
 
-import java.util.List;
+import java.util.Map;
 
 public interface BoardService {
 	
-	List<BoardListDTO> selectBoardList(BoardSearchDTO searchDTO);
+    Map<String, Object> selectBoardList(BoardSearchDTO searchDTO);
 	
 	BoardDetailDTO selectBoardDetail(int pstIdx);
 	
 	void insertBoardComment(BoardCommentDTO comment);
 	
 	void insertBoard(BoardWriteDTO board);
+	
 }
