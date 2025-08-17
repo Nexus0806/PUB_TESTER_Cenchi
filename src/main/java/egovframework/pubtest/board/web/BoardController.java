@@ -32,12 +32,14 @@ public class BoardController {
 	@GetMapping("/boardList.do")
 	public String boardList(
 			@ModelAttribute("search") BoardSearchDTO searchDTO,
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser,
 			Model model) {
+		
+		searchDTO.setLoginUserIdx(loginUser.getIdx());
 		
 		List<BoardListDTO> boardList = boardService.selectBoardList(searchDTO);
 		
 		model.addAttribute("boardList", boardList);
-		model.addAttribute("selectedCategory", searchDTO);
 		
 		return "/preuser/board/boardList";
 	}

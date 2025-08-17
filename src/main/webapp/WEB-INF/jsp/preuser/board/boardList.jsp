@@ -23,26 +23,49 @@
 	<script src="/_js/cont.js"></script>
 	
 	<script type="text/javascript">
-	function fn_search() {
-	    // 현재 URL에서 'category' 파라미터 값을 가져옵니다.
-	    const urlParams = new URLSearchParams(window.location.search);
-	    let category = urlParams.get('category');
-	    if (!category) {
-	        category = 'ALL'; // 카테고리 값이 없으면 'ALL'로 간주
+	function fn_search(fromCheckbox) {
+	    const wrtCheckbox = document.getElementById('wrt');
+	    const cmtCheckbox = document.getElementById('cmt');
+
+	    // 체크박스 중 하나만 선택되도록 처리
+	    if (fromCheckbox === 'wrt' && wrtCheckbox.checked) {
+	        cmtCheckbox.checked = false;
+	    } else if (fromCheckbox === 'cmt' && cmtCheckbox.checked) {
+	        wrtCheckbox.checked = false;
 	    }
-	
+
+	    // myContent 파라미터 값 결정
+	    let myContent = '';
+	    if (wrtCheckbox.checked) {
+	        myContent = 'wrt';
+	    } else if (cmtCheckbox.checked) {
+	        myContent = 'cmt';
+	    }
+
+	    const urlParams = new URLSearchParams(window.location.search);
+	    let category = urlParams.get('category') || 'ALL';
 	    const searchCondition = document.getElementById('searchCondition').value;
 	    const searchKeyword = document.getElementById('searchKeyword').value;
-	
-	    if (searchKeyword.trim() === "") {
+	    
+	    // 새 URL 생성 (searchKeyword가 없어도 검색 가능하도록 수정)
+	    let newUrl = "${pageContext.request.contextPath}/preuser/board/boardList.do?category=" + category;
+	    if (myContent) {
+	        newUrl += "&myContent=" + myContent;
+	    }
+	    if (searchKeyword.trim() !== "") {
+	        newUrl += "&searchCondition=" + searchCondition + "&searchKeyword=" + encodeURIComponent(searchKeyword);
+	    }
+	    
+	    location.href = newUrl;
+	}
+
+	// 검색 버튼용 함수 (기존 검색 기능 유지)
+	function fn_search_btn() {
+	    if (document.getElementById('searchKeyword').value.trim() === "") {
 	        alert("검색어를 입력해주세요.");
 	        return;
 	    }
-	
-	    // 모든 파라미터를 조합하여 URL을 만들어 이동합니다.
-	    location.href = "${pageContext.request.contextPath}/preuser/board/boardList.do?category=" + category 
-	                  + "&searchCondition=" + searchCondition 
-	                  + "&searchKeyword=" + encodeURIComponent(searchKeyword);
+	    fn_search(); // 메인 검색 함수 호출
 	}
 	</script>
 </head>
@@ -62,32 +85,32 @@
 				<div class="filter_wrap">
 				    <ul class="ck_btn">
 				        <li>
-				            <input type="checkbox" id="ft01" class="n_ck" ${selectedCategory == 'ALL' || selectedCategory == null ? 'checked' : ''}>
+				            <input type="checkbox" id="ft01" class="n_ck" ${search.category == 'ALL' || search.category == null ? 'checked' : ''}>
 				            
 				            <label for="ft01" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=ALL'">ALL</label>
 				        </li>
 				        <li>
-				            <input type="checkbox" id="ft02" class="n_ck" ${selectedCategory == 'BEST' ? 'checked' : ''}>
+				            <input type="checkbox" id="ft02" class="n_ck" ${search.category == 'BEST' ? 'checked' : ''}>
 				            <label for="ft02" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=BEST'">BEST</label>
 				        </li>
 				        <li>
-				            <input type="checkbox" id="ft03" class="n_ck" ${selectedCategory == '노하우' ? 'checked' : ''}>
+				            <input type="checkbox" id="ft03" class="n_ck" ${search.category == '노하우' ? 'checked' : ''}>
 				            <label for="ft03" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=노하우'">노하우</label>
 				        </li>
 				        <li>
-				            <input type="checkbox" id="ft04" class="n_ck" ${selectedCategory == '일상' ? 'checked' : ''}>
+				            <input type="checkbox" id="ft04" class="n_ck" ${search.category == '일상' ? 'checked' : ''}>
 				            <label for="ft04" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=일상'">일상</label>
 				        </li>
 				        <li>
-				            <input type="checkbox" id="ft05" class="n_ck" ${selectedCategory == '질문하기' ? 'checked' : ''}>
+				            <input type="checkbox" id="ft05" class="n_ck" ${search.category == '질문하기' ? 'checked' : ''}>
 				            <label for="ft05" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=질문하기'">질문하기</label>
 				        </li>
 				        <li>
-				            <input type="checkbox" id="ft06" class="n_ck" ${selectedCategory == '동행' ? 'checked' : ''}>
+				            <input type="checkbox" id="ft06" class="n_ck" ${search.category == '동행' ? 'checked' : ''}>
 				            <label for="ft06" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=동행'">동행</label>
 				        </li>
 				        <li>
-				            <input type="checkbox" id="ft07" class="n_ck" ${selectedCategory == '공지' ? 'checked' : ''}>
+				            <input type="checkbox" id="ft07" class="n_ck" ${search.category == '공지' ? 'checked' : ''}>
 				            <label for="ft07" class="ft_btn" onclick="location.href='${pageContext.request.contextPath}/preuser/board/boardList.do?category=공지'">공지</label>
 				        </li>
 				    </ul>
@@ -107,24 +130,24 @@
 				        
 				        <input id="searchKeyword" name="searchKeyword" title="검색어 입력" placeholder="검색어를 입력하세요." class="info_in" type="text" value="${search.searchKeyword}">
 				        
-				        <a href="javascript:;" class="b_btn" title="검색버튼" onclick="fn_search();">검색</a>
+				        <a href="javascript:;" class="b_btn" title="검색버튼" onclick="fn_search_btn();">검색</a>
 				    </div>
 				
-				    <div class="my_ck">
-				        <p class="checkbox">
-				            <span>
-				                <input type="checkbox" id="wrt" name="fix" value="wrt">
-				                <label for="wrt">내글</label>
-				            </span>
-				        </p>
-				        <p class="checkbox">
-				            <span>
-				                <input type="checkbox" id="cmt" name="fix" value="cmt">
-				                <label for="cmt">내 댓글</label>
-				            </span>
-				        </p>
-				        <a href="${pageContext.request.contextPath}/preuser/board/boardWrite.do" class="btn">글 작성</a>
-				    </div>
+					<div class="my_ck">
+					    <p class="checkbox">
+					        <span>
+					            <input type="checkbox" id="wrt" name="fix" value="wrt" onchange="fn_search('wrt');" ${search.myContent == 'wrt' ? 'checked' : ''}>
+					            <label for="wrt">내글</label>
+					        </span>
+					    </p>
+					    <p class="checkbox">
+					        <span>
+					            <input type="checkbox" id="cmt" name="fix" value="cmt" onchange="fn_search('cmt');" ${search.myContent == 'cmt' ? 'checked' : ''}>
+					            <label for="cmt">내 댓글</label>
+					        </span>
+					    </p>
+					    <a href="${pageContext.request.contextPath}/preuser/board/boardWrite.do" class="btn">글 작성</a>
+					</div>
 				</div>
 
 			<table class="bbs_list">
