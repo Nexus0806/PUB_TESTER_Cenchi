@@ -64,7 +64,6 @@
 						</div>
 				</div>
 
-
 				<div class="pd_list">
 					<!-- prd_li03 컨텐츠 한 줄에 5개씩 -->
 					<!-- prd_li04 컨텐츠 한 줄에 4개씩 -->
@@ -132,7 +131,7 @@
 							<c:choose>
 							<c:when test="${vo.sumState eq '신청'}">	<%-- 체험단에 신청했을때 --%>
 								<a href="#none" class="btn gray_line">신청 취소</a>
-								<a href="/preuser/campaign/campaignSubmit.html" class="btn bk">신청 내역 수정</a>
+								<a href="/preuser/campaign/campaignEdit.html" class="btn bk">신청 내역 수정</a>
 							</c:when>	
 							<c:when test="${vo.sumState eq '취소'}">	<%-- 체험단을 취소 했을 때 --%>
 								<a href="#none" class="btn red_line w100">취소 사유 보기</a>
