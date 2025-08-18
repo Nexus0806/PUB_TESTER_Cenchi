@@ -10,6 +10,7 @@ public class CampaignSearchDTO {
 	
 	@Override
 	public String toString() {
+		return "CampaignSearchDTO [region=" + region + ", category=" + category + ", searchCondition="
 				+ ", searchKeyword=" + searchKeyword + ", channel=" + channel + ", type=" + type + ", sort=" + sort
 				+ "]";
 	}
