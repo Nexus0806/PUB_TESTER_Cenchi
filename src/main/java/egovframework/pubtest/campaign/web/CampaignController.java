@@ -24,6 +24,7 @@ import egovframework.pubtest.campaign.service.CampaignSubmitVO;
 import egovframework.pubtest.campaign.service.CampaignSearchDTO;
 
 import egovframework.pubtest.login.web.PubTesterLoginController.SessionUser;
+import egovframework.pubtest.main.service.PubTesterMainVO;
 import egovframework.pubtest.mypage.service.MypageService;
 
 @Controller
@@ -62,6 +63,16 @@ public class CampaignController {
 		filter.put("sort", campaignSearchDTO.getSort());
 		
 		List<CampaignVO> filteredList = campaignService.selectSerachCampaignList(filter);
+		
+		for(CampaignVO row : filteredList)
+		{			
+			if(row.getCampRecEnddate() != null)
+			{
+				// localdate 이용하여 체험단까지 남은 D-Day 계산
+				long dDay = PubTestUtil.calcDday(row.getCampRecEnddate());
+				row.setdDay(dDay);
+			}
+		}
 
 		return filteredList;
 	}

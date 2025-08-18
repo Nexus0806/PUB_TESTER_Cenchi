@@ -116,6 +116,34 @@
         		AND CAMP_ADDRESS LIKE CONCAT('%', #{region}, '%')
       		</if>
     	</where>
+    	
+    	<!-- 정렬 -->
+		<choose>
+  			<!-- 체험단 등록일 최신순 -->
+  			<when test="sort == '최신순'">
+    			ORDER BY CAMP_REGDATE DESC
+  			</when>
+  			<!-- 인기순: 신청자 수가 많은 순 -->
+  			<when test="sort == '인기순'">
+    			ORDER BY
+    					CAMP_SUM_COUNT DESC,
+  			</when>
+  			<!-- 마감임박순: 오늘 이후 마감이 먼저, 그중 마감까지 남은 시간이 짧은 순 -->
+  			<when test="sort == '마감임박순'">
+    			ORDER BY
+      				CASE
+        				WHEN CAMP_REC_ENDDATE IS NULL THEN 2         -- 날짜 없는 건 맨 뒤
+        				WHEN CAMP_REC_ENDDATE &lt; NOW() THEN 1       -- 이미 마감된 건 그 다음
+        				ELSE 0                                       -- 마감 예정이 맨 앞
+      				END,
+      					TIMESTAMPDIFF(SECOND, NOW(), CAMP_REC_ENDDATE) ASC,  -- 남은 시간 짧을수록 먼저
+      					CAMP_REGDATE DESC
+  			</when>
+  			<!-- 기본값: 최신순 -->
+  			<otherwise>
+    			ORDER BY CAMP_REGDATE DESC
+  			</otherwise>
+</choose>
 	</select>
 
 	<insert id="insertCampaignSubmit" parameterType="campaignSubmitVO">

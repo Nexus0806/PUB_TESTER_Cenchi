@@ -22,125 +22,134 @@
 	<script src="/_js/pop_layer.js"></script>
 	<script src="/_js/cont.js"></script>
 	
-	<script>
-	    $(document).ready(function() {
-	        // 필터링 이벤트를 처리하는 함수
-	        function filterCampaigns() {
-	            var searchData = {
-	                region: $('#regionInput').val(),
-	                category: $('#category').val(),
-	                channel: $('#channel').val(),
-	                type: $('#type').val(),
-	                sort: $('#sort').val()
-	            };
-	
-	            $.ajax({
-	                url: '${pageContext.request.contextPath}/preuser/campaign/filterCampaigns.do', // 컨트롤러의 새로운 URL
-	                type: 'GET',
-	                data: searchData,
-	                dataType: 'json',
-	                success: function(response) {
-	                    var campaignListHtml = '';
-	                    var contextPath = '${pageContext.request.contextPath}';
-	
-	                    if (response && response.length > 0) {
-	                        $.each(response, function(index, vo) {
-	                            var dDayText = '';
-	                            if (vo.dDay === 0) {
-	                                dDayText = '<span class="p_date p_day">D-Day</span>';
-	                            } else if (vo.dDay < 0) {
-	                                dDayText = '<span class="p_date p_close">모집 마감</span>';
-	                            } else {
-	                                dDayText = '<span class="p_date">' + vo.dDay + '일 남음</span>';
-	                            }
-	
-	                            var adTypeClass = '';
-	                            if (vo.campAdType === '틱톡') adTypeClass = 'sns_tik';
-	                            else if (vo.campAdType === '클립' || vo.campAdType === '구매형') adTypeClass = 'sns_etc';
-	                            else if (vo.campAdType === '인스타그램' || vo.campAdType === '릴스') adTypeClass = 'sns_inst';
-	                            else if (vo.campAdType === '유튜브') adTypeClass = 'sns_yout';
-	                            else if (vo.campAdType === '블로그' || vo.campAdType === '블로그+클립') adTypeClass = 'sns_blog';
-	
-	                            campaignListHtml += '<li>' +
-	                                '<a href="' + contextPath + '/preuser/campaign/campaignView.do?campIdx=' + vo.campIdx + '">' +
-	                                '<div class="prd_img">' +
-	                                '<img src="' + contextPath + '/_img/pc/main/' + vo.campThub + '" alt="" onerror="this.onerror=null; this.src=\'' + contextPath + '/_img/pc/main/no_img.png\';">' +
-	                                '</div>' +
-	                                '<p class="sns_txt ' + adTypeClass + '">' + vo.campType + '</p>' +
-	                                '<div class="prd_txt">' +
-	                                '<strong>' + vo.campTitle + '</strong>' +
-	                                '<p>' + vo.campService + '</p>' +
-	                                '</div>' +
-	                                '<div class="prd_rec">' +
-	                                dDayText +
-	                                '<ul class="rec_app">' +
-	                                '<li class="tt">신청 <b>' + vo.campSumCount + '</b>명</li>' +
-	                                '<li> / 모집 <em>' + vo.campRecruite + '</em>명</li>' +
-	                                '</ul>' +
-	                                '</div>' +
-	                                '</a>' +
-	                                '</li>';
-	                        });
-	                    } else {
-	                        campaignListHtml = '<li><p>검색 결과가 없습니다.</p></li>';
-	                    }
-	
-	                    $('.pd_list ul.prd_li').html(campaignListHtml);
-	                },
-	                error: function(xhr, status, error) {
-	                    console.error("AJAX Error:", status, error);
-	                    $('.pd_list ul.prd_li').html('<li><p>데이터를 불러오는 중 오류가 발생했습니다.</p></li>');
-	                }
-	            });
-	        }
-	    
-	        // 탭 클릭 이벤트
-	        $('.tab-link').on('click', function() {
-	            $('.tab-link').removeClass('current');
-	            $(this).addClass('current');
-	            
-	            // ✅ hidden input에 선택한 지역 이름 설정
-	            var selectedRegion = $(this).data('region-name');
-	            $('#regionInput').val(selectedRegion);
-	            
-	            // ✅ 필터링 함수 호출
-	            filterCampaigns();
-	        });
-	    
-	        // 드롭다운 변경 이벤트
-	        $('.searchCondition').on('change', function() {
-	            // ✅ 필터링 함수 호출
-	            filterCampaigns();
-	        });
-	
-	        // 페이지 로드 시, DTO 값에 따라 초기 필터 상태 유지
-	        var selectedRegion = '${campaignSearchDTO.region}';
-	        if (selectedRegion) {
-	            $('.tab-link').removeClass('current');
-	            $('li[data-region-name="' + selectedRegion + '"]').addClass('current');
-	        }
-	        
-	        var selectedCategory = '${campaignSearchDTO.category}';
-	        if (selectedCategory) {
-	            $('#category').val(selectedCategory);
-	        }
-	        
-	        var selectedChannel = '${campaignSearchDTO.channel}';
-	        if (selectedChannel) {
-	            $('#channel').val(selectedChannel);
-	        }
-	        
-	        var selectedType = '${campaignSearchDTO.type}';
-	        if (selectedType) {
-	            $('#type').val(selectedType);
-	        }
-	        
-	        var selectedSort = '${campaignSearchDTO.sort}';
-	        if (selectedSort) {
-	            $('#sort').val(selectedSort);
-	        }
-	    });
-	</script>
+<script>
+  $(document).ready(function () {
+    var contextPath = '${pageContext.request.contextPath}';
+
+    // 현재 화면의 필터 상태를 읽어오는 헬퍼
+    function getFilters() {
+      return {
+        region:   $('#regionInput').val() || '',   // 탭 선택 지역 이름
+        category: $('#category').val()     || '',
+        channel:  $('#channel').val()      || '',
+        type:     $('#type').val()         || '',
+        sort:     $('#sort').val()         || '',
+        searchKeyword:  $('#headerKeyword').val() || ''  // 헤더 검색창 (header.jsp)
+      };
+    }
+
+    // AJAX 필터링: overrides로 특정 값만 덮어쓸 수 있도록
+    function filterCampaigns(overrides) {
+      var searchData = Object.assign({}, getFilters(), overrides || {});
+
+      // ajax 라고 하는데 이게 뭔지 잘 모르겠음;
+      $.ajax({
+        url: contextPath + '/preuser/campaign/filterCampaigns.do',
+        type: 'GET',
+        data: searchData,		// << 검색어 저장되는 부분
+        dataType: 'json',
+        success: function (response) {
+          var campaignListHtml = '';
+
+          if (response && response.length > 0) {
+            $.each(response, function (index, vo) {
+              var dDayText = '';
+              if (vo.dDay === 0) dDayText = '<span class="p_date p_day">D-Day</span>';
+              else if (vo.dDay < 0) dDayText = '<span class="p_date p_close">모집 마감</span>';
+              else dDayText = '<span class="p_date">' + vo.dDay + '일 남음</span>';
+
+              var adTypeClass = '';
+              if (vo.campAdType === '틱톡') adTypeClass = 'sns_tik';
+              else if (vo.campAdType === '클립' || vo.campAdType === '구매형') adTypeClass = 'sns_etc';
+              else if (vo.campAdType === '인스타그램' || vo.campAdType === '릴스') adTypeClass = 'sns_inst';
+              else if (vo.campAdType === '유튜브') adTypeClass = 'sns_yout';
+              else if (vo.campAdType === '블로그' || vo.campAdType === '블로그+클립') adTypeClass = 'sns_blog';
+
+              campaignListHtml += ''
+                + '<li>'
+                +   '<a href="' + contextPath + '/preuser/campaign/campaignView.do?campIdx=' + vo.campIdx + '">'
+                +     '<div class="prd_img">'
+                +       '<img src="' + contextPath + '/_img/pc/main/' + vo.campThub + '" alt="" '
+                +            'onerror="this.onerror=null; this.src=\'' + contextPath + '/_img/pc/main/no_img.png\';">'
+                +     '</div>'
+                +     '<p class="sns_txt ' + adTypeClass + '">' + vo.campType + '</p>'
+                +     '<div class="prd_txt">'
+                +       '<strong>' + vo.campTitle + '</strong>'
+                +       '<p>' + vo.campService + '</p>'
+                +     '</div>'
+                +     '<div class="prd_rec">'
+                +       dDayText
+                +       '<ul class="rec_app">'
+                +         '<li class="tt">신청 <b>' + vo.campSumCount + '</b>명</li>'
+                +         '<li> / 모집 <em>' + vo.campRecruite + '</em>명</li>'
+                +       '</ul>'
+                +     '</div>'
+                +   '</a>'
+                + '</li>';
+            });
+          } else {
+            campaignListHtml = '<li><p>검색 결과가 없습니다.</p></li>';
+          }
+
+          $('.pd_list ul.prd_li').html(campaignListHtml);
+        },
+        error: function (xhr, status, error) {
+          console.error('AJAX Error:', status, error);
+          $('.pd_list ul.prd_li').html('<li><p>데이터를 불러오는 중 오류가 발생했습니다.</p></li>');
+        }
+      });
+    }
+
+    // ───────────────── 이벤트 바인딩 ─────────────────
+
+    // (1) 지역 탭 클릭 시
+    $('.tab-link').on('click', function () {
+      $('.tab-link').removeClass('current');
+      $(this).addClass('current');
+
+      var selectedRegion = $(this).data('region-name') || '';
+      $('#regionInput').val(selectedRegion);
+
+      filterCampaigns();
+    });
+
+    // (2) 드롭다운(카테고리/채널/타입/정렬) 변경 시
+    $('.searchCondition').on('change', function () {
+      filterCampaigns();
+    });
+
+    // (3) 헤더 검색 아이콘/버튼 클릭 또는 헤더 폼 제출 시
+    // header.jsp 에서 a#headerSearchBtn 클릭 → submit 트리거가 걸려 있으므로,
+    // 여기서는 submit을 가로채어 AJAX 호출로 연결합니다.
+    $(document).on('submit', 'form.header-search', function (e) {
+      e.preventDefault();
+      // 목록 페이지니까 전체 이동 대신 AJAX로 목록만 갱신
+      filterCampaigns();
+    });
+
+    // ─────────────── 초기 값 복원 (선택) ───────────────
+    // 서버에서 model로 내려준 DTO가 있다면 반영
+    var selectedRegion  = '${campaignSearchDTO.region}';
+    var selectedCategory = '${campaignSearchDTO.category}';
+    var selectedChannel  = '${campaignSearchDTO.channel}';
+    var selectedType     = '${campaignSearchDTO.type}';
+    var selectedSort     = '${campaignSearchDTO.sort}';
+
+    if (selectedRegion) {
+      $('.tab-link').removeClass('current');
+      $('li[data-region-name="' + selectedRegion + '"]').addClass('current');
+      $('#regionInput').val(selectedRegion);
+    }
+    if (selectedCategory) $('#category').val(selectedCategory);
+    if (selectedChannel)  $('#channel').val(selectedChannel);
+    if (selectedType)     $('#type').val(selectedType);
+    if (selectedSort)     $('#sort').val(selectedSort);
+
+    // 필요 시 첫 로딩에 현재 필터로 한번 호출하고 싶다면 주석 해제
+    // filterCampaigns();
+  });
+</script>
+
 </head>
 <body>
 
@@ -160,7 +169,7 @@
 							<h2 class="sub_tit">지역</h2>
 						</div>
 						<ul class="reg01">
-							<li class="tab-link current" data-tab="tab-1" data-region-name="재택">재택</li>
+							<li class="tab-link current" data-tab="tab-1" data-region-name="">전체</li>
 							<li class="tab-link" data-tab="tab-4" data-region-name="서울">서울</li>
 							<li class="tab-link" data-tab="tab-5" data-region-name="경기">경기</li>
 							<li class="tab-link" data-tab="tab-6" data-region-name="인천">인천</li>
@@ -199,7 +208,6 @@
 						<div class="sel">
 							<select id="channel" name="channel" class="searchCondition">
 								<option value="">채널</option>
-								<option value="구매형">구매형</option>
 								<option value="릴스">릴스</option>
 								<option value="블로그">블로그</option>
 								<option value="블로그+클립">블로그+클립</option>
@@ -220,7 +228,7 @@
 						</div>
 						<div class="sel">
 							<select id="sort" name="sort" class="searchCondition">
-								<option value="">최신순</option>
+								<option value="최신순">최신순</option>
 								<option value="마감임박순">마감임박순</option>
 								<option value="인기순">인기순</option>
 							</select>
