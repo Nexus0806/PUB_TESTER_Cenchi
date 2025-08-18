@@ -49,9 +49,8 @@ public class CampaignController {
 	
 	// 검색어 설정해서 체험단 검색시, 이쪽 컨트롤러로
 	@GetMapping("/filterCampaigns.do")
-	public String filterCampaigns(@ModelAttribute CampaignSearchDTO campaignSearchDTO,
-											Model model) {
-		
+	@ResponseBody	// 필터링 결과를 JSON 타입으로 반환, 필터링 할 정보는 campaignDTO 에 넣어서 전달(jsp 에서 처리함)
+	public List<CampaignVO> filterCampaigns(@ModelAttribute CampaignSearchDTO campaignSearchDTO) {
 		System.err.println(campaignSearchDTO.toString());
 		
 		Map<String, Object> filter = new HashMap<>();
@@ -63,10 +62,8 @@ public class CampaignController {
 		filter.put("sort", campaignSearchDTO.getSort());
 		
 		List<CampaignVO> filteredList = campaignService.selectSerachCampaignList(filter);
-		
-		model.addAttribute("popCampList", filteredList);
 
-		return "/preuser/campaign/campaignList";
+		return filteredList;
 	}
 	
 	@GetMapping("/campaignView.do")

@@ -184,35 +184,38 @@
 						<div class="sel">
 							<select id="category" name="category" class="searchCondition">
 								<option value="">카테고리</option>
-								<option value="맛집">맛집</option>
-								<option value="식품">식품</option>
+								<option value="PC방">PC방</option>
+								<option value="베이커리">베이커리</option>
+								<option value="분식집">분식집</option>
 								<option value="뷰티">뷰티</option>
-								<option value="여행">여행</option>
-								<option value="디지털">디지털</option>
-								<option value="반려동물">반려동물</option>
-								<option value="기타">기타</option>
+								<option value="와인바">와인바</option>
+								<option value="음식점">음식점</option>
+								<option value="초밥집">초밥집</option>
+								<option value="치킨집">치킨집</option>
+								<option value="카페">카페</option>
+								<option value="피자집">피자집</option>
 							</select>
 						</div>
 						<div class="sel">
 							<select id="channel" name="channel" class="searchCondition">
 								<option value="">채널</option>
+								<option value="구매형">구매형</option>
+								<option value="릴스">릴스</option>
 								<option value="블로그">블로그</option>
-								<option value="인스타그램">인스타그램</option>
+								<option value="블로그+클립">블로그+클립</option>
 								<option value="유튜브">유튜브</option>
-								<option value="숏츠">숏츠</option>
+								<option value="인스타그램">인스타그램</option>
 								<option value="클립">클립</option>
+								<option value="틱톡">틱톡</option>
 							</select>
 						</div>
 						<div class="sel">
 							<select id="type" name="type" class="searchCondition">
 								<option value="">유형</option>
-								<option value="방문형(오프라인)">방문형(오프라인)</option>
-								<option value="구매형(온라인)">구매형(온라인)</option>
-								<option value="배송형(온라인)">배송형(온라인)</option>
-								<option value="기자단">기자단</option>
-								<option value="플랫폼 기자단">플랫폼 기자단</option>
-								<option value="당일지급">당일지급</option>
-								<option value="포장">포장</option>
+								<option value="구매형">구매형</option>
+								<option value="방문형">방문형</option>
+								<option value="배송형">배송형</option>
+								<option value="포장형">포장형</option>
 							</select>
 						</div>
 						<div class="sel">
