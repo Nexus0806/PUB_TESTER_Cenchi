@@ -1,6 +1,8 @@
 package egovframework.pubtest.campaign.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import org.springframework.ui.Model;
@@ -45,19 +47,30 @@ public class CampaignController {
 		return "/preuser/campaign/campaignList";
 	}
 	
+	// 검색어 설정해서 체험단 검색시, 이쪽 컨트롤러로
 	@GetMapping("/filterCampaigns.do")
-	@ResponseBody
-	public List<CampaignVO> filterCampaigns(@ModelAttribute CampaignSearchDTO campaignSearchDTO) {
-		List<CampaignVO> filteredList = campaignService.selectCampaignList();
+	public String filterCampaigns(@ModelAttribute CampaignSearchDTO campaignSearchDTO,
+											Model model) {
+		
 		System.err.println(campaignSearchDTO.toString());
+		
+		Map<String, Object> filter = new HashMap<>();
+		filter.put("region", campaignSearchDTO.getRegion());
+		filter.put("category", campaignSearchDTO.getCategory());
+		filter.put("channel", campaignSearchDTO.getChannel());
+		filter.put("keyword", campaignSearchDTO.getSearchKeyword());
+		filter.put("adtype", campaignSearchDTO.getType());
+		filter.put("sort", campaignSearchDTO.getSort());
+		
+		List<CampaignVO> filteredList = campaignService.selectSerachCampaignList(filter);
+		
+		model.addAttribute("popCampList", filteredList);
 
-		return filteredList; 
+		return "/preuser/campaign/campaignList";
 	}
 	
 	@GetMapping("/campaignView.do")
 	public String Campaigndetail(@RequestParam int campIdx, Model model) {
-		
-		
 		CampaignVO campVo = campaignService.selectCampaignDetail(campIdx);
 			
 			// date 날자 검증. null 혹은 비어있는지 확인.
@@ -102,15 +115,11 @@ public class CampaignController {
 		model.addAttribute("keywordList", keyArray);
 		model.addAttribute("campVo",campVo);
 		
-		
-		
 		return "/preuser/campaign/campaignView";
 	}
 	
 	@GetMapping("/campaignSubmit.do")
 	public String CampaignSubmitForm(@RequestParam int campIdx, Model model) {
-		
-		
 		CampaignVO campVo = campaignService.selectCampaignDetail(campIdx);
 		model.addAttribute("campVo",campVo);
 		

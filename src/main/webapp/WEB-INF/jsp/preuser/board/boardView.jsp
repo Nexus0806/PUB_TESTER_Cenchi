@@ -220,9 +220,13 @@
 
 						<div class="cmt_ico">
 							<div class="cmt01">
-							    <button type="button" id="likeBtn" class="like_btn ${board.isLikedByCurrentUser ? 'liked' : ''}" onclick="toggleLike(${board.pstIdx});">
-							        <span class="like_img">좋아요</span>
-							    </button>
+							    <a href="javascript:void(0);" 
+   									id="likeBtn" 
+   									class="like_img ${board.isLikedByCurrentUser ? 'liked' : ''}" 
+   									onclick="toggleLike(${board.pstIdx});">
+    								<span class="like_img">좋아요</span>
+								</a>
+
 							    <p>좋아요 <span id="likeCount">${board.pstLike}</span></p> <%-- JS가 숫자를 업데이트할 수 있도록 ID 부여 --%>
 							</div>
 							<div class="cmt01">

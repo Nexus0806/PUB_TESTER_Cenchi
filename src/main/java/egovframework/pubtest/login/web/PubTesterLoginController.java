@@ -56,7 +56,7 @@ public class PubTesterLoginController {
 		
 		Integer idx = pubTesterLoginService.chklogin(idpw);	// id,pw를 db에서 조회한 결과를 저장 (사용자 idx 번호, 없다면 null)
 
-		if(idx == 0 || idx == null) {
+		if(idx == null || idx == 0) {
 			model.addAttribute("loginError", "이메일이나 비밀번호가 올바르지 않습니다.");
 			model.addAttribute("savedID", id);
 			return "preuser/member/login";

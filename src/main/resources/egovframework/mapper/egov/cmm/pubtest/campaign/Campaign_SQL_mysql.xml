@@ -72,11 +72,55 @@
 		WHERE
 			CAMP_IDX = #{campIdx}
 	</select>
+	
+	<sql id="KeywordBind">
+  		<bind name="kw" value="'%' + keyword + '%'" />
+	</sql>
+	
+	<select id="selectSerchCampaignList" parameterType="map" resultType="campaignVO">
+		SELECT
+			CAMP_IDX, CAMP_TITLE, CAMP_THUB, CAMP_PHO_NUM,
+			CAMP_TYPE, CAMP_ADDRESS, CAMP_CATE, CAMP_AD_TYPE,
+			CAMP_AVAIL_DAYS, CAMP_REGDATE, CAMP_REC_STARTDATE,
+			CAMP_REC_ENDDATE, CAMP_ANODATE, CAMP_STARTDATE,
+			CAMP_ENDDATE, CAMP_RESERVE, CAMP_CAUTION, CAMP_MISSION,
+			CAMP_KEYWORD, CAMP_SERVICE, CAMP_REWARD, CAMP_RECRUITE,
+			CAMP_HIT, CAMP_LIKE, CAMP_DELYN, CAMP_SUM_COUNT
+		FROM
+			PUB_CAMP
+		<where>
+			CAMP_DELYN = 'N'
+			<!-- 검색어가 있을 때 -->
+			<if test="keyword != null and keyword != ''">
+    			<include refid="KeywordBind"/>
+    				AND (
+      				CAMP_TITLE   LIKE #{kw}
+      				OR CAMP_MISSION LIKE #{kw}
+      				OR CAMP_KEYWORD LIKE #{kw}
+    				)
+  			</if>
+  			<!-- 카테고리 설정 시-->
+  			<if test="category != null and category != ''">
+    			AND CAMP_CATE = #{category}
+  			</if>
+			<!-- 체험단 광고 유형 -->
+  			<if test="channel != null and channel != ''">
+    			AND CAMP_AD_TYPE = #{channel}
+  			</if>
+			<!-- 체험단 카테고리 -->
+  			<if test="adtype != null and adtype != ''">
+    			AND CAMP_TYPE = #{adtype}
+  			</if>
+  			<!-- 지역(주소 기반) : 다중 선택이면 IN LIKE, 단일이면 LIKE -->
+      		<if test="region != null and region != ''">
+        		AND CAMP_ADDRESS LIKE CONCAT('%', #{region}, '%')
+      		</if>
+    	</where>
+	</select>
 
 	<insert id="insertCampaignSubmit" parameterType="campaignSubmitVO">
 		INSERT INTO PUB_CAMP_SUM (SUM_IDX, SUM_CONT, SUM_ADDRESS, CAMP_IDX, USER_IDX)
 		VALUES (#{sumIdx}, #{sumCont}, #{sumAddress}, #{campIdx}, #{userIdx})
 	</insert>
-	
 	
 </mapper>
