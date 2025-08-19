@@ -104,9 +104,19 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
+	public void updateBoardComment(BoardCommentDTO comment) {
+		boardCommentDAO.updateBoardComment(comment);
+	}
+	
+	@Override
+	public void deleteBoardComment(int cmtIdx) {
+		boardCommentDAO.deleteBoardComment(cmtIdx);
+	}
+	
+	@Override
 	public void insertBoard(BoardWriteDTO board) {
 		boardDAO.insertBoard(board);
 	}
-
+	
 	
 }

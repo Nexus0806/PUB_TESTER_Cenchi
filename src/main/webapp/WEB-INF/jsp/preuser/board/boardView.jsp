@@ -22,6 +22,49 @@
 	<script src="/_js/pop_layer.js"></script>
 	<script src="/_js/cont.js"></script>
 	
+	    <style>
+        /* 메뉴 버튼과 메뉴를 감싸는 컨테이너 (위치 기준점 역할) */
+        .cmt_actions {
+            position: relative; /* 자식 요소인 .more_menu의 위치 기준이 됩니다. */
+            margin-left: auto; /* 오른쪽 끝으로 보내기 위함 */
+        }
+
+        /* 3점(수정) 아이콘 버튼 */
+        .cmt_actions .modify {
+            padding: 5px;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        /* 클릭 시 나타날 메뉴 (독립된 레이어로 띄움) */
+        .more_menu {
+            position: absolute;   /* 문서 흐름에서 벗어나 공중에 뜹니다. */
+            top: 100%;            /* 기준점(.cmt_actions)의 바로 아래에 위치 */
+            right: 0;             /* 기준점의 오른쪽에 정렬 */
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            min-width: 80px;      /* 최소 너비 지정 */
+            z-index: 10;          /* 다른 요소들 위에 보이도록 z-index 설정 */
+            padding: 5px 0;
+        }
+
+        /* 메뉴 안의 링크 스타일 */
+        .more_menu a {
+            display: block;       /* 링크 영역을 넓혀 클릭하기 쉽게 만듭니다. */
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .more_menu a:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+	
+	
 <script type="text/javascript">
     // Controller에서 전달받은 현재 로그인한 사용자의 ID
     const loginUserIdx = "${loginUserIdx}";
@@ -103,7 +146,7 @@
 	            type: "POST",
 	            data: { cmtIdx: cmtIdx },
 	            success: function(response) {
-	                if (response === "success") {
+	                if (response.status === "success") {
 	                    alert("댓글이 삭제되었습니다.");
 	                    $commentDiv.remove(); // 화면에서 댓글 HTML 요소를 완전히 제거
 	                    // TODO: 전체 댓글 수 실시간으로 업데이트 필요 시 로직 추가
@@ -136,7 +179,7 @@
 	                cmtCont: cmtCont
 	            },
 	            success: function(response) {
-	                if (response === "success") {
+	                if (response.status === "success") {
 	                    // 화면의 댓글 내용 업데이트
 	                    $commentDiv.find('.cmt_txt .content').text(cmtCont);
 	                    // 수정 폼 숨기고, 원래 댓글 내용 보여주기
@@ -213,9 +256,18 @@
 							</p>
 						</div>
 						<div class="board_cont">
-							<p style="font-weight:400">
-								${board.pstCont}
-							</p>
+						    <%-- 1. 이미지가 있을 경우에만 img 태그를 표시합니다. --%>
+						    <c:if test="${not empty board.pstImg}">
+						        <div class="board_img_wrap" style="margin-bottom: 20px; text-align: center;">
+						             <%-- 2. Controller에 만든 이미지 URL을 src에 넣어줍니다. --%>
+						            <img src="${pageContext.request.contextPath}/uploads/${board.pstImg}" alt="첨부 이미지" style="max-width: 100%; height: auto; border-radius: 8px;">
+						        </div>
+						    </c:if>
+						
+						    <%-- 3. 기존 게시글 내용은 그대로 표시합니다. --%>
+						    <p style="font-weight:400">
+						        <c:out value="${board.pstCont}" escapeXml="false" />
+						    </p>
 						</div>
 
 						<div class="cmt_ico">
@@ -247,18 +299,19 @@
 						            </ul>
 						
 						            <%-- [수정] 로그인한 사용자와 댓글 작성자가 같을 경우에만 '수정' 버튼 표시 --%>
-						            <c:if test="${(loginUserType == 'inf' and loginUserIdx == comment.userIdx) or (loginUserType == 'BUSS' and loginUserIdx == comment.bussIdx)}">
-									    <div class="cmt_actions">
-									        <%-- 1. 세 개의 점 아이콘 역할을 할 링크 (텍스트 없음) --%>
-											<a href="javascript:void(0);" class="modify" style="text-decoration: none; color: #555; font-weight: bold;">⋮</a>
-									        
-									        <%-- 2. 클릭 시 나타날 숨겨진 메뉴 --%>
-									        <div class="more_menu" style="display:none;">
-									            <a href="javascript:void(0);" class="edit">수정</a>
-									            <a href="javascript:void(0);" class="delete">삭제</a>
+									<c:if test="${(loginUserType == 'inf' and loginUserIdx == comment.userIdx) or (loginUserType == 'BUSS' and loginUserIdx == comment.bussIdx)}">
+									        <div class="cmt_actions"> <%-- CSS에서 position: relative; 가 적용될 컨테이너 --%>
+									            
+									            <%-- 1. 3점 아이콘 버튼 --%>
+									            <a href="javascript:void(0);" class="modify">⋮</a>
+									            
+									            <%-- 2. 클릭 시 나타날 메뉴 (CSS에서 position: absolute; 가 적용됨) --%>
+									            <div class="more_menu" style="display:none;">
+									                <a href="javascript:void(0);" class="edit">수정</a>
+									                <a href="javascript:void(0);" class="delete">삭제</a>
+									            </div>
 									        </div>
-									    </div>
-									</c:if>
+									 </c:if>
 						            
 						            <%-- 댓글 수정시 노출될 숨겨진 입력창 --%>
 						            <div class="modi_cmt" style="display:none;">

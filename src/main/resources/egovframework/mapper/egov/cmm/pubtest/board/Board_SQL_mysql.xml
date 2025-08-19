@@ -123,12 +123,14 @@
 	</select>
 	
 	<insert id="insertBoard" parameterType="boardWriteDTO">
-		INSERT INTO PUB_PST
+	    INSERT INTO PUB_PST
 	    <trim prefix="(" suffix=")" suffixOverrides=",">
-			PST_CATE,
+	        PST_CATE,
 	        PST_TITLE,
 	        PST_CONT,
-	        PST_IMG,
+	        <if test="dbSavedImgName != null and dbSavedImgName != ''">
+	            PST_IMG,
+	        </if>
 	        <if test="userIdx != null and userIdx != 0">
 	            USER_IDX,
 	        </if>
@@ -140,7 +142,9 @@
 	        #{pstCate},
 	        #{pstTitle},
 	        #{pstCont},
-	        #{pstImg}
+	        <if test="dbSavedImgName != null and dbSavedImgName != ''">
+	            #{dbSavedImgName},
+	        </if>
 	        <if test="userIdx != null and userIdx != 0">
 	            #{userIdx},
 	        </if>

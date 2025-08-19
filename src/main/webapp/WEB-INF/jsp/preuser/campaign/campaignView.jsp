@@ -23,6 +23,32 @@
 	<title>중소기업을 위한 공공체험단</title>
 	<script src="/_js/pop_layer.js"></script>
 	<script src="/_js/cont.js"></script>
+	
+	<style>
+        .cmt_actions {
+            position: relative; [cite_start]/* [cite: 50, 51] */
+            margin-left: auto; [cite_start]/* [cite: 52] */
+        }
+        .cmt_actions .modify {
+            padding: 5px; [cite_start]/* [cite: 53] */
+        }
+        .more_menu {
+            position: absolute; [cite_start]/* [cite: 54] */
+            top: 100%; [cite_start]/* [cite: 55] */
+            right: 0; [cite_start]/* [cite: 56] */
+            background-color: #fff; [cite_start]/* [cite: 57] */
+            min-width: 80px; [cite_start]/* [cite: 58] */
+            z-index: 10; [cite_start]/* [cite: 59] */
+            padding: 5px 0; [cite_start]/* [cite: 60] */
+        }
+        .more_menu a {
+            display: block; [cite_start]/* [cite: 61] */
+            padding: 8px 12px; [cite_start]/* [cite: 62] */
+        }
+        .more_menu a:hover {
+            background-color: #f5f5f5; [cite_start]/* [cite: 63] */
+        }
+    </style>
 </head>
 <body>
 
@@ -158,35 +184,44 @@
 						</ul>
 
 						<div class="comment_wrap mt40">
-							<h3 class="sub_tit02">신청자 댓글</h3>
-							<div class="cmt clt">
-								<p class="prop_img"></p>
-								<ul class="cmt_txt">
-									<li class="name">닉네임</li>
-									<li>신청자 작성 내용 노출시켜주세요.</li>
-									<li class="date">2025.08.05 14:11</li>
-								</ul>
-								<a href="#none" class="modify">수정</a>
-							</div>
-							<div class="cmt clt">
-								<p class="prop_img"></p>
-								<ul class="cmt_txt">
-									<li class="name">닉네임</li>
-									<li>신청자 작성 내용 노출시켜주세요.</li>
-									<li class="date">2025.08.05 14:11</li>
-								</ul>
-								<a href="#none" class="modify">수정</a>
-							</div>
-							<div class="cmt clt">
-								<p class="prop_img"></p>
-								<ul class="cmt_txt">
-									<li class="name">닉네임</li>
-									<li>신청자 작성 내용 노출시켜주세요.</li>
-									<li class="date">2025.08.05 14:11</li>
-								</ul>
-								<a href="#none" class="modify">수정</a>
-							</div>
-						</div><!-- comment_wrap -->
+						    <h3 class="sub_tit02">신청자 댓글</h3>
+						    <c:forEach items="${commentList}" var="comment">
+						        <div class="cmt clt" data-cmt-idx="${comment.cmtIdx}" data-user-idx="${comment.userIdx}" data-buss-idx="${comment.bussIdx}">
+						            <p class="prop_img"></p>
+						            <ul class="cmt_txt">
+						                <li class="name">${comment.authorNickname}</li>
+						                <li class="content">${comment.cmtCont}</li>
+						                <li class="date">${comment.cmtRegdate}</li>
+						            </ul>
+						
+						            <c:if test="${(loginUserType == 'inf' and loginUserIdx == comment.userIdx) or (loginUserType == 'BUSS' and loginUserIdx == comment.bussIdx)}">
+						                <div class="cmt_actions">
+						                    <a href="javascript:void(0);" class="modify">⋮</a>
+						                    <div class="more_menu" style="display:none;">
+						                        <a href="javascript:void(0);" class="edit">수정</a>
+						                        <a href="javascript:void(0);" class="delete">삭제</a>
+						                    </div>
+						                </div>
+						            </c:if>
+						            
+						            <div class="modi_cmt" style="display:none;">
+						                <textarea class="mb5">${comment.cmtCont}</textarea>
+						                <a href="javascript:void(0);" class="btn2 bk_line cancel">취소</a>
+						                <a href="javascript:void(0);" class="btn2 bk save">등록</a>
+						            </div> 
+						        </div>
+						    </c:forEach>
+						</div>
+						
+						<h4>댓글 등록</h4>
+						<form action="${pageContext.request.contextPath}/preuser/campaign/addComment.do" method="post">
+						    <input type="hidden" name="campIdx" value="${campVo.campIdx}">
+						    
+						    <div class="cmt_ip mb40">
+						        <textarea name="cmtCont" placeholder="댓글을 입력해주세요."></textarea>
+						        <button type="submit" class="btn">등록</button>
+						    </div>
+						</form>				
 					</div><!-- View_con -->
 
 					<div class="View_info">
@@ -409,6 +444,96 @@ $(document).ready(function() {
     	    
     	    console.log("--- renderCalendar 함수 정상 종료 ---");
     	}
+</script>
+
+<script type="text/javascript">
+// Get the logged-in user's ID from the model
+const loginUserIdx = "${loginUserIdx}"; [cite_start]/* [cite: 64] */
+$(function() {
+    // 1. '수정' 아이콘 클릭 시: 메뉴 토글
+    $('.comment_wrap').on('click', '.modify', function(e) {
+        e.stopPropagation();
+        const $menu = $(this).next('.more_menu');
+        [cite_start]$('.more_menu').not($menu).hide(); /* [cite: 67] */
+        $menu.toggle();
+    });
+
+    // 2. 다른 곳 클릭하면 메뉴 닫기
+    $(document).on('click', function() {
+        $('.more_menu').hide();
+    });
+    
+    // 3. '수정하기' 버튼 클릭 시
+    $('.comment_wrap').on('click', '.edit', function() {
+        [cite_start]const $commentDiv = $(this).closest('.cmt.clt'); /* [cite: 69] */
+        $(this).closest('.more_menu').hide();
+        $commentDiv.find('.cmt_txt').hide(); [cite_start]/* [cite: 70] */
+        $commentDiv.find('.modi_cmt').show().find('textarea').focus();
+    });
+
+    // 4. '삭제하기' 버튼 클릭 시
+    $('.comment_wrap').on('click', '.delete', function() {
+        if (!confirm("정말로 댓글을 삭제하시겠습니까?")) return;
+        const $commentDiv = $(this).closest('.cmt.clt');
+        const cmtIdx = $commentDiv.data('cmt-idx');
+
+        $.ajax({
+            // [IMPORTANT] Change URL from 'board' to 'campaign'
+            url: "${pageContext.request.contextPath}/preuser/campaign/deleteComment.do",
+            [cite_start]type: "POST", /* [cite: 71] */
+            data: { cmtIdx: cmtIdx },
+            success: function(response) {
+                if (response.status === "success") {
+                    alert("댓글이 삭제되었습니다.");
+                    $commentDiv.remove(); [cite_start]/* [cite: 72] */
+                } else {
+                    alert("댓글 삭제에 실패했습니다.");
+                }
+            },
+            [cite_start]error: function() { /* [cite: 73] */
+                alert("서버 통신 중 오류가 발생했습니다.");
+            }
+        });
+    });
+
+    // 5. '등록' (수정 완료) 버튼 클릭 시
+    [cite_start]$('.comment_wrap').on('click', '.save', function() { /* [cite: 74] */
+        const $commentDiv = $(this).closest('.cmt.clt');
+        const cmtIdx = $commentDiv.data('cmt-idx');
+        const cmtCont = $commentDiv.find('.modi_cmt textarea').val();
+
+        if (cmtCont.trim() === '') {
+            alert("수정할 내용을 입력해주세요.");
+            return;
+        }
+
+        [cite_start]$.ajax({ /* [cite: 75] */
+            // [IMPORTANT] Change URL from 'board' to 'campaign'
+            url: "${pageContext.request.contextPath}/preuser/campaign/updateComment.do",
+            type: "POST",
+            data: { cmtIdx: cmtIdx, cmtCont: cmtCont },
+            [cite_start]success: function(response) { /* [cite: 76] */
+                if (response.status === "success") {
+                    $commentDiv.find('.cmt_txt .content').text(cmtCont);
+                    $commentDiv.find('.modi_cmt').hide(); [cite_start]/* [cite: 77] */
+                    $commentDiv.find('.cmt_txt').show(); [cite_start]/* [cite: 78] */
+                } else {
+                    alert("댓글 수정에 실패했습니다."); [cite_start]/* [cite: 79] */
+                }
+            },
+            error: function() {
+                alert("서버 통신 중 오류가 발생했습니다."); [cite_start]/* [cite: 80] */
+            }
+        });
+    });
+
+    // 6. '취소' 버튼 클릭 시
+    [cite_start]$('.comment_wrap').on('click', '.cancel', function() { /* [cite: 81] */
+        const $commentDiv = $(this).closest('.cmt.clt');
+        $commentDiv.find('.modi_cmt').hide();
+        $commentDiv.find('.cmt_txt').show();
+    }); [cite_start]/* [cite: 82] */
+});
 </script>
 
 

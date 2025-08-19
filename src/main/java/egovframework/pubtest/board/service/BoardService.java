@@ -10,9 +10,14 @@ public interface BoardService {
 	
 	void insertBoardComment(BoardCommentDTO comment);
 	
+    void updateBoardComment(BoardCommentDTO comment);
+    
+    void deleteBoardComment(int cmtIdx);
+    
 	void insertBoard(BoardWriteDTO board);
-	
+
     void toggleLike(int pstIdx, int loginUserIdx);
     
     Map<String, Object> getLikeInfo(int pstIdx, int loginUserIdx);
+    
 }
