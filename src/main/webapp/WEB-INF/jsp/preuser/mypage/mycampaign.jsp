@@ -35,33 +35,45 @@
 
 				<div class="select_wrap sel_flex">
 					<div class="sel">
-						<select id="" name="" class="searchCondition">
-							<option value="">미션유형</option>
-							<option value="">방문형(오프라인)</option>
-							<option value="">구매형(온라인)</option>
-							<option value="">배송형(온라인)</option>
-							<option value="">기자단</option>
-							<option value="">플랫폼 기자단</option>
-							<option value="">당일지급</option>
-							<option value="">포장</option>
+						<select id="channel" name="channel" class="searchCondition">
+							<option value="">채널</option>
+							<option value="릴스">릴스</option>
+							<option value="블로그">블로그</option>
+							<option value="블로그+클립">블로그+클립</option>
+							<option value="유튜브">유튜브</option>
+							<option value="인스타그램">인스타그램</option>
+							<option value="클립">클립</option>
+							<option value="틱톡">틱톡</option>
 						</select>
 					</div>
 					<div class="sel">
-						<select id="" name="" class="searchCondition">
-							<option value="">카테고리</option>
-							<option value="">맛집</option>
-							<option value="">식품</option>
-							<option value="">뷰티</option>
-							<option value="">여행</option>
-							<option value="">디지털</option>
-							<option value="">반려동물</option>
-							<option value="">기타</option>
+						<select id="type" name="type" class="searchCondition">
+							<option value="">유형</option>
+							<option value="구매형">구매형</option>
+							<option value="방문형">방문형</option>
+							<option value="배송형">배송형</option>
+							<option value="포장형">포장형</option>
 						</select>
 					</div>
-						<div class="list_wrap w100">
-							<input id="searchKeyword" name="searchKeyword" title="검색어 입력" placeholder="검색어를 입력하세요." class="info_in" type="text" value="">
-							<a href="javascript:;" class="b_btn" title="검색버튼" onclick="submit('', 1);" style="margin-left:10px;">검색</a>
-						</div>
+					<div class="sel">
+						<select id="category" name="category" class="searchCondition">
+								<option value="">카테고리</option>
+								<option value="PC방">PC방</option>
+								<option value="베이커리">베이커리</option>
+								<option value="분식집">분식집</option>
+								<option value="뷰티">뷰티</option>
+								<option value="와인바">와인바</option>
+								<option value="음식점">음식점</option>
+								<option value="초밥집">초밥집</option>
+								<option value="치킨집">치킨집</option>
+								<option value="카페">카페</option>
+								<option value="피자집">피자집</option>
+							</select>
+					</div>
+					<div class="list_wrap w100">
+						<input id="searchKeyword" name="searchKeyword" title="검색어 입력" placeholder="검색어를 입력하세요." class="info_in" type="text" value="">
+						<a href="javascript:;" class="b_btn" title="검색버튼" onclick="submit('', 1);" style="margin-left:10px;">검색</a>
+					</div>
 				</div>
 
 				<div class="pd_list">
@@ -131,10 +143,10 @@
 							<c:choose>
 							<c:when test="${vo.sumState eq '신청'}">	<%-- 체험단에 신청했을때 --%>
 								<a href="#none" class="btn gray_line">신청 취소</a>
-								<a href="/preuser/campaign/campaignEdit.html" class="btn bk">신청 내역 수정</a>
+								<a href="/preuser/mypage/mycampaignEdit.do?campIdx=${vo.campIdx}" class="btn bk">신청 내역 수정</a>
 							</c:when>	
 							<c:when test="${vo.sumState eq '취소'}">	<%-- 체험단을 취소 했을 때 --%>
-								<a href="#none" class="btn red_line w100">취소 사유 보기</a>
+								<a href="#none" class="btn red_line w100">취소 사유 조회</a>
 							</c:when>	
 							<c:when test="${vo.reviewDday lt 0}">	<%-- 체험단이 완전히 끝난 후 --%>
 								<a href="#none" class="btn blue_line w100">완료된 리뷰 보기</a>

@@ -145,7 +145,6 @@ public class CampaignController {
 		 * 
 		 * 이 기능이 제대로 동작하려면, HTML <form> 안에 있는 <input> 태그의 name 속성이 CampaignSubmitVO의 필드명과 일치해야 합니다.
 		 * @ModelAttribute
-		 * 
 		 */
 		
 		// 1) 로그인 여부 확인
@@ -156,12 +155,12 @@ public class CampaignController {
 	    // 2) 세션의 사용자 번호 세팅
 	    submitVo.setUserIdx(loginUser.getIdx());
 	    
-		System.err.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.err.println("sumCont : " + submitVo.getSumCont());
-		System.err.println("sumAddNum : " + submitVo.getZipcode());
-		System.err.println("sumAddress" + submitVo.getSumAddress());
-		System.err.println("campIdx : " + submitVo.getCampIdx());
-		System.err.println("userIdx : " + submitVo.getUserIdx());
+//		System.err.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+//		System.err.println("sumCont : " + submitVo.getSumCont());
+//		System.err.println("sumAddNum : " + submitVo.getZipcode());
+//		System.err.println("sumAddress" + submitVo.getSumAddress());
+//		System.err.println("campIdx : " + submitVo.getCampIdx());
+//		System.err.println("userIdx : " + submitVo.getUserIdx());
 		
 		campaignService.insertCampaignSubmit(submitVo);
 	    
@@ -170,34 +169,4 @@ public class CampaignController {
 		
 	    return "redirect:/preuser/campaign/campaignView.do?campIdx=" + submitVo.getCampIdx();
 	}
-	
-	@PostMapping("/campaignEdit.do")
-	public String CampaignEditProcess(
-			@ModelAttribute CampaignSubmitVO submitVo, 
-			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser,
-			Model model, RedirectAttributes redirect) {
-		
-		/* 현재 <input type="hidden" name="userIdx" value="${sessionScope.loginUser.userIdx}"> <%-- 예시: 세션에 저장된 사용자 정보 --%>
-		 * 위의 세션 정보가 없어, userIdx가 비어있는 "" string 데이터를 사용하기 때문에 사용 불가. 
-		 * 
-		 * 이 기능이 제대로 동작하려면, HTML <form> 안에 있는 <input> 태그의 name 속성이 CampaignSubmitVO의 필드명과 일치해야 합니다.
-		 * @ModelAttribute
-		 * 
-		 */
-	    submitVo.setUserIdx(loginUser.getIdx());
-	    
-		System.err.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.err.println("sumIdx" + submitVo.getSumIdx());
-		System.err.println("sumCont" + submitVo.getSumCont());
-		System.err.println("sumAddress" + submitVo.getSumAddress());
-		System.err.println("campIdx : " + submitVo.getCampIdx());
-		System.err.println("userIdx : " + submitVo.getUserIdx());
-	    
-		//campaignService.insertCampaignSubmit(submitVo);
-		redirect.addFlashAttribute("msg","신청되었습니다.");
-		
-	    return "redirect:/preuser/campaign/campaignView.do?campIdx=" + submitVo.getCampIdx();
-	}
-	
-	
 }
