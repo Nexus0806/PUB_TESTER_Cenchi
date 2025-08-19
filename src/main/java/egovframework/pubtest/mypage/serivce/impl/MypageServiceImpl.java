@@ -24,4 +24,8 @@ public class MypageServiceImpl implements MypageService {
 	public CampaignSubmitVO getUserCampSumitInfo (Map param) {
 		return mypageDAO.getUserCampSumitInfo(param);
 	}
+	
+	public int updateMyCampaignSubmit (CampaignSubmitVO vo) {
+		return mypageDAO.updateMyCampaignSubmit(vo);
+	}
 }

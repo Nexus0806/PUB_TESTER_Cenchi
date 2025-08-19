@@ -47,9 +47,7 @@
 
                         <div class="apply_wrap mb30">
                             <%-- 3. VO 필드명에 맞춰 name="sumCont" 지정 --%>
-                            <textarea name="sumCont" rows="5" placeholder="내용 입력">
-                            	<c:out value="${submitInfo.sumCont}"></c:out>
-                            </textarea>
+                            <textarea name="sumCont" rows="5" placeholder="내용 입력"><c:out value="${submitInfo.sumCont}"></c:out></textarea>
                         </div>
 
                         <div class="apply_wrap">
@@ -60,10 +58,10 @@
                                 value="${submitInfo.zipCode}">
                                 <a href="#none" class="btn a bk" onclick="openDaumPostcode()">우편번호 찾기</a>
                             </div>
-                            <%-- 기본주소를 합쳐서 저장했더니 다시 나누는 방법이 애매해졌는데... 이건 얘기해봐야 할듯 --%>
-                            <input id="address1" class="mt5" placeholder="기본 주소..." type="text" readonly>
+                            <input id="address1" class="mt5" placeholder="기본 주소..." type="text" readonly
+                            value="${addr1}">
                             <input id="address2" class="mt5" placeholder="상세 주소" type="text"
-                            value="${submitInfo.sumAddress}">
+                            value="${addr2}">
                             <%-- 3개의 주소 값을 합쳐서 전송할 숨겨진 input. name="sumAddress" 지정 --%>
                             <input type="hidden" name="sumAddress" id="sumAddress">
                         </div>
@@ -109,7 +107,9 @@
 								<li> / 모집 <em>${campVo.campRecruite}</em>명</li>
 							</ul>
 						</div><!-- prd_rec -->
-
+						<div class="btn_wrap mt30">
+    						<button type="submit" id="submitBtn" class="btn" style="width:100%;">수정하기</button>
+						</div>
 					</div><!-- View_info -->
                 </div>
             </form>

@@ -176,7 +176,7 @@ $(document).ready(function() {
         const address2 = $('#address2').val();
         
         // 예시: [12345] 서울시 강남구 테헤란로 (상세주소)
-        const fullAddress = address1 + ' ' + address2;
+        const fullAddress = address1 + '|' + address2;
         
         // 합쳐진 주소 값을 숨겨진 input(#sumAddress)에 넣어줍니다.
         $('#sumAddress').val(fullAddress);

@@ -63,4 +63,16 @@
     		AND S.CAMP_IDX = #{campIdx}
   		LIMIT 1
 	</select>
+	
+	<update id="updateMyCampaignSubmit" parameterType="campaignSubmitVO">
+  		UPDATE
+  			pub_camp_sum
+  		SET
+    		SUM_CONT    = #{sumCont},
+    		SUM_ADDNUM  = #{zipCode},
+    		SUM_ADDRESS = #{sumAddress}
+  		WHERE
+  			SUM_IDX  = #{sumIdx}
+    		AND USER_IDX = #{userIdx}   <!-- 본인 것만 수정 가능 -->
+</update>
 </mapper>

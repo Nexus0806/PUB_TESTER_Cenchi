@@ -166,6 +166,7 @@
 					</ul>
 				</div>
 
+				<!-- 페이징 완성 전까지 임시 주석 처리
 				<p class="pagination">
 					<a href="#" class="direction prev end" title="맨처음 페이지로 이동" onclick="fnLinkPage(1); ">맨처음 페이지로 이동</a>
 					<a href="#" class="direction prev" title="이전 페이지로 이동" onclick="fnLinkPage(1); ">이전 페이지로 이동</a>
@@ -182,6 +183,7 @@
 					<a href="#" class="direction next" title="다음 페이지로 이동" onclick="fnLinkPage(11); ">다음 페이지로 이동</a>
 					<a href="#" class="direction next end" title="맨끝 페이지로 이동" onclick="fnLinkPage(121); ">맨끝 페이지로 이동</a>
 				</p>
+				-->
 
 			</div><!-- cont_all -->
 		</div><!-- s_cont -->

@@ -19,4 +19,8 @@ public class MypageDAO extends EgovAbstractMapper{
 	public CampaignSubmitVO getUserCampSumitInfo(Map param) {
 		return selectOne("mypageDAO.getUserCampSubmit", param);
 	}
+	
+	public int updateMyCampaignSubmit(CampaignSubmitVO vo) {
+		return update("mypageDAO.updateMyCampaignSubmit", vo);
+	}
 }
