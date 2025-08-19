@@ -44,4 +44,23 @@
 			PS.SUM_DATE DESC
 	</select>
 	
+	<select id="getUserCampSubmit" resultType="campaignSubmitVO" parameterType="map">>
+		SELECT
+			S.SUM_IDX			as sumIdx,
+    		S.CAMP_IDX			as campIdx,
+    		S.USER_IDX			as userIdx,
+    		S.SUM_CONT			as sumCont,
+    		S.SUM_ADDNUM 		as zipcode,
+    		S.SUM_ADDRESS		as sumAddress
+  		FROM 
+  			pub_camp_sum S
+  		JOIN 
+  			pub_user U ON U.USER_IDX = S.USER_IDX
+  		JOIN 
+  			pub_camp C ON C.CAMP_IDX = S.CAMP_IDX
+  		WHERE 
+  			S.USER_IDX = #{userIdx}
+    		AND S.CAMP_IDX = #{campIdx}
+  		LIMIT 1
+	</select>
 </mapper>

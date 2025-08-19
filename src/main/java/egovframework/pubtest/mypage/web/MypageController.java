@@ -1,17 +1,24 @@
 package egovframework.pubtest.mypage.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import org.springframework.ui.Model;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import egovframework.pubtest.campaign.service.CampaignService;
+import egovframework.pubtest.campaign.service.CampaignSubmitVO;
 import egovframework.pubtest.campaign.service.CampaignVO;
 import egovframework.pubtest.login.web.PubTesterLoginController.SessionUser;
-import egovframework.pubtest.main.service.PubTesterMainVO;
 import egovframework.pubtest.mypage.service.MypageService;
 import egovframework.pubtest.util.PubTestUtil;
 
@@ -29,7 +36,6 @@ public class MypageController {
     	if(loginUser == null) {
     		return "redirect:/preuser/member/login.do";
     	}
-    	
     	List<CampaignVO> userCampList = mypageService.getUserCampList(loginUser.getIdx());
     	
     	for(CampaignVO row : userCampList)
@@ -56,5 +62,31 @@ public class MypageController {
     	model.addAttribute("campList", userCampList);
     	
     	return "preuser/mypage/mycampaign";
+    }
+    
+    @GetMapping("mycampaignEdit.do")
+    public String editMyCampaignForm(@RequestParam("campIdx") int campIdx,
+            @SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser,
+            Model model, RedirectAttributes redirect) {
+    	
+    	if (loginUser == null) {
+            redirect.addFlashAttribute("msg", "로그인이 필요합니다.");
+            return "redirect:/preuser/member/login.do";
+        }
+    	
+    	Map<String, Object> chkIdx = new HashMap<>();
+    	chkIdx.put("userIdx", loginUser.getIdx());
+    	chkIdx.put(null, campIdx);
+    	
+    	CampaignSubmitVO info = mypageService.getUserCampSumitInfo(chkIdx);
+    	model.addAttribute("submitInfo",info);
+    	
+    	return "/preuser/mypage/mycampaignEdit";
+    }
+    
+    @PostMapping("")
+    public String updateMyCampaignForm(Model model) {
+    	
+    	return "redirect:/preuser/mypage/mycampagin.do";
     }
 }

@@ -1,16 +1,16 @@
 package egovframework.pubtest.campaign.service;
 
 public class CampaignSearchDTO {
-	private String region;
-	private String category;
-	private String searchCondition;
-	private String searchKeyword;
-	private String channel;
-	private String type;
-	private String sort;
+	private String region;				// 지역
+	private String category;			// 체험단 카테고리
+	private String channel;				// 광고 채녈
+	private String searchKeyword;		// 검색어
+	private String type;				// 광고 유형
+	private String sort;				// 정렬 유형
+	
 	@Override
 	public String toString() {
-		return "CampaignSearchDTO [region=" + region + ", category=" + category + ", searchCondition=" + searchCondition
+		return "CampaignSearchDTO [region=" + region + ", category=" + category + ", searchCondition="
 				+ ", searchKeyword=" + searchKeyword + ", channel=" + channel + ", type=" + type + ", sort=" + sort
 				+ "]";
 	}
@@ -25,12 +25,6 @@ public class CampaignSearchDTO {
 	}
 	public void setCategory(String category) {
 		this.category = category;
-	}
-	public String getSearchCondition() {
-		return searchCondition;
-	}
-	public void setSearchCondition(String searchCondition) {
-		this.searchCondition = searchCondition;
 	}
 	public String getSearchKeyword() {
 		return searchKeyword;
@@ -56,5 +50,4 @@ public class CampaignSearchDTO {
 	public void setSort(String sort) {
 		this.sort = sort;
 	}
-	
 }

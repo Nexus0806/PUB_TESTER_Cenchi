@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <header>
 	<div id="header">
@@ -15,10 +16,18 @@
 		</ul><!-- gnb -->
 
 		<div class="h_right">
-			<div class="s_wrap">
-				<input type="search" class="search" placeholder="어떤 체험단을 찾고 있나요?">
-				<a href="#none" class="s_btn" type="button">검색</a>
-			</div><!-- search_wrap -->
+			<form class="header-search s_wrap" method="get" action="${pageContext.request.contextPath}/preuser/campaign/campaignList.do">
+				<input type="search" class="search" id="headerKeyword" name="searchKeyword"
+						placeholder="어떤 체험단을 찾고 있나요?"
+               			value="${fn:escapeXml(param.keyword)}" />
+        		<a href="javascript:void(0);" class="s_btn" id="headerSearchBtn" role="button">검색</a>
+        			
+				<input type="hidden" name="category" value="${fn:escapeXml(param.category)}" />
+        		<input type="hidden" name="channel"  value="${fn:escapeXml(param.channel)}" />
+        		<input type="hidden" name="type"   value="${fn:escapeXml(param.adtype)}" />
+        		<input type="hidden" name="region"   value="${fn:escapeXml(param.region)}" />
+        		<input type="hidden" name="sort"     value="${fn:escapeXml(param.sort)}" />        			
+			</form>
 			<c:choose>
 			<%-- 세션에 로그인 정보가 있다면 --%>
 			<c:when test="${not empty sessionScope.LOGIN_USER}">
@@ -123,5 +132,36 @@
 			</li>
 		</ul>
 	</div><!-- tm_bt_header -->
+	
+	
+	<script>
+  // 헤더가 모든 페이지에 공통 포함되므로, 요소 존재 여부를 확인하며 안전하게 동작
+  document.querySelector('.header-search')?.addEventListener('submit', function () {
+    const getVal = sel => document.querySelector(sel)?.value || '';
+
+    // campaignList.jsp 에만 있는 필터 DOM에서 최신값을 읽어 히든에 반영
+    const cat = getVal('#category');     // <select id="category">
+    const ch  = getVal('#channel');      // <select id="channel">
+    const typ = getVal('#type');         // <select id="type"> (= adtype)
+    const reg = getVal('#regionInput');  // <input id="regionInput"> (스크립트에서 regionInput 이라는 이름으로 받고 있음)
+    const srt = getVal('#sort');         // <select id="sort">
+
+    if (cat) this.querySelector('input[name=category]').value = cat;
+    if (ch)  this.querySelector('input[name=channel]').value  = ch;
+    if (typ) this.querySelector('input[name=adtype]').value   = typ;
+    if (reg) this.querySelector('input[name=region]').value   = reg;
+    if (srt) this.querySelector('input[name=sort]').value     = srt;
+  });
+  
+  // 검색 아이콘 클릭 시
+  $(document).on('click keydown', '#headerSearchBtn', function(e){
+	    if (e.type === 'click' || (e.type === 'keydown' && (e.key === 'Enter' || e.key === ' '))) {
+	      e.preventDefault();
+	      const $form = $(this).closest('form.header-search');
+	      // form의 submit 핸들러(히든값 덮어쓰기 등)가 실행되도록 트리거
+	      $form.trigger('submit');
+	    }
+	  });
+	</script>
 
 </header>

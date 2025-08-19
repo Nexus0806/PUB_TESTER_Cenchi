@@ -1,6 +1,8 @@
 package egovframework.pubtest.campaign.service.impl;
 
 import java.util.List;
+import java.util.Map;
+
 import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
 import org.springframework.stereotype.Repository;
 
@@ -21,5 +23,9 @@ public class CampaignDAO extends EgovAbstractMapper {
 	
 	public void insertCampaignSubmit(CampaignSubmitVO submitVO) {
 		insert("campaignDAO.insertCampaignSubmit", submitVO);
+	}
+	
+	public List<CampaignVO> selectSerachCampaignList(Map param) {
+		return selectList("campaignDAO.selectSerchCampaignList", param);
 	}
 }

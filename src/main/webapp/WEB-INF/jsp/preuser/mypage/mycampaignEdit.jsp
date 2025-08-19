@@ -23,16 +23,14 @@
 	<script src="/_js/cont.js"></script>
 </head>
 <body>
+   	<jsp:include page="/WEB-INF/jsp/_inc/header.jsp" />
+	<script src="/_js/ui.js"></script>
 
-<jsp:include page="/WEB-INF/jsp/_inc/header.jsp" />
-
-<script src="/_js/ui.js"></script>
-
-<div id="sub_content">
+	<div id="sub_content">
     <div class="s_cont">
         <div class="cont_all">
             <%-- 1. form 태그로 전체를 감쌉니다. --%>
-            <form name="submitForm" method="post" action="${pageContext.request.contextPath}/preuser/campaign/campaignSubmit.do">
+            <form name="submitForm" method="post" action="${pageContext.request.contextPath}/preuser/mypage/mycampaignEdit.do">
                 
                 <%-- ================================================================= --%>
                 <%-- 2. 서버로부터 받은 campIdx, userIdx를 숨겨서 전송합니다. --%>
@@ -43,14 +41,16 @@
                 <div class="View_wrap">
                     <div class="View_con">
                         <div class="View_top mb40">
-                            <p class="v_tit">체험단 신청</p>
+                            <p class="v_tit">신청 내역 수정</p>
                         </div>
 
                         <div class="apply_wrap mb30">
-                            <h4>신청 한마디 <span>(선택)</span></h4>
-                            <p class="mb10">신청 시 광고주가 참고할 수 있는 내용이 있다면 작성해 주세요.</p>
                             <%-- 3. VO 필드명에 맞춰 name="sumCont" 지정 --%>
-                            <textarea name="sumCont" rows="5" placeholder="내용 입력"></textarea>
+                            <textarea name="sumCont" rows="5" placeholder="내용 입력">
+                            	<c:if test="${submitInfo.sumCont not eq null or submitInfo.sumCont not eq ''}">
+                                	${submitInfo.sumCont}
+                                </c:if>
+                            </textarea>
                         </div>
 
                         <div class="apply_wrap">
@@ -58,10 +58,17 @@
                             <div class="add_wrap">
                                 <%-- 주소 필드들에는 id만 부여해서 자바스크립트가 값을 읽을 수 있도록 합니다. --%>
                                 <input id="zipcode" name="zipcode" placeholder="우편번호..." type="text" readonly>
+                                <c:if test="${submitInfo.zipcode not eq null or submitInfo.zipcode not eq ''}">
+                                	${submitInfo.zipcode}
+                                </c:if>
                                 <a href="#none" class="btn a bk" onclick="openDaumPostcode()">우편번호 찾기</a>
                             </div>
+                            <%-- 기본주소를 합쳐서 저장했더니 다시 나누는 방법이 애매해졌는데... 이건 얘기해봐야 할듯 --%>
                             <input id="address1" class="mt5" placeholder="기본 주소..." type="text" readonly>
                             <input id="address2" class="mt5" placeholder="상세 주소" type="text">
+                            	<c:if test="${submitInfo.sumAddress not eq null or submitInfo.sumAddress not eq ''}">
+                                	${submitInfo.sumAddress}
+                                </c:if>
                             
                             <%-- 3개의 주소 값을 합쳐서 전송할 숨겨진 input. name="sumAddress" 지정 --%>
                             <input type="hidden" name="sumAddress" id="sumAddress">
@@ -96,7 +103,7 @@
 
                             <div class="btn_wrap">
                                 <%-- 4. a 링크를 button으로 변경하고 id를 부여합니다. --%>
-                                <button type="submit" id="submitBtn" class="btn" style="width:100%;">신청하기</button>
+                                <button type="submit" id="submitBtn" class="btn" style="width:100%;">수정하기</button>
                             </div>
                         </div>
                     </div>
@@ -150,7 +157,6 @@ function openDaumPostcode() {
 }
 </script>
 
-
 <script>
 $(document).ready(function() {
     // '신청하기' 버튼을 클릭했을 때의 동작
@@ -187,7 +193,7 @@ $(document).ready(function() {
 });
 </script>
 
-<jsp:include page="/WEB-INF/jsp/_inc/footer.jsp" />
-
+	<jsp:include page="/WEB-INF/jsp/_inc/footer.jsp" />
 </body>
+
 </html>

@@ -3,6 +3,7 @@ package egovframework.pubtest.campaign.service;
 public class CampaignSubmitVO {
 	private int sumIdx;
 	private String sumCont;
+	private String zipcode;
 	private String sumAddress;
 	private int campIdx;
 	private int userIdx;
@@ -24,6 +25,12 @@ public class CampaignSubmitVO {
 	}
 	public void setSumAddress(String sumAddress) {
 		this.sumAddress = sumAddress;
+	}
+	public String getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
 	}
 	public int getCampIdx() {
 		return campIdx;
