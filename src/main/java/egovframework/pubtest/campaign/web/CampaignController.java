@@ -22,6 +22,7 @@ import egovframework.pubtest.campaign.service.CampaignVO;
 import egovframework.pubtest.util.PubTestUtil;
 import egovframework.pubtest.campaign.service.CampaignSubmitVO;
 import egovframework.pubtest.campaign.service.CampaignSearchDTO;
+import egovframework.pubtest.campaign.service.CampaignCommentDTO;
 
 import egovframework.pubtest.login.web.PubTesterLoginController.SessionUser;
 import egovframework.pubtest.main.service.PubTesterMainVO;
@@ -79,8 +80,11 @@ public class CampaignController {
 	
 	@GetMapping("/campaignView.do")
 	public String Campaigndetail(@RequestParam int campIdx, Model model) {
+		
 		CampaignVO campVo = campaignService.selectCampaignDetail(campIdx);
-			
+		
+		List <CampaignCommentDTO> commentList = campaignService.selectCampaignCommentList(campIdx);
+		
 			// date 날자 검증. null 혹은 비어있는지 확인.
 		    String recStartDateStr = campVo.getCampRecStartdate(); 
 
@@ -118,6 +122,7 @@ public class CampaignController {
 		
 		String[] keyArray = campVo.getCampKeyword().split(",");
 		
+		model.addAttribute("commentList", commentList);
 		model.addAttribute("campStartTime",campStartTime);
 		model.addAttribute("campEndTime",campEndTime);
 		model.addAttribute("keywordList", keyArray);
@@ -125,6 +130,29 @@ public class CampaignController {
 		
 		return "/preuser/campaign/campaignView";
 	}
+	
+	@PostMapping("/addComment.do")
+	public String addComment(
+			CampaignCommentDTO comment, Model model, 
+			@RequestParam("campIdx") int campIdx, RedirectAttributes redirect,
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser) {
+		
+		if(loginUser == null) {
+			redirect.addFlashAttribute("msg", "로그인이 필요한 서비스 입니다.");
+			return "redirect:/preuser/campaign/campaignView.do?campIdx=" + campIdx;
+		}
+		if(loginUser.getType().equals("inf")) 
+			comment.setUserIdx(loginUser.getIdx());
+		else 
+			comment.setBussIdx(loginUser.getIdx());
+	
+	    comment.setCampIdx(campIdx); 
+	    
+	    campaignService.insertCampaignComment(comment);
+	    
+	    return "redirect:/preuser/campaign/campaignView.do?campIdx=" + campIdx;
+	}
+	
 	
 	@GetMapping("/campaignSubmit.do")
 	public String CampaignSubmitForm(@RequestParam int campIdx, Model model) {

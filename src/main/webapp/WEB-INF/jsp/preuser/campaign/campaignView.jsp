@@ -52,6 +52,13 @@
 </head>
 <body>
 
+<c:if test="${not empty msg}">
+    <script type="text/javascript">
+        alert("${msg}");
+    </script>
+</c:if>
+
+
 <jsp:include page="/WEB-INF/jsp/_inc/header.jsp" />
 
 <script src="/_js/ui.js"></script>
