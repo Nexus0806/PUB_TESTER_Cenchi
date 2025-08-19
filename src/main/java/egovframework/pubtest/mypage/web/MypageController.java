@@ -28,6 +28,9 @@ public class MypageController {
 
     @Resource(name = "mypageService")
     private MypageService mypageService;
+    
+	@Resource(name = "campaignService")
+	private CampaignService campaignService;
 	
     // SessionAttribute 어노테이션으로 현재 로그인한 사용자 객체를 가져옴
     @RequestMapping("/mycampaign.do")
@@ -76,17 +79,26 @@ public class MypageController {
     	
     	Map<String, Object> chkIdx = new HashMap<>();
     	chkIdx.put("userIdx", loginUser.getIdx());
-    	chkIdx.put(null, campIdx);
+    	chkIdx.put("campIdx", campIdx);
     	
     	CampaignSubmitVO info = mypageService.getUserCampSumitInfo(chkIdx);
+    	CampaignVO campVo = campaignService.selectCampaignDetail(campIdx);
+    	
+    	if(campVo.getCampStartdate() != null) // 체험단 모집 마감일 계산
+		{
+			long dDay = PubTestUtil.calcDday(campVo.getCampStartdate());
+			campVo.setdDay(dDay);
+		}
+    	
     	model.addAttribute("submitInfo",info);
+    	model.addAttribute("campVo", campVo);
     	
     	return "/preuser/mypage/mycampaignEdit";
     }
     
-    @PostMapping("")
+    @PostMapping("mycampaignEdit.do")
     public String updateMyCampaignForm(Model model) {
     	
-    	return "redirect:/preuser/mypage/mycampagin.do";
+    	return "redirect:/preuser/mypage/mycampaign.do";
     }
 }

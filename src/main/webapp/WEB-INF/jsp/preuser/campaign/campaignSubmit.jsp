@@ -57,7 +57,7 @@
                             <h4>주소</h4>
                             <div class="add_wrap">
                                 <%-- 주소 필드들에는 id만 부여해서 자바스크립트가 값을 읽을 수 있도록 합니다. --%>
-                                <input id="zipcode" name="zipcode" placeholder="우편번호..." type="text" readonly>
+                                <input id="zipCode" name="zipCode" placeholder="우편번호..." type="text" readonly>
                                 <a href="#none" class="btn a bk" onclick="openDaumPostcode()">우편번호 찾기</a>
                             </div>
                             <input id="address1" class="mt5" placeholder="기본 주소..." type="text" readonly>
@@ -135,7 +135,7 @@ function openDaumPostcode() {
       }
 
       // 입력 필드에 채우기
-      document.getElementById('zipcode').value  = data.zonecode; // 새 우편번호(5자리)
+      document.getElementById('zipCode').value  = data.zonecode; // 새 우편번호(5자리)
       document.getElementById('address1').value = addr;
       // 커서는 상세주소로
       var detail = document.getElementById('address2');
@@ -171,7 +171,7 @@ $(document).ready(function() {
         }
 
         // 유효성 검사를 모두 통과한 경우, 주소 필드를 하나로 합칩니다.
-        const zipcode = $('#zipcode').val();
+        const zipCode = $('#zipCode').val();
         const address1 = $('#address1').val();
         const address2 = $('#address2').val();
         

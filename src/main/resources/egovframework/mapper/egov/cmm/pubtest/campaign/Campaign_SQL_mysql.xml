@@ -148,7 +148,7 @@
 
 	<insert id="insertCampaignSubmit" parameterType="campaignSubmitVO">
 		INSERT INTO PUB_CAMP_SUM (SUM_CONT, SUM_ADDNUM, SUM_ADDRESS, CAMP_IDX, USER_IDX)
-		VALUES (#{sumCont}, #{zipcode}, #{sumAddress}, #{campIdx}, #{userIdx})
+		VALUES (#{sumCont}, #{zipCode}, #{sumAddress}, #{campIdx}, #{userIdx})
 	</insert>
 	
 </mapper>
