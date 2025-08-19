@@ -57,7 +57,7 @@
                             <h4>주소</h4>
                             <div class="add_wrap">
                                 <%-- 주소 필드들에는 id만 부여해서 자바스크립트가 값을 읽을 수 있도록 합니다. --%>
-                                <input id="zipcode" placeholder="우편번호..." type="text" readonly>
+                                <input id="zipcode" name="zipcode" placeholder="우편번호..." type="text" readonly>
                                 <a href="#none" class="btn a bk" onclick="openDaumPostcode()">우편번호 찾기</a>
                             </div>
                             <input id="address1" class="mt5" placeholder="기본 주소..." type="text" readonly>
@@ -106,6 +106,51 @@
     </div>
 </div>
 
+<%-- 카카오 우편번호 검색 서비스 --%>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script>
+function openDaumPostcode() {
+  new daum.Postcode({
+    oncomplete: function(data) {
+      // 도로명/지번 주소 중 선택된 타입에 따라 주소 결정
+      var addr = '';        // 기본주소
+      var extraAddr = '';   // 참고항목(법정동, 건물명 등)
+
+      if (data.userSelectedType === 'R') { // 도로명
+        addr = data.roadAddress;
+
+        // 법정동/건물명 등 참고항목 조합
+        if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+          extraAddr += data.bname;
+        }
+        if (data.buildingName !== '' && data.apartment === 'Y') {
+          extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+        }
+        if (extraAddr !== '') {
+          addr += ' ' + extraAddr;
+        }
+      } else { // 지번
+        addr = data.jibunAddress;
+      }
+
+      // 입력 필드에 채우기
+      document.getElementById('zipcode').value  = data.zonecode; // 새 우편번호(5자리)
+      document.getElementById('address1').value = addr;
+      // 커서는 상세주소로
+      var detail = document.getElementById('address2');
+      detail.focus();
+
+      // 이미 만들어둔 fullAddress(hidden)는 submit 직전에 JS로 합치므로 여기선 건드리지 않아도 됩니다.
+      // 만약 즉시 합치고 싶다면 아래 주석 해제:
+      // document.getElementById('sumAddress').value = '[' + data.zonecode + '] ' + addr + ' ' + detail.value;
+    },
+    // 모바일 등에서 화면 꽉 차게 사용하고 싶으면 width/height 옵션 생략(기본 팝업)
+  }).open();
+}
+</script>
+
+
 <script>
 $(document).ready(function() {
     // '신청하기' 버튼을 클릭했을 때의 동작
@@ -131,7 +176,7 @@ $(document).ready(function() {
         const address2 = $('#address2').val();
         
         // 예시: [12345] 서울시 강남구 테헤란로 (상세주소)
-        const fullAddress = '[' + zipcode + '] ' + address1 + ' ' + address2;
+        const fullAddress = address1 + ' ' + address2;
         
         // 합쳐진 주소 값을 숨겨진 input(#sumAddress)에 넣어줍니다.
         $('#sumAddress').val(fullAddress);
@@ -141,7 +186,6 @@ $(document).ready(function() {
     });
 });
 </script>
-
 
 <jsp:include page="/WEB-INF/jsp/_inc/footer.jsp" />
 

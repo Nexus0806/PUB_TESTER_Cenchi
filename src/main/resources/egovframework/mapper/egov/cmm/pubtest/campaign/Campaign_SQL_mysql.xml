@@ -143,12 +143,12 @@
   			<otherwise>
     			ORDER BY CAMP_REGDATE DESC
   			</otherwise>
-</choose>
+		</choose>
 	</select>
 
 	<insert id="insertCampaignSubmit" parameterType="campaignSubmitVO">
-		INSERT INTO PUB_CAMP_SUM (SUM_IDX, SUM_CONT, SUM_ADDRESS, CAMP_IDX, USER_IDX)
-		VALUES (#{sumIdx}, #{sumCont}, #{sumAddress}, #{campIdx}, #{userIdx})
+		INSERT INTO PUB_CAMP_SUM (SUM_CONT, SUM_ADDNUM, SUM_ADDRESS, CAMP_IDX, USER_IDX)
+		VALUES (#{sumCont}, #{zipcode}, #{sumAddress}, #{campIdx}, #{userIdx})
 	</insert>
 	
 </mapper>

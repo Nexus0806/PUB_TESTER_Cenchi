@@ -147,14 +147,23 @@ public class CampaignController {
 		 * @ModelAttribute
 		 * 
 		 */
+		
+		// 1) 로그인 여부 확인
+	    if (loginUser == null) {
+	        redirect.addFlashAttribute("msg", "로그인이 필요합니다.");
+	        return "redirect:/preuser/member/login.do";
+	    }
+	    // 2) 세션의 사용자 번호 세팅
 	    submitVo.setUserIdx(loginUser.getIdx());
 	    
 		System.err.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		System.err.println("sumIdx" + submitVo.getSumIdx());
-		System.err.println("sumCont" + submitVo.getSumCont());
+		System.err.println("sumCont : " + submitVo.getSumCont());
+		System.err.println("sumAddNum : " + submitVo.getZipcode());
 		System.err.println("sumAddress" + submitVo.getSumAddress());
 		System.err.println("campIdx : " + submitVo.getCampIdx());
 		System.err.println("userIdx : " + submitVo.getUserIdx());
+		
+		campaignService.insertCampaignSubmit(submitVo);
 	    
 		//campaignService.insertCampaignSubmit(submitVo);
 		redirect.addFlashAttribute("msg","신청되었습니다.");
