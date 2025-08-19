@@ -50,4 +50,15 @@
 		    </trim>
 	</insert>
 	
+	<update id="updateCampaignComment" parameterType="campaignCommentDTO">
+		UPDATE PUB_CMT
+			SET CMT_CONT = #{cmtCont}
+			WHERE CMT_IDX = #{cmtIdx};
+	</update>
+	
+	<update id="deleteCampaignComment" parameterType="int">
+		UPDATE PUB_CMT
+			SET CMT_DELYN = 'Y'
+			WHERE CMT_IDX = #{cmtIdx};
+	</update>
 </mapper>

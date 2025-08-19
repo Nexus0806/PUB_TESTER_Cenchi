@@ -25,30 +25,46 @@
 	<script src="/_js/cont.js"></script>
 	
 	<style>
-        .cmt_actions {
-            position: relative; [cite_start]/* [cite: 50, 51] */
-            margin-left: auto; [cite_start]/* [cite: 52] */
-        }
-        .cmt_actions .modify {
-            padding: 5px; [cite_start]/* [cite: 53] */
-        }
-        .more_menu {
-            position: absolute; [cite_start]/* [cite: 54] */
-            top: 100%; [cite_start]/* [cite: 55] */
-            right: 0; [cite_start]/* [cite: 56] */
-            background-color: #fff; [cite_start]/* [cite: 57] */
-            min-width: 80px; [cite_start]/* [cite: 58] */
-            z-index: 10; [cite_start]/* [cite: 59] */
-            padding: 5px 0; [cite_start]/* [cite: 60] */
-        }
-        .more_menu a {
-            display: block; [cite_start]/* [cite: 61] */
-            padding: 8px 12px; [cite_start]/* [cite: 62] */
-        }
-        .more_menu a:hover {
-            background-color: #f5f5f5; [cite_start]/* [cite: 63] */
-        }
-    </style>
+	    /* 메뉴 버튼과 메뉴를 감싸는 컨테이너 (위치 기준점 역할) */
+	    .cmt_actions {
+	        position: relative; /* 자식 요소인 .more_menu의 위치 기준이 됩니다. */
+	        margin-left: auto; /* 오른쪽 끝으로 보내기 위함 */
+	    }
+	
+	    /* 3점(수정) 아이콘 버튼 */
+	    .cmt_actions .modify {
+	        padding: 5px;
+	        font-size: 1.2em;
+	        line-height: 1;
+	    }
+	
+	    /* 클릭 시 나타날 메뉴 (독립된 레이어로 띄움) */
+	    .more_menu {
+	        position: absolute; /* 문서 흐름에서 벗어나 공중에 뜹니다. */
+	        top: 100%; /* 기준점(.cmt_actions)의 바로 아래에 위치 */
+	        right: 0; /* 기준점의 오른쪽에 정렬 */
+	        background-color: #fff;
+	        border: 1px solid #ddd;
+	        border-radius: 4px;
+	        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+	        min-width: 80px; /* 최소 너비 지정 */
+	        z-index: 10; /* 다른 요소들 위에 보이도록 z-index 설정 */
+	        padding: 5px 0;
+	    }
+	
+	    /* 메뉴 안의 링크 스타일 */
+	    .more_menu a {
+	        display: block; /* 링크 영역을 넓혀 클릭하기 쉽게 만듭니다. */
+	        padding: 8px 12px;
+	        font-size: 14px;
+	        color: #333;
+	        text-decoration: none;
+	    }
+	
+	    .more_menu a:hover {
+	        background-color: #f5f5f5;
+	    }
+	</style>
 </head>
 <body>
 
@@ -454,57 +470,66 @@ $(document).ready(function() {
 </script>
 
 <script type="text/javascript">
-// Get the logged-in user's ID from the model
-const loginUserIdx = "${loginUserIdx}"; [cite_start]/* [cite: 64] */
+// Controller에서 전달받은 현재 로그인한 사용자의 ID
+const loginUserIdx = "${loginUserIdx}";
+
 $(function() {
-    // 1. '수정' 아이콘 클릭 시: 메뉴 토글
+    // 1. '수정' 아이콘(3점 메뉴) 클릭 시: 메뉴 토글
     $('.comment_wrap').on('click', '.modify', function(e) {
-        e.stopPropagation();
-        const $menu = $(this).next('.more_menu');
-        [cite_start]$('.more_menu').not($menu).hide(); /* [cite: 67] */
+        // 이벤트 전파를 중단하여, 바로 아래 document 클릭 이벤트가 실행되는 것을 방지
+        e.stopPropagation(); 
+        
+        const $menu = $(this).next('.more_menu'); // 클릭된 아이콘 바로 옆의 메뉴
+
+        // 현재 클릭한 메뉴를 제외한 다른 모든 메뉴는 닫기
+        $('.more_menu').not($menu).hide();
+        
+        // 현재 메뉴를 보여주거나 숨기기 (토글)
         $menu.toggle();
     });
 
-    // 2. 다른 곳 클릭하면 메뉴 닫기
+    // 2. 메뉴가 아닌 페이지의 다른 부분을 클릭하면 모든 메뉴 닫기
     $(document).on('click', function() {
         $('.more_menu').hide();
     });
-    
-    // 3. '수정하기' 버튼 클릭 시
+
+    // 3. '수정하기' 버튼 클릭 시 (메뉴 안에서)
     $('.comment_wrap').on('click', '.edit', function() {
-        [cite_start]const $commentDiv = $(this).closest('.cmt.clt'); /* [cite: 69] */
-        $(this).closest('.more_menu').hide();
-        $commentDiv.find('.cmt_txt').hide(); [cite_start]/* [cite: 70] */
+        const $commentDiv = $(this).closest('.cmt.clt');
+        $(this).closest('.more_menu').hide(); // 메뉴 닫기
+
+        // 기존 댓글 내용 숨기고, 수정 폼 보여주기
+        $commentDiv.find('.cmt_txt').hide();
         $commentDiv.find('.modi_cmt').show().find('textarea').focus();
     });
 
     // 4. '삭제하기' 버튼 클릭 시
     $('.comment_wrap').on('click', '.delete', function() {
         if (!confirm("정말로 댓글을 삭제하시겠습니까?")) return;
+
         const $commentDiv = $(this).closest('.cmt.clt');
         const cmtIdx = $commentDiv.data('cmt-idx');
 
         $.ajax({
-            // [IMPORTANT] Change URL from 'board' to 'campaign'
             url: "${pageContext.request.contextPath}/preuser/campaign/deleteComment.do",
-            [cite_start]type: "POST", /* [cite: 71] */
+            type: "POST",
             data: { cmtIdx: cmtIdx },
             success: function(response) {
                 if (response.status === "success") {
                     alert("댓글이 삭제되었습니다.");
-                    $commentDiv.remove(); [cite_start]/* [cite: 72] */
+                    $commentDiv.remove(); // 화면에서 댓글 HTML 요소 제거
                 } else {
                     alert("댓글 삭제에 실패했습니다.");
                 }
             },
-            [cite_start]error: function() { /* [cite: 73] */
+            error: function() {
                 alert("서버 통신 중 오류가 발생했습니다.");
             }
         });
     });
 
     // 5. '등록' (수정 완료) 버튼 클릭 시
-    [cite_start]$('.comment_wrap').on('click', '.save', function() { /* [cite: 74] */
+    $('.comment_wrap').on('click', '.save', function() {
         const $commentDiv = $(this).closest('.cmt.clt');
         const cmtIdx = $commentDiv.data('cmt-idx');
         const cmtCont = $commentDiv.find('.modi_cmt textarea').val();
@@ -514,32 +539,37 @@ $(function() {
             return;
         }
 
-        [cite_start]$.ajax({ /* [cite: 75] */
-            // [IMPORTANT] Change URL from 'board' to 'campaign'
+        $.ajax({
             url: "${pageContext.request.contextPath}/preuser/campaign/updateComment.do",
             type: "POST",
-            data: { cmtIdx: cmtIdx, cmtCont: cmtCont },
-            [cite_start]success: function(response) { /* [cite: 76] */
+            data: { 
+                cmtIdx: cmtIdx,
+                cmtCont: cmtCont
+            },
+            success: function(response) {
                 if (response.status === "success") {
+                    // 화면의 댓글 내용 업데이트
                     $commentDiv.find('.cmt_txt .content').text(cmtCont);
-                    $commentDiv.find('.modi_cmt').hide(); [cite_start]/* [cite: 77] */
-                    $commentDiv.find('.cmt_txt').show(); [cite_start]/* [cite: 78] */
+                    // 수정 폼 숨기고, 원래 댓글 내용 보여주기
+                    $commentDiv.find('.modi_cmt').hide();
+                    $commentDiv.find('.cmt_txt').show();
                 } else {
-                    alert("댓글 수정에 실패했습니다."); [cite_start]/* [cite: 79] */
+                    alert("댓글 수정에 실패했습니다.");
                 }
             },
             error: function() {
-                alert("서버 통신 중 오류가 발생했습니다."); [cite_start]/* [cite: 80] */
+                alert("서버 통신 중 오류가 발생했습니다.");
             }
         });
     });
 
-    // 6. '취소' 버튼 클릭 시
-    [cite_start]$('.comment_wrap').on('click', '.cancel', function() { /* [cite: 81] */
+    // 6. '취소' 버튼 클릭 시 (수정 입력창에서)
+    $('.comment_wrap').on('click', '.cancel', function() {
         const $commentDiv = $(this).closest('.cmt.clt');
+        // 수정 폼 숨기고, 원래 댓글 내용 보여주기
         $commentDiv.find('.modi_cmt').hide();
         $commentDiv.find('.cmt_txt').show();
-    }); [cite_start]/* [cite: 82] */
+    });
 });
 </script>
 

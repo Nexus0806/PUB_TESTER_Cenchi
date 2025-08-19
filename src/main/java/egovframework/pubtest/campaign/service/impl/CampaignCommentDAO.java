@@ -16,4 +16,12 @@ public class CampaignCommentDAO extends EgovAbstractMapper{
 	public void insertCampaignComment(CampaignCommentDTO comment) {
 		insert("campaignCommentDAO.insertCampaignComment", comment);
 	}
+	
+	public void updateCampaignComment(CampaignCommentDTO comment) {
+		update("campaignCommentDAO.updateCampaignComment", comment);
+	}
+	
+	public void deleteCampaignComment(int cmtIdx) {
+		update("campaignCommentDAO.deleteCampaignComment", cmtIdx);
+	}
 }

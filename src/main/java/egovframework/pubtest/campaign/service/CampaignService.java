@@ -14,6 +14,10 @@ public interface CampaignService {
 	
 	void insertCampaignComment(CampaignCommentDTO comment);
 	
+	void updateCampaignComment(CampaignCommentDTO comment);
+	
+	void deleteCampaignComment(int cmtIdx);
+	
 	void insertCampaignSubmit(CampaignSubmitVO submitVO);
 	
 	List<CampaignVO> selectSerachCampaignList(Map param);

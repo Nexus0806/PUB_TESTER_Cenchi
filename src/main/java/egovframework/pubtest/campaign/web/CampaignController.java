@@ -79,7 +79,9 @@ public class CampaignController {
 	}
 	
 	@GetMapping("/campaignView.do")
-	public String Campaigndetail(@RequestParam int campIdx, Model model) {
+	public String Campaigndetail(@RequestParam int campIdx, 
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser,
+			Model model) {
 		
 		CampaignVO campVo = campaignService.selectCampaignDetail(campIdx);
 		
@@ -122,6 +124,10 @@ public class CampaignController {
 		
 		String[] keyArray = campVo.getCampKeyword().split(",");
 		
+		if(loginUser != null) {
+			model.addAttribute("loginUserIdx", loginUser.getIdx());
+			model.addAttribute("loginUserType", loginUser.getType());
+		}
 		model.addAttribute("commentList", commentList);
 		model.addAttribute("campStartTime",campStartTime);
 		model.addAttribute("campEndTime",campEndTime);
@@ -151,6 +157,43 @@ public class CampaignController {
 	    campaignService.insertCampaignComment(comment);
 	    
 	    return "redirect:/preuser/campaign/campaignView.do?campIdx=" + campIdx;
+	}
+	
+	@PostMapping("/updateComment.do")
+	@ResponseBody
+	public Map<String, String> updateComment(
+			@RequestParam("cmtIdx") int cmtIdx, 
+			@RequestParam("cmtCont") String cmtCont,
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser) {
+		
+	    Map<String, String> response = new HashMap<>();
+	    
+	    try {
+	    	CampaignCommentDTO comment = new CampaignCommentDTO();
+	        comment.setCmtIdx(cmtIdx);
+	        comment.setCmtCont(cmtCont);
+	        campaignService.updateCampaignComment(comment);
+	        response.put("status", "success");
+	    } catch (Exception e) {
+	        response.put("status", "error");
+	    }
+	    
+	    return response;
+	}
+
+	@PostMapping("/deleteComment.do")
+	@ResponseBody 
+	public Map<String, String> deleteComment(@RequestParam("cmtIdx") int cmtIdx,
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser) {
+	    Map<String, String> response = new HashMap<>();
+	    
+	    try {
+	    	campaignService.deleteCampaignComment(cmtIdx);
+	        response.put("status", "success");
+	    } catch (Exception e) {
+	        response.put("status", "error");
+	    }
+	    return response;
 	}
 	
 	

@@ -59,6 +59,16 @@ public class CampaignServiceImpl implements CampaignService{
     }
     
     @Override
+    public void updateCampaignComment(CampaignCommentDTO comment) {
+    	campaignCommentDAO.updateCampaignComment(comment);
+    }
+    
+    @Override
+    public void deleteCampaignComment(int cmtIdx) {
+    	campaignCommentDAO.deleteCampaignComment(cmtIdx);
+    }
+    
+    @Override
     public void insertCampaignSubmit(CampaignSubmitVO submitVO) {
     	campaignDAO.insertCampaignSubmit(submitVO);
     }
