@@ -1,12 +1,17 @@
 package egovframework.pubtest.board.service;
 
+import org.springframework.web.multipart.MultipartFile; 
+
 public class BoardWriteDTO {
 	private String pstCate;
 	private String pstTitle;
 	private String pstCont;
-    private String pstImg;
-    private int userIdx;
-    private int bussIdx;
+    private MultipartFile pstImg;
+    private String DbSavedImgName;
+
+	private int userIdx;
+
+	private int bussIdx;
     
 	public String getPstCate() {
 		return pstCate;
@@ -26,12 +31,21 @@ public class BoardWriteDTO {
 	public void setPstCont(String pstCont) {
 		this.pstCont = pstCont;
 	}
-	public String getPstImg() {
+	
+    public MultipartFile getPstImg() {
 		return pstImg;
 	}
-	public void setPstImg(String pstImg) {
+	public void setPstImg(MultipartFile pstImg) {
 		this.pstImg = pstImg;
 	}
+	
+	public String getDbSavedImgName() {
+		return DbSavedImgName;
+	}
+	public void setDbSavedImgName(String dbSavedImgName) {
+		DbSavedImgName = dbSavedImgName;
+	}
+	
 	public int getUserIdx() {
 		return userIdx;
 	}
