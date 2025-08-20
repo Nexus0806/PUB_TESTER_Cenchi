@@ -16,4 +16,12 @@ public class BoardCommentDAO extends EgovAbstractMapper{
 		insert("boardCommentDAO.insertBoardComment", comment);
 	}
 	
+	public void updateBoardComment(BoardCommentDTO comment) {
+		update("boardCommentDAO.updateBoardComment", comment);
+	}
+	
+	public void deleteBoardComment(int cmtIdx) {
+		update("boardCommentDAO.deleteBoardComment", cmtIdx);
+	}
+	
 }
