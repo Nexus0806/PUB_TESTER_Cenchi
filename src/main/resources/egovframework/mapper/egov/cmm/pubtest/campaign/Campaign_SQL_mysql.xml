@@ -4,39 +4,42 @@
 <mapper namespace="campaignDAO">
 
 	<select id="selectCampaignList" resultType="campaignVO">
-		SELECT
-			CAMP_IDX,
-			CAMP_TITLE,
-			CAMP_THUB,
-			CAMP_PHO_NUM,
-			CAMP_TYPE,
-			CAMP_ADDRESS,
-			CAMP_CATE,
-			CAMP_AD_TYPE,
-			CAMP_AVAIL_DAYS,
-			CAMP_REGDATE,
-			CAMP_REC_STARTDATE,
-			CAMP_REC_ENDDATE,
-			CAMP_ANODATE,
-			CAMP_STARTDATE,
-			CAMP_ENDDATE,
-			CAMP_RESERVE,
-			CAMP_CAUTION,
-			CAMP_MISSION,
-			CAMP_KEYWORD,
-			CAMP_SERVICE,
-			CAMP_REWARD,
-			CAMP_RECRUITE,
-			CAMP_HIT,
-			CAMP_LIKE,
-			CAMP_DELYN,
-			CAMP_SUM_COUNT
-		FROM
-			PUB_CAMP
-		WHERE
-			CAMP_DELYN = 'N'
-		ORDER BY
-			CAMP_IDX DESC
+	    SELECT
+	        CAMP_IDX,
+	        CAMP_TITLE,
+	        CAMP_THUB,
+	        CAMP_PHO_NUM,
+	        CAMP_TYPE,
+	        CAMP_ADDRESS,
+	        CAMP_CATE,
+	        CAMP_AD_TYPE,
+	        CAMP_AVAIL_DAYS,
+	        CAMP_REGDATE,
+	        CAMP_REC_STARTDATE,
+	        CAMP_REC_ENDDATE,
+	        CAMP_ANODATE,
+	        CAMP_STARTDATE,
+	        CAMP_ENDDATE,
+	        CAMP_RESERVE,
+	        CAMP_CAUTION,
+	        CAMP_MISSION,
+	        CAMP_KEYWORD,
+	        CAMP_SERVICE,
+	        CAMP_REWARD,
+	        CAMP_RECRUITE,
+	        CAMP_HIT,
+	        CAMP_LIKE,
+	        CAMP_DELYN,
+	        (SELECT COUNT(*)
+	           FROM PUB_CAMP_SUM
+	          WHERE CAMP_IDX = PUB_CAMP.CAMP_IDX
+	            AND SUM_STATE = '신청') AS campSumCount
+	    FROM
+	        PUB_CAMP
+	    WHERE
+	        CAMP_DELYN = 'N'
+	    ORDER BY
+	        CAMP_IDX DESC
 	</select>
 	
 	<select id="selectCampaignDetail" resultType="campaignVO" parameterType="int">
@@ -66,7 +69,10 @@
 			CAMP_HIT,
 			CAMP_LIKE,
 			CAMP_DELYN,
-			CAMP_SUM_COUNT
+			(SELECT COUNT(*)
+	           FROM PUB_CAMP_SUM
+	          WHERE CAMP_IDX = PUB_CAMP.CAMP_IDX
+	            AND SUM_STATE = '신청') AS campSumCount
 		FROM
 			PUB_CAMP
 		WHERE
@@ -85,7 +91,11 @@
 			CAMP_REC_ENDDATE, CAMP_ANODATE, CAMP_STARTDATE,
 			CAMP_ENDDATE, CAMP_RESERVE, CAMP_CAUTION, CAMP_MISSION,
 			CAMP_KEYWORD, CAMP_SERVICE, CAMP_REWARD, CAMP_RECRUITE,
-			CAMP_HIT, CAMP_LIKE, CAMP_DELYN, CAMP_SUM_COUNT
+			CAMP_HIT, CAMP_LIKE, CAMP_DELYN, 
+			(SELECT COUNT(*)
+	           FROM PUB_CAMP_SUM
+	          WHERE CAMP_IDX = PUB_CAMP.CAMP_IDX
+	            AND SUM_STATE = '신청') AS campSumCount
 		FROM
 			PUB_CAMP
 		<where>

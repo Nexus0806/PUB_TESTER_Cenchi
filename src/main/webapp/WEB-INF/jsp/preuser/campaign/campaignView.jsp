@@ -285,7 +285,7 @@
 								    </li>
 								    <li>
 								        <span class="sc_tit">실시간 지원 현황</span>
-								        <p>지원 <span> ${campVo.campRecruite}</span> / 모집 <span>${campVo.campSumCount}</span></p>
+								        <p>지원 <span> ${campVo.campSumCount}</span> / 모집 <span>${campVo.campRecruite}</span></p>
 								    </li>
 								</ul>
 
