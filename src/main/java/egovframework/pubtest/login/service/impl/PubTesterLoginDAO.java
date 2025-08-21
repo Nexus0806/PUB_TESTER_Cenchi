@@ -1,5 +1,6 @@
 package egovframework.pubtest.login.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
@@ -58,5 +59,15 @@ public class PubTesterLoginDAO extends EgovAbstractMapper{
 	public void updateBssVisitCnt(int idx){
 		update("loginDAO.updateBssVisitCnt", idx);
 	}
+	
+	/* db 비밀번호 해싱
+	public List<UserRegVO> pwhasing() {
+		return selectList("loginDAO.findUsersWithPlainPw");
+	}
+	
+	public void updateUserPwHashed(Map param) {
+		update("loginDAO.updateUserPwHashed", param);
+	}
+	*/
 
 }

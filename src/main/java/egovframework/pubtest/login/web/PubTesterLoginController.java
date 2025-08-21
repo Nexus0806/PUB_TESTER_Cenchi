@@ -37,6 +37,8 @@ public class PubTesterLoginController {
 	@GetMapping("login.do")
 	public String infLogin(@CookieValue(value="savedID", required=false) String savedID,
 							Model model){
+		// pubTesterLoginService.pwhasing(); DB에 저장된 비밀번호 해싱 (db전체 데이터를 해싱 하므로, 이중으로 encode 되지 않도록 주의)
+		
 		model.addAttribute("savedID", savedID);
 		return "preuser/member/login";
 	}

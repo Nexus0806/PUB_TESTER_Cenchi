@@ -1,5 +1,6 @@
 package egovframework.pubtest.login.service;
 
+import java.util.List;
 import java.util.Map;
 
 public interface PubTesterLoginService {
@@ -9,4 +10,6 @@ public interface PubTesterLoginService {
 	Integer chklogin(Map<String, Object> param);
 	String getNickName(String type, int idx);
 	void updateVisitCnt(String type, int idx);
+
+	//int pwhasing();
 }

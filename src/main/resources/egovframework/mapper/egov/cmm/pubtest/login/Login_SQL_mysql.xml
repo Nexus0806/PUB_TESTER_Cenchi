@@ -131,6 +131,25 @@
 			BUSS_PW = #{pw}
 	</select>
 -->
+
+<select id="findUsersWithPlainPw" resultType="UserRegVO">
+  SELECT
+  	USER_IDX	AS userIdx,
+    USER_EMAIL 	AS userEmail,
+    USER_PW    	AS userPW
+  FROM 
+  	pub_user
+</select>
+
+<update id="updateUserPwHashed" parameterType="map">
+  UPDATE
+  	pub_user
+  SET
+  	USER_PW = #{hashedPw}
+  WHERE
+  	USER_IDX = #{userIdx}
+</update>
+
 	
 	<select id="getInfNickName" parameterType="int" resultType="java.lang.String">
 		SELECT

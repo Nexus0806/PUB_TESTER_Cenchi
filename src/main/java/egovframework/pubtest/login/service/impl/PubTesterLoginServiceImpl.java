@@ -1,5 +1,7 @@
 package egovframework.pubtest.login.service.impl;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -86,4 +88,30 @@ public class PubTesterLoginServiceImpl implements PubTesterLoginService{
 		else if("bss".equals(type))
 			pubTesterLoginDAO.updateBssVisitCnt(idx);
 	}
+	
+	/*
+	@Override
+	public int pwhasing() {
+		List<UserRegVO> targets = pubTesterLoginDAO.pwhasing();
+		
+		int updated = 0;
+
+        for (UserRegVO u : targets) {
+        	System.err.println("idx : " + u.getUserIdx());
+        	System.err.println("email : " + u.getUserEmail());
+        	System.err.println("pw : " + u.getUserPW());
+        	
+            String raw = u.getUserPW();
+
+            String hashed = passwordEncoder.encode(raw);
+            Map<String,Object> p = new HashMap<>();
+            p.put("userIdx", u.getUserIdx());
+            p.put("hashedPw", hashed);
+            pubTesterLoginDAO.updateUserPwHashed(p);
+            updated++;
+        }
+        
+        return updated;
+	}
+	*/
 }
