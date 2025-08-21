@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="campaignCommentDAO">
+
+	<select id="selectCampaignCommentList" resultType="boardCommentDTO" parameterType="int">
+	    SELECT
+	        C.CMT_IDX,
+	        C.CAMP_IDX,
+	        C.CMT_CONT,
+	        C.CMT_ANS,
+	        C.CMT_REGDATE,
+	        C.USER_IDX,
+        	C.BUSS_IDX,
+	        COALESCE(U.USER_NICKNAME, B.BUSS_NICKNAME) AS AUTHOR_NICKNAME
+	    FROM
+	        PUB_CMT C
+	    LEFT JOIN
+	        PUB_USER U ON C.USER_IDX = U.USER_IDX
+	    LEFT JOIN
+	        PUB_BUSS B ON C.BUSS_IDX = B.BUSS_IDX
+	    WHERE
+	        C.CMT_DELYN = 'N'
+	        AND C.CAMP_IDX = #{campIdx}
+	    ORDER BY
+	        C.CMT_REGDATE DESC;
+	</select>
+	
+	<insert id="insertCampaignComment" parameterType="campaignCommentDTO">
+		INSERT INTO PUB_CMT
+		    <trim prefix="(" suffix=")" suffixOverrides=",">
+		        CAMP_IDX,
+		        CMT_CONT,
+		        <if test="userIdx != null and userIdx != 0">
+		            USER_IDX,
+		        </if>
+		        <if test="bussIdx != null and bussIdx != 0">
+		            BUSS_IDX,
+		        </if>
+		    </trim>
+		    <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+		        #{campIdx},
+		        #{cmtCont},
+		        <if test="userIdx != null and userIdx != 0">
+		            #{userIdx},
+		        </if>
+		        <if test="bussIdx != null and bussIdx != 0">
+		            #{bussIdx},
+		        </if>
+		    </trim>
+	</insert>
+	
+	<update id="updateCampaignComment" parameterType="campaignCommentDTO">
+		UPDATE PUB_CMT
+			SET CMT_CONT = #{cmtCont}
+			WHERE CMT_IDX = #{cmtIdx};
+	</update>
+	
+	<update id="deleteCampaignComment" parameterType="int">
+		UPDATE PUB_CMT
+			SET CMT_DELYN = 'Y'
+			WHERE CMT_IDX = #{cmtIdx};
+	</update>
+</mapper>

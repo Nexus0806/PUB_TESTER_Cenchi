@@ -5,6 +5,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+
+import egovframework.pubtest.campaign.service.CampaignCommentDTO;
 import egovframework.pubtest.campaign.service.CampaignService;
 import egovframework.pubtest.campaign.service.CampaignSubmitVO;
 import egovframework.pubtest.campaign.service.CampaignVO;
@@ -16,6 +18,9 @@ public class CampaignServiceImpl implements CampaignService{
 	
     @Resource(name = "campaignDAO")
 	private CampaignDAO campaignDAO;
+    
+    @Resource(name = "campaignCommentDAO")
+    private CampaignCommentDAO campaignCommentDAO;
     
     @Override
 	public List<CampaignVO> selectCampaignList(){
@@ -40,6 +45,27 @@ public class CampaignServiceImpl implements CampaignService{
     	campVo.setCampReward(fomattedReward);
   
     	return campVo;
+    }
+    
+    @Override
+    public List<CampaignCommentDTO> selectCampaignCommentList(int campIdx) {
+    	return campaignCommentDAO.selectCampaignCommentList(campIdx);
+    }
+
+    
+    @Override
+	public void insertCampaignComment(CampaignCommentDTO comment) {
+    	campaignCommentDAO.insertCampaignComment(comment);
+    }
+    
+    @Override
+    public void updateCampaignComment(CampaignCommentDTO comment) {
+    	campaignCommentDAO.updateCampaignComment(comment);
+    }
+    
+    @Override
+    public void deleteCampaignComment(int cmtIdx) {
+    	campaignCommentDAO.deleteCampaignComment(cmtIdx);
     }
     
     @Override

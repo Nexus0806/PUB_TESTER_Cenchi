@@ -22,6 +22,7 @@ import egovframework.pubtest.campaign.service.CampaignVO;
 import egovframework.pubtest.util.PubTestUtil;
 import egovframework.pubtest.campaign.service.CampaignSubmitVO;
 import egovframework.pubtest.campaign.service.CampaignSearchDTO;
+import egovframework.pubtest.campaign.service.CampaignCommentDTO;
 
 import egovframework.pubtest.login.web.PubTesterLoginController.SessionUser;
 import egovframework.pubtest.main.service.PubTesterMainVO;
@@ -78,9 +79,14 @@ public class CampaignController {
 	}
 	
 	@GetMapping("/campaignView.do")
-	public String Campaigndetail(@RequestParam int campIdx, Model model) {
+	public String Campaigndetail(@RequestParam int campIdx, 
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser,
+			Model model) {
+		
 		CampaignVO campVo = campaignService.selectCampaignDetail(campIdx);
-			
+		
+		List <CampaignCommentDTO> commentList = campaignService.selectCampaignCommentList(campIdx);
+		
 			// date 날자 검증. null 혹은 비어있는지 확인.
 		    String recStartDateStr = campVo.getCampRecStartdate(); 
 
@@ -118,6 +124,11 @@ public class CampaignController {
 		
 		String[] keyArray = campVo.getCampKeyword().split(",");
 		
+		if(loginUser != null) {
+			model.addAttribute("loginUserIdx", loginUser.getIdx());
+			model.addAttribute("loginUserType", loginUser.getType());
+		}
+		model.addAttribute("commentList", commentList);
 		model.addAttribute("campStartTime",campStartTime);
 		model.addAttribute("campEndTime",campEndTime);
 		model.addAttribute("keywordList", keyArray);
@@ -125,6 +136,66 @@ public class CampaignController {
 		
 		return "/preuser/campaign/campaignView";
 	}
+	
+	@PostMapping("/addComment.do")
+	public String addComment(
+			CampaignCommentDTO comment, Model model, 
+			@RequestParam("campIdx") int campIdx, RedirectAttributes redirect,
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser) {
+		
+		if(loginUser == null) {
+			redirect.addFlashAttribute("msg", "로그인이 필요한 서비스 입니다.");
+			return "redirect:/preuser/campaign/campaignView.do?campIdx=" + campIdx;
+		}
+		if(loginUser.getType().equals("inf")) 
+			comment.setUserIdx(loginUser.getIdx());
+		else 
+			comment.setBussIdx(loginUser.getIdx());
+	
+	    comment.setCampIdx(campIdx); 
+	    
+	    campaignService.insertCampaignComment(comment);
+	    
+	    return "redirect:/preuser/campaign/campaignView.do?campIdx=" + campIdx;
+	}
+	
+	@PostMapping("/updateComment.do")
+	@ResponseBody
+	public Map<String, String> updateComment(
+			@RequestParam("cmtIdx") int cmtIdx, 
+			@RequestParam("cmtCont") String cmtCont,
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser) {
+		
+	    Map<String, String> response = new HashMap<>();
+	    
+	    try {
+	    	CampaignCommentDTO comment = new CampaignCommentDTO();
+	        comment.setCmtIdx(cmtIdx);
+	        comment.setCmtCont(cmtCont);
+	        campaignService.updateCampaignComment(comment);
+	        response.put("status", "success");
+	    } catch (Exception e) {
+	        response.put("status", "error");
+	    }
+	    
+	    return response;
+	}
+
+	@PostMapping("/deleteComment.do")
+	@ResponseBody 
+	public Map<String, String> deleteComment(@RequestParam("cmtIdx") int cmtIdx,
+			@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser) {
+	    Map<String, String> response = new HashMap<>();
+	    
+	    try {
+	    	campaignService.deleteCampaignComment(cmtIdx);
+	        response.put("status", "success");
+	    } catch (Exception e) {
+	        response.put("status", "error");
+	    }
+	    return response;
+	}
+	
 	
 	@GetMapping("/campaignSubmit.do")
 	public String CampaignSubmitForm(@RequestParam int campIdx, Model model) {

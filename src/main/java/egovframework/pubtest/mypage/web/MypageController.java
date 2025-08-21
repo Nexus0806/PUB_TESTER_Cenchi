@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import egovframework.pubtest.campaign.service.CampaignService;
+import egovframework.pubtest.mypage.service.MypageSearchDTO;
+
 import egovframework.pubtest.campaign.service.CampaignSubmitVO;
 import egovframework.pubtest.campaign.service.CampaignVO;
 import egovframework.pubtest.login.web.PubTesterLoginController.SessionUser;
@@ -34,12 +36,18 @@ public class MypageController {
 	private CampaignService campaignService;
 	
     // SessionAttribute 어노테이션으로 현재 로그인한 사용자 객체를 가져옴
-    @RequestMapping("/mycampaign.do")
-    public String loadMycampaign(@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser,
+    @GetMapping("/mycampaign.do")
+    public String loadMycampaign(
+    		@ModelAttribute MypageSearchDTO mypageSearchDTO, 
+    		@SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser,
     								Model model) {
+    	
+    	System.err.println(mypageSearchDTO.toString());
+    	
     	if(loginUser == null) {
     		return "redirect:/preuser/member/login.do";
     	}
+    	
     	List<CampaignVO> userCampList = mypageService.getUserCampList(loginUser.getIdx());
     	
     	for(CampaignVO row : userCampList)
@@ -68,7 +76,23 @@ public class MypageController {
     	return "preuser/mypage/mycampaign";
     }
     
-    @GetMapping("mycampaignEdit.do")
+    @GetMapping("/filterMyCampaigns.do")
+    @ResponseBody
+    public List<CampaignVO> filterMyCampaigns(
+    		@ModelAttribute MypageSearchDTO searchDTO,
+            @SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser){
+    	
+    	/*
+    	searchDTO.setUserId(loginUser.getUserId()); 
+
+        // 3. Call the service to fetch the filtered campaign list from the database.
+        List<CampaignVO> filteredCampaigns = mypageService.getFilteredMyCampaigns(searchDTO);
+    	 */
+        // 4. Return the list. Spring Boot will automatically convert it to a JSON array.
+        return null;
+    }
+    
+    @GetMapping("/mycampaignEdit.do")
     public String editMyCampaignForm(@RequestParam("campIdx") int campIdx,
             @SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser,
             Model model, RedirectAttributes redirect) {

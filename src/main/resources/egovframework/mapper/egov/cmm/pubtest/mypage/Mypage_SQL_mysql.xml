@@ -32,7 +32,10 @@
 			PC.CAMP_HIT,
 			PC.CAMP_LIKE,
 			PC.CAMP_DELYN,
-			PC.CAMP_SUM_COUNT,
+			(SELECT COUNT(*)
+		   		FROM PUB_CAMP_SUM
+		  		WHERE CAMP_IDX = PC.CAMP_IDX
+					AND SUM_STATE = '신청') AS campSumCount,
 			PS.SUM_STATE
 		FROM
 			pub_camp_sum PS

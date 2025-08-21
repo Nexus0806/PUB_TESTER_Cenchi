@@ -14,7 +14,10 @@
 				CAMP_SERVICE		as campService,
 				CAMP_STARTDATE		as campStartDate,
 				CAMP_REC_ENDDATE	as campRecEndDate,
-				CAMP_SUM_COUNT		as campSumCount,
+				(SELECT COUNT(*)
+		           FROM PUB_CAMP_SUM
+		          WHERE CAMP_IDX = PUB_CAMP.CAMP_IDX
+		           		AND SUM_STATE = '신청')		as campSumCount,
 				CAMP_RECRUITE		as campRecruite
 			FROM 
 				PUB_CAMP
@@ -37,7 +40,10 @@
 				CAMP_SERVICE	as campService,
 				CAMP_STARTDATE	as campStartDate,
 				CAMP_REC_ENDDATE	as campRecEndDate,
-				CAMP_SUM_COUNT	as campSumCount,
+				(SELECT COUNT(*)
+		           FROM PUB_CAMP_SUM
+		          WHERE CAMP_IDX = PUB_CAMP.CAMP_IDX
+		           		AND SUM_STATE = '신청')		as campSumCount,
 				CAMP_RECRUITE	as campRecruite
 			FROM 
 				PUB_CAMP
@@ -60,7 +66,10 @@
 				CAMP_SERVICE		as campService,
 				CAMP_STARTDATE		as campStartDate,
 				CAMP_REC_ENDDATE	as campRecEndDate,
-				CAMP_SUM_COUNT		as campSumCount,
+				(SELECT COUNT(*)
+		           FROM PUB_CAMP_SUM
+		          WHERE CAMP_IDX = PUB_CAMP.CAMP_IDX
+		           		AND SUM_STATE = '신청')		as campSumCount,
 				CAMP_RECRUITE		as campRecruite
 			FROM 
 				PUB_CAMP
