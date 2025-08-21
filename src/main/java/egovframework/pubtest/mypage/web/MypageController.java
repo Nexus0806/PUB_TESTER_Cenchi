@@ -82,12 +82,13 @@ public class MypageController {
     		@ModelAttribute MypageSearchDTO searchDTO,
             @SessionAttribute(name = "LOGIN_USER", required = false) SessionUser loginUser){
     	
-    	/*
-    	searchDTO.setUserId(loginUser.getUserId()); 
-
+    	
+    	searchDTO.setUserIdx(loginUser.getIdx()); 
+    	
+    	System.err.println(searchDTO.toString());
         // 3. Call the service to fetch the filtered campaign list from the database.
-        List<CampaignVO> filteredCampaigns = mypageService.getFilteredMyCampaigns(searchDTO);
-    	 */
+        //List<CampaignVO> filteredCampaigns = mypageService.getFilteredMyCampaigns(searchDTO);
+    	 
         // 4. Return the list. Spring Boot will automatically convert it to a JSON array.
         return null;
     }

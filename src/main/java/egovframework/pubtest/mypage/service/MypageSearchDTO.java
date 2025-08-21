@@ -7,13 +7,7 @@ public class MypageSearchDTO {
 	private String searchKeyword;		// 검색어
 	private String type;				// 광고 유형
 	private String sort;				// 정렬 유형
-	
-	@Override
-	public String toString() {
-		return "MypageSearchDTO [region=" + region + ", category=" + category + ", searchCondition="
-				+ ", searchKeyword=" + searchKeyword + ", channel=" + channel + ", type=" + type + ", sort=" + sort
-				+ "]";
-	}
+	private int userIdx;
 	public String getRegion() {
 		return region;
 	}
@@ -26,17 +20,17 @@ public class MypageSearchDTO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getSearchKeyword() {
-		return searchKeyword;
-	}
-	public void setSearchKeyword(String searchKeyword) {
-		this.searchKeyword = searchKeyword;
-	}
 	public String getChannel() {
 		return channel;
 	}
 	public void setChannel(String channel) {
 		this.channel = channel;
+	}
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
 	}
 	public String getType() {
 		return type;
@@ -50,4 +44,17 @@ public class MypageSearchDTO {
 	public void setSort(String sort) {
 		this.sort = sort;
 	}
+	public int getUserIdx() {
+		return userIdx;
+	}
+	public void setUserIdx(int userIdx) {
+		this.userIdx = userIdx;
+	}
+	@Override
+	public String toString() {
+		return "MypageSearchDTO [region=" + region + ", category=" + category + ", channel=" + channel
+				+ ", searchKeyword=" + searchKeyword + ", type=" + type + ", sort=" + sort + ", userIdx=" + userIdx
+				+ "]";
+	}
+	
 }
