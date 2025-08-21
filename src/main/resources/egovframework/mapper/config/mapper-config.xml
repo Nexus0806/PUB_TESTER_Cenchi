@@ -22,6 +22,7 @@
 		
 		<typeAlias alias="campaignSubmitVO"		type="egovframework.pubtest.campaign.service.CampaignSubmitVO"/>
 		<typeAlias alias="campaignVO"			type="egovframework.pubtest.campaign.service.CampaignVO"/>
+		<typeAlias alias="campaignCommentDTO"	type="egovframework.pubtest.campaign.service.CampaignCommentDTO"/>
 		
 		<typeAlias alias="boardVO"				type="egovframework.pubtest.board.service.BoardVO"/>
 		<typeAlias alias="boardDetailDTO"		type="egovframework.pubtest.board.service.BoardDetailDTO"/>
