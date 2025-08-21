@@ -30,7 +30,7 @@ import egovframework.pubtest.login.service.UserRegVO;
 @Controller
 @RequestMapping("/preuser/member")
 public class PubTesterLoginController {
-
+	
 	@Resource(name = "loginService")
 	private PubTesterLoginService pubTesterLoginService;
 	

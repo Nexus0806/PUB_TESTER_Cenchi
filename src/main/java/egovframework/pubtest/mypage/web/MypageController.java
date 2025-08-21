@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import egovframework.pubtest.mypage.service.MypageSearchDTO;
-
+import egovframework.pubtest.campaign.service.CampaignService;
 import egovframework.pubtest.campaign.service.CampaignSubmitVO;
 import egovframework.pubtest.campaign.service.CampaignVO;
 import egovframework.pubtest.login.web.PubTesterLoginController.SessionUser;
@@ -28,7 +28,7 @@ import egovframework.pubtest.util.PubTestUtil;
 @Controller
 @RequestMapping("/preuser/mypage")
 public class MypageController {
-
+	
     @Resource(name = "mypageService")
     private MypageService mypageService;
     

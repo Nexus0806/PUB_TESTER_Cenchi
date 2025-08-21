@@ -25,6 +25,15 @@ public class PubTesterLoginDAO extends EgovAbstractMapper{
 		return selectOne("loginDAO.existByBssEmail", email);
 	}
 	
+	public UserRegVO findInfByEmail(String email) {
+		return selectOne("loginDAO.findInfByEmail", email);
+	}
+	
+	public UserRegVO findBssByEmail(String email) {
+		return selectOne("loginDAO.findBssByEmail", email);
+	}
+	
+	/*
 	public Integer chkInfLogin(Map<String, Object> param){
 		return selectOne("loginDAO.chkInfLogin", param);
 	}
@@ -32,6 +41,7 @@ public class PubTesterLoginDAO extends EgovAbstractMapper{
 	public Integer chkBssLogin(Map<String, Object> param){
 		return selectOne("loginDAO.chkBssLogin", param);
 	}
+	*/
 	
 	public String getInfNickName(int idx) {
 		return selectOne("loginDAO.getInfNickName", idx);

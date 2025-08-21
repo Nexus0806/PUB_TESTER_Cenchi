@@ -46,6 +46,13 @@
 
 	<dependencies>
 		
+		<!-- 비밀번호 해시용 (Spring Security 전체가 아니라 crypto 모듈만) -->
+		<dependency>
+  			<groupId>org.springframework.security</groupId>
+  			<artifactId>spring-security-crypto</artifactId>
+  			<version>6.3.3</version> <!-- 사용 중인 Spring 버전에 맞춰 조정 가능 -->
+		</dependency>
+		
 		<dependency>
         	<groupId>com.fasterxml.jackson.core</groupId>
         	<artifactId>jackson-databind</artifactId>
