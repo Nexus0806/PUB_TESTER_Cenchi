@@ -5,4 +5,7 @@ import java.util.List;
 public interface AdminService {
 	List<InfUserVO> getInfUserList();
 	int countInfUserList();
+	
+	List<BssUserVO> getBssUserList();
+	int countBssUserList();
 }

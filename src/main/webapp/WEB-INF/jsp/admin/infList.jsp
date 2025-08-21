@@ -20,16 +20,16 @@
 <body>
 	<div id="wrap">
 		<div id="header">
-	<h1><a href="/admin/infList.do"><img src="${pageContext.request.contextPath}/_img/pc/comn/logo.svg"></a></h1>
-	<div id="head_right">	
-		<p>
-			<strong>admin</strong>님 환영합니다. 
-		</p>
-		<a href="adminList.html" class="mp">관리자 관리</a>
-		<a href="/admin/login.do" class="out">로그아웃</a>
-	</div>
-
-</div>			
+			<h1><a href="/admin/infList.do"><img src="${pageContext.request.contextPath}/_img/pc/comn/logo.svg"></a></h1>
+			<div id="head_right">	
+				<p>
+					<strong>admin</strong>님 환영합니다. 
+				</p>
+				<a href="/admin/infList.do" class="mp">관리자 관리</a>
+				<a href="/admin/login.do" class="out">로그아웃</a>
+			</div>
+		</div>	
+		
 		<div id="container">
 			<ul id="lmn">
 				<li class="on"><a href="/admin/infList.do">회원관리</a>
@@ -70,23 +70,6 @@
 									<p class="input">
 										<input name="searchKeyword" id="searchKeyword" type="text" size="30" value="" title="조회">
 										<span class="sbtn"><a href="javascript:void(0);" onclick="">조회</a></span>
-									</p>
-								</td>
-								<th>사용여부</th>
-								<td>
-									<p class="radio">
-										<span>
-											<input type="radio" id="searAll" name="search_fi" value="A" checked>
-											<label for="searAll">전체</label>
-										</span>
-										<span>
-											<input type="radio" id="searYes" name="search_fi" value="Y">
-											<label for="searYes">사용</label>
-										</span>
-										<span>
-											<input type="radio" id="searNo" name="search_fi" value="N">
-											<label for="searNo">미사용</label>
-										</span>
 									</p>
 								</td>
 							</tr>

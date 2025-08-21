@@ -29,8 +29,6 @@
 				USER_DELYN			as userDelYN
 			FROM
 				pub_user
-			WHERE
-				USER_DELYN = 'N'
 	</select>
 
 	<select id="countInfUserList" resultType="int">
@@ -38,6 +36,31 @@
 			COUNT(*)
 		FROM
 			pub_user
+	</select>
+	
+		<select id="selectBssUserList" resultType="egovframework.admin.service.BssUserVO">
+			SELECT 
+				DATE_FORMAT(BUSS_REGDATE, '%Y-%m-%d %H:%i:%s')		as bussRegDate,
+				BUSS_NAME			as bussName,
+				BUSS_NICKNAME		as bussNick,
+				BUSS_PHO_NUM		as bussPhoneNum,
+				BUSS_EMAIL			as bussEmail,
+				BUSS_PW				as bussPW,
+				BUSS_BIRTH			as bussBirth,
+				BUSS_SEX			as bussSex,
+				BUSS_VISIT_CNT		as bussVisitCnt,
+				BUSS_BAN_CNT		as bussBanCnt,
+				BUSS_SCORE			as bussScore,
+				BUSS_DELYN			as bussDelYN
+			FROM
+				pub_buss
+	</select>
+	
+		<select id="countBssUserList" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			pub_buss
 	</select>
 	
 </mapper>

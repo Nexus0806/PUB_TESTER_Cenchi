@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import egovframework.admin.service.AdminService;
+import egovframework.admin.service.BssUserVO;
 import egovframework.admin.service.InfUserVO;
 
 @Controller
@@ -46,11 +47,15 @@ public class AdminController {
 		return "/admin/infList";
 	}
 	
-	@RequestMapping("/admin/bbsList.do")
+	@RequestMapping("/admin/bssList.do")
 	public String adminBbsList(Model model)
 	{
+		List<BssUserVO> list = adminService.getBssUserList();
+		int listCount = adminService.countBssUserList();
 		
-		return "/admin/bbsList";
+		model.addAttribute("bssList", list);
+		model.addAttribute("bssListCnt", listCount);
+		return "/admin/bssList";
 	}
 	
 	@RequestMapping("/admin/comList.do")

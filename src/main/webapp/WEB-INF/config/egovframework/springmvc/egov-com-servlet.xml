@@ -47,7 +47,6 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/preuser/campaign/campaignSubmit.do"/>
 			<mvc:mapping path="/preuser/board/**"/>
-			<mvc:mapping path="/admin/**"/>
 			
 			<mvc:exclude-mapping path="/index.do"/>
     		<mvc:exclude-mapping path="/_css/**"/>
