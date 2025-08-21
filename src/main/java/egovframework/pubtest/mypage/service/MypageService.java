@@ -11,4 +11,6 @@ public interface MypageService {
 	public List<CampaignVO> getUserCampList (int idx);
 	
 	public CampaignSubmitVO getUserCampSumitInfo (Map param);
+	
+	public int updateMyCampaignSubmit (CampaignSubmitVO vo);
 }

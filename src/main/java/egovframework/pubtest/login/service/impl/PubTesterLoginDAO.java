@@ -1,5 +1,6 @@
 package egovframework.pubtest.login.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
@@ -25,6 +26,15 @@ public class PubTesterLoginDAO extends EgovAbstractMapper{
 		return selectOne("loginDAO.existByBssEmail", email);
 	}
 	
+	public UserRegVO findInfByEmail(String email) {
+		return selectOne("loginDAO.findInfByEmail", email);
+	}
+	
+	public UserRegVO findBssByEmail(String email) {
+		return selectOne("loginDAO.findBssByEmail", email);
+	}
+	
+	/*
 	public Integer chkInfLogin(Map<String, Object> param){
 		return selectOne("loginDAO.chkInfLogin", param);
 	}
@@ -32,6 +42,7 @@ public class PubTesterLoginDAO extends EgovAbstractMapper{
 	public Integer chkBssLogin(Map<String, Object> param){
 		return selectOne("loginDAO.chkBssLogin", param);
 	}
+	*/
 	
 	public String getInfNickName(int idx) {
 		return selectOne("loginDAO.getInfNickName", idx);
@@ -48,5 +59,15 @@ public class PubTesterLoginDAO extends EgovAbstractMapper{
 	public void updateBssVisitCnt(int idx){
 		update("loginDAO.updateBssVisitCnt", idx);
 	}
+	
+	/* db 비밀번호 해싱
+	public List<UserRegVO> pwhasing() {
+		return selectList("loginDAO.findUsersWithPlainPw");
+	}
+	
+	public void updateUserPwHashed(Map param) {
+		update("loginDAO.updateUserPwHashed", param);
+	}
+	*/
 
 }

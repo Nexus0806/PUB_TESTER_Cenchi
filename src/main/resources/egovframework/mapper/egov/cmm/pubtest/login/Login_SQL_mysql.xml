@@ -77,7 +77,40 @@
 				WHERE 
 					BUSS_EMAIL = #{email}	)
 	</select>
+	
+	<!-- 인플루언서 -->
+	<select id="findInfByEmail" parameterType="string" resultType="UserRegVO">
+    	SELECT 
+        	USER_IDX       AS userIdx,
+        	USER_EMAIL     AS userEmail,
+        	USER_PW        AS userPW,     <!-- 해시 -->
+        	USER_NICKNAME  AS userNickName
+    	FROM 
+    		pub_user
+   		WHERE 
+   			USER_EMAIL = #{email}
+      	AND 
+      		USER_DELYN = 'N'
+    	LIMIT 1
+	</select>
 
+	<!-- 사업자 -->
+	<select id="findBssByEmail" parameterType="string" resultType="UserRegVO">
+    	SELECT 
+        	USER_IDX       AS userIdx,
+        	USER_EMAIL     AS userEmail,
+        	USER_PW        AS userPW,     <!-- 해시 -->
+        	USER_NICKNAME  AS userNickName
+    	FROM
+    		pub_buss
+    	WHERE
+    		USER_EMAIL = #{email}
+      	AND
+      		USER_DELYN = 'N'
+    	LIMIT 1
+	</select>
+
+<!--  
 	<select id="chkInfLogin" parameterType="map" resultType="java.lang.Integer">
 		SELECT 
 			USER_IDX
@@ -97,6 +130,26 @@
 			BUSS_EMAIL = #{id} AND
 			BUSS_PW = #{pw}
 	</select>
+-->
+
+<select id="findUsersWithPlainPw" resultType="UserRegVO">
+  SELECT
+  	USER_IDX	AS userIdx,
+    USER_EMAIL 	AS userEmail,
+    USER_PW    	AS userPW
+  FROM 
+  	pub_user
+</select>
+
+<update id="updateUserPwHashed" parameterType="map">
+  UPDATE
+  	pub_user
+  SET
+  	USER_PW = #{hashedPw}
+  WHERE
+  	USER_IDX = #{userIdx}
+</update>
+
 	
 	<select id="getInfNickName" parameterType="int" resultType="java.lang.String">
 		SELECT

@@ -36,6 +36,7 @@
                 <%-- 2. 서버로부터 받은 campIdx, userIdx를 숨겨서 전송합니다. --%>
                 <%-- 이 값들은 이 페이지를 보여주는 GET 방식 컨트롤러에서 model.addAttribute로 전달해야 합니다. --%>
                 <input type="hidden" name="campIdx" value="${campVo.campIdx}">
+                <input type="hidden" name="sumIdx" value="${submitInfo.sumIdx}">
                 <%-- ================================================================= --%>
                 
                 <div class="View_wrap">
@@ -46,67 +47,70 @@
 
                         <div class="apply_wrap mb30">
                             <%-- 3. VO 필드명에 맞춰 name="sumCont" 지정 --%>
-                            <textarea name="sumCont" rows="5" placeholder="내용 입력">
-                            	<c:if test="${submitInfo.sumCont not eq null or submitInfo.sumCont not eq ''}">
-                                	${submitInfo.sumCont}
-                                </c:if>
-                            </textarea>
+                            <textarea name="sumCont" rows="5" placeholder="내용 입력"><c:out value="${submitInfo.sumCont}"></c:out></textarea>
                         </div>
 
                         <div class="apply_wrap">
                             <h4>주소</h4>
                             <div class="add_wrap">
                                 <%-- 주소 필드들에는 id만 부여해서 자바스크립트가 값을 읽을 수 있도록 합니다. --%>
-                                <input id="zipcode" name="zipcode" placeholder="우편번호..." type="text" readonly>
-                                <c:if test="${submitInfo.zipcode not eq null or submitInfo.zipcode not eq ''}">
-                                	${submitInfo.zipcode}
-                                </c:if>
+                                <input id="zipCode" name="zipCode" placeholder="우편번호..." type="text" readonly
+                                value="${submitInfo.zipCode}">
                                 <a href="#none" class="btn a bk" onclick="openDaumPostcode()">우편번호 찾기</a>
                             </div>
-                            <%-- 기본주소를 합쳐서 저장했더니 다시 나누는 방법이 애매해졌는데... 이건 얘기해봐야 할듯 --%>
-                            <input id="address1" class="mt5" placeholder="기본 주소..." type="text" readonly>
-                            <input id="address2" class="mt5" placeholder="상세 주소" type="text">
-                            	<c:if test="${submitInfo.sumAddress not eq null or submitInfo.sumAddress not eq ''}">
-                                	${submitInfo.sumAddress}
-                                </c:if>
-                            
+                            <input id="address1" class="mt5" placeholder="기본 주소..." type="text" readonly
+                            value="${addr1}">
+                            <input id="address2" class="mt5" placeholder="상세 주소" type="text"
+                            value="${addr2}">
                             <%-- 3개의 주소 값을 합쳐서 전송할 숨겨진 input. name="sumAddress" 지정 --%>
                             <input type="hidden" name="sumAddress" id="sumAddress">
                         </div>
                     </div>
 
-                    <div class="View_info">
+					<div class="View_info">
                         <p class="sn_img mb20" style="background: url(${pageContext.request.contextPath}/_img/pc/main/${campVo.campThub})no-repeat 50% 50% / cover;"></p> 		
-                        <div class="sche">
-                            <p class="sche_tit">${campVo.campTitle}</p>
-                            <%-- ... 캠페인 정보 표시 ... --%>
-
-                            <div class="prv_wrap mt20">
-                                <p class="checkbox">
-                                    <span>
-                                        <input type="checkbox" id="prv01" name="privacy" value="prv01">
-                                        <label for="prv01">체험단 유의사항, 개인정보 및 콘텐츠 제3자 제공, 저작물 이용에 동의합니다.</label>
-                                    </span>
-                                </p>
-                                <a href="javascript:void(0)" class="prv_cont" onclick="...">[자세히보기]</a>
-                            </div>
-
-                            <div class="prv_wrap mb20 mt10">
-                                <p class="checkbox">
-                                    <span>
-                                        <input type="checkbox" id="prv02" name="privacy" value="prv02">
-                                        <label for="prv02">체험단 미션을 모두 확인했습니다.</label>
-                                    </span>
-                                </p>
-                                <a href="javascript:void(0)" class="prv_cont" onclick="...">[자세히보기]</a>
-                            </div>
-
-                            <div class="btn_wrap">
-                                <%-- 4. a 링크를 button으로 변경하고 id를 부여합니다. --%>
-                                <button type="submit" id="submitBtn" class="btn" style="width:100%;">수정하기</button>
-                            </div>
-                        </div>
-                    </div>
+						<c:choose>
+							<c:when test="${campVo.campAdType eq '틱톡'}">
+								<p class="sns_txt sns_tik">${campVo.campType}</p>
+							</c:when>
+							<c:when test="${campVo.campAdType eq '클립' or campVo.campAdType eq '구매형'}">
+								<p class="sns_txt sns_etc">${campVo.campType}</p>
+							</c:when>
+							<c:when test="${campVo.campAdType eq '인스타그램' or campVo.campAdType eq '릴스'}">
+								<p class="sns_txt sns_inst">${campVo.campType}</p>
+							</c:when>
+							<c:when test="${campVo.campAdType eq '유튜브'}">
+								<p class="sns_txt sns_yout">${campVo.campType}</p>
+							</c:when>
+							<c:when test="${campVo.campAdType eq '블로그' or campVo.campAdType eq '블로그+클립'}">
+								<p class="sns_txt sns_blog">${campVo.campType}</p>
+							</c:when>
+						</c:choose>
+						<div class="prd_txt">
+							<strong>${campVo.campTitle}</strong>
+							<p>${campVo.campService}</p>
+						</div><!-- prd_txt -->
+						<div class="prd_rec">
+							<c:choose>
+								<c:when test="${campVo.dDay eq 0}">
+									<span class="p_date p_day">D-Day</span>
+								</c:when>
+								<c:when test="${campVo.dDay lt 0}">
+									<span class="p_date p_close">모집 마감</span>
+								</c:when>
+								<c:otherwise>
+									<span class="p_date">${campVo.dDay}일 남음</span>
+								</c:otherwise>
+								</c:choose>
+							<ul class="rec_app">
+								<li class="tt">신청 <b>${campVo.campSumCount}</b>명</li>
+								<li> / 모집 <em>${campVo.campRecruite}</em>명</li>
+							</ul>
+						</div><!-- prd_rec -->
+						<div class="btn_wrap mt30">
+    						<button type="submit" id="submitBtn" class="btn" style="width:100%;">수정하기</button>
+						</div>
+					</div><!-- View_info -->
                 </div>
             </form>
         </div>
@@ -142,7 +146,7 @@ function openDaumPostcode() {
       }
 
       // 입력 필드에 채우기
-      document.getElementById('zipcode').value  = data.zonecode; // 새 우편번호(5자리)
+      document.getElementById('zipCode').value  = data.zonecode; // 새 우편번호(5자리)
       document.getElementById('address1').value = addr;
       // 커서는 상세주소로
       var detail = document.getElementById('address2');
@@ -162,22 +166,8 @@ $(document).ready(function() {
     // '신청하기' 버튼을 클릭했을 때의 동작
     $('#submitBtn').on('click', function(event) {
         
-        // 유효성 검사 1: 첫 번째 동의 체크
-        if ($('#prv01').is(':checked') === false) {
-            alert('체험단 유의사항, 개인정보 제공 등에 동의해주세요.');
-            event.preventDefault(); // 폼 전송을 막습니다.
-            return; 
-        }
-        
-        // 유효성 검사 2: 두 번째 동의 체크
-        if ($('#prv02').is(':checked') === false) {
-            alert('체험단 미션을 모두 확인했는지 체크해주세요.');
-            event.preventDefault(); // 폼 전송을 막습니다.
-            return;
-        }
-
         // 유효성 검사를 모두 통과한 경우, 주소 필드를 하나로 합칩니다.
-        const zipcode = $('#zipcode').val();
+        const zipCode = $('#zipCode').val();
         const address1 = $('#address1').val();
         const address2 = $('#address2').val();
         

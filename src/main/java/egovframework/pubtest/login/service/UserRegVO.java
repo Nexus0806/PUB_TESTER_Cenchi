@@ -3,6 +3,7 @@ package egovframework.pubtest.login.service;
 import java.time.LocalDate;
 
 public class UserRegVO {
+	private Integer userIdx;
 	private String userEmail;		//이메일
 	private String userPW;			//비밀번호
 	private String userName;		//실명
@@ -16,6 +17,12 @@ public class UserRegVO {
 	private String userTiktok;		//틱톡url
 	private String userETC;			//기타url
 	
+	public Integer getUserIdx() {
+		return userIdx;
+	}
+	public void setUserIdx(Integer userIdx) {
+		this.userIdx = userIdx;
+	}
 	public String getUserEmail() {
 		return userEmail;
 	}

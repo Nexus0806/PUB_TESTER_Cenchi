@@ -10,9 +10,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="format-detection" content="telephone=no" />
-	<link rel="shortcut icon" href="_img/favicon.png"/> <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/default.css" />
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/slick.css"/>
+	<link rel="shortcut icon" href="_img/favicon.png"/> <!-- 파비콘 -->
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/default.css" />
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/main.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/_css/slick.css"/>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
